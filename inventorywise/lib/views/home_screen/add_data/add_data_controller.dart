@@ -1,0 +1,198 @@
+import 'dart:io';
+
+import 'package:camera/camera.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+
+import '../../../models/addproperty/add_proprert_model.dart';
+import '../../../service/home/home_service.dart';
+
+class AddDataController extends GetxController {
+  late CameraController controller;
+  var service = HomeService();
+  RxInt count = 17.obs;
+  int delid = 0;
+  var list = 7.obs;
+  var index = 0.obs;
+  var items=[0,1,2,3,4,5,6,7,8,9,10].obs;
+  var type = "Inspection Report".obs;
+  var t1 = "Working".obs;
+  var t2 = "Working".obs;
+  var t3 = "Working".obs;
+  var t4 = "Working".obs;
+  var t5 = "Working".obs;
+  var t6 = "Working".obs;
+
+  List<TextEditingController> f = [];
+
+  TextEditingController propertyAddressController = TextEditingController();
+  TextEditingController tenantNameController = TextEditingController();
+  TextEditingController inspectorNameController = TextEditingController();
+  TextEditingController inspectionDateController = TextEditingController();
+  TextEditingController epcExpiryDateController = TextEditingController();
+  TextEditingController ecirExpiryDateController = TextEditingController();
+  TextEditingController gasSafetyCertificateExpiryDateController =
+      TextEditingController();
+  TextEditingController electricityMeterController = TextEditingController();
+  TextEditingController gasMeterController = TextEditingController();
+  TextEditingController smokeAlarmController = TextEditingController();
+  TextEditingController coAlarmController = TextEditingController();
+  TextEditingController heatingSystemController = TextEditingController();
+  TextEditingController signatureInspectorController = TextEditingController();
+  TextEditingController advisedTenantToController = TextEditingController();
+  TextEditingController askedLandlordToController = TextEditingController();
+  TextEditingController gasMeterReadingController = TextEditingController();
+  TextEditingController electricityMeterReadingController =
+      TextEditingController();
+
+  TextEditingController signatureTenantController = TextEditingController();
+  TextEditingController finalRemarksController = TextEditingController();
+  TextEditingController waterMeterController = TextEditingController();
+  TextEditingController mainImgController = TextEditingController();
+  TextEditingController waterMeterReadingController = TextEditingController();
+  TextEditingController electricityMeterImgController = TextEditingController();
+  TextEditingController gasMeterImgController = TextEditingController();
+  TextEditingController waterMeterImgController = TextEditingController();
+  TextEditingController smokeAlarmFrontImgController = TextEditingController();
+  TextEditingController smokeAlarmBackImgController = TextEditingController();
+  TextEditingController coAlarmFrontImgController = TextEditingController();
+  TextEditingController coAlarmBackImgController = TextEditingController();
+  TextEditingController heatingSystemImgController = TextEditingController();
+  String? mainimage;
+  String? electricmeterfront;
+  String? gasmeterfront;
+  String? watermeterfront;
+  String? smokealarmfront;
+  String? smokealarmback;
+  String? coalarmfront;
+  String? coalarmback;
+  String? heatingsystem;
+  var maini=File("").obs;
+  var electric=File("").obs;
+  var gasmeter=File("").obs;
+  var watermeter=File("").obs;
+  var  smokealarm=File("").obs;
+  var  smokealar=File("").obs;
+  var  coalarm=File("").obs;
+  var  coal=File("").obs;
+  var  heating=File("").obs;
+  String? inspector;
+  String? tenant;
+  var main = File("").obs;
+
+  RxList<File> image = <File>[].obs;
+  var images = File("").obs;
+  List<String?> urls = [];
+  var loading = true.obs;
+
+  Future pickImages() async {
+    try {
+      final imagedata =
+          await ImagePicker().pickImage(source: ImageSource.camera);
+      if (imagedata == null) return;
+      final imageTemp = File(imagedata.path);
+      return imageTemp;
+    } on PlatformException catch (e) {
+      print('Failed to pick image: $e');
+    }
+  }
+
+  Future pickImageGallerys() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+      final imageTemp = File(image.path);
+      this.images.value = imageTemp;
+      return this.images;
+    } on PlatformException catch (e) {
+      print('Failed to pick image: $e');
+    }
+  }
+
+  @override
+  void onInit() async {
+    super.onInit();
+    for (int i = 0; i <= 500; i++) {
+      image.add(File(""));
+    }
+    for (int i = 0; i <= 500; i++) {
+      urls.add("");
+    }
+    for (int i = 0; i <= 500; i++) {
+      f.add(TextEditingController());
+    }
+    loading.value = false;
+  }
+
+  void addData(prop) async {
+    await service.addProperty(
+        f,
+        urls,
+        mainimage,
+        electricmeterfront,
+        gasmeterfront,
+        watermeterfront,
+        smokealarmfront,
+        smokealarmback,
+        coalarmfront,
+        coalarmback,
+        heatingsystem,
+        tenant,
+        inspector,
+        prop,
+        advisedTenantToController.text,
+        askedLandlordToController.text,
+        finalRemarksController.text,
+        t1.value,
+        t2.value,
+        t3.value,
+        t4.value,
+        t5.value,
+        t6.value,
+        type.value);
+  }
+
+  void updateData(prop, id) async {
+    await service.updateProperty(
+        id,
+        f,
+        urls,
+        mainimage,
+        electricmeterfront,
+        gasmeterfront,
+        watermeterfront,
+        smokealarmfront,
+        smokealarmback,
+        coalarmfront,
+        coalarmback,
+        heatingsystem,
+        tenant,
+        inspector,
+        prop,
+        advisedTenantToController.text,
+        askedLandlordToController.text,
+        finalRemarksController.text,
+        t1.value,
+        t2.value,
+        t3.value,
+        t4.value,
+        t5.value,
+        t6.value,
+        type.value);
+  }
+  void deleteData(prop, id) async {
+    await service.deleteProperty(
+        id,);
+  }
+
+  Future<String> upload(images) async {
+    return await service.uploadImage(images.path);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+}
