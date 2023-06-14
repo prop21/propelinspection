@@ -41,7 +41,7 @@ class Paths {
   // static String baseUrl = 'https://qisstpay.com';
   // static String baseUrl = 'http://52.77.241.163:9191'; //production
   // static String baseUrl = 'http://52.221.239.76:9191'; //development
-  static String baseUrl = 'http://10.128.15.117:4000'; //production
+  static String baseUrl = 'http://192.168.0.74:4000'; //production
   //  static String baseUrl = 'https://dev.apis.qisstpay.com'; //development
   static String authBaseUrl = '$baseUrl/accounts/authenticate';
   static String registerbaseUrl = '$baseUrl/accounts/register';

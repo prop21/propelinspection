@@ -785,355 +785,1044 @@ class Show_Data_Screen extends StatelessWidget {
                       // Share.shareFiles([path]);
                       // Share.share("https://api.propelinspections.com/inventory/uploads/umair1686570916.pdf");
                       final htmlContent = """
-                      `<!DOCTYPE html>
-      <html>
+                      <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Report Title</title>
+  </head>
 
-      <head>
-        <meta charset="UTF-8">
-        <title>Report Title</title>
-      </head>
-      <style>
-        body {
-          width: 90%;
-          display: block;
-          margin: auto;
-          background-color: #fff;
-          border: 2px solid #0090ff;
-          padding: 20px;
-          border-radius: 10px;
-        }
+  <style>
+    table,
+    td,
+    th {
+      border: 1px solid black;
+    }
 
-        .header-container {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          flex-wrap: wrap;
-          /* padding: 40px auto; */
-          background-color: #0090ff1a;
-          padding: 20px;
-          border-radius: 10px;
-          /* border: 2px solid #0090ff; */
-        }
+    table {
+      border-collapse: collapse;
+      width: 30%;
+    }
 
-        .logo img {
-          max-width: 200px;
-          height: auto;
-          margin: 0 20px 0 0;
-        }
+    #customers {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
 
-        .user-info {
-          margin: 0 0 20px 0;
-          margin-top: 20px;
-        }
+    #customers td,
+    #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
 
-        @media (max-width: 600px) {
-          .header-container {
-            flex-direction: column;
-            align-items: center;
-          }
+    #customers tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
 
-          .logo {
-            margin: 10px 0;
-          }
+    #customers tr:hover {
+      background-color: #ddd;
+    }
 
-          .user-info {
-            margin: 0;
-            text-align: center;
-          }
-        }
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: blue;
+      color: white;
+    }
+  </style>
 
-        .top-address {
-          font-weight: 600;
-          text-align: center;
-          padding: 10px 0px;
-          background-color: #0090ff;
-          font-size: 20px;
-          color: #fff;
-          border-radius: 10px 10px 0px 0px;
-          margin-bottom: 0px;
-        }
-
-        .property-img {
-          display: block;
-          margin: auto;
-          width: 100%;
-          height: 200px;
-          border-radius: 0px 0px 10px 10px;
-        }
-
-
-
-        table {
-          border-collapse: collapse;
-          width: 98.5%;
-          margin: 20px 10px;
-        }
-
-        th
-        td {
-          padding: 12px;
-          text-align: left;
-        }
-
-        thead {
-          background-color: #333;
-          color: #fff;
-        }
-
-        tbody tr:nth-child(even) {
-          background-color: #f1f1f1;
-        }
-
-        tbody tr:hover {
-          background-color: #ddd;
-        }
-
-        td {
-          border: 1px solid #ddd;
-        }
-
-        th {
-          border: 1px solid #333;
-        }
-
-        .parent {
-          display: flex;
-
-          /* margin: 20px 0; */
-        }
-
-        .card {
-          width: 33%;
-          border: 2px solid #eee;
-          margin: 10px;
-          border-radius: 10px;
-          padding: 20px
-        }
-
-        .card1 {
-          width: 50%;
-          border: 2px solid #eee;
-          margin: 10px;
-          border-radius: 10px;
-          padding: 20px
-        }
-
-        .card2 {
-          /* width: 50%; */
-          border: 2px solid #eee;
-          margin: 10px;
-          border-radius: 10px;
-          padding: 20px
-        }
-
-        .card-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          flex-wrap: wrap;
-          padding-bottom: 10px;
-          border-bottom: 1px solid #0090ff;
-        }
-
-        .gas {
-          color: #0090ff;
-          font-weight: 600;
-        }
-
-        .gas-img img {
-          margin-top: 10px;
-          border-radius: 10px;
-        }
-
-        .gas-img2 {
-          display: flex;
-        }
-
-        .gas-img2 img {
-          margin: 10px;
-          border-radius: 10px;
-        }
-      .body{
-        display: flex;
-        justify-content: flex-end;
-      }
-        .body .right {
-          padding: 10px;
-          margin: 10px;
-        }
-
-
-        .blue {
-          color: #0090ff;
-          font-weight: 600;
-          font-size: 18px;
-          padding-right: 10px;
-        }
-        .blue2 {
-          color: #0090ff;
-          font-weight: 600;
-          font-size: 22px;
-          margin-bottom: 0px;
-        }
-
-        .h1 {
-          font-weight: bold;
-          font-size: 1.2em;
-          background-color: white;
-          color: #0090ff;
-        }
-
-        .signatre {
-          width: 100px;
-          height: auto;
-          /* align-self: flex-end */
-        }
-        .blue3{
-          color: #0090ff;
-          /* width: 100%; */
-        }
-      </style>
-
-      <body>
-        <header>
-          <div class="header-container">
-            <div class="logo">
-            <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/391px-Apple_logo_black.svg.png"
-                alt="Logo"> </div>
-
-          </div>
-        </header>
-        <section>
-          <p class="top-address">${data?.propertyAddress}</p>
-            <img class="property-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/391px-Apple_logo_black.svg.png"
-            alt="property image" />
-        </section>
-        <section class="top-margin">
+  <body>
+    <header>
+      <div class="header-container">
+        <div
+          style="
+            display: flex;
+            margin-left: 20px;
+            margin-right: 20px;
+            justify-content: space-between;
+          "
+        >
           <div>
-            <table>
-              <tr>
-                <td class="blue3">ECIR Expiry Date:</td>
-                <td>${data?.ecirExpDate}</td>
-                <td class="blue3">Gas Safety Certificate Expiry Date:</td>
-                <td>${data?.gasSafetyCertificateExpDate}</td>
-                <td class="blue3">Inspection Date:</td>
-                <td>${data?.inspectionDate}</td>
+            <img
+              style="width: 230px; height: 100px"
+              src="../public/inventory.png"
+              alt="Logo"
+            />
+          </div>
+          <div style="">
+            <div style="display: flex; gap: 6px">
+              <div style="color: blue; font-size: 18px; font-weight: bold">
+                Company:${data?.inspectorName}
+              </div>
+              <div style="color: black; font-size: 18px">abc</div>
+            </div>
 
-              </tr>
-              <tr>
-                <td class="blue3">EPC Expiry Date:</td>
-                <td>${data?.ecpExpDate}</td>
-                <td class="blue3">Tenant Name:</td>
-                <td>${data?.tenantName}</td>
-                <td class="blue3">Inspector Name:</td>
-                <td>${data?.inspectorName}</td>
-              </tr>
-              <tr>
-                <td class="blue3">Advised Tenant To:</td>
-                <td>${data?.advisedTenantTo}</td>
-                <td class="blue3">Contractor Instructed:</td>
-                <td>${data?.contractorInstructed}</td>
-                <td class="blue3">Asked Landlord To:</td>
-                <td>${data?.askedLandlordTo}</td>
+            <div style="display: flex; gap: 6px">
+              <div style="color: blue; font-size: 18px; font-weight: bold">
+                Address:${data?.propertyAddress}
+              </div>
+              <div style="color: black; font-size: 18px">luton</div>
+            </div>
 
-              </tr>
-            </table>
-          </div>
-        </section>
-        <section class="top-margin" id="cards">
-          <div class="parent">
-            <div class="card">
-              <div class="card-header">
-                <div class="col-1"> <span class="gas">Gas Meter:</span> <span class="gas">Yes</span> </div>
-                <div class="col-1"> <span class="gas">Reading:</span> <span class="gas">${data?.gasMeterReading}</span> </div>
+            <div style="display: flex; gap: 6px">
+              <div style="color: blue; font-size: 18px; font-weight: bold">
+                Phone:
               </div>
-              <div class="gas-img">
-              <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/391px-Apple_logo_black.svg.png" width="100%" height="auto">
-                </div>
+              <div style="color: black; font-size: 18px">abc</div>
             </div>
-            <div class="card">
-              <div class="card-header">
-                <div class="col-1"> <span class="gas">Electricity Meter:</span> <span class="gas">${data?.electricityMeter}</span> </div>
-                <div class="col-1"> <span class="gas">Reading:</span> <span class="gas">${data?.electricityMeterReading}</span> </div>
+            <div style="display: flex; gap: 6px">
+              <div style="color: blue; font-size: 18px; font-weight: bold">
+                Email:
               </div>
-              <div class="gas-img"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/391px-Apple_logo_black.svg.png" width="100%" height="auto"> </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <div class="col-1"> <span class="gas">Water Meter:</span> <span class="gas">${data?.waterMeter}</span> </div>
-                <div class="col-1"> <span class="gas">Reading:</span> <span class="gas">${data?.waterMeterReading}</span> </div>
-              </div>
-              <div class="gas-img"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/391px-Apple_logo_black.svg.png" width="100%" height="auto"> </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <div class="col-1"> <span class="gas">Heating System:</span> <span class="gas"></span> </div>
-                <div class="col-1"> <span class="gas">Reading:</span> <span class="gas">Yes</span> </div>
-              </div>
-              <div class="gas-img">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/391px-Apple_logo_black.svg.png" width="100%" height="auto"> </div>
+              <div style="color: black; font-size: 18px">${data?.inspectorName}</div>
             </div>
           </div>
-        </section>
-        <section class="top-margin">
-          <div class="parent">
-            <div class="card1">
-              <div class="card-header">
-                <div class="col-1"> <span class="gas">Smoke Alarm:</span> <span class="gas">${data?.smokeAlarm}</span> </div>
-              </div>
-              <div class="gas-img2">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/391px-Apple_logo_black.svg.png" width="48%" height="auto">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/391px-Apple_logo_black.svg.png"
-                  width="48%" height="auto" /> </div>
-            </div>
-            <div class="card1">
-              <div class="card-header">
-                <div class="col-1"> <span class="gas">CO Alarm:</span> <span class="gas">${data?.coAlarm}</span> </div>
-              </div>
-              <div class="gas-img2">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/391px-Apple_logo_black.svg.png" width="48%" height="auto">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/391px-Apple_logo_black.svg.png"
-                  width="48%" height="auto" /> </div>
-            </div>
-          </div>
-
-        </section>
-       <section class="top-margin">
-      ${data?.propertyDetails?.map((item) => '''
-        <div class="card2">
-          <div class="card-header">
-            <div class="col-1">
-              <span class="blue2">${item.name}</span>
-              <p class="room-para">${item.description}</p>
-            </div>
-          </div>
-          <div class="gas-img2"></div>
         </div>
-      ''').join('')}
-    </section>
+      </div>
+    </header>
+    <div
+      style="
+        font-size: 32px;
+        text-align: center;
+        background-color: blue;
+        color: white;
+        border-radius: 14px;
+        border-color: black;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border: 10px;
+        margin-left: 100px;
+        margin-right: 100px;
+        margin-top:20px;
+        border-style: solid;
+        border-width: medium;
+        border-color: black;
+      "
+    >
+      ${data?.types}
+    </div>
+    <div
+      style="
+        font-size: 32px;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+      "
+    >
+      ${data?.inspectorName}
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center">
+      <img style="border-radius: 12px" src="../public/screens1.png" alt="s1" />
+    </div>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+      "
+    >
+      <table>
+        <tr>
+          <td
+            style="
+              font-size: 24px;
+              font-weight: bold;
+              padding-top: 8px;
+              padding-bottom: 8px;
+            "
+          >
+            Inspected By
+          </td>
+          <td
+            style="
+              font-size: 24px;
+              padding-top: 8px;
+              padding-bottom: 8px;
+              font-weight: 300;
+            "
+          >
+            ${data?.inspectorName}
+          </td>
+        </tr>
+        <tr>
+          <td
+            style="
+              font-size: 24px;
+              font-weight: bold;
+              padding-top: 8px;
+              padding-bottom: 8px;
+            "
+          >
+            Tenants name
+          </td>
+          <td style="font-size: 24px; padding-top: 8px; padding-bottom: 8px">
+            ${data?.tenantName}
+          </td>
+        </tr>
+        <tr>
+          <td
+            style="
+              font-size: 24px;
+              font-weight: bold;
+              padding-top: 8px;
+              padding-bottom: 8px;
+            "
+          >
+            Date of Inspection
+          </td>
+          <td style="font-size: 24px; padding-top: 8px; padding-bottom: 8px">
+            ${data?.inspectionDate}
+          </td>
+        </tr>
+        <tr>
+          <td
+            style="
+              font-size: 24px;
+              font-weight: bold;
+              padding-top: 8px;
+              padding-bottom: 8px;
+            "
+          >
+            EPC Expiry Date
+          </td>
+          <td style="font-size: 24px; padding-top: 8px; padding-bottom: 8px">
+            ${data?.ecpExpDate}
+          </td>
+        </tr>
+        <tr>
+          <td
+            style="
+              font-size: 24px;
+              font-weight: bold;
+              padding-top: 8px;
+              padding-bottom: 8px;
+            "
+          >
+            Gas Safety Certificate Expiry Date
+          </td>
+          <td style="font-size: 24px; padding-top: 8px; padding-bottom: 8px">
+            ${data?.gasSafetyCertificateExpDate}
+          </td>
+        </tr>
+        <tr>
+          <td
+            style="
+              font-size: 24px;
+              font-weight: bold;
+              padding-top: 8px;
+              padding-bottom: 8px;
+            "
+          >
+            EICR Expiry Date
+          </td>
+          <td style="font-size: 24px; padding-top: 8px; padding-bottom: 8px">
+            ${data?.ecirExpDate}
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div
+      style="
+        font-size: 32px;
+        color: blue;
+        margin-left: 36px;
+        font-weight: bold;
+        margin-top: 6px;
+      "
+    >
+      Summary
+    </div>
+    <div
+      style="
+        height: 45px;
+        margin-top: 10px;
+        border: 1px solid black;
+        border-radius: 14px;
+        margin-left: 36px;
+        margin-right: 36px;
+      "
+    ></div>
+    <div
+      style="
+        font-size: 24px;
+        color: blue;
+        margin-left: 48px;
+        font-weight: bold;
+        margin-top: 6px;
+      "
+    >
+      Important Information
+    </div>
+    <div
+      style="
+        font-size: 26px;
+        color: black;
+        font-weight: bold;
+        margin-left: 48px;
+        font-weight: bold;
+        margin-top: 12px;
+      "
+    >
+      What is an Inventory Check-In Report?
+    </div>
+    <div
+      style="
+        font-size: 26px;
+        font-weight: 500;
+        margin-left: 48px;
+        margin-right: 48px;
+        margin-top: 10px;
+      "
+    >
+      The Inventory Check-In Report provides a fair, objective and impartial
+      record of the general condition of the contents of the Property as well as
+      its internal condition at the outset of the lease of the Property.
+    </div>
 
-        </section>
+    <div
+      style="
+        font-size: 26px;
+        color: black;
+        font-weight: bold;
+        margin-left: 48px;
+        font-weight: bold;
+        margin-top: 12px;
+      "
+    >
+      What is an Inventory Check-In Report?
+    </div>
 
-        <section>
-          <div class="body">
-            <div class="right" style="background-color: #fff">
-              <h1 class="h1">Tenant Name</h1>
-              <h4>${data?.tenantName}</h4>
-              <img class="signatre" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/391px-Apple_logo_black.svg.png" alt="" />
-            </div>
-            <div class="right" style="background-color: #fff"></div>
-            <div class="right" style="background-color: #fff">
-              <h1 class="h1">Inspector Name</h1>
-              <h4>${data?.inspectorName}</h4>
-              <img class="signatre" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/391px-Apple_logo_black.svg.png" alt="" />
-            </div>
+    <div
+      style="
+        font-size: 26px;
+        color: black;
+        font-weight: bold;
+        margin-left: 48px;
+        font-weight: bold;
+        margin-top: 12px;
+      "
+    >
+      What are the benefits of using this Report?
+    </div>
+    <div
+      style="
+        font-size: 26px;
+        font-weight: 500;
+        margin-left: 48px;
+        margin-right: 48px;
+        margin-top: 10px;
+      "
+    >
+      The importance of a professional inventory and statement of condition
+      cannot be underestimated. Government advice indicates that Inventories and
+      statements of condition are 'strongly recommended' as a means to reduce
+      dispute about the deposit at the end of a tenancy. It is in the Tenant's
+      interests to carefully check this Inventory Check-In Report and to
+      highlight any discrepancies as soon as possible and in any event no later
+      than five working days after this Inventory Check-In Report is completed.
+      Any outstanding discrepancies found at the end of the tenancy will be
+      highlighted in an Inventory Outgoing Report and may affect the retention
+      or release of a tenancy deposit.
+    </div>
+
+    <div
+      style="
+        font-size: 26px;
+        color: black;
+        font-weight: bold;
+        margin-left: 48px;
+        font-weight: bold;
+        margin-top: 12px;
+      "
+    >
+      Is the report aimed at the landlord or the tenant?
+    </div>
+    <div
+      style="
+        font-size: 26px;
+        font-weight: 500;
+        margin-left: 48px;
+        margin-right: 48px;
+        margin-top: 10px;
+      "
+    >
+      The Inventory Check-In Report is objective and contains photographic
+      evidence, it may be relied upon and used by the Landlord, the Tenant and
+      Letting Agent.
+    </div>
+
+    <div
+      style="
+        font-size: 26px;
+        color: black;
+        font-weight: bold;
+        margin-left: 48px;
+        font-weight: bold;
+        margin-top: 12px;
+      "
+    >
+      What does this Report tell you?
+    </div>
+    <div
+      style="
+        font-size: 26px;
+        font-weight: 500;
+        margin-left: 48px;
+        margin-right: 48px;
+        margin-top: 10px;
+      "
+    >
+      The Inventory Check-In Report provides a clear and easy to follow
+      statement of condition for each of the main elements of the property on a
+      room by room basis, together with its contents if appropriate. This report
+      comments on and highlights defects or aspects of poor condition that have
+      been identified by the Inventory Clerk. Defects in condition will either
+      be described in the narrative of the report or evidenced in the
+      photographs included in the report. Please Note: where no comment on the
+      condition of an element or item of contents is made by the Inventory
+      Clerk, the element or item is taken to be in good condition and without
+      defect.
+    </div>
+
+    <div
+      style="
+        font-size: 26px;
+        color: black;
+        font-weight: bold;
+        margin-left: 48px;
+        font-weight: bold;
+        margin-top: 12px;
+      "
+    >
+      What does the report not tell you?
+    </div>
+    <div
+      style="
+        font-size: 26px;
+        font-weight: 500;
+        margin-left: 48px;
+        margin-right: 48px;
+        margin-top: 10px;
+      "
+    >
+      Whilst every effort is made to ensure objectivity and accuracy, the
+      Inventory Check-In Report provides no guarantee of the adequacy,
+      compliance with standards or safety of any contents or equipment. The
+      report will provide a record that such items exist in the property as at
+      the date of the Inventory Check-In Report and the superficial condition of
+      same. The report is not a building survey, a structural survey or a
+      valuation, will not necessarily mention structural defects and does not
+      give any advice on the cost of any repair work, or the types of repair
+      which should be used.
+    </div>
+
+    <div
+      style="
+        font-size: 26px;
+        color: black;
+        font-weight: bold;
+        margin-left: 48px;
+        font-weight: bold;
+        margin-top: 12px;
+      "
+    >
+      What is inspected and not inspected?
+    </div>
+    <div
+      style="
+        font-size: 26px;
+        font-weight: 500;
+        margin-left: 48px;
+        margin-right: 48px;
+        margin-top: 10px;
+      "
+    >
+      The Inventory Clerk carries out a visual inspection of the inside of the
+      main building together with any contents and will carry out a general
+      inspection of the remainder of the building including the exterior
+      cosmetic elements and any permanent outbuildings. For properties let on an
+      unfurnished basis, the inspection will include floor coverings, curtains,
+      curtain tracks, blinds and kitchen appliances if appropriate, but will
+      exclude other contents. Gardens and their contents will be inspected and
+      reported upon. The inspection is non-invasive. The means that the
+      Inventory Clerk does not take up carpets, floor coverings or floor boards,
+      move large items of furniture, test services, remove secured panels or
+      undo electrical fittings. Especially valuable contents such as antiques,
+      personal items or items of jewellery are excluded from the report.
+      Kitchenware will be inspected but individual items will not be condition
+      rated. Common parts in relation to flats, exterior structural elements of
+      the main building and the structure of any outbuildings will not be
+      inspected. Roof spaces and cellars are not inspected. Areas which are
+      locked or where full access is not possible, for example, attics or
+      excessively full cupboards or outbuildings are not inspected.
+    </div>
+
+    <div
+      style="
+        font-size: 26px;
+        color: black;
+        font-weight: bold;
+        margin-left: 48px;
+        font-weight: bold;
+        margin-top: 12px;
+      "
+    >
+      What is a Mid-Term Inspection Report?
+    </div>
+    <div
+      style="
+        font-size: 26px;
+        font-weight: 500;
+        margin-left: 48px;
+        margin-right: 48px;
+        margin-top: 10px;
+      "
+    >
+      The Mid-Term Inspection Report provides a fair, objective and impartial
+      record of the general condition of the contents of the Property as well as
+      its internal condition during the lease of the Property. Any defects and
+      maintenance issues noted during the inspection are highlighted in the
+      report. The tenants are required to rectify the issues which come under
+      their obligations as per the terms & conditions of the tenancy agreement.
+      Similarly, the landlord of the property will be asked to deal with the
+      maintenance issues accordingly.
+    </div>
+
+    <div
+      style="
+        font-size: 26px;
+        color: black;
+        font-weight: bold;
+        margin-left: 48px;
+        font-weight: bold;
+        margin-top: 12px;
+      "
+    >
+      What is a Check-Out Report?
+    </div>
+    <div
+      style="
+        font-size: 26px;
+        font-weight: 500;
+        margin-left: 48px;
+        margin-right: 48px;
+        margin-top: 10px;
+      "
+    >
+      The Check-Out Report provides a fair, objective and impartial record of
+      the general condition of the contents of the Property as well as its
+      internal condition at the end of the lease of the Property. Normally, the
+      return of the tenancy deposit is based on the outcome of the Check- Out
+      report.
+    </div>
+
+    <div
+      style="
+        font-size: 28px;
+        color: blue;
+        margin-left: 36px;
+        font-weight: bold;
+        margin-top: 6px;
+      "
+    >
+      Metres and Alarms
+    </div>
+
+    <div
+      style="
+        display: flex;
+        margin-left: 48px;
+        margin-top: 30px;
+        margin-right: 48px;
+        justify-items: center;
+        justify-content: center;
+        align-items: center;
+        gap: 35px;
+      "
+    >
+      <div
+        style="
+          width: 350px;
+          height: 550px;
+
+          border: 4px solid rgb(207, 206, 206);
+          border-radius: 14px;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-left: 24px;
+            margin-right: 24px;
+            margin-top: 16px;
+          "
+        >
+          <div style="font-size: 24px; color: blue; font-weight: bold">
+            Pre-Paid Gas Meter:<span
+              style="font-size: 24px; color: black; font-weight: bold"
+              >${data?.gasMeter}</span
+            >
           </div>
-        </section>
-      </body>
 
-      </html>
+          <div style="font-size: 24px; color: blue; font-weight: bold">
+            Reading:${data?.gasMeterReading}
+          </div>
+          
+        </div>
+        
+        <hr
+          style="border: 1px solid blue; margin-left: 24px; margin-right: 24px"
+        />
+        <img
+            style="border-radius: 12px; width: 320px; height: 400px"
+            src="${Paths.baseUrl + "/" + data!.gasMeterImg.toString()}"
+            alt="s1"
+          />
+      </div>
+
+      <div
+        style="
+          width: 350px;
+          height: 550px;
+
+          border: 4px solid rgb(207, 206, 206);
+          border-radius: 14px;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-left: 24px;
+            margin-right: 24px;
+            margin-top: 16px;
+          "
+        >
+          <div style="font-size: 24px; color: blue; font-weight: bold">
+            Pre-Paid Electricity Meter:<span
+              style="font-size: 24px; color: black; font-weight: bold"
+              >${data?.electricityMeter}</span
+            >
+          </div>
+          <div style="font-size: 24px; color: blue; font-weight: bold">
+            Reading:${data?.electricityMeterReading}
+          </div>
+        </div>
+        <hr
+          style="border: 1px solid blue; margin-left: 24px; margin-right: 24px"
+        />
+        
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+          "
+        >
+          <img
+            style="border-radius: 12px; width: 320px; height: 400px"
+            src="${Paths.baseUrl + "/" + data!.electricityMeterImg.toString()}"
+            alt="s1"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div
+      style="
+        display: flex;
+        margin-left: 48px;
+        margin-top: 30px;
+        margin-right: 48px;
+        justify-items: center;
+        justify-content: center;
+        align-items: center;
+        gap: 35px;
+      "
+    >
+      <div
+        style="
+          width: 620px;
+          height: 250px;
+
+          border: 4px solid rgb(207, 206, 206);
+          border-radius: 14px;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-left: 24px;
+            margin-right: 24px;
+            margin-top: 16px;
+          "
+        >
+          <div style="font-size: 24px; color: blue; font-weight: bold">
+            Heating System:<span
+              style="font-size: 24px; color: black; font-weight: bold"
+              >${data?.heatingSystem}</span
+            >
+          </div>
+        </div>
+        <hr
+          style="border: 1px solid blue; margin-left: 24px; margin-right: 24px"
+        />
+        <img
+            style="border-radius: 12px; width: 320px; height: 200px"
+            src="${Paths.baseUrl + "/" + data!.heatingSystemImg.toString()}"
+            alt="s1"
+          />
+        
+      </div>
+      <div
+        style="
+          width: 620px;
+          height: 250px;
+
+          border: 4px solid rgb(207, 206, 206);
+          border-radius: 14px;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-left: 24px;
+            margin-right: 24px;
+            margin-top: 16px;
+          "
+        >
+          <div style="font-size: 24px; color: blue; font-weight: bold">
+            Water Meter:<span
+              style="font-size: 24px; color: black; font-weight: bold"
+              >${data?.waterMeter}</span
+            >
+          </div>
+          <div style="font-size: 24px; color: blue; font-weight: bold">
+            Reading:${data?.waterMeterReading}
+          </div>
+        </div>
+        <hr
+          style="border: 1px solid blue; margin-left: 24px; margin-right: 24px"
+        />
+        <img
+            style="border-radius: 12px; width: 320px; height: 200px"
+            src="${Paths.baseUrl + "/" + data!.waterMeterImg.toString()}"
+            alt="s1"
+          />
+      </div>
+    </div>
+
+    <div
+      style="
+        display: flex;
+        margin-left: 48px;
+        margin-top: 30px;
+        margin-right: 48px;
+        justify-items: center;
+        justify-content: center;
+        align-items: center;
+        gap: 35px;
+      "
+    >
+      <div
+        style="
+          width: 620px;
+          height: 250px;
+
+          border: 4px solid rgb(207, 206, 206);
+          border-radius: 14px;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-left: 24px;
+            margin-right: 24px;
+            margin-top: 16px;
+          "
+        >
+          <div style="font-size: 24px; color: blue; font-weight: bold">
+            Smoke Alarm:<span
+              style="font-size: 24px; color: black; font-weight: bold"
+              >${data?.smokeAlarm}</span
+            >
+          </div>
+        </div>
+        <hr
+          style="border: 1px solid blue; margin-left: 24px; margin-right: 24px"
+        />
+        <img
+            style="border-radius: 12px; width: 320px; height: 200px"
+            src="${Paths.baseUrl + "/" + data!.smokeAlarmFrontImg.toString()}"
+            alt="s1"
+          />
+      </div>
+      <div
+        style="
+          width: 620px;
+          height: 250px;
+
+          border: 4px solid rgb(207, 206, 206);
+          border-radius: 14px;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-left: 24px;
+            margin-right: 24px;
+            margin-top: 16px;
+          "
+        >
+          <div style="font-size: 24px; color: blue; font-weight: bold">
+            CO Alarm<span
+              style="font-size: 24px; color: black; font-weight: bold"
+              >${data?.coAlarm}</span
+            >
+          </div>
+          <div style="font-size: 24px; color: blue; font-weight: bold">
+            Reading:${data?.coAlarm}
+          </div>
+        </div>
+        <hr
+          style="border: 1px solid blue; margin-left: 24px; margin-right: 24px"
+        />
+        <img
+            style="border-radius: 12px; width: 320px; height: 200px"
+            src="${Paths.baseUrl + "/" + data!.coAlarmFrontImg.toString()}"
+            alt="s1"
+          />
+      </div>
+    </div>
+    ${data?.propertyDetails?.map((e) => '''
+    <div
+      style="
+        font-size: 24px;
+        color: blue;
+        margin-left: 48px;
+        font-weight: bold;
+        margin-top: 45px;
+      "
+    >
+    
+    <div>
+      ${e.name}
+    </div>
+    <div style="margin-left: 48px; margin-right: 48px; margin-top: 20px">
+      <table id="customers">
+        <tr>
+          <th>Description</th>
+          <th>Details</th>
+        </tr>
+        <tr>
+          <td>Floor</td>
+          <td>${e.floor}</td>
+        </tr>
+        <tr>
+          <td>Walls</td>
+          <td>${e.walls}</td>
+        </tr>
+        <tr>
+          <td>Ceiling</td>
+          <td>${e.ceiling}</td>
+        </tr>
+        <tr>
+          <td>Windows</td>
+          <td>${e.windows}</td>
+        </tr>
+        <tr>
+          <td>Doors</td>
+          <td>${e.walls}</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>${e.description}</td>
+        </tr>
+      </table>
+    </div>
+    <div style="margin-left: 48px; margin-top: 14px">
+      <img src="../public/screens1.png" alt="" />
+    </div>
+  ''').join('')}
+    <div
+      style="
+        font-size: 28px;
+        color: blue;
+        margin-left: 48px;
+        font-weight: bold;
+        margin-top: 25px;
+      "
+    >
+      Advice for Tenant:
+    </div>
+
+    <div
+      style="
+        font-size: 28px;
+        color: black;
+        margin-left: 48px;
+        margin-right: 48px;
+        font-weight: 500;
+        margin-top: 10px;
+      "
+    >
+      ${data?.advisedTenantTo}
+    </div>
+    <hr
+      style="border: 2px solid black; margin-left: 48px; margin-right: 48px"
+    />
+    <div
+      style="
+        font-size: 28px;
+        color: blue;
+        margin-left: 48px;
+        font-weight: bold;
+        margin-top: 25px;
+      "
+    >
+      Advice for Landlord:
+    </div>
+    <hr
+      style="
+        border: 2px solid black;
+        margin-left: 48px;
+        margin-right: 48px;
+        margin-top: 12px;
+      "
+    />
+${data?.askedLandlordTo}
+    <div
+      style="
+        font-size: 24px;
+        color: blue;
+        text-align: center;
+        margin-left: 48px;
+        font-weight: bold;
+        margin-top: 25px;
+      "
+    >
+      Declaration
+    </div>
+
+    <div
+      style="
+        font-size: 24px;
+        color: black;
+        text-align: center;
+        margin-left: 48px;
+        margin-right: 48px;
+        font-weight: 500;
+        margin-top: 25px;
+      "
+    >
+      This inventory provides a record of the contents of the property and the
+      property’s internal condition. The person preparing the inventory is not
+      an expert in fabrics, wood, materials, antiques etc nor a qualified
+      surveyor. The inventory should not be used as an accurate description of
+      each piece of furniture and equipment. Any areas of dilapidation or defect
+      at the commencement of the tenancy need to be reported to the
+      landlord/agency within 7 days of the commencement of tenancy. All items
+      and areas listed in the property are in good, clean, serviceable condition
+      unless otherwise stated.
+    </div>
+
+    <div
+      style="
+        display: flex;
+        margin-left: 48px;
+        margin-top: 30px;
+        margin-right: 48px;
+        justify-items: center;
+        justify-content: center;
+        align-items: center;
+        gap: 45px;
+      "
+    >
+      <div
+        style="
+          width: 600px;
+          height: 340px;
+
+          border: 6px solid rgb(42, 119, 219);
+          border-radius: 14px;
+        "
+      >
+        <div
+          style="
+            font-size: 32px;
+            color: black;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+          "
+        >
+          Tenant’s Signature
+        </div>
+
+        <div
+          style="
+            
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+          "
+        >
+          <img
+            style="border-radius: 12px; width: 550px; height: 550px"
+            src="${Paths.baseUrl + "/" + data!.signatureTenant.toString()}"
+            alt="s1"
+          />
+        </div>
+      </div>
+      <div
+        style="
+          width: 600px;
+          height: 340px;
+
+          border: 6px solid rgb(42, 119, 219);
+          border-radius: 14px;
+        "
+      >
+        <div
+          style="
+            font-size: 32px;
+            color: black;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+          "
+        >
+          Inspector’s Signature
+        </div>
+
+        <div
+          style="
+            
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+          "
+        >
+          <img
+            style="border-radius: 12px; width: 550px; height: 550px"
+            src="${Paths.baseUrl + "/" + data!.signatureInspector.toString()}"
+            alt="s1"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
 """;
                       Directory tempDir = await getTemporaryDirectory();
                       final path = '${tempDir.path}';

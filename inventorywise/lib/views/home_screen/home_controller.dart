@@ -18,7 +18,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getData("1");
+    getData(Authenticator().getUserID());
   }
 
   Future<void> getData(id) async {
