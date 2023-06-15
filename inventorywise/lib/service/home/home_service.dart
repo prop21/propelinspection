@@ -75,7 +75,7 @@ class HomeService {
     try {
       var res = await _http?.post(Paths.addPropertiesBaseUrl, body: {
         "property_details": prop,
-        "user_id": "1",
+        "user_id": Authenticator().getUserID(),
         "property_address": inputFields[0].text,
         "tenant_name": inputFields[1].text,
         "inspector_name": inputFields[2].text,
@@ -149,7 +149,7 @@ class HomeService {
       var res = await _http
           ?.put(Paths.updatePropertiesBaseUrl + id.toString(), body: {
         "property_details": prop,
-        "user_id": "1",
+        "user_id": Authenticator().getUserID(),
         "property_address": inputFields[0].text,
         "tenant_name": inputFields[1].text,
         "inspector_name": inputFields[2].text,
@@ -194,7 +194,7 @@ class HomeService {
     var _http = await ApiResponseInjector().httpDataSource(ApiType.defaultApi);
     try {
       var res =
-          await _http?.delete(Paths.deletePropertiesBaseUrl + "4", body: {});
+          await _http?.delete(Paths.deletePropertiesBaseUrl + id, body: {});
       var cont=Get.find<HomeController>();
       cont.getData(Authenticator().getUserID());
       Get.back();

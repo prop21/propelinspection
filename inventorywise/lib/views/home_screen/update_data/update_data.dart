@@ -32,7 +32,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false, // fluter 2.x
       appBar: AppBar(
-        title: Text("Update Property"),
+        title: Text("Add new Property"),
         centerTitle: true,
       ),
 
@@ -76,17 +76,17 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               borderRadius: BorderRadius.circular(5)),
                           color: Colors.blue,
                           onPressed: () {
-                            if (controller.index.value == 0) {
+                            if (index == 0) {
                               controller.type.value = "Inventory Report";
                             }
-                            if (controller.index.value == 1) {
+                            if (index == 1) {
                               controller.type.value = "Mid Term Inspection";
                             }
-                            if (controller.index.value == 2) {
+                            if (index == 2) {
                               controller.type.value = "Checkout Report";
                             }
                           },
-                          child: Text(controller.index == 0
+                          child: Text(index == 0
                               ? "Inventory Report"
                               : index == 1
                               ? "Mid Term Inspection"
@@ -115,10 +115,10 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                       border: Border.all(color: Colors.grey),
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8)),
-                  child: controller.image[0]!.path.isNotEmpty
+                  child: controller.maini.value.path.isNotEmpty
                       ? Stack(children: [
                     Image.file(
-                      File(controller.image[0]!.path.toString()),
+                      File(controller.maini.value.path.toString()),
                       fit: BoxFit.fill,
                       height: 120,
                       width: Get.width,
@@ -129,7 +129,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                             padding: EdgeInsets.only(right: 5, top: 5),
                             child: InkWell(
                                 onTap: () {
-                                  controller.image[0] = File("");
+                                  controller.maini.value = File("");
                                 },
                                 child: Icon(
                                   Icons.delete,
@@ -141,11 +141,11 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                     children: [
                       InkWell(
                         onTap: () async {
-                          controller.image[0] =
+                          controller.maini.value =
                           await controller.pickImages();
-                          if (controller.image[0] != null) {
+                          if (controller.maini.value != null) {
                             controller.mainimage = await controller
-                                .upload(controller.image[0]);
+                                .upload(controller.maini.value);
                           }
                         },
                         child: Icon(
@@ -159,10 +159,11 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                       ),
                       InkWell(
                         onTap: () async {
-                          var img = await controller.pickImageGallerys();
-                          if (img != null) {
-                            controller.mainimage =
-                            await controller.upload(img);
+                          controller.maini.value =
+                          await controller.pickImageGallerys();
+                          if (controller.maini.value != null) {
+                            controller.mainimage = await controller
+                                .upload(controller.maini.value);
                           }
                         },
                         child: Icon(
@@ -446,10 +447,11 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               border: Border.all(color: Colors.grey),
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(5)),
-                          child: controller.image[1]!.path.isNotEmpty
+                          child: controller.electric.value.path.isNotEmpty
                               ? Stack(children: [
                             Image.file(
-                              File(controller.image[1]!.path.toString()),
+                              File(controller.electric.value.path
+                                  .toString()),
                               fit: BoxFit.fill,
                               height: 120,
                               width: Get.width,
@@ -461,7 +463,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                     EdgeInsets.only(right: 5, top: 5),
                                     child: InkWell(
                                         onTap: () {
-                                          controller.image[1] = File("");
+                                          controller.electric.value =
+                                              File("");
                                         },
                                         child: Icon(
                                           Icons.delete,
@@ -473,10 +476,12 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                             children: [
                               InkWell(
                                 onTap: () async {
-                                  controller.image[1] = await controller.pickImages();
-                                  if (controller.image[1] != null) {
+                                  controller.electric.value =
+                                  await controller.pickImages();
+                                  if (controller.electric.value != null) {
                                     controller.electricmeterfront =
-                                    await controller.upload(controller.image[1]);
+                                    await controller.upload(
+                                        controller.electric.value);
                                   }
                                 },
                                 child: Icon(
@@ -490,11 +495,13 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  controller.image[1] = await controller
+                                  controller.electric.value =
+                                  await controller
                                       .pickImageGallerys();
-                                  if (controller.image[1] != null) {
+                                  if (controller.electric.value != null) {
                                     controller.electricmeterfront =
-                                    await controller.upload(controller.image[1]);
+                                    await controller.upload(
+                                        controller.electric.value);
                                   }
                                 },
                                 child: Icon(
@@ -595,10 +602,11 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               border: Border.all(color: Colors.grey),
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(5)),
-                          child: controller.image[2].path.isNotEmpty
+                          child: controller.gasmeter.value.path.isNotEmpty
                               ? Stack(children: [
                             Image.file(
-                              File(controller.image[2].path.toString()),
+                              File(controller.gasmeter.value.path
+                                  .toString()),
                               fit: BoxFit.fill,
                               height: 120,
                               width: Get.width,
@@ -610,17 +618,18 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                     EdgeInsets.only(right: 5, top: 5),
                                     child: InkWell(
                                         onTap: () {
-                                          controller.image[2] = File("");
+                                          controller.gasmeter.value =
+                                              File("");
                                         },
                                         child: Icon(
                                           Icons.delete,
                                           color: Colors.red,
                                         )))),
                           ])
-                              : controller.image[2].path.isNotEmpty
+                              : controller.gasmeter.value.path.isNotEmpty
                               ? Stack(children: [
                             Image.file(
-                              File(controller.image[2].path
+                              File(controller.gasmeter.value.path
                                   .toString()),
                               fit: BoxFit.fill,
                               height: 120,
@@ -633,7 +642,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         right: 5, top: 5),
                                     child: InkWell(
                                         onTap: () {
-                                          controller.image[2] =
+                                          controller.gasmeter.value =
                                               File("");
                                         },
                                         child: Icon(
@@ -647,11 +656,14 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                             children: [
                               InkWell(
                                 onTap: () async {
-                                  controller.image[2] =
+                                  controller.gasmeter.value =
                                   await controller.pickImages();
-                                  if (controller.image[2] != null) {
+                                  if (controller.gasmeter.value !=
+                                      null) {
                                     controller.gasmeterfront =
-                                    await controller.upload(controller.image[2]);
+                                    await controller.upload(
+                                        controller
+                                            .gasmeter.value);
                                   }
                                 },
                                 child: Icon(
@@ -665,11 +677,15 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  controller.image[2] = await controller
+                                  controller.image[2] =
+                                  await controller
                                       .pickImageGallerys();
-                                  if (controller.image[0] != null) {
+                                  if (controller.gasmeter.value !=
+                                      null) {
                                     controller.gasmeterfront =
-                                    await controller.upload(controller.image[2]);
+                                    await controller.upload(
+                                        controller
+                                            .gasmeter.value);
                                   }
                                 },
                                 child: Icon(
@@ -770,10 +786,11 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               border: Border.all(color: Colors.grey),
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(5)),
-                          child: controller.image[3].path.isNotEmpty
+                          child: controller.watermeter.value.path.isNotEmpty
                               ? Stack(children: [
                             Image.file(
-                              File(controller.image[3].path.toString()),
+                              File(controller.watermeter.value.path
+                                  .toString()),
                               fit: BoxFit.fill,
                               height: 120,
                               width: Get.width,
@@ -785,17 +802,18 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                     EdgeInsets.only(right: 5, top: 5),
                                     child: InkWell(
                                         onTap: () {
-                                          controller.image[3] = File("");
+                                          controller.watermeter.value =
+                                              File("");
                                         },
                                         child: Icon(
                                           Icons.delete,
                                           color: Colors.red,
                                         )))),
                           ])
-                              : controller.image[3].path.isNotEmpty
+                              : controller.watermeter.value.path.isNotEmpty
                               ? Stack(children: [
                             Image.file(
-                              File(controller.image[3].path
+                              File(controller.watermeter.value.path
                                   .toString()),
                               fit: BoxFit.fill,
                               height: 120,
@@ -808,8 +826,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         right: 5, top: 5),
                                     child: InkWell(
                                         onTap: () {
-                                          controller.image[3] =
-                                              File("");
+                                          controller.watermeter
+                                              .value = File("");
                                         },
                                         child: Icon(
                                           Icons.delete,
@@ -822,11 +840,14 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                             children: [
                               InkWell(
                                 onTap: () async {
-                                  controller.image[3] =
+                                  controller.watermeter.value =
                                   await controller.pickImages();
-                                  if (controller.image[3] != null) {
+                                  if (controller.watermeter.value !=
+                                      null) {
                                     controller.watermeterfront =
-                                    await controller.upload(controller.image[3]);
+                                    await controller.upload(
+                                        controller
+                                            .watermeter.value);
                                   }
                                 },
                                 child: Icon(
@@ -840,11 +861,15 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  controller.image[3] = await controller
+                                  controller.watermeter.value =
+                                  await controller
                                       .pickImageGallerys();
-                                  if (controller.image[3] != null) {
+                                  if (controller.watermeter.value !=
+                                      null) {
                                     controller.watermeterfront =
-                                    await controller.upload(controller.image[3]);
+                                    await controller.upload(
+                                        controller
+                                            .watermeter.value);
                                   }
                                 },
                                 child: Icon(
@@ -931,10 +956,11 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               border: Border.all(color: Colors.grey),
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(5)),
-                          child: controller.image[4].path.isNotEmpty
+                          child: controller.smokealarm.value.path.isNotEmpty
                               ? Stack(children: [
                             Image.file(
-                              File(controller.image[4].path.toString()),
+                              File(controller.smokealarm.value.path
+                                  .toString()),
                               fit: BoxFit.fill,
                               height: 120,
                               width: Get.width,
@@ -946,17 +972,18 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                     EdgeInsets.only(right: 5, top: 5),
                                     child: InkWell(
                                         onTap: () {
-                                          controller.image[4] = File("");
+                                          controller.smokealarm.value =
+                                              File("");
                                         },
                                         child: Icon(
                                           Icons.delete,
                                           color: Colors.red,
                                         )))),
                           ])
-                              : controller.image[4].path.isNotEmpty
+                              : controller.smokealarm.value.path.isNotEmpty
                               ? Stack(children: [
                             Image.file(
-                              File(controller.image[4].path
+                              File(controller.smokealarm.value.path
                                   .toString()),
                               fit: BoxFit.fill,
                               height: 120,
@@ -969,8 +996,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         right: 5, top: 5),
                                     child: InkWell(
                                         onTap: () {
-                                          controller.image[4] =
-                                              File("");
+                                          controller.smokealarm
+                                              .value = File("");
                                         },
                                         child: Icon(
                                           Icons.delete,
@@ -983,11 +1010,14 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                             children: [
                               InkWell(
                                 onTap: () async {
-                                  controller.image[4] =
+                                  controller.smokealarm.value =
                                   await controller.pickImages();
-                                  if (controller.image[4] != null) {
+                                  if (controller.smokealarm.value !=
+                                      null) {
                                     controller.smokealarmfront =
-                                    await controller.upload(controller.image[4]);
+                                    await controller.upload(
+                                        controller
+                                            .smokealarm.value);
                                   }
                                 },
                                 child: Icon(
@@ -1001,11 +1031,15 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  controller.image[4] = await controller
+                                  controller.smokealarm.value =
+                                  await controller
                                       .pickImageGallerys();
-                                  if (controller.image[4] != null) {
+                                  if (controller.smokealarm.value !=
+                                      null) {
                                     controller.smokealarmfront =
-                                    await controller.upload(controller.image[4]);
+                                    await controller.upload(
+                                        controller
+                                            .smokealarm.value);
                                   }
                                 },
                                 child: Icon(
@@ -1027,10 +1061,11 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               border: Border.all(color: Colors.grey),
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(5)),
-                          child: controller.image[5].path.isNotEmpty
+                          child: controller.smokealar.value.path.isNotEmpty
                               ? Stack(children: [
                             Image.file(
-                              File(controller.image[5].path.toString()),
+                              File(controller.smokealar.value.path
+                                  .toString()),
                               fit: BoxFit.fill,
                               height: 120,
                               width: Get.width,
@@ -1042,17 +1077,18 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                     EdgeInsets.only(right: 5, top: 5),
                                     child: InkWell(
                                         onTap: () {
-                                          controller.image[5] = File("");
+                                          controller.smokealar.value =
+                                              File("");
                                         },
                                         child: Icon(
                                           Icons.delete,
                                           color: Colors.red,
                                         )))),
                           ])
-                              : controller.image[5].path.isNotEmpty
+                              : controller.smokealar.value.path.isNotEmpty
                               ? Stack(children: [
                             Image.file(
-                              File(controller.image[5].path
+                              File(controller.smokealar.value.path
                                   .toString()),
                               fit: BoxFit.fill,
                               height: 120,
@@ -1065,7 +1101,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         right: 5, top: 5),
                                     child: InkWell(
                                         onTap: () {
-                                          controller.image[5] =
+                                          controller.smokealar.value =
                                               File("");
                                         },
                                         child: Icon(
@@ -1079,11 +1115,14 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                             children: [
                               InkWell(
                                 onTap: () async {
-                                  controller.image[5] =
+                                  controller.smokealar.value =
                                   await controller.pickImages();
-                                  if (controller.image[5] != null) {
+                                  if (controller.smokealar.value !=
+                                      null) {
                                     controller.smokealarmback =
-                                    await controller.upload(controller.image[5]);
+                                    await controller.upload(
+                                        controller
+                                            .smokealar.value);
                                   }
                                 },
                                 child: Icon(
@@ -1097,11 +1136,15 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  controller.image[5] = await controller
+                                  controller.smokealar.value =
+                                  await controller
                                       .pickImageGallerys();
-                                  if (controller.image[5] != null) {
+                                  if (controller.smokealar.value !=
+                                      null) {
                                     controller.smokealarmback =
-                                    await controller.upload(controller.image[5]);
+                                    await controller.upload(
+                                        controller
+                                            .smokealar.value);
                                   }
                                 },
                                 child: Icon(
@@ -1188,10 +1231,10 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               border: Border.all(color: Colors.grey),
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(5)),
-                          child: controller.image[6].path.isNotEmpty
+                          child: controller.coal.value.path.isNotEmpty
                               ? Stack(children: [
                             Image.file(
-                              File(controller.image[6].path.toString()),
+                              File(controller.coal.value.path.toString()),
                               fit: BoxFit.fill,
                               height: 120,
                               width: Get.width,
@@ -1203,17 +1246,18 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                     EdgeInsets.only(right: 5, top: 5),
                                     child: InkWell(
                                         onTap: () {
-                                          controller.image[6] = File("");
+                                          controller.coal.value =
+                                              File("");
                                         },
                                         child: Icon(
                                           Icons.delete,
                                           color: Colors.red,
                                         )))),
                           ])
-                              : controller.image[6].path.isNotEmpty
+                              : controller.coal.value.path.isNotEmpty
                               ? Stack(children: [
                             Image.file(
-                              File(controller.image[6].path
+                              File(controller.coal.value.path
                                   .toString()),
                               fit: BoxFit.fill,
                               height: 120,
@@ -1226,7 +1270,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         right: 5, top: 5),
                                     child: InkWell(
                                         onTap: () {
-                                          controller.image[6] =
+                                          controller.coal.value =
                                               File("");
                                         },
                                         child: Icon(
@@ -1240,11 +1284,12 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                             children: [
                               InkWell(
                                 onTap: () async {
-                                  controller.image[6] =
+                                  controller.coal.value =
                                   await controller.pickImages();
-                                  if (controller.image[6] != null) {
+                                  if (controller.coal.value != null) {
                                     controller.coalarmfront =
-                                    await controller.upload(controller.image[6]);
+                                    await controller.upload(
+                                        controller.coal.value);
                                   }
                                 },
                                 child: Icon(
@@ -1258,11 +1303,13 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  controller.image[6] = await controller
+                                  controller.coal.value =
+                                  await controller
                                       .pickImageGallerys();
-                                  if (controller.image[6] != null) {
+                                  if (controller.coal.value != null) {
                                     controller.coalarmfront =
-                                    await controller.upload(controller.image[6]);
+                                    await controller.upload(
+                                        controller.coal.value);
                                   }
                                 },
                                 child: Icon(
@@ -1284,10 +1331,11 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               border: Border.all(color: Colors.grey),
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(5)),
-                          child: controller.image[7].path.isNotEmpty
+                          child: controller.coalarm.value.path.isNotEmpty
                               ? Stack(children: [
                             Image.file(
-                              File(controller.image[7].path.toString()),
+                              File(controller.coalarm.value.path
+                                  .toString()),
                               fit: BoxFit.fill,
                               height: 120,
                               width: Get.width,
@@ -1299,17 +1347,18 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                     EdgeInsets.only(right: 5, top: 5),
                                     child: InkWell(
                                         onTap: () {
-                                          controller.image[7] = File("");
+                                          controller.coalarm.value =
+                                              File("");
                                         },
                                         child: Icon(
                                           Icons.delete,
                                           color: Colors.red,
                                         )))),
                           ])
-                              : controller.image[7].path.isNotEmpty
+                              : controller.coalarm.value.path.isNotEmpty
                               ? Stack(children: [
                             Image.file(
-                              File(controller.image[7].path
+                              File(controller.coalarm.value.path
                                   .toString()),
                               fit: BoxFit.fill,
                               height: 120,
@@ -1322,7 +1371,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         right: 5, top: 5),
                                     child: InkWell(
                                         onTap: () {
-                                          controller.image[7] =
+                                          controller.coalarm.value =
                                               File("");
                                         },
                                         child: Icon(
@@ -1336,11 +1385,13 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                             children: [
                               InkWell(
                                 onTap: () async {
-                                  controller.image[7] =
+                                  controller.coalarm.value =
                                   await controller.pickImages();
-                                  if (controller.image[7] != null) {
+                                  if (controller.coalarm.value !=
+                                      null) {
                                     controller.coalarmback =
-                                    await controller.upload(controller.image[7]);
+                                    await controller.upload(
+                                        controller.coalarm.value);
                                   }
                                 },
                                 child: Icon(
@@ -1354,11 +1405,14 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  controller.image[7] = await controller
+                                  controller.coalarm.value =
+                                  await controller
                                       .pickImageGallerys();
-                                  if (controller.image[7] != null) {
+                                  if (controller.coalarm.value !=
+                                      null) {
                                     controller.coalarmback =
-                                    await controller.upload(controller.image[7]);
+                                    await controller.upload(
+                                        controller.coalarm.value);
                                   }
                                 },
                                 child: Icon(
@@ -1458,10 +1512,11 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                             border: Border.all(color: Colors.grey),
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(5)),
-                        child: controller.image[8].path.isNotEmpty
+                        child: controller.heating.value.path.isNotEmpty
                             ? Stack(children: [
                           Image.file(
-                            File(controller.image[8].path.toString()),
+                            File(
+                                controller.heating.value.path.toString()),
                             fit: BoxFit.fill,
                             height: 120,
                             width: Get.width,
@@ -1473,18 +1528,19 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                   EdgeInsets.only(right: 5, top: 5),
                                   child: InkWell(
                                       onTap: () {
-                                        controller.image[8] = File("");
+                                        controller.heating.value =
+                                            File("");
                                       },
                                       child: Icon(
                                         Icons.delete,
                                         color: Colors.red,
                                       )))),
                         ])
-                            : controller.image[8].path.isNotEmpty
+                            : controller.heating.value.path.isNotEmpty
                             ? Stack(children: [
                           Image.file(
-                            File(
-                                controller.image[8].path.toString()),
+                            File(controller.heating.value.path
+                                .toString()),
                             fit: BoxFit.fill,
                             height: 120,
                             width: Get.width,
@@ -1496,7 +1552,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                       right: 5, top: 5),
                                   child: InkWell(
                                       onTap: () {
-                                        controller.image[8] =
+                                        controller.heating.value =
                                             File("");
                                       },
                                       child: Icon(
@@ -1509,11 +1565,13 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                           children: [
                             InkWell(
                               onTap: () async {
-                                controller.image[8] =
+                                controller.heating.value =
                                 await controller.pickImages();
-                                if (controller.image[8] != null) {
+                                if (controller.heating.value !=
+                                    null) {
                                   controller.heatingsystem =
-                                  await controller.upload(controller.image[8]);
+                                  await controller.upload(
+                                      controller.heating.value);
                                 }
                               },
                               child: Icon(
@@ -1527,11 +1585,14 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                             ),
                             InkWell(
                               onTap: () async {
-                                controller.image[8] = await controller
+                                controller.heating.value =
+                                await controller
                                     .pickImageGallerys();
-                                if (controller.image[8] != null) {
+                                if (controller.heating.value !=
+                                    null) {
                                   controller.heatingsystem =
-                                  await controller.upload(controller.image[8]);
+                                  await controller.upload(
+                                      controller.heating.value);
                                 }
                               },
                               child: Icon(
@@ -1549,24 +1610,41 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                for (int i = 0; i <= controller.list.value; i++)
+                if (controller.items.contains(0)) ...[
+                  CustomProperty(
+                      index: 0, name: "Front Aspect", data: pd, images: images),
+                ],
+                if (controller.items.contains(1)) ...[
+                  CustomProperty(
+                      index: 1,
+                      name: "Entrance Hall",
+                      data: pd,
+                      images: images),
+                ],
+                if (controller.items.contains(2)) ...[
+                  CustomProperty(
+                      index: 2, name: "Kitchen", data: pd, images: images),
+                ],
+                if (controller.items.contains(3)) ...[
+                  CustomProperty(
+                      index: 3, name: "Rear garden", data: pd, images: images),
+                ],
+                if (controller.items.contains(4)) ...[
+                  CustomProperty(
+                      index: 4, name: "Bathroom", data: pd, images: images),
+                ],
+                if (controller.items.contains(5)) ...[
+                  CustomProperty(
+                      index: 5, name: "Lounge", data: pd, images: images),
+                ],
+                if (controller.items.contains(6)) ...[
+                  CustomProperty(
+                      index: 6, name: "Bedroom", data: pd, images: images),
+                ],
+                for (int i = 7; i <= controller.list.value; i++)
                   CustomProperty(
                       index: i,
-                      name: i == 0
-                          ? "Front Aspect"
-                          : i == 1
-                          ? "Entrance Hall"
-                          : i == 2
-                          ? "Kitchen"
-                          : i == 3
-                          ? "Lounge 1"
-                          : i == 4
-                          ? "Bathroom"
-                          : i == 5
-                          ? "Rear Garden"
-                          : i == 6
-                          ? "Bathroom 2"
-                          : "Bedroom " + i.toString(),
+                      name: "Bedroom " + i.toString(),
                       data: pd,
                       images: images),
                 SizedBox(
@@ -1730,15 +1808,15 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                       borderRadius: BorderRadius.circular(25)),
                   onPressed: () {
                     pd = pd.toSet().toList();
-                    print(pd[0]);
                     model?.propertyDetails = pd;
-                    print(pd.length);
                     controller.updateData(pd,widget.id);
-
                   },
                   color: Colors.blue,
                   child: Text("Upload Property"),
-                )
+                ),
+                SizedBox(
+                  height: 20,
+                ),
               ],
             ),
           ),
