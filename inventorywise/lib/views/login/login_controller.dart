@@ -23,7 +23,7 @@ class LoginController extends GetxController {
       isLoading(true);
       var result = await authService.login(email, pass);
       isLoading(false);
-      if (result.isVerified == null) {
+      if (result.isVerified ==true) {
         Authenticator().setUserID(result.id.toString());
         Get.offAll(() => Home_Screen(
               id: result.id,
