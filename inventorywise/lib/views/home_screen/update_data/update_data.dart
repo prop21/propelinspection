@@ -32,12 +32,12 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false, // fluter 2.x
       appBar: AppBar(
-        title: Text("Add new Property"),
+        title: Text("Update Property"),
         centerTitle: true,
       ),
 
       body: Obx(
-            () => SingleChildScrollView(
+        () => SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(left: 15, right: 15),
             child: Column(
@@ -89,8 +89,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                           child: Text(index == 0
                               ? "Inventory Report"
                               : index == 1
-                              ? "Mid Term Inspection"
-                              : "Checkout Report"),
+                                  ? "Mid Term Inspection"
+                                  : "Checkout Report"),
                         )),
                   ),
                 ),
@@ -117,63 +117,63 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                       borderRadius: BorderRadius.circular(8)),
                   child: controller.maini.value.path.isNotEmpty
                       ? Stack(children: [
-                    Image.file(
-                      File(controller.maini.value.path.toString()),
-                      fit: BoxFit.fill,
-                      height: 120,
-                      width: Get.width,
-                    ),
-                    Align(
-                        alignment: Alignment.topRight,
-                        child: Padding(
-                            padding: EdgeInsets.only(right: 5, top: 5),
-                            child: InkWell(
-                                onTap: () {
-                                  controller.maini.value = File("");
-                                },
-                                child: Icon(
-                                  Icons.delete,
-                                  color: Colors.red,
-                                )))),
-                  ])
+                          Image.file(
+                            File(controller.maini.value.path.toString()),
+                            fit: BoxFit.fill,
+                            height: 120,
+                            width: Get.width,
+                          ),
+                          Align(
+                              alignment: Alignment.topRight,
+                              child: Padding(
+                                  padding: EdgeInsets.only(right: 5, top: 5),
+                                  child: InkWell(
+                                      onTap: () {
+                                        controller.maini.value = File("");
+                                      },
+                                      child: Icon(
+                                        Icons.delete,
+                                        color: Colors.red,
+                                      )))),
+                        ])
                       : Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      InkWell(
-                        onTap: () async {
-                          controller.maini.value =
-                          await controller.pickImages();
-                          if (controller.maini.value != null) {
-                            controller.mainimage = await controller
-                                .upload(controller.maini.value);
-                          }
-                        },
-                        child: Icon(
-                          Icons.camera_alt,
-                          size: 50,
-                          color: Colors.blue,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(
+                              onTap: () async {
+                                controller.maini.value =
+                                    await controller.pickImages();
+                                if (controller.maini.value != null) {
+                                  controller.mainimage = await controller
+                                      .upload(controller.maini.value);
+                                }
+                              },
+                              child: Icon(
+                                Icons.camera_alt,
+                                size: 50,
+                                color: Colors.blue,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            InkWell(
+                              onTap: () async {
+                                controller.maini.value =
+                                    await controller.pickImageGallerys();
+                                if (controller.maini.value != null) {
+                                  controller.mainimage = await controller
+                                      .upload(controller.maini.value);
+                                }
+                              },
+                              child: Icon(
+                                Icons.image,
+                                size: 50,
+                                color: Colors.blue,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      InkWell(
-                        onTap: () async {
-                          controller.maini.value =
-                          await controller.pickImageGallerys();
-                          if (controller.maini.value != null) {
-                            controller.mainimage = await controller
-                                .upload(controller.maini.value);
-                          }
-                        },
-                        child: Icon(
-                          Icons.image,
-                          size: 50,
-                          color: Colors.blue,
-                        ),
-                      ),
-                    ],
-                  ),
                 ),
                 SizedBox(
                   height: 22,
@@ -449,69 +449,69 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               borderRadius: BorderRadius.circular(5)),
                           child: controller.electric.value.path.isNotEmpty
                               ? Stack(children: [
-                            Image.file(
-                              File(controller.electric.value.path
-                                  .toString()),
-                              fit: BoxFit.fill,
-                              height: 120,
-                              width: Get.width,
-                            ),
-                            Align(
-                                alignment: Alignment.topRight,
-                                child: Padding(
-                                    padding:
-                                    EdgeInsets.only(right: 5, top: 5),
-                                    child: InkWell(
-                                        onTap: () {
-                                          controller.electric.value =
-                                              File("");
-                                        },
-                                        child: Icon(
-                                          Icons.delete,
-                                          color: Colors.red,
-                                        )))),
-                          ])
+                                  Image.file(
+                                    File(controller.electric.value.path
+                                        .toString()),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  ),
+                                  Align(
+                                      alignment: Alignment.topRight,
+                                      child: Padding(
+                                          padding:
+                                              EdgeInsets.only(right: 5, top: 5),
+                                          child: InkWell(
+                                              onTap: () {
+                                                controller.electric.value =
+                                                    File("");
+                                              },
+                                              child: Icon(
+                                                Icons.delete,
+                                                color: Colors.red,
+                                              )))),
+                                ])
                               : Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              InkWell(
-                                onTap: () async {
-                                  controller.electric.value =
-                                  await controller.pickImages();
-                                  if (controller.electric.value != null) {
-                                    controller.electricmeterfront =
-                                    await controller.upload(
-                                        controller.electric.value);
-                                  }
-                                },
-                                child: Icon(
-                                  Icons.camera_alt,
-                                  size: 22,
-                                  color: Colors.blue,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    InkWell(
+                                      onTap: () async {
+                                        controller.electric.value =
+                                            await controller.pickImages();
+                                        if (controller.electric.value != null) {
+                                          controller.electricmeterfront =
+                                              await controller.upload(
+                                                  controller.electric.value);
+                                        }
+                                      },
+                                      child: Icon(
+                                        Icons.camera_alt,
+                                        size: 22,
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 2,
+                                    ),
+                                    InkWell(
+                                      onTap: () async {
+                                        controller.electric.value =
+                                            await controller
+                                                .pickImageGallerys();
+                                        if (controller.electric.value != null) {
+                                          controller.electricmeterfront =
+                                              await controller.upload(
+                                                  controller.electric.value);
+                                        }
+                                      },
+                                      child: Icon(
+                                        Icons.image,
+                                        size: 22,
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              SizedBox(
-                                width: 2,
-                              ),
-                              InkWell(
-                                onTap: () async {
-                                  controller.electric.value =
-                                  await controller
-                                      .pickImageGallerys();
-                                  if (controller.electric.value != null) {
-                                    controller.electricmeterfront =
-                                    await controller.upload(
-                                        controller.electric.value);
-                                  }
-                                },
-                                child: Icon(
-                                  Icons.image,
-                                  size: 22,
-                                  color: Colors.blue,
-                                ),
-                              ),
-                            ],
-                          ),
                         ),
                       ],
                     )),
@@ -604,98 +604,98 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               borderRadius: BorderRadius.circular(5)),
                           child: controller.gasmeter.value.path.isNotEmpty
                               ? Stack(children: [
-                            Image.file(
-                              File(controller.gasmeter.value.path
-                                  .toString()),
-                              fit: BoxFit.fill,
-                              height: 120,
-                              width: Get.width,
-                            ),
-                            Align(
-                                alignment: Alignment.topRight,
-                                child: Padding(
-                                    padding:
-                                    EdgeInsets.only(right: 5, top: 5),
-                                    child: InkWell(
-                                        onTap: () {
-                                          controller.gasmeter.value =
-                                              File("");
-                                        },
-                                        child: Icon(
-                                          Icons.delete,
-                                          color: Colors.red,
-                                        )))),
-                          ])
+                                  Image.file(
+                                    File(controller.gasmeter.value.path
+                                        .toString()),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  ),
+                                  Align(
+                                      alignment: Alignment.topRight,
+                                      child: Padding(
+                                          padding:
+                                              EdgeInsets.only(right: 5, top: 5),
+                                          child: InkWell(
+                                              onTap: () {
+                                                controller.gasmeter.value =
+                                                    File("");
+                                              },
+                                              child: Icon(
+                                                Icons.delete,
+                                                color: Colors.red,
+                                              )))),
+                                ])
                               : controller.gasmeter.value.path.isNotEmpty
-                              ? Stack(children: [
-                            Image.file(
-                              File(controller.gasmeter.value.path
-                                  .toString()),
-                              fit: BoxFit.fill,
-                              height: 120,
-                              width: Get.width,
-                            ),
-                            Align(
-                                alignment: Alignment.topRight,
-                                child: Padding(
-                                    padding: EdgeInsets.only(
-                                        right: 5, top: 5),
-                                    child: InkWell(
-                                        onTap: () {
-                                          controller.gasmeter.value =
-                                              File("");
-                                        },
-                                        child: Icon(
-                                          Icons.delete,
-                                          color: Colors.red,
-                                        )))),
-                          ])
-                              : Row(
-                            mainAxisAlignment:
-                            MainAxisAlignment.center,
-                            children: [
-                              InkWell(
-                                onTap: () async {
-                                  controller.gasmeter.value =
-                                  await controller.pickImages();
-                                  if (controller.gasmeter.value !=
-                                      null) {
-                                    controller.gasmeterfront =
-                                    await controller.upload(
-                                        controller
-                                            .gasmeter.value);
-                                  }
-                                },
-                                child: Icon(
-                                  Icons.camera_alt,
-                                  size: 22,
-                                  color: Colors.blue,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 2,
-                              ),
-                              InkWell(
-                                onTap: () async {
-                                  controller.image[2] =
-                                  await controller
-                                      .pickImageGallerys();
-                                  if (controller.gasmeter.value !=
-                                      null) {
-                                    controller.gasmeterfront =
-                                    await controller.upload(
-                                        controller
-                                            .gasmeter.value);
-                                  }
-                                },
-                                child: Icon(
-                                  Icons.image,
-                                  size: 22,
-                                  color: Colors.blue,
-                                ),
-                              ),
-                            ],
-                          ),
+                                  ? Stack(children: [
+                                      Image.file(
+                                        File(controller.gasmeter.value.path
+                                            .toString()),
+                                        fit: BoxFit.fill,
+                                        height: 120,
+                                        width: Get.width,
+                                      ),
+                                      Align(
+                                          alignment: Alignment.topRight,
+                                          child: Padding(
+                                              padding: EdgeInsets.only(
+                                                  right: 5, top: 5),
+                                              child: InkWell(
+                                                  onTap: () {
+                                                    controller.gasmeter.value =
+                                                        File("");
+                                                  },
+                                                  child: Icon(
+                                                    Icons.delete,
+                                                    color: Colors.red,
+                                                  )))),
+                                    ])
+                                  : Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          onTap: () async {
+                                            controller.gasmeter.value =
+                                                await controller.pickImages();
+                                            if (controller.gasmeter.value !=
+                                                null) {
+                                              controller.gasmeterfront =
+                                                  await controller.upload(
+                                                      controller
+                                                          .gasmeter.value);
+                                            }
+                                          },
+                                          child: Icon(
+                                            Icons.camera_alt,
+                                            size: 22,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 2,
+                                        ),
+                                        InkWell(
+                                          onTap: () async {
+                                            controller.image[2] =
+                                                await controller
+                                                    .pickImageGallerys();
+                                            if (controller.gasmeter.value !=
+                                                null) {
+                                              controller.gasmeterfront =
+                                                  await controller.upload(
+                                                      controller
+                                                          .gasmeter.value);
+                                            }
+                                          },
+                                          child: Icon(
+                                            Icons.image,
+                                            size: 22,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                         ),
                       ],
                     )),
@@ -788,98 +788,98 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               borderRadius: BorderRadius.circular(5)),
                           child: controller.watermeter.value.path.isNotEmpty
                               ? Stack(children: [
-                            Image.file(
-                              File(controller.watermeter.value.path
-                                  .toString()),
-                              fit: BoxFit.fill,
-                              height: 120,
-                              width: Get.width,
-                            ),
-                            Align(
-                                alignment: Alignment.topRight,
-                                child: Padding(
-                                    padding:
-                                    EdgeInsets.only(right: 5, top: 5),
-                                    child: InkWell(
-                                        onTap: () {
-                                          controller.watermeter.value =
-                                              File("");
-                                        },
-                                        child: Icon(
-                                          Icons.delete,
-                                          color: Colors.red,
-                                        )))),
-                          ])
+                                  Image.file(
+                                    File(controller.watermeter.value.path
+                                        .toString()),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  ),
+                                  Align(
+                                      alignment: Alignment.topRight,
+                                      child: Padding(
+                                          padding:
+                                              EdgeInsets.only(right: 5, top: 5),
+                                          child: InkWell(
+                                              onTap: () {
+                                                controller.watermeter.value =
+                                                    File("");
+                                              },
+                                              child: Icon(
+                                                Icons.delete,
+                                                color: Colors.red,
+                                              )))),
+                                ])
                               : controller.watermeter.value.path.isNotEmpty
-                              ? Stack(children: [
-                            Image.file(
-                              File(controller.watermeter.value.path
-                                  .toString()),
-                              fit: BoxFit.fill,
-                              height: 120,
-                              width: Get.width,
-                            ),
-                            Align(
-                                alignment: Alignment.topRight,
-                                child: Padding(
-                                    padding: EdgeInsets.only(
-                                        right: 5, top: 5),
-                                    child: InkWell(
-                                        onTap: () {
-                                          controller.watermeter
-                                              .value = File("");
-                                        },
-                                        child: Icon(
-                                          Icons.delete,
-                                          color: Colors.red,
-                                        )))),
-                          ])
-                              : Row(
-                            mainAxisAlignment:
-                            MainAxisAlignment.center,
-                            children: [
-                              InkWell(
-                                onTap: () async {
-                                  controller.watermeter.value =
-                                  await controller.pickImages();
-                                  if (controller.watermeter.value !=
-                                      null) {
-                                    controller.watermeterfront =
-                                    await controller.upload(
-                                        controller
-                                            .watermeter.value);
-                                  }
-                                },
-                                child: Icon(
-                                  Icons.camera_alt,
-                                  size: 22,
-                                  color: Colors.blue,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 2,
-                              ),
-                              InkWell(
-                                onTap: () async {
-                                  controller.watermeter.value =
-                                  await controller
-                                      .pickImageGallerys();
-                                  if (controller.watermeter.value !=
-                                      null) {
-                                    controller.watermeterfront =
-                                    await controller.upload(
-                                        controller
-                                            .watermeter.value);
-                                  }
-                                },
-                                child: Icon(
-                                  Icons.image,
-                                  size: 22,
-                                  color: Colors.blue,
-                                ),
-                              ),
-                            ],
-                          ),
+                                  ? Stack(children: [
+                                      Image.file(
+                                        File(controller.watermeter.value.path
+                                            .toString()),
+                                        fit: BoxFit.fill,
+                                        height: 120,
+                                        width: Get.width,
+                                      ),
+                                      Align(
+                                          alignment: Alignment.topRight,
+                                          child: Padding(
+                                              padding: EdgeInsets.only(
+                                                  right: 5, top: 5),
+                                              child: InkWell(
+                                                  onTap: () {
+                                                    controller.watermeter
+                                                        .value = File("");
+                                                  },
+                                                  child: Icon(
+                                                    Icons.delete,
+                                                    color: Colors.red,
+                                                  )))),
+                                    ])
+                                  : Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          onTap: () async {
+                                            controller.watermeter.value =
+                                                await controller.pickImages();
+                                            if (controller.watermeter.value !=
+                                                null) {
+                                              controller.watermeterfront =
+                                                  await controller.upload(
+                                                      controller
+                                                          .watermeter.value);
+                                            }
+                                          },
+                                          child: Icon(
+                                            Icons.camera_alt,
+                                            size: 22,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 2,
+                                        ),
+                                        InkWell(
+                                          onTap: () async {
+                                            controller.watermeter.value =
+                                                await controller
+                                                    .pickImageGallerys();
+                                            if (controller.watermeter.value !=
+                                                null) {
+                                              controller.watermeterfront =
+                                                  await controller.upload(
+                                                      controller
+                                                          .watermeter.value);
+                                            }
+                                          },
+                                          child: Icon(
+                                            Icons.image,
+                                            size: 22,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                         ),
                       ],
                     )),
@@ -958,98 +958,98 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               borderRadius: BorderRadius.circular(5)),
                           child: controller.smokealarm.value.path.isNotEmpty
                               ? Stack(children: [
-                            Image.file(
-                              File(controller.smokealarm.value.path
-                                  .toString()),
-                              fit: BoxFit.fill,
-                              height: 120,
-                              width: Get.width,
-                            ),
-                            Align(
-                                alignment: Alignment.topRight,
-                                child: Padding(
-                                    padding:
-                                    EdgeInsets.only(right: 5, top: 5),
-                                    child: InkWell(
-                                        onTap: () {
-                                          controller.smokealarm.value =
-                                              File("");
-                                        },
-                                        child: Icon(
-                                          Icons.delete,
-                                          color: Colors.red,
-                                        )))),
-                          ])
+                                  Image.file(
+                                    File(controller.smokealarm.value.path
+                                        .toString()),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  ),
+                                  Align(
+                                      alignment: Alignment.topRight,
+                                      child: Padding(
+                                          padding:
+                                              EdgeInsets.only(right: 5, top: 5),
+                                          child: InkWell(
+                                              onTap: () {
+                                                controller.smokealarm.value =
+                                                    File("");
+                                              },
+                                              child: Icon(
+                                                Icons.delete,
+                                                color: Colors.red,
+                                              )))),
+                                ])
                               : controller.smokealarm.value.path.isNotEmpty
-                              ? Stack(children: [
-                            Image.file(
-                              File(controller.smokealarm.value.path
-                                  .toString()),
-                              fit: BoxFit.fill,
-                              height: 120,
-                              width: Get.width,
-                            ),
-                            Align(
-                                alignment: Alignment.topRight,
-                                child: Padding(
-                                    padding: EdgeInsets.only(
-                                        right: 5, top: 5),
-                                    child: InkWell(
-                                        onTap: () {
-                                          controller.smokealarm
-                                              .value = File("");
-                                        },
-                                        child: Icon(
-                                          Icons.delete,
-                                          color: Colors.red,
-                                        )))),
-                          ])
-                              : Row(
-                            mainAxisAlignment:
-                            MainAxisAlignment.center,
-                            children: [
-                              InkWell(
-                                onTap: () async {
-                                  controller.smokealarm.value =
-                                  await controller.pickImages();
-                                  if (controller.smokealarm.value !=
-                                      null) {
-                                    controller.smokealarmfront =
-                                    await controller.upload(
-                                        controller
-                                            .smokealarm.value);
-                                  }
-                                },
-                                child: Icon(
-                                  Icons.camera_alt,
-                                  size: 22,
-                                  color: Colors.blue,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 2,
-                              ),
-                              InkWell(
-                                onTap: () async {
-                                  controller.smokealarm.value =
-                                  await controller
-                                      .pickImageGallerys();
-                                  if (controller.smokealarm.value !=
-                                      null) {
-                                    controller.smokealarmfront =
-                                    await controller.upload(
-                                        controller
-                                            .smokealarm.value);
-                                  }
-                                },
-                                child: Icon(
-                                  Icons.image,
-                                  size: 22,
-                                  color: Colors.blue,
-                                ),
-                              ),
-                            ],
-                          ),
+                                  ? Stack(children: [
+                                      Image.file(
+                                        File(controller.smokealarm.value.path
+                                            .toString()),
+                                        fit: BoxFit.fill,
+                                        height: 120,
+                                        width: Get.width,
+                                      ),
+                                      Align(
+                                          alignment: Alignment.topRight,
+                                          child: Padding(
+                                              padding: EdgeInsets.only(
+                                                  right: 5, top: 5),
+                                              child: InkWell(
+                                                  onTap: () {
+                                                    controller.smokealarm
+                                                        .value = File("");
+                                                  },
+                                                  child: Icon(
+                                                    Icons.delete,
+                                                    color: Colors.red,
+                                                  )))),
+                                    ])
+                                  : Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          onTap: () async {
+                                            controller.smokealarm.value =
+                                                await controller.pickImages();
+                                            if (controller.smokealarm.value !=
+                                                null) {
+                                              controller.smokealarmfront =
+                                                  await controller.upload(
+                                                      controller
+                                                          .smokealarm.value);
+                                            }
+                                          },
+                                          child: Icon(
+                                            Icons.camera_alt,
+                                            size: 22,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 2,
+                                        ),
+                                        InkWell(
+                                          onTap: () async {
+                                            controller.smokealarm.value =
+                                                await controller
+                                                    .pickImageGallerys();
+                                            if (controller.smokealarm.value !=
+                                                null) {
+                                              controller.smokealarmfront =
+                                                  await controller.upload(
+                                                      controller
+                                                          .smokealarm.value);
+                                            }
+                                          },
+                                          child: Icon(
+                                            Icons.image,
+                                            size: 22,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                         ),
                         SizedBox(
                           width: 10,
@@ -1063,98 +1063,98 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               borderRadius: BorderRadius.circular(5)),
                           child: controller.smokealar.value.path.isNotEmpty
                               ? Stack(children: [
-                            Image.file(
-                              File(controller.smokealar.value.path
-                                  .toString()),
-                              fit: BoxFit.fill,
-                              height: 120,
-                              width: Get.width,
-                            ),
-                            Align(
-                                alignment: Alignment.topRight,
-                                child: Padding(
-                                    padding:
-                                    EdgeInsets.only(right: 5, top: 5),
-                                    child: InkWell(
-                                        onTap: () {
-                                          controller.smokealar.value =
-                                              File("");
-                                        },
-                                        child: Icon(
-                                          Icons.delete,
-                                          color: Colors.red,
-                                        )))),
-                          ])
+                                  Image.file(
+                                    File(controller.smokealar.value.path
+                                        .toString()),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  ),
+                                  Align(
+                                      alignment: Alignment.topRight,
+                                      child: Padding(
+                                          padding:
+                                              EdgeInsets.only(right: 5, top: 5),
+                                          child: InkWell(
+                                              onTap: () {
+                                                controller.smokealar.value =
+                                                    File("");
+                                              },
+                                              child: Icon(
+                                                Icons.delete,
+                                                color: Colors.red,
+                                              )))),
+                                ])
                               : controller.smokealar.value.path.isNotEmpty
-                              ? Stack(children: [
-                            Image.file(
-                              File(controller.smokealar.value.path
-                                  .toString()),
-                              fit: BoxFit.fill,
-                              height: 120,
-                              width: Get.width,
-                            ),
-                            Align(
-                                alignment: Alignment.topRight,
-                                child: Padding(
-                                    padding: EdgeInsets.only(
-                                        right: 5, top: 5),
-                                    child: InkWell(
-                                        onTap: () {
-                                          controller.smokealar.value =
-                                              File("");
-                                        },
-                                        child: Icon(
-                                          Icons.delete,
-                                          color: Colors.red,
-                                        )))),
-                          ])
-                              : Row(
-                            mainAxisAlignment:
-                            MainAxisAlignment.center,
-                            children: [
-                              InkWell(
-                                onTap: () async {
-                                  controller.smokealar.value =
-                                  await controller.pickImages();
-                                  if (controller.smokealar.value !=
-                                      null) {
-                                    controller.smokealarmback =
-                                    await controller.upload(
-                                        controller
-                                            .smokealar.value);
-                                  }
-                                },
-                                child: Icon(
-                                  Icons.camera_alt,
-                                  size: 22,
-                                  color: Colors.blue,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 2,
-                              ),
-                              InkWell(
-                                onTap: () async {
-                                  controller.smokealar.value =
-                                  await controller
-                                      .pickImageGallerys();
-                                  if (controller.smokealar.value !=
-                                      null) {
-                                    controller.smokealarmback =
-                                    await controller.upload(
-                                        controller
-                                            .smokealar.value);
-                                  }
-                                },
-                                child: Icon(
-                                  Icons.image,
-                                  size: 22,
-                                  color: Colors.blue,
-                                ),
-                              ),
-                            ],
-                          ),
+                                  ? Stack(children: [
+                                      Image.file(
+                                        File(controller.smokealar.value.path
+                                            .toString()),
+                                        fit: BoxFit.fill,
+                                        height: 120,
+                                        width: Get.width,
+                                      ),
+                                      Align(
+                                          alignment: Alignment.topRight,
+                                          child: Padding(
+                                              padding: EdgeInsets.only(
+                                                  right: 5, top: 5),
+                                              child: InkWell(
+                                                  onTap: () {
+                                                    controller.smokealar.value =
+                                                        File("");
+                                                  },
+                                                  child: Icon(
+                                                    Icons.delete,
+                                                    color: Colors.red,
+                                                  )))),
+                                    ])
+                                  : Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          onTap: () async {
+                                            controller.smokealar.value =
+                                                await controller.pickImages();
+                                            if (controller.smokealar.value !=
+                                                null) {
+                                              controller.smokealarmback =
+                                                  await controller.upload(
+                                                      controller
+                                                          .smokealar.value);
+                                            }
+                                          },
+                                          child: Icon(
+                                            Icons.camera_alt,
+                                            size: 22,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 2,
+                                        ),
+                                        InkWell(
+                                          onTap: () async {
+                                            controller.smokealar.value =
+                                                await controller
+                                                    .pickImageGallerys();
+                                            if (controller.smokealar.value !=
+                                                null) {
+                                              controller.smokealarmback =
+                                                  await controller.upload(
+                                                      controller
+                                                          .smokealar.value);
+                                            }
+                                          },
+                                          child: Icon(
+                                            Icons.image,
+                                            size: 22,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                         ),
                       ],
                     )),
@@ -1233,93 +1233,93 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               borderRadius: BorderRadius.circular(5)),
                           child: controller.coal.value.path.isNotEmpty
                               ? Stack(children: [
-                            Image.file(
-                              File(controller.coal.value.path.toString()),
-                              fit: BoxFit.fill,
-                              height: 120,
-                              width: Get.width,
-                            ),
-                            Align(
-                                alignment: Alignment.topRight,
-                                child: Padding(
-                                    padding:
-                                    EdgeInsets.only(right: 5, top: 5),
-                                    child: InkWell(
-                                        onTap: () {
-                                          controller.coal.value =
-                                              File("");
-                                        },
-                                        child: Icon(
-                                          Icons.delete,
-                                          color: Colors.red,
-                                        )))),
-                          ])
+                                  Image.file(
+                                    File(controller.coal.value.path.toString()),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  ),
+                                  Align(
+                                      alignment: Alignment.topRight,
+                                      child: Padding(
+                                          padding:
+                                              EdgeInsets.only(right: 5, top: 5),
+                                          child: InkWell(
+                                              onTap: () {
+                                                controller.coal.value =
+                                                    File("");
+                                              },
+                                              child: Icon(
+                                                Icons.delete,
+                                                color: Colors.red,
+                                              )))),
+                                ])
                               : controller.coal.value.path.isNotEmpty
-                              ? Stack(children: [
-                            Image.file(
-                              File(controller.coal.value.path
-                                  .toString()),
-                              fit: BoxFit.fill,
-                              height: 120,
-                              width: Get.width,
-                            ),
-                            Align(
-                                alignment: Alignment.topRight,
-                                child: Padding(
-                                    padding: EdgeInsets.only(
-                                        right: 5, top: 5),
-                                    child: InkWell(
-                                        onTap: () {
-                                          controller.coal.value =
-                                              File("");
-                                        },
-                                        child: Icon(
-                                          Icons.delete,
-                                          color: Colors.red,
-                                        )))),
-                          ])
-                              : Row(
-                            mainAxisAlignment:
-                            MainAxisAlignment.center,
-                            children: [
-                              InkWell(
-                                onTap: () async {
-                                  controller.coal.value =
-                                  await controller.pickImages();
-                                  if (controller.coal.value != null) {
-                                    controller.coalarmfront =
-                                    await controller.upload(
-                                        controller.coal.value);
-                                  }
-                                },
-                                child: Icon(
-                                  Icons.camera_alt,
-                                  size: 22,
-                                  color: Colors.blue,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 2,
-                              ),
-                              InkWell(
-                                onTap: () async {
-                                  controller.coal.value =
-                                  await controller
-                                      .pickImageGallerys();
-                                  if (controller.coal.value != null) {
-                                    controller.coalarmfront =
-                                    await controller.upload(
-                                        controller.coal.value);
-                                  }
-                                },
-                                child: Icon(
-                                  Icons.image,
-                                  size: 22,
-                                  color: Colors.blue,
-                                ),
-                              ),
-                            ],
-                          ),
+                                  ? Stack(children: [
+                                      Image.file(
+                                        File(controller.coal.value.path
+                                            .toString()),
+                                        fit: BoxFit.fill,
+                                        height: 120,
+                                        width: Get.width,
+                                      ),
+                                      Align(
+                                          alignment: Alignment.topRight,
+                                          child: Padding(
+                                              padding: EdgeInsets.only(
+                                                  right: 5, top: 5),
+                                              child: InkWell(
+                                                  onTap: () {
+                                                    controller.coal.value =
+                                                        File("");
+                                                  },
+                                                  child: Icon(
+                                                    Icons.delete,
+                                                    color: Colors.red,
+                                                  )))),
+                                    ])
+                                  : Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          onTap: () async {
+                                            controller.coal.value =
+                                                await controller.pickImages();
+                                            if (controller.coal.value != null) {
+                                              controller.coalarmfront =
+                                                  await controller.upload(
+                                                      controller.coal.value);
+                                            }
+                                          },
+                                          child: Icon(
+                                            Icons.camera_alt,
+                                            size: 22,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 2,
+                                        ),
+                                        InkWell(
+                                          onTap: () async {
+                                            controller.coal.value =
+                                                await controller
+                                                    .pickImageGallerys();
+                                            if (controller.coal.value != null) {
+                                              controller.coalarmfront =
+                                                  await controller.upload(
+                                                      controller.coal.value);
+                                            }
+                                          },
+                                          child: Icon(
+                                            Icons.image,
+                                            size: 22,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                         ),
                         SizedBox(
                           width: 10,
@@ -1333,96 +1333,96 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               borderRadius: BorderRadius.circular(5)),
                           child: controller.coalarm.value.path.isNotEmpty
                               ? Stack(children: [
-                            Image.file(
-                              File(controller.coalarm.value.path
-                                  .toString()),
-                              fit: BoxFit.fill,
-                              height: 120,
-                              width: Get.width,
-                            ),
-                            Align(
-                                alignment: Alignment.topRight,
-                                child: Padding(
-                                    padding:
-                                    EdgeInsets.only(right: 5, top: 5),
-                                    child: InkWell(
-                                        onTap: () {
-                                          controller.coalarm.value =
-                                              File("");
-                                        },
-                                        child: Icon(
-                                          Icons.delete,
-                                          color: Colors.red,
-                                        )))),
-                          ])
+                                  Image.file(
+                                    File(controller.coalarm.value.path
+                                        .toString()),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  ),
+                                  Align(
+                                      alignment: Alignment.topRight,
+                                      child: Padding(
+                                          padding:
+                                              EdgeInsets.only(right: 5, top: 5),
+                                          child: InkWell(
+                                              onTap: () {
+                                                controller.coalarm.value =
+                                                    File("");
+                                              },
+                                              child: Icon(
+                                                Icons.delete,
+                                                color: Colors.red,
+                                              )))),
+                                ])
                               : controller.coalarm.value.path.isNotEmpty
-                              ? Stack(children: [
-                            Image.file(
-                              File(controller.coalarm.value.path
-                                  .toString()),
-                              fit: BoxFit.fill,
-                              height: 120,
-                              width: Get.width,
-                            ),
-                            Align(
-                                alignment: Alignment.topRight,
-                                child: Padding(
-                                    padding: EdgeInsets.only(
-                                        right: 5, top: 5),
-                                    child: InkWell(
-                                        onTap: () {
-                                          controller.coalarm.value =
-                                              File("");
-                                        },
-                                        child: Icon(
-                                          Icons.delete,
-                                          color: Colors.red,
-                                        )))),
-                          ])
-                              : Row(
-                            mainAxisAlignment:
-                            MainAxisAlignment.center,
-                            children: [
-                              InkWell(
-                                onTap: () async {
-                                  controller.coalarm.value =
-                                  await controller.pickImages();
-                                  if (controller.coalarm.value !=
-                                      null) {
-                                    controller.coalarmback =
-                                    await controller.upload(
-                                        controller.coalarm.value);
-                                  }
-                                },
-                                child: Icon(
-                                  Icons.camera_alt,
-                                  size: 22,
-                                  color: Colors.blue,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 2,
-                              ),
-                              InkWell(
-                                onTap: () async {
-                                  controller.coalarm.value =
-                                  await controller
-                                      .pickImageGallerys();
-                                  if (controller.coalarm.value !=
-                                      null) {
-                                    controller.coalarmback =
-                                    await controller.upload(
-                                        controller.coalarm.value);
-                                  }
-                                },
-                                child: Icon(
-                                  Icons.image,
-                                  size: 22,
-                                  color: Colors.blue,
-                                ),
-                              ),
-                            ],
-                          ),
+                                  ? Stack(children: [
+                                      Image.file(
+                                        File(controller.coalarm.value.path
+                                            .toString()),
+                                        fit: BoxFit.fill,
+                                        height: 120,
+                                        width: Get.width,
+                                      ),
+                                      Align(
+                                          alignment: Alignment.topRight,
+                                          child: Padding(
+                                              padding: EdgeInsets.only(
+                                                  right: 5, top: 5),
+                                              child: InkWell(
+                                                  onTap: () {
+                                                    controller.coalarm.value =
+                                                        File("");
+                                                  },
+                                                  child: Icon(
+                                                    Icons.delete,
+                                                    color: Colors.red,
+                                                  )))),
+                                    ])
+                                  : Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          onTap: () async {
+                                            controller.coalarm.value =
+                                                await controller.pickImages();
+                                            if (controller.coalarm.value !=
+                                                null) {
+                                              controller.coalarmback =
+                                                  await controller.upload(
+                                                      controller.coalarm.value);
+                                            }
+                                          },
+                                          child: Icon(
+                                            Icons.camera_alt,
+                                            size: 22,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 2,
+                                        ),
+                                        InkWell(
+                                          onTap: () async {
+                                            controller.coalarm.value =
+                                                await controller
+                                                    .pickImageGallerys();
+                                            if (controller.coalarm.value !=
+                                                null) {
+                                              controller.coalarmback =
+                                                  await controller.upload(
+                                                      controller.coalarm.value);
+                                            }
+                                          },
+                                          child: Icon(
+                                            Icons.image,
+                                            size: 22,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                         ),
                       ],
                     )),
@@ -1514,95 +1514,95 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                             borderRadius: BorderRadius.circular(5)),
                         child: controller.heating.value.path.isNotEmpty
                             ? Stack(children: [
-                          Image.file(
-                            File(
-                                controller.heating.value.path.toString()),
-                            fit: BoxFit.fill,
-                            height: 120,
-                            width: Get.width,
-                          ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                  padding:
-                                  EdgeInsets.only(right: 5, top: 5),
-                                  child: InkWell(
-                                      onTap: () {
-                                        controller.heating.value =
-                                            File("");
-                                      },
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )))),
-                        ])
+                                Image.file(
+                                  File(
+                                      controller.heating.value.path.toString()),
+                                  fit: BoxFit.fill,
+                                  height: 120,
+                                  width: Get.width,
+                                ),
+                                Align(
+                                    alignment: Alignment.topRight,
+                                    child: Padding(
+                                        padding:
+                                            EdgeInsets.only(right: 5, top: 5),
+                                        child: InkWell(
+                                            onTap: () {
+                                              controller.heating.value =
+                                                  File("");
+                                            },
+                                            child: Icon(
+                                              Icons.delete,
+                                              color: Colors.red,
+                                            )))),
+                              ])
                             : controller.heating.value.path.isNotEmpty
-                            ? Stack(children: [
-                          Image.file(
-                            File(controller.heating.value.path
-                                .toString()),
-                            fit: BoxFit.fill,
-                            height: 120,
-                            width: Get.width,
-                          ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                  padding: EdgeInsets.only(
-                                      right: 5, top: 5),
-                                  child: InkWell(
-                                      onTap: () {
-                                        controller.heating.value =
-                                            File("");
-                                      },
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )))),
-                        ])
-                            : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                controller.heating.value =
-                                await controller.pickImages();
-                                if (controller.heating.value !=
-                                    null) {
-                                  controller.heatingsystem =
-                                  await controller.upload(
-                                      controller.heating.value);
-                                }
-                              },
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 22,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                controller.heating.value =
-                                await controller
-                                    .pickImageGallerys();
-                                if (controller.heating.value !=
-                                    null) {
-                                  controller.heatingsystem =
-                                  await controller.upload(
-                                      controller.heating.value);
-                                }
-                              },
-                              child: Icon(
-                                Icons.image,
-                                size: 22,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          ],
-                        ),
+                                ? Stack(children: [
+                                    Image.file(
+                                      File(controller.heating.value.path
+                                          .toString()),
+                                      fit: BoxFit.fill,
+                                      height: 120,
+                                      width: Get.width,
+                                    ),
+                                    Align(
+                                        alignment: Alignment.topRight,
+                                        child: Padding(
+                                            padding: EdgeInsets.only(
+                                                right: 5, top: 5),
+                                            child: InkWell(
+                                                onTap: () {
+                                                  controller.heating.value =
+                                                      File("");
+                                                },
+                                                child: Icon(
+                                                  Icons.delete,
+                                                  color: Colors.red,
+                                                )))),
+                                  ])
+                                : Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      InkWell(
+                                        onTap: () async {
+                                          controller.heating.value =
+                                              await controller.pickImages();
+                                          if (controller.heating.value !=
+                                              null) {
+                                            controller.heatingsystem =
+                                                await controller.upload(
+                                                    controller.heating.value);
+                                          }
+                                        },
+                                        child: Icon(
+                                          Icons.camera_alt,
+                                          size: 22,
+                                          color: Colors.blue,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 2,
+                                      ),
+                                      InkWell(
+                                        onTap: () async {
+                                          controller.heating.value =
+                                              await controller
+                                                  .pickImageGallerys();
+                                          if (controller.heating.value !=
+                                              null) {
+                                            controller.heatingsystem =
+                                                await controller.upload(
+                                                    controller.heating.value);
+                                          }
+                                        },
+                                        child: Icon(
+                                          Icons.image,
+                                          size: 22,
+                                          color: Colors.blue,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                       ),
                     ],
                   ),
@@ -1746,7 +1746,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                           Uint8List convertedBytes = base64Decode(image);
                           final tempDir = await getTemporaryDirectory();
                           File file =
-                          await File('${tempDir.path}/image.png').create();
+                              await File('${tempDir.path}/image.png').create();
                           file.writeAsBytesSync(convertedBytes);
                           controller.inspector = await controller.upload(file);
                         },
@@ -1782,7 +1782,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                           Uint8List convertedBytes = base64Decode(image);
                           final tempDir = await getTemporaryDirectory();
                           File file =
-                          await File('${tempDir.path}/image.png').create();
+                              await File('${tempDir.path}/image.png').create();
                           file.writeAsBytesSync(convertedBytes);
                           controller.tenant = await controller.upload(file);
                         },
@@ -1809,10 +1809,10 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                   onPressed: () {
                     pd = pd.toSet().toList();
                     model?.propertyDetails = pd;
-                    controller.updateData(pd,widget.id);
+                    controller.updateData(pd, widget.id);
                   },
                   color: Colors.blue,
-                  child: Text("Upload Property"),
+                  child: Text("Update Property"),
                 ),
                 SizedBox(
                   height: 20,
