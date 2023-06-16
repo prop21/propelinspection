@@ -914,7 +914,7 @@ class Show_Data_Screen extends StatelessWidget {
       ${data?.inspectorName}
     </div>
     <div style="display: flex; justify-content: center; align-items: center">
-      <img style="border-radius: 12px" src="../public/screens1.png" alt="s1" />
+      <img style="border-radius: 12px; border-radius: 12px; width: 400px; height: 250px" src="${Paths.baseUrl + '/' + data!.mainImg.toString()}" alt="s1"/>
     </div>
     <div
       style="
@@ -924,7 +924,7 @@ class Show_Data_Screen extends StatelessWidget {
         margin-top: 30px;
       "
     >
-      <table>
+      <table style="width:100%">
         <tr>
           <td
             style="
@@ -1318,7 +1318,12 @@ class Show_Data_Screen extends StatelessWidget {
       return of the tenancy deposit is based on the outcome of the Check- Out
       report.
     </div>
-
+<br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br>
     <div
       style="
         font-size: 28px;
@@ -1346,7 +1351,7 @@ class Show_Data_Screen extends StatelessWidget {
       <div
         style="
           width: 350px;
-          height: 550px;
+          height: 300px;
 
           border: 4px solid rgb(207, 206, 206);
           border-radius: 14px;
@@ -1378,7 +1383,7 @@ class Show_Data_Screen extends StatelessWidget {
           style="border: 1px solid blue; margin-left: 24px; margin-right: 24px"
         />
         <img
-            style="border-radius: 12px; width: 320px; height: 400px"
+            style="border-radius: 12px; width: 320px; height: 200px"
             src="${Paths.baseUrl + "/" + data!.gasMeterImg.toString()}"
             alt="s1"
           />
@@ -1387,7 +1392,7 @@ class Show_Data_Screen extends StatelessWidget {
       <div
         style="
           width: 350px;
-          height: 550px;
+          height: 300px;
 
           border: 4px solid rgb(207, 206, 206);
           border-radius: 14px;
@@ -1425,7 +1430,7 @@ class Show_Data_Screen extends StatelessWidget {
           "
         >
           <img
-            style="border-radius: 12px; width: 320px; height: 400px"
+            style="border-radius: 12px; width: 320px; height: 200px"
             src="${Paths.baseUrl + "/" + data!.electricityMeterImg.toString()}"
             alt="s1"
           />
@@ -1447,8 +1452,8 @@ class Show_Data_Screen extends StatelessWidget {
     >
       <div
         style="
-          width: 620px;
-          height: 250px;
+          width: 350px;
+          height: 300px;
 
           border: 4px solid rgb(207, 206, 206);
           border-radius: 14px;
@@ -1482,8 +1487,8 @@ class Show_Data_Screen extends StatelessWidget {
       </div>
       <div
         style="
-          width: 620px;
-          height: 250px;
+          width: 350px;
+          height: 300px;
 
           border: 4px solid rgb(207, 206, 206);
           border-radius: 14px;
@@ -1518,7 +1523,17 @@ class Show_Data_Screen extends StatelessWidget {
           />
       </div>
     </div>
-
+<br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br><br>
+    <br>
     <div
       style="
         display: flex;
@@ -1533,8 +1548,8 @@ class Show_Data_Screen extends StatelessWidget {
     >
       <div
         style="
-          width: 620px;
-          height: 250px;
+          width: 350px;
+          height: 300px;
 
           border: 4px solid rgb(207, 206, 206);
           border-radius: 14px;
@@ -1567,8 +1582,8 @@ class Show_Data_Screen extends StatelessWidget {
       </div>
       <div
         style="
-          width: 620px;
-          height: 250px;
+          width: 350px;
+          height: 300px;
 
           border: 4px solid rgb(207, 206, 206);
           border-radius: 14px;
@@ -1583,7 +1598,7 @@ class Show_Data_Screen extends StatelessWidget {
             margin-top: 16px;
           "
         >
-          <div style="font-size: 24px; color: blue; font-weight: bold">
+          <div style="font-size: 24px; color: blue; font-weight: bold";width: 320px; height: 200px>
             CO Alarm<span
               style="font-size: 24px; color: black; font-weight: bold"
               >${data?.coAlarm}</span
@@ -1597,12 +1612,22 @@ class Show_Data_Screen extends StatelessWidget {
           style="border: 1px solid blue; margin-left: 24px; margin-right: 24px"
         />
         <img
-            style="border-radius: 12px; width: 320px; height: 200px"
+            style="border-radius: 12px; width: 370px; height: 200px"
             src="${Paths.baseUrl + "/" + data!.coAlarmFrontImg.toString()}"
             alt="s1"
           />
       </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br><br>
+    <br><br>
+    <br>
+    
+    
     ${data?.propertyDetails?.map((e) => '''
     <div
       style="
@@ -1653,6 +1678,9 @@ class Show_Data_Screen extends StatelessWidget {
       <img src="../public/screens1.png" alt="" />
     </div>
   ''').join('')}
+  <br>
+    <br><br>
+    <br>
     <div
       style="
         font-size: 28px;
