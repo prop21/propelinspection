@@ -30,7 +30,6 @@ class LoginController extends GetxController {
             ));
       }
     } on Exception catch (e) {
-      print("hello");
       Get.defaultDialog();
       isLoading(false);
       ExceptionHandler().handleException(e);

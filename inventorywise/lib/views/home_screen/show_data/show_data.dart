@@ -793,11 +793,29 @@ class Show_Data_Screen extends StatelessWidget {
   </head>
 
   <style>
+   .image-container {
+      display: flex;
+      justify-content: center;
+      justify-items: center;
+
+      flex-wrap: wrap;
+      gap: 4px;
+    }
     table,
     td,
     th {
       border: 1px solid black;
     }
+.image-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px; /* Adjust the gap as per your requirements */
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+}
 
     table {
       border-collapse: collapse;
@@ -1674,8 +1692,20 @@ class Show_Data_Screen extends StatelessWidget {
         </tr>
       </table>
     </div>
-    <div style="margin-left: 48px; margin-top: 14px">
-      <img src="../public/screens1.png" alt="" />
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+    <div  class="image-container" >
+             ${e.propertyImages?.map((b) => '''
+      <img  src="${Paths.baseUrl + "/" + b.url.toString()}" alt="" style="width: 300px; height: 300px;" />
+      ''').join('')}
+    
     </div>
   ''').join('')}
   <br>

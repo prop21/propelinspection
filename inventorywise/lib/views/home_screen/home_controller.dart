@@ -13,6 +13,7 @@ class HomeController extends GetxController {
   var isLoading = true.obs;
   var hide = true.obs;
   var data = <Rows>[].obs;
+  var sedata=<Rows>[].obs;
   final authService = HomeService();
   var et1 = TextEditingController();
   @override
@@ -20,7 +21,18 @@ class HomeController extends GetxController {
     super.onInit();
     getData(Authenticator().getUserID());
   }
-
+void serachdata(name)
+{
+  isLoading.value=true;
+  data.forEach((element) {
+    if(element.inspectorName!.contains(name)){
+      sedata.value.add(element);
+    }
+  });
+  sedata.value=sedata.toSet().toList();
+  print(sedata.length);
+  isLoading.value=false;
+}
   Future<void> getData(id) async {
     try {
       isLoading(true);
