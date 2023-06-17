@@ -2,6 +2,7 @@ import 'package:InventoryWise/service/auth_service/auth_service.dart';
 import 'package:InventoryWise/utils/global.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../http/exception_checker.dart';
 import '../home_screen/home_screen.dart';
@@ -13,18 +14,29 @@ class LoginController extends GetxController {
   final authService = AuthenticationService();
   var et1 = TextEditingController();
   var et2 = TextEditingController();
+
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.get("id").toString() != "null") {
+      Authenticator().setUserID(prefs.get("id").toString());
+      Get.offAll(() => Home_Screen(
+            id: prefs.get("id").toString(),
+          ));
+    }
   }
 
   Future<void> login(email, pass) async {
+    // Obtain shared preferences.
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
     try {
       isLoading(true);
       var result = await authService.login(email, pass);
       isLoading(false);
-      if (result.isVerified ==true) {
+      if (result.isVerified != "null") {
         Authenticator().setUserID(result.id.toString());
+        prefs.setString("id", result.id.toString());
         Get.offAll(() => Home_Screen(
               id: result.id,
             ));

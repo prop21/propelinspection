@@ -2,6 +2,7 @@ import 'package:InventoryWise/views/forgot_password/forgot_password_screen.dart'
 import 'package:InventoryWise/views/home_screen/add_data/add_data.dart';
 import 'package:InventoryWise/views/home_screen/home_controller.dart';
 import 'package:InventoryWise/views/home_screen/show_data/show_data.dart';
+import 'package:InventoryWise/views/login/login_screen.dart';
 import 'package:InventoryWise/views/register/register_screen.dart';
 import 'package:InventoryWise/widgets/custom_loader_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -92,7 +93,7 @@ class Home_Screen extends StatelessWidget {
               title: Text('Logout'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
-                Navigator.pop(context);
+                Get.offAll(()=>Login_Screen());
               },
             ),
           ],
