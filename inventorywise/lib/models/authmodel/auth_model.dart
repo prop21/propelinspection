@@ -7,22 +7,24 @@ class AuthModel {
   String? role;
   bool? status;
   String? created;
-  String? updated;
+  Null? updated;
   bool? isVerified;
+  String? companyLogo;
   String? jwtToken;
 
   AuthModel(
       {this.id,
-        this.title,
-        this.firstName,
-        this.lastName,
-        this.email,
-        this.role,
-        this.status,
-        this.created,
-        this.updated,
-        this.isVerified,
-        this.jwtToken});
+      this.title,
+      this.firstName,
+      this.lastName,
+      this.email,
+      this.role,
+      this.status,
+      this.created,
+      this.updated,
+      this.isVerified,
+      this.companyLogo,
+      this.jwtToken});
 
   AuthModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -35,6 +37,7 @@ class AuthModel {
     created = json['created'];
     updated = json['updated'];
     isVerified = json['isVerified'];
+    companyLogo = json['company_logo'];
     jwtToken = json['jwtToken'];
   }
 
@@ -50,6 +53,7 @@ class AuthModel {
     data['created'] = this.created;
     data['updated'] = this.updated;
     data['isVerified'] = this.isVerified;
+    data['company_logo'] = this.companyLogo;
     data['jwtToken'] = this.jwtToken;
     return data;
   }

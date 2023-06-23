@@ -54,6 +54,10 @@ class CustomPropertyState extends State<CustomProperty> {
     widget.data?[widget.index].images = imagess;
     widget.data = widget.data?.toSet().toList();
     print(widget.data?[widget.index].name);
+    et1.text = "fair condition";
+    et2.text = "fair condition";
+    et3.text = "fair condition";
+    et4.text = "fair condition";
   }
 
   @override
@@ -109,7 +113,6 @@ class CustomPropertyState extends State<CustomProperty> {
             height: 20,
           ),
           Container(
-            height: 160,
             padding: EdgeInsets.all(10),
             width: Get.width,
             decoration: BoxDecoration(
@@ -133,6 +136,40 @@ class CustomPropertyState extends State<CustomProperty> {
                 Divider(
                   thickness: 2,
                 ),
+                if (widget.name == "Kitchen") ...[
+                  TextField(
+                    controller: et2,
+                    onTapOutside: (a) {
+                      if (et2.text.isNotEmpty) {
+                        widget.data?[widget.index].walls = et2.text;
+                      }
+                    },
+                    decoration: InputDecoration(
+                      icon: Text("Units:"),
+                      border: InputBorder.none,
+                      isDense: true,
+                    ),
+                  ),
+                  Divider(
+                    thickness: 2,
+                  ),
+                  TextField(
+                    controller: et2,
+                    onTapOutside: (a) {
+                      if (et2.text.isNotEmpty) {
+                        widget.data?[widget.index].walls = et2.text;
+                      }
+                    },
+                    decoration: InputDecoration(
+                      icon: Text("Appliances:"),
+                      border: InputBorder.none,
+                      isDense: true,
+                    ),
+                  ),
+                  Divider(
+                    thickness: 2,
+                  ),
+                ],
                 TextField(
                   controller: et3,
                   onTapOutside: (a) {
@@ -142,6 +179,22 @@ class CustomPropertyState extends State<CustomProperty> {
                   },
                   decoration: InputDecoration(
                     icon: Text("Windows:"),
+                    border: InputBorder.none,
+                    isDense: true,
+                  ),
+                ),
+                Divider(
+                  thickness: 2,
+                ),
+                TextField(
+                  controller: et3,
+                  onTapOutside: (a) {
+                    if (et3.text.isNotEmpty) {
+                      widget.data?[widget.index].windows = et3.text;
+                    }
+                  },
+                  decoration: InputDecoration(
+                    icon: Text("Floors:"),
                     border: InputBorder.none,
                     isDense: true,
                   ),

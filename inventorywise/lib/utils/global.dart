@@ -1,9 +1,4 @@
-
-
-
 final Authenticator authenticator = Authenticator();
-
-
 
 class ModuleIDs {
   static const String login = "SIGN-IN";
@@ -52,7 +47,6 @@ class Paths {
   static String updatePropertiesBaseUrl = "$baseUrl/properties/";
   static String deletePropertiesBaseUrl = "$baseUrl/properties/";
   static String uploadImageBaseUrl = '$baseUrl/properties/upload_image';
-
 }
 
 class Authenticator {
@@ -68,9 +62,14 @@ class Authenticator {
   String? _otpToken;
   String? _userID;
   String? _ipAddress;
+  String? _email;
 
   void setOtpToken(String? token) {
     _otpToken = token; //'bearer $token';
+  }
+
+  void setEmail(String? email) {
+    _email = email; //'bearer $token';
   }
 
   void setUserToken(String? token) {
@@ -93,6 +92,10 @@ class Authenticator {
 
   String? getIpAddress() {
     return _ipAddress;
+  }
+
+  String? getEmail() {
+    return _email;
   }
 
   String? getOtpToken() {

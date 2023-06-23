@@ -13,7 +13,7 @@ class HomeController extends GetxController {
   var isLoading = true.obs;
   var hide = true.obs;
   var data = <Rows>[].obs;
-  var sedata=<Rows>[].obs;
+  var sedata = <Rows>[].obs;
   final authService = HomeService();
   var et1 = TextEditingController();
   @override
@@ -21,26 +21,34 @@ class HomeController extends GetxController {
     super.onInit();
     getData(Authenticator().getUserID());
   }
-void serachdata(name)
-{
-  isLoading.value=true;
-  data.forEach((element) {
-    if(element.inspectorName!.contains(name)){
-      sedata.value.add(element);
-    }
-  });
-  sedata.value=sedata.toSet().toList();
-  print(sedata.length);
-  isLoading.value=false;
-}
+
+  void serachdata(name) {
+    isLoading.value = true;
+    data.forEach((element) {
+      if (element.inspectorName!.contains(name)) {
+        sedata.value.add(element);
+      }
+    });
+    sedata.value = sedata.toSet().toList();
+    print(sedata.length);
+    isLoading.value = false;
+  }
+
   Future<void> getData(id) async {
     try {
       isLoading(true);
       var result = await authService.getData(id);
       data.value = result.rows!;
+      data.value.forEach((element) async {
+        DateTime? date;
+        date = DateTime.parse(element.created.toString());
+        date = date.add(Duration(days: 7, hours: 0));
+        if (DateTime.now().isAfter(date)) {
+          await authService.deleteProperty(element.id.toString());
+        }
+      });
       isLoading(false);
     } on Exception catch (e) {
-      print("hello");
       Get.defaultDialog();
       isLoading(false);
       ExceptionHandler().handleException(e);

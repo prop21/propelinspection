@@ -14,10 +14,10 @@ class HomeService {
   Future<HomeData> getData(id) async {
     var _http = await ApiResponseInjector().httpDataSource(ApiType.defaultApi);
     try {
-      var res = await _http?.get(Paths.propertiesBaseUrl + id);
+      var res = await _http?.get(Paths.propertiesBaseUrl + "1");
       HomeData data = HomeData.fromJson(res);
 
-      print(res);
+
       return data;
     } on Exception catch (e) {
       Get.defaultDialog(title: "Error", middleText: e.toString());

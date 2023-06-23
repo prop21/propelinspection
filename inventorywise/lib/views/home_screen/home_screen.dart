@@ -8,12 +8,16 @@ import 'package:InventoryWise/widgets/custom_loader_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/global.dart';
 
 class Home_Screen extends StatelessWidget {
-  Home_Screen({id}) : super();
+  Home_Screen({this.id, this.email, this.fname, this.lname}) : super();
   String? id;
+  String? fname;
+  String? lname;
+  String? email;
   final controller = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,14 @@ class Home_Screen extends StatelessWidget {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             onPressed: () {
-              Get.to(() => AddDataScreen());
+              if (controller.sedata.value.length < 20) {
+                Get.to(() => AddDataScreen());
+              } else {
+                Get.defaultDialog(
+                    title: "Limit Exceed",
+                    middleText:
+                        "Limit Exceed Please delete old property to add new one");
+              }
             },
             color: Colors.blue,
             child: Row(
@@ -60,12 +71,12 @@ class Home_Screen extends StatelessWidget {
               child:
                   Column(mainAxisAlignment: MainAxisAlignment.end, children: [
                 Text(
-                  'abc',
+                  fname.toString() + " " + lname.toString(),
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  'ua@gmail.com',
+                  email.toString(),
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
@@ -92,8 +103,10 @@ class Home_Screen extends StatelessWidget {
               leading: Icon(Icons.exit_to_app),
               title: Text('Logout'),
               trailing: Icon(Icons.keyboard_arrow_right),
-              onTap: () {
-                Get.offAll(()=>Login_Screen());
+              onTap: () async{
+                final SharedPreferences prefs = await SharedPreferences.getInstance();
+                prefs.clear();
+                Get.offAll(() => Login_Screen());
               },
             ),
           ],
@@ -260,6 +273,7 @@ class Home_Screen extends StatelessWidget {
                                   onTap: () {
                                     Get.to(() => Show_Data_Screen(
                                           data: controller.sedata[index],
+                                          email: email,
                                         ));
                                   },
                                   child: Row(

@@ -37,7 +37,7 @@ class AuthenticationService {
   }
 
   Future<void> register(title, firstname, lastname, email, confirmpassword,
-      password, acceptterm, companyaddress) async {
+      password, acceptterm, companyaddress, logo) async {
     var _http = await ApiResponseInjector().httpDataSource(ApiType.defaultApi);
     try {
       var res = await _http?.post(Paths.registerbaseUrl, body: {
@@ -48,6 +48,7 @@ class AuthenticationService {
         "confirmPassword": confirmpassword,
         "password": password,
         "acceptTerms": acceptterm,
+        "company_logo": logo,
         "company_address": confirmpassword
       });
       Register model = Register.fromJson(res);

@@ -34,11 +34,13 @@ class LoginController extends GetxController {
       isLoading(true);
       var result = await authService.login(email, pass);
       isLoading(false);
-      if (result.isVerified != "null") {
+      if (result.isVerified==true) {
         Authenticator().setUserID(result.id.toString());
+        Authenticator().setEmail(result.email.toString());
         prefs.setString("id", result.id.toString());
+        prefs.setString("email", result.email.toString());
         Get.offAll(() => Home_Screen(
-              id: result.id,
+              id: result.id.toString(),email: result.email,lname: result.lastName,fname:result.firstName ,
             ));
       }
     } on Exception catch (e) {

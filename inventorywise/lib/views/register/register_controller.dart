@@ -4,12 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../http/exception_checker.dart';
+import '../../service/home/home_service.dart';
 import '../home_screen/home_screen.dart';
 
 class RegisterController extends GetxController {
   final auth = Authenticator();
+  var service = HomeService();
   var isLoading = true.obs;
   var hide=true.obs;
+  var cplogo="".obs;
   final authService = AuthenticationService();
   var et1 = TextEditingController();
   var et2 = TextEditingController();
@@ -23,15 +26,15 @@ class RegisterController extends GetxController {
   void onInit() {
     super.onInit();
   }
-
-  Future<void> register(title,firstname,lastname,email,confirmpassword,password,acceptterm,companyaddress) async {
+  Future<String> upload(images) async {
+    return await service.uploadImage(images.path);
+  }
+  Future<void> register(title,firstname,lastname,email,confirmpassword,password,acceptterm,companyaddress,logo) async {
     try {
       isLoading(true);
-      var result = await authService.register(title,firstname,lastname,email,confirmpassword,password,acceptterm,companyaddress);
+      var result = await authService.register(title,firstname,lastname,email,confirmpassword,password,acceptterm,companyaddress,logo);
       isLoading(false);
-
     } on Exception catch (e) {
-      print("hello");
       Get.defaultDialog();
       isLoading(false);
       ExceptionHandler().handleException(e);
