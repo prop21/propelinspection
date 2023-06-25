@@ -14,9 +14,9 @@ class AddDataController extends GetxController {
   var service = HomeService();
   RxInt count = 17.obs;
   int delid = 0;
-  var list = 7.obs;
+  var list = 12.obs;
   var index = 0.obs;
-  var items=[0,1,2,3,4,5,6,7,8,9,10].obs;
+  var items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].obs;
   var type = "Inspection Report".obs;
   var t1 = "Working".obs;
   var t2 = "Working".obs;
@@ -69,15 +69,15 @@ class AddDataController extends GetxController {
   String? coalarmfront;
   String? coalarmback;
   String? heatingsystem;
-  var maini=File("").obs;
-  var electric=File("").obs;
-  var gasmeter=File("").obs;
-  var watermeter=File("").obs;
-  var  smokealarm=File("").obs;
-  var  smokealar=File("").obs;
-  var  coalarm=File("").obs;
-  var  coal=File("").obs;
-  var  heating=File("").obs;
+  var maini = File("").obs;
+  var electric = File("").obs;
+  var gasmeter = File("").obs;
+  var watermeter = File("").obs;
+  var smokealarm = File("").obs;
+  var smokealar = File("").obs;
+  var coalarm = File("").obs;
+  var coal = File("").obs;
+  var heating = File("").obs;
   String? inspector;
   String? tenant;
   var main = File("").obs;
@@ -182,9 +182,11 @@ class AddDataController extends GetxController {
         t6.value,
         type.value);
   }
+
   void deleteData(prop, id) async {
     await service.deleteProperty(
-        id,);
+      id,
+    );
   }
 
   Future<String> upload(images) async {

@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:InventoryWise/views/home_screen/show_data/showdata_controller.dart';
 import 'package:InventoryWise/views/home_screen/update_data/update_data.dart';
@@ -12,6 +14,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../models/homedata/Home_Data.dart';
 import '../../../utils/global.dart';
@@ -23,6 +26,14 @@ class Show_Data_Screen extends StatelessWidget {
   final controller = Get.put(ShowDataController());
   @override
   Widget build(BuildContext context) {
+    final Uint8List bytes = Uint8List.fromList(data!.signatureTenant!.data!);
+    String base64Image = base64Encode(bytes);
+    String decodedString = utf8.decode(base64Decode(base64Image));
+    final Uint8List bytes1 = Uint8List.fromList(data!.signatureInspector!.data!);
+    String base64Image1 = base64Encode(bytes1);
+    String decodedString1 = utf8.decode(base64Decode(base64Image1));
+
+
     // TODO: implement build
     return Scaffold(
       resizeToAvoidBottomInset: false, // fluter 2.x
@@ -774,6 +785,9 @@ class Show_Data_Screen extends StatelessWidget {
                 Center(
                   child: MaterialButton(
                     onPressed: () async {
+                      final SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      var lo=prefs.getString("logo").toString();
                       // Directory tempDir = await getTemporaryDirectory();
                       // final path = '${tempDir.path}/report.pdf';
                       //
@@ -864,7 +878,7 @@ class Show_Data_Screen extends StatelessWidget {
           <div>
             <img
               style="width: 230px; height: 100px"
-              src="../public/inventory.png"
+              src="${Paths.baseUrl + "/" + lo}"
               alt="Logo"
             />
           </div>
@@ -1310,7 +1324,7 @@ class Show_Data_Screen extends StatelessWidget {
 
     <div
       style="
-        font-size: 26px;
+        font-size: 20px;
         color: black;
         font-weight: bold;
         margin-left: 48px;
@@ -1322,7 +1336,7 @@ class Show_Data_Screen extends StatelessWidget {
     </div>
     <div
       style="
-        font-size: 26px;
+        font-size: 20px;
         font-weight: 500;
         margin-left: 48px;
         margin-right: 48px;
@@ -1669,17 +1683,21 @@ class Show_Data_Screen extends StatelessWidget {
    
    
     
-    
+  
     ${data?.propertyDetails?.map((e) => '''
-    <div
+      <div
       style="
         font-size: 24px;
         color: blue;
+        height:1190px;
         margin-left: 48px;
         font-weight: bold;
         margin-top: 45px;
       "
     >
+    <br>
+    <br>
+    <br>
     
     <div>
       ${e.name}
@@ -1727,12 +1745,7 @@ class Show_Data_Screen extends StatelessWidget {
     <br>
      <br>
       <br>
-       <br>
-        <br>
-        <br>
-        <br>
-         <br>
-        <br>
+      </div>
   ''').join('')}
   <br>
     <br><br>
@@ -1860,18 +1873,13 @@ ${data?.askedLandlordTo}
             margin-top: 20px;
           "
         >
-          <img
-            style="border-radius: 12px; width: 550px; height: 550px"
-            src="${Paths.baseUrl + "/" + data!.signatureTenant.toString()}"
-            alt="s1"
-          />
+          <img src="${Paths.baseUrl + "/" + decodedString}" alt="Base64 Image">
         </div>
       </div>
       <div
         style="
           width: 600px;
           height: 340px;
-
           border: 6px solid rgb(42, 119, 219);
           border-radius: 14px;
         "
@@ -1897,8 +1905,8 @@ ${data?.askedLandlordTo}
           "
         >
           <img
-            style="border-radius: 12px; width: 550px; height: 550px"
-            src="${Paths.baseUrl + "/" + data!.signatureInspector.toString()}"
+            style="border-radius: 12px;"
+            src="${Paths.baseUrl + "/" + decodedString1}"
             alt="s1"
           />
         </div>

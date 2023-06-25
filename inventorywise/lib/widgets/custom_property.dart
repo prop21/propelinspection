@@ -41,6 +41,9 @@ class CustomPropertyState extends State<CustomProperty> {
   TextEditingController et3 = TextEditingController();
   TextEditingController et4 = TextEditingController();
   TextEditingController et5 = TextEditingController();
+  TextEditingController et6 = TextEditingController();
+  TextEditingController et7 = TextEditingController();
+  TextEditingController et8 = TextEditingController();
   PropertyDetails? pd;
 
   final controller = Get.find<AddDataController>();
@@ -54,10 +57,12 @@ class CustomPropertyState extends State<CustomProperty> {
     widget.data?[widget.index].images = imagess;
     widget.data = widget.data?.toSet().toList();
     print(widget.data?[widget.index].name);
-    et1.text = "fair condition";
-    et2.text = "fair condition";
-    et3.text = "fair condition";
-    et4.text = "fair condition";
+    et2.text="Fair Condition";
+    et3.text="Fair Condition";
+    et4.text="Fair Condition";
+    et6.text="Fair Condition";
+    et7.text="Fair Condition";
+    et8.text="Fair Condition";
   }
 
   @override
@@ -138,10 +143,10 @@ class CustomPropertyState extends State<CustomProperty> {
                 ),
                 if (widget.name == "Kitchen") ...[
                   TextField(
-                    controller: et2,
+                    controller: et6,
                     onTapOutside: (a) {
-                      if (et2.text.isNotEmpty) {
-                        widget.data?[widget.index].walls = et2.text;
+                      if (et6.text.isNotEmpty) {
+                        widget.data?[widget.index].units = et6.text;
                       }
                     },
                     decoration: InputDecoration(
@@ -154,10 +159,10 @@ class CustomPropertyState extends State<CustomProperty> {
                     thickness: 2,
                   ),
                   TextField(
-                    controller: et2,
+                    controller: et7,
                     onTapOutside: (a) {
-                      if (et2.text.isNotEmpty) {
-                        widget.data?[widget.index].walls = et2.text;
+                      if (et7.text.isNotEmpty) {
+                        widget.data?[widget.index].appliances = et7.text;
                       }
                     },
                     decoration: InputDecoration(
@@ -187,10 +192,10 @@ class CustomPropertyState extends State<CustomProperty> {
                   thickness: 2,
                 ),
                 TextField(
-                  controller: et3,
+                  controller: et8,
                   onTapOutside: (a) {
-                    if (et3.text.isNotEmpty) {
-                      widget.data?[widget.index].windows = et3.text;
+                    if (et8.text.isNotEmpty) {
+                      widget.data?[widget.index].floor = et8.text;
                     }
                   },
                   decoration: InputDecoration(

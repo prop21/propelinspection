@@ -37,8 +37,10 @@ class LoginController extends GetxController {
       if (result.isVerified==true) {
         Authenticator().setUserID(result.id.toString());
         Authenticator().setEmail(result.email.toString());
+        Authenticator().setLogo(result.companyLogo.toString());
         prefs.setString("id", result.id.toString());
         prefs.setString("email", result.email.toString());
+        prefs.setString("logo", result.companyLogo.toString());
         Get.offAll(() => Home_Screen(
               id: result.id.toString(),email: result.email,lname: result.lastName,fname:result.firstName ,
             ));

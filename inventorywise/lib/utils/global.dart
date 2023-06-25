@@ -63,9 +63,14 @@ class Authenticator {
   String? _userID;
   String? _ipAddress;
   String? _email;
+  String? _logo;
 
   void setOtpToken(String? token) {
     _otpToken = token; //'bearer $token';
+  }
+
+  void setLogo(String? logo) {
+    _logo = logo; //'bearer $token';
   }
 
   void setEmail(String? email) {
@@ -92,6 +97,10 @@ class Authenticator {
 
   String? getIpAddress() {
     return _ipAddress;
+  }
+
+  String? getLogo() {
+    return _logo;
   }
 
   String? getEmail() {

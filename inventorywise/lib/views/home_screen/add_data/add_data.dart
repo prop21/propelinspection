@@ -1610,7 +1610,10 @@ class AddDataScreenState extends State<AddDataScreen> {
                 ),
                 if (controller.items.contains(0)) ...[
                   CustomProperty(
-                      index: 0, name: "Front Aspect", data: pd, images: images),
+                      index: 0,
+                      name: "Front & Side Aspects",
+                      data: pd,
+                      images: images),
                 ],
                 if (controller.items.contains(1)) ...[
                   CustomProperty(
@@ -1633,16 +1636,20 @@ class AddDataScreenState extends State<AddDataScreen> {
                 ],
                 if (controller.items.contains(5)) ...[
                   CustomProperty(
-                      index: 5, name: "Lounge", data: pd, images: images),
+                      index: 5, name: "Bathroom 1", data: pd, images: images),
                 ],
                 if (controller.items.contains(6)) ...[
                   CustomProperty(
-                      index: 6, name: "Bedroom", data: pd, images: images),
+                      index: 6, name: "Lounge", data: pd, images: images),
                 ],
-                for (int i = 7; i <= controller.list.value; i++)
+                if (controller.items.contains(7)) ...[
+                  CustomProperty(
+                      index: 7, name: "Bedroom", data: pd, images: images),
+                ],
+                for (int i = 8; i <= controller.list.value; i++)
                   CustomProperty(
                       index: i,
-                      name: "Bedroom " + i.toString(),
+                      name: "Bedroom " + (i - 7).toString(),
                       data: pd,
                       images: images),
                 SizedBox(
