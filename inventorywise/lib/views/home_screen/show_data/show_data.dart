@@ -29,10 +29,10 @@ class Show_Data_Screen extends StatelessWidget {
     final Uint8List bytes = Uint8List.fromList(data!.signatureTenant!.data!);
     String base64Image = base64Encode(bytes);
     String decodedString = utf8.decode(base64Decode(base64Image));
-    final Uint8List bytes1 = Uint8List.fromList(data!.signatureInspector!.data!);
+    final Uint8List bytes1 =
+        Uint8List.fromList(data!.signatureInspector!.data!);
     String base64Image1 = base64Encode(bytes1);
     String decodedString1 = utf8.decode(base64Decode(base64Image1));
-
 
     // TODO: implement build
     return Scaffold(
@@ -91,7 +91,7 @@ class Show_Data_Screen extends StatelessWidget {
                       InkWell(
                           onTap: () {
                             Get.to(() => UpdateDataScreen(
-                                  id: data?.id.toString(),
+                                  id: data?.id.toString(),data: data,
                                 ));
                           },
                           child: Icon(Icons.edit)),
@@ -787,7 +787,7 @@ class Show_Data_Screen extends StatelessWidget {
                     onPressed: () async {
                       final SharedPreferences prefs =
                           await SharedPreferences.getInstance();
-                      var lo=prefs.getString("logo").toString();
+                      var lo = prefs.getString("logo").toString();
                       // Directory tempDir = await getTemporaryDirectory();
                       // final path = '${tempDir.path}/report.pdf';
                       //

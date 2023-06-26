@@ -7,9 +7,11 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../models/addproperty/add_proprert_model.dart';
+import '../../../models/homedata/Home_Data.dart';
 import '../../../service/home/home_service.dart';
 
 class AddDataController extends GetxController {
+
   late CameraController controller;
   var service = HomeService();
   RxInt count = 17.obs;
@@ -123,6 +125,7 @@ class AddDataController extends GetxController {
     for (int i = 0; i <= 500; i++) {
       f.add(TextEditingController());
     }
+
     loading.value = false;
   }
 
