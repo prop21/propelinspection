@@ -84,11 +84,14 @@ class AddDataScreenState extends State<AddDataScreen> {
                               controller.type.value = "Checkout Report";
                             }
                           },
-                          child: Text(index == 0
-                              ? "Inventory Report"
-                              : index == 1
-                                  ? "Mid Term Inspection"
-                                  : "Checkout Report"),
+                          child: Text(
+                            index == 0
+                                ? "Inventory Report"
+                                : index == 1
+                                    ? "Mid Term Inspection"
+                                    : "Checkout Report",
+                            style: TextStyle(color: Colors.white),
+                          ),
                         )),
                   ),
                 ),
@@ -426,6 +429,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                           child: TextField(
                             controller: controller.f[7],
                             textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.only(
                                 bottom: 12, // HERE THE IMPORTANT PART
@@ -583,8 +587,13 @@ class AddDataScreenState extends State<AddDataScreen> {
                           width: 70,
                           height: 35,
                           child: TextField(
+                            style: TextStyle(color: Colors.white),
+                            textAlign: TextAlign.center,
                             controller: controller.f[8],
                             decoration: InputDecoration(
+                              contentPadding: EdgeInsets.only(
+                                bottom: 12, // HERE THE IMPORTANT PART
+                              ),
                               filled: true,
                               fillColor: Colors.blue, //<-- SEE HERE
                             ),
@@ -767,8 +776,13 @@ class AddDataScreenState extends State<AddDataScreen> {
                           width: 70,
                           height: 35,
                           child: TextField(
+                            style: TextStyle(color: Colors.white),
+                            textAlign: TextAlign.center,
                             controller: controller.f[9],
                             decoration: InputDecoration(
+                              contentPadding: EdgeInsets.only(
+                                bottom: 12, // HERE THE IMPORTANT PART
+                              ),
                               filled: true,
                               fillColor: Colors.blue, //<-- SEE HERE
                             ),
@@ -1817,7 +1831,10 @@ class AddDataScreenState extends State<AddDataScreen> {
                     controller.addData(pd);
                   },
                   color: Colors.blue,
-                  child: Text("Upload Property"),
+                  child: Text(
+                    "Upload Property",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
                 SizedBox(
                   height: 20,

@@ -221,42 +221,39 @@ class SignatureInspector {
 }
 
 class PropertyDetails {
-  int? id;
   String? name;
   String? description;
   String? floor;
   String? walls;
   String? ceiling;
   String? windows;
-  String? created;
-  Null? updated;
-  int? propertyId;
+  String? doors;
+  String? units;
+  String? appliances;
   List<PropertyImages>? propertyImages;
 
   PropertyDetails(
-      {this.id,
-        this.name,
+      {this.name,
         this.description,
         this.floor,
         this.walls,
         this.ceiling,
         this.windows,
-        this.created,
-        this.updated,
-        this.propertyId,
+        this.doors,
+        this.units,
+        this.appliances,
         this.propertyImages});
 
   PropertyDetails.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
     name = json['name'];
     description = json['description'];
     floor = json['floor'];
     walls = json['walls'];
+    appliances = json["Appliances"];
+    units = json["units"];
+    doors = json["doors"];
     ceiling = json['ceiling'];
     windows = json['windows'];
-    created = json['created'];
-    updated = json['updated'];
-    propertyId = json['propertyId'];
     if (json['property_images'] != null) {
       propertyImages = <PropertyImages>[];
       json['property_images'].forEach((v) {
@@ -267,16 +264,15 @@ class PropertyDetails {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
     data['name'] = this.name;
     data['description'] = this.description;
     data['floor'] = this.floor;
     data['walls'] = this.walls;
+    data["units"] = this.units;
+    data["Appliances"] = this.units;
+    data["doors"] = this.doors;
     data['ceiling'] = this.ceiling;
     data['windows'] = this.windows;
-    data['created'] = this.created;
-    data['updated'] = this.updated;
-    data['propertyId'] = this.propertyId;
     if (this.propertyImages != null) {
       data['property_images'] =
           this.propertyImages!.map((v) => v.toJson()).toList();

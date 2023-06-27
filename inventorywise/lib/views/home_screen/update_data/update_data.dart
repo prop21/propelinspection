@@ -49,7 +49,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
     controller.askedLandlordToController.text = widget.data.askedLandlordTo;
     controller.advisedTenantToController.text = widget.data.advisedTenantTo;
     controller.finalRemarksController.text = widget.data.finalRemarks;
-
+    controller.list.value = widget.data.propertyDetails.length;
     return Scaffold(
       resizeToAvoidBottomInset: false, // fluter 2.x
       appBar: AppBar(
@@ -1542,45 +1542,62 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                if (controller.items.contains(0)) ...[
-                  CustomProperty(
-                      index: 0,
-                      name: "Front & Side Aspects",
-                      data: pd,
-                      images: images),
-                ],
-                if (controller.items.contains(1)) ...[
-                  CustomProperty(
-                      index: 1,
-                      name: "Entrance Hall",
-                      data: pd,
-                      images: images),
-                ],
-                if (controller.items.contains(2)) ...[
-                  CustomProperty(
-                      index: 2, name: "Kitchen", data: pd, images: images),
-                ],
-                if (controller.items.contains(3)) ...[
-                  CustomProperty(
-                      index: 3, name: "Rear garden", data: pd, images: images),
-                ],
-                if (controller.items.contains(4)) ...[
-                  CustomProperty(
-                      index: 4, name: "Bathroom", data: pd, images: images),
-                ],
-                if (controller.items.contains(5)) ...[
-                  CustomProperty(
-                      index: 5, name: "Bathroom 1", data: pd, images: images),
-                ],
-                if (controller.items.contains(6)) ...[
-                  CustomProperty(
-                      index: 6, name: "Lounge", data: pd, images: images),
-                ],
-                if (controller.items.contains(7)) ...[
-                  CustomProperty(
-                      index: 7, name: "Bedroom", data: pd, images: images),
-                ],
-                for (int i = 8; i <= controller.list.value; i++)
+                for (int i = 0; i < widget.data.propertyDetails.length; i++)
+                  if (controller.items.contains(i)) ...[
+                    CustomProperty(
+                        walls: widget.data.propertyDetails[i].walls,
+                        units: widget.data.propertyDetails[i].units,
+                        floor: widget.data.propertyDetails[i].floor,
+                        doors: widget.data.propertyDetails[i].doors,
+                        windows: widget.data.propertyDetails[i].windows,
+                        celling: widget.data.propertyDetails[i].ceiling,
+                        appliences: widget.data.propertyDetails[i].appliances,
+                        index: i,
+                        name: widget.data.propertyDetails[i].name,
+                        data: pd,
+                        images: images),
+                  ],
+                // if (controller.items.contains(0)) ...[
+                //   CustomProperty(
+                //       index: 0,
+                //       name: "Front & Side Aspects",
+                //       data: pd,
+                //       images: images),
+                // ],
+                // if (controller.items.contains(1)) ...[
+                //   CustomProperty(
+                //       index: 1,
+                //       name: "Entrance Hall",
+                //       data: pd,
+                //       images: images),
+                // ],
+                // if (controller.items.contains(2)) ...[
+                //   CustomProperty(
+                //       index: 2, name: "Kitchen", data: pd, images: images),
+                // ],
+                // if (controller.items.contains(3)) ...[
+                //   CustomProperty(
+                //       index: 3, name: "Rear garden", data: pd, images: images),
+                // ],
+                // if (controller.items.contains(4)) ...[
+                //   CustomProperty(
+                //       index: 4, name: "Bathroom", data: pd, images: images),
+                // ],
+                // if (controller.items.contains(5)) ...[
+                //   CustomProperty(
+                //       index: 5, name: "Bathroom 1", data: pd, images: images),
+                // ],
+                // if (controller.items.contains(6)) ...[
+                //   CustomProperty(
+                //       index: 6, name: "Lounge", data: pd, images: images),
+                // ],
+                // if (controller.items.contains(7)) ...[
+                //   CustomProperty(
+                //       index: 7, name: "Bedroom", data: pd, images: images),
+                // ],
+                for (int i = widget.data.propertyDetails.length;
+                    i < controller.list.value;
+                    i++)
                   CustomProperty(
                       index: i,
                       name: "Bedroom " + (i - 7).toString(),

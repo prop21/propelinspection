@@ -62,65 +62,70 @@ class Home_Screen extends StatelessWidget {
         centerTitle: true,
       ),
       drawer: Drawer(
-        child: Column(
-          children: <Widget>[
-            Stack(children: [
-              Container(
-                height: 200,
-                width: Get.width,
-                padding: EdgeInsets.zero,
-                child:
-                    Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-                  Text(
-                    fname.toString() + " " + lname.toString(),
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+        child: Obx(
+          () => Column(
+            children: <Widget>[
+              Stack(children: [
+                Container(
+                  height: 200,
+                  width: Get.width,
+                  padding: EdgeInsets.zero,
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          controller.fname.value.toString() +
+                              " " +
+                              controller.lname.toString(),
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          controller.email.value.toString(),
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                      ]),
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    // image: DecorationImage(
+                    //     image: AssetImage("assets/splash/splash.png"),
+                    //     fit: BoxFit.cover)
                   ),
-                  Text(
-                    email.toString(),
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                ]),
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  // image: DecorationImage(
-                  //     image: AssetImage("assets/splash/splash.png"),
-                  //     fit: BoxFit.cover)
                 ),
+                Container(
+                  margin: EdgeInsets.only(left: 20, right: 20, top: 30),
+                  height: 100,
+                  color: Colors.white,
+                  width: Get.width,
+                  child: Image.asset("assets/splash/splash.png"),
+                )
+              ]),
+              ListTile(
+                leading: Icon(Icons.shield),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                title: Text('Reset Password'),
+                onTap: () {
+                  Get.to(() => Forgot_Screen());
+                },
               ),
-              Container(
-                margin: EdgeInsets.only(left: 20, right: 20, top: 30),
-                height: 100,
-                color: Colors.white,
-                width: Get.width,
-                child: Image.asset("assets/splash/splash.png"),
-              )
-            ]),
-            ListTile(
-              leading: Icon(Icons.shield),
-              trailing: Icon(Icons.keyboard_arrow_right),
-              title: Text('Reset Password'),
-              onTap: () {
-                Get.to(() => Forgot_Screen());
-              },
-            ),
-            Spacer(),
-            ListTile(
-              leading: Icon(Icons.exit_to_app),
-              title: Text('Logout'),
-              trailing: Icon(Icons.keyboard_arrow_right),
-              onTap: () async {
-                final SharedPreferences prefs =
-                    await SharedPreferences.getInstance();
-                prefs.clear();
-                Get.offAll(() => Login_Screen());
-              },
-            ),
-          ],
+              Spacer(),
+              ListTile(
+                leading: Icon(Icons.exit_to_app),
+                title: Text('Logout'),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                onTap: () async {
+                  final SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  prefs.clear();
+                  Get.offAll(() => Login_Screen());
+                },
+              ),
+            ],
+          ),
         ),
       ),
       body: Obx(

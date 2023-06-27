@@ -38,6 +38,8 @@ class LoginController extends GetxController {
         Authenticator().setUserID(result.id.toString());
         Authenticator().setEmail(result.email.toString());
         Authenticator().setLogo(result.companyLogo.toString());
+        prefs.setString("fname", result.firstName.toString());
+        prefs.setString("lname", result.lastName.toString());
         prefs.setString("id", result.id.toString());
         prefs.setString("email", result.email.toString());
         prefs.setString("logo", result.companyLogo.toString());

@@ -9,9 +9,27 @@ import 'package:get/get.dart';
 class CustomProperty extends StatefulWidget {
   CustomPropertyState createState() => CustomPropertyState();
   CustomProperty(
-      {this.data, this.name, required this.index, required this.images});
+      {this.data,
+      this.name,
+      required this.index,
+      required this.images,
+      this.units,
+      this.floor,
+      this.appliences,
+      this.windows,
+      this.doors,
+      this.celling,
+      this.walls});
   List<PropertyDetails>? data;
   String? name;
+  String? units;
+  String? celling;
+  String? floor;
+  String? appliences;
+  String? windows;
+  String? doors;
+  String? walls;
+
   int index;
   List<List<String>> images;
 }
@@ -57,17 +75,36 @@ class CustomPropertyState extends State<CustomProperty> {
     widget.data?[widget.index].images = imagess;
     widget.data = widget.data?.toSet().toList();
     print(widget.data?[widget.index].name);
-    et2.text="Fair Condition";
-    et3.text="Fair Condition";
-    et4.text="Fair Condition";
-    et6.text="Fair Condition";
-    et7.text="Fair Condition";
-    et8.text="Fair Condition";
+    et2.text = "Fair Condition";
+    et3.text = "Fair Condition";
+    et4.text = "Fair Condition";
+    et6.text = "Fair Condition";
+    et7.text = "Fair Condition";
+    et8.text = "Fair Condition";
   }
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    widget.walls != null
+        ? et2.text = widget.walls.toString()
+        : et2.text = "Fair Condition";
+    widget.windows != null
+        ? et3.text = widget.windows.toString()
+        : et3.text = "Fair Condition";
+    widget.floor != null
+        ? et8.text = widget.floor.toString()
+        : et8.text = "Fair Condition";
+    widget.doors != null
+        ? et4.text = widget.doors.toString()
+        : et4.text = "Fair Condition";
+    widget.units != null
+        ? et6.text = widget.units.toString()
+        : et6.text = "Fair Condition";
+    widget.appliences != null
+        ? et7.text = widget.appliences.toString()
+        : et7.text = "Fair Condition";
+
     return Container(
       padding: EdgeInsets.all(5),
       margin: EdgeInsets.only(bottom: 15),

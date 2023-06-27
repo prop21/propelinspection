@@ -200,7 +200,7 @@ class PropertyDetails {
     data['floor'] = this.floor;
     data['walls'] = this.walls;
     data["units"] = this.units;
-    data["Appliances"] = this.units;
+    data["Appliances"] = this.appliances;
     data["doors"] = this.doors;
     data['ceiling'] = this.ceiling;
     data['windows'] = this.windows;

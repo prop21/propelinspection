@@ -57,7 +57,6 @@ dependencies:
   permission_handler: ^10.3.0
   screenshot: ^2.1.0
   flutter_html_to_pdf: ^0.7.0
-  pspdfkit_flutter: ^3.6.0
   awesome_dialog: ^3.1.0
   flutter_launcher_icons: ^0.13.1
   shared_preferences: ^2.1.2
