@@ -1544,7 +1544,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                 ),
                 for (int i = 0; i < widget.data.propertyDetails.length; i++)
                   if (controller.items.contains(i)) ...[
-                    CustomProperty(
+                    CustomProperty1(
+                      imgurl: widget.data.propertyDetails[i].propertyImages,
                         walls: widget.data.propertyDetails[i].walls,
                         units: widget.data.propertyDetails[i].units,
                         floor: widget.data.propertyDetails[i].floor,
