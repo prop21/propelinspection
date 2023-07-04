@@ -22,9 +22,9 @@ class Home_Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    controller.fname.value = fname!;
-    controller.lname.value = lname!;
-    controller.email.value = email!;
+    controller.fname.value = fname.toString();
+    controller.lname.value = lname.toString();
+    controller.email.value = email.toString();
     print(email);
     return Scaffold(
       resizeToAvoidBottomInset: false, // fluter 2.x

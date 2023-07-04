@@ -134,8 +134,8 @@ class Register_Screen extends StatelessWidget {
                 Center(
                   child: InkWell(
                     onTap: () async {
-
-                      final SharedPreferences prefs = await SharedPreferences.getInstance();
+                      final SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
                       try {
                         final ImagePicker picker = ImagePicker();
 // Pick an image.

@@ -77,12 +77,12 @@ class CustomPropertyState extends State<CustomProperty> {
     widget.data?[widget.index].images = imagess;
     widget.data = widget.data?.toSet().toList();
     print(widget.data?[widget.index].name);
-    et2.text = "Fair Condition";
-    et3.text = "Fair Condition";
-    et4.text = "Fair Condition";
-    et6.text = "Fair Condition";
-    et7.text = "Fair Condition";
-    et8.text = "Fair Condition";
+    et2.text = "Fair";
+    et3.text = "Fair";
+    et4.text = "Fair";
+    et6.text = "Fair";
+    et7.text = "Fair";
+    et8.text = "Fair";
   }
 
   @override
@@ -90,22 +90,22 @@ class CustomPropertyState extends State<CustomProperty> {
     // TODO: implement build
     widget.walls != null
         ? et2.text = widget.walls.toString()
-        : et2.text = "Fair Condition";
+        : et2.text = "Fair";
     widget.windows != null
         ? et3.text = widget.windows.toString()
-        : et3.text = "Fair Condition";
+        : et3.text = "Fair";
     widget.floor != null
         ? et8.text = widget.floor.toString()
-        : et8.text = "Fair Condition";
+        : et8.text = "Fair";
     widget.doors != null
         ? et4.text = widget.doors.toString()
-        : et4.text = "Fair Condition";
+        : et4.text = "Fair";
     widget.units != null
         ? et6.text = widget.units.toString()
-        : et6.text = "Fair Condition";
+        : et6.text = "Fair";
     widget.appliences != null
         ? et7.text = widget.appliences.toString()
-        : et7.text = "Fair Condition";
+        : et7.text = "Fair";
 
     return Container(
       padding: EdgeInsets.all(5),
@@ -304,7 +304,7 @@ class CustomPropertyState extends State<CustomProperty> {
                         ? Stack(children: [
                             Image.file(
                               File(imaage.path.toString()),
-                              fit: BoxFit.fill,
+                              fit: BoxFit.contain,
                               height: 120,
                               width: Get.width,
                             ),
@@ -347,8 +347,7 @@ class CustomPropertyState extends State<CustomProperty> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                   imaage =
-                                      await controller.pickImageGallerys();
+                                  imaage = await controller.pickImageGallerys();
                                   setState(() {});
                                   if (imaage != null) {
                                     url1 = await controller.upload(imaage);
@@ -358,8 +357,6 @@ class CustomPropertyState extends State<CustomProperty> {
                                     widget.data?[widget.index].images?[0] =
                                         url1;
                                   }
-
-
                                 },
                                 child: Icon(
                                   Icons.image,
@@ -386,7 +383,7 @@ class CustomPropertyState extends State<CustomProperty> {
                         ? Stack(children: [
                             Image.file(
                               File(image1.path.toString()),
-                              fit: BoxFit.fill,
+                              fit: BoxFit.contain,
                               height: 120,
                               width: Get.width,
                             ),
@@ -466,7 +463,7 @@ class CustomPropertyState extends State<CustomProperty> {
                         ? Stack(children: [
                             Image.file(
                               File(image2.path.toString()),
-                              fit: BoxFit.fill,
+                              fit: BoxFit.contain,
                               height: 120,
                               width: Get.width,
                             ),
@@ -555,7 +552,7 @@ class CustomPropertyState extends State<CustomProperty> {
                         ? Stack(children: [
                             Image.file(
                               File(image3.path.toString()),
-                              fit: BoxFit.fill,
+                              fit: BoxFit.contain,
                               height: 120,
                               width: Get.width,
                             ),
@@ -633,7 +630,7 @@ class CustomPropertyState extends State<CustomProperty> {
                         ? Stack(children: [
                             Image.file(
                               File(image4.path.toString()),
-                              fit: BoxFit.fill,
+                              fit: BoxFit.contain,
                               height: 120,
                               width: Get.width,
                             ),
@@ -712,7 +709,7 @@ class CustomPropertyState extends State<CustomProperty> {
                         ? Stack(children: [
                             Image.file(
                               File(image5.path.toString()),
-                              fit: BoxFit.fill,
+                              fit: BoxFit.contain,
                               height: 120,
                               width: Get.width,
                             ),
@@ -799,7 +796,7 @@ class CustomPropertyState extends State<CustomProperty> {
                         ? Stack(children: [
                             Image.file(
                               File(image6.path.toString()),
-                              fit: BoxFit.fill,
+                              fit: BoxFit.contain,
                               height: 120,
                               width: Get.width,
                             ),
@@ -878,7 +875,7 @@ class CustomPropertyState extends State<CustomProperty> {
                         ? Stack(children: [
                             Image.file(
                               File(image7.path.toString()),
-                              fit: BoxFit.fill,
+                              fit: BoxFit.contain,
                               height: 120,
                               width: Get.width,
                             ),
@@ -957,7 +954,7 @@ class CustomPropertyState extends State<CustomProperty> {
                         ? Stack(children: [
                             Image.file(
                               File(image8.path.toString()),
-                              fit: BoxFit.fill,
+                              fit: BoxFit.contain,
                               height: 120,
                               width: Get.width,
                             ),
@@ -1107,12 +1104,12 @@ class CustomPropertyState1 extends State<CustomProperty1> {
     widget.data?[widget.index].images = imagess;
     widget.data = widget.data?.toSet().toList();
     print(widget.data?[widget.index].name);
-    et2.text = "Fair Condition";
-    et3.text = "Fair Condition";
-    et4.text = "Fair Condition";
-    et6.text = "Fair Condition";
-    et7.text = "Fair Condition";
-    et8.text = "Fair Condition";
+    et2.text = "Fair";
+    et3.text = "Fair";
+    et4.text = "Fair";
+    et6.text = "Fair";
+    et7.text = "Fair";
+    et8.text = "Fair";
   }
 
   @override
@@ -1120,22 +1117,22 @@ class CustomPropertyState1 extends State<CustomProperty1> {
     // TODO: implement build
     widget.walls != null
         ? et2.text = widget.walls.toString()
-        : et2.text = "Fair Condition";
+        : et2.text = "Fair";
     widget.windows != null
         ? et3.text = widget.windows.toString()
-        : et3.text = "Fair Condition";
+        : et3.text = "Fair";
     widget.floor != null
         ? et8.text = widget.floor.toString()
-        : et8.text = "Fair Condition";
+        : et8.text = "Fair";
     widget.doors != null
         ? et4.text = widget.doors.toString()
-        : et4.text = "Fair Condition";
+        : et4.text = "Fair";
     widget.units != null
         ? et6.text = widget.units.toString()
-        : et6.text = "Fair Condition";
+        : et6.text = "Fair";
     widget.appliences != null
         ? et7.text = widget.appliences.toString()
-        : et7.text = "Fair Condition";
+        : et7.text = "Fair";
 
     return Container(
       padding: EdgeInsets.all(5),
@@ -1336,7 +1333,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                             image.path.isNotEmpty
                                 ? Image.file(
                                     File(image.path.toString()),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
                                   )
@@ -1344,7 +1341,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     Paths.baseUrl +
                                         "/" +
                                         widget.imgurl[0].url.toString(),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
                                   ),
@@ -1428,7 +1425,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                             image1.path.isNotEmpty
                                 ? Image.file(
                                     File(image1.path.toString()),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
                                   )
@@ -1436,7 +1433,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     Paths.baseUrl +
                                         "/" +
                                         widget.imgurl[1].url.toString(),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
                                   ),
@@ -1519,7 +1516,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                             image2.path.isNotEmpty
                                 ? Image.file(
                                     File(image2.path.toString()),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
                                   )
@@ -1527,7 +1524,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     Paths.baseUrl +
                                         "/" +
                                         widget.imgurl[2].url.toString(),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
                                   ),
@@ -1620,7 +1617,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                               image3.path.isNotEmpty
                                   ? Image.file(
                                       File(image3.path.toString()),
-                                      fit: BoxFit.fill,
+                                      fit: BoxFit.contain,
                                       height: 120,
                                       width: Get.width,
                                     )
@@ -1628,7 +1625,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                       Paths.baseUrl +
                                           "/" +
                                           widget.imgurl[3].url.toString(),
-                                      fit: BoxFit.fill,
+                                      fit: BoxFit.contain,
                                       height: 120,
                                       width: Get.width,
                                     ),
@@ -1713,7 +1710,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                             image4.path.isNotEmpty
                                 ? Image.file(
                                     File(image4.path.toString()),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
                                   )
@@ -1721,7 +1718,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     Paths.baseUrl +
                                         "/" +
                                         widget.imgurl[4].url.toString(),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
                                   ),
@@ -1803,7 +1800,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                             image5.path.isNotEmpty
                                 ? Image.file(
                                     File(image5.path.toString()),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
                                   )
@@ -1811,7 +1808,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     Paths.baseUrl +
                                         "/" +
                                         widget.imgurl[5].url.toString(),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
                                   ),
@@ -1901,7 +1898,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                             image6.path.isNotEmpty
                                 ? Image.file(
                                     File(image6.path.toString()),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
                                   )
@@ -1909,7 +1906,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     Paths.baseUrl +
                                         "/" +
                                         widget.imgurl[6].url.toString(),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
                                   ),
@@ -1991,7 +1988,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                             image7.path.isNotEmpty
                                 ? Image.file(
                                     File(image7.path.toString()),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
                                   )
@@ -1999,7 +1996,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     Paths.baseUrl +
                                         "/" +
                                         widget.imgurl[7].url.toString(),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
                                   ),
@@ -2081,7 +2078,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                             image8.path.isNotEmpty
                                 ? Image.file(
                                     File(image8.path.toString()),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
                                   )
@@ -2089,7 +2086,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     Paths.baseUrl +
                                         "/" +
                                         widget.imgurl[8].url.toString(),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
                                   ),

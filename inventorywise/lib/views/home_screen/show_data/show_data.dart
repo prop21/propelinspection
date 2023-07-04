@@ -1478,7 +1478,9 @@ class Show_Data_Screen extends StatelessWidget {
     <br>
     <br> 
     <br>
-    <br> 
+    <br>
+    <br>
+    
     <div
       style="
         font-size: 28px;
@@ -1819,7 +1821,7 @@ class Show_Data_Screen extends StatelessWidget {
       style="
         font-size: 24px;
         color: blue;
-        height:1190px;
+        height:1165px;
         margin-left: 48px;
         font-weight: bold;
         margin-top: 45px;
@@ -1872,9 +1874,7 @@ class Show_Data_Screen extends StatelessWidget {
       ''' : '''''').join('')}
     
     </div>
-    <br>
-     <br>
-      <br>
+    
       </div>
   ''').join('')}
   <br>

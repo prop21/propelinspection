@@ -33,10 +33,34 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
     controller.f[0].text = widget.data.propertyAddress;
     controller.f[1].text = widget.data.tenantName;
     controller.f[2].text = widget.data.inspectorName;
-    controller.f[3].text = widget.data.inspectionDate;
-    controller.f[4].text = widget.data.ecpExpDate;
-    controller.f[5].text = widget.data.ecirExpDate;
-    controller.f[6].text = widget.data.gasSafetyCertificateExpDate;
+    controller.f[3].text =
+        DateTime.parse(widget.data.inspectionDate).day.toString() +
+            "-" +
+            DateTime.parse(widget.data.inspectionDate).month.toString() +
+            "-" +
+            DateTime.parse(widget.data.inspectionDate).year.toString();
+    controller.f[4].text =
+        DateTime.parse(widget.data.ecpExpDate).day.toString() +
+            "-" +
+            DateTime.parse(widget.data.ecpExpDate).month.toString() +
+            "-" +
+            DateTime.parse(widget.data.ecpExpDate).year.toString();
+    controller.f[5].text =
+        DateTime.parse(widget.data.ecirExpDate).day.toString() +
+            "-" +
+            DateTime.parse(widget.data.ecirExpDate).month.toString() +
+            "-" +
+            DateTime.parse(widget.data.ecirExpDate).year.toString();
+    controller.f[6].text =
+        DateTime.parse(widget.data.gasSafetyCertificateExpDate).day.toString() +
+            "-" +
+            DateTime.parse(widget.data.gasSafetyCertificateExpDate)
+                .month
+                .toString() +
+            "-" +
+            DateTime.parse(widget.data.gasSafetyCertificateExpDate)
+                .year
+                .toString();
     controller.f[7].text = widget.data.electricityMeterReading;
     controller.f[8].text = widget.data.gasMeterReading;
     controller.f[9].text = widget.data.waterMeterReading;

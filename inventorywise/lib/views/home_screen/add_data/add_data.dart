@@ -506,7 +506,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                                       Image.file(
                                         File(controller.electric.value.path
                                             .toString()),
-                                        fit: BoxFit.fill,
+                                        fit:  BoxFit.contain,
                                         height: 120,
                                         width: Get.width,
                                       ),
@@ -681,7 +681,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                                       Image.file(
                                         File(controller.gasmeter.value.path
                                             .toString()),
-                                        fit: BoxFit.fill,
+                                        fit:  BoxFit.contain,
                                         height: 120,
                                         width: Get.width,
                                       ),
@@ -856,7 +856,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                                       Image.file(
                                         File(controller.watermeter.value.path
                                             .toString()),
-                                        fit: BoxFit.fill,
+                                        fit:  BoxFit.contain,
                                         height: 120,
                                         width: Get.width,
                                       ),
@@ -881,7 +881,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                                             File(controller
                                                 .watermeter.value.path
                                                 .toString()),
-                                            fit: BoxFit.fill,
+                                            fit:  BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
                                           ),
@@ -1038,7 +1038,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                                       Image.file(
                                         File(controller.smokealarm.value.path
                                             .toString()),
-                                        fit: BoxFit.fill,
+                                        fit:  BoxFit.contain,
                                         height: 120,
                                         width: Get.width,
                                       ),
@@ -1063,7 +1063,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                                             File(controller
                                                 .smokealarm.value.path
                                                 .toString()),
-                                            fit: BoxFit.fill,
+                                            fit:  BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
                                           ),
@@ -1149,7 +1149,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                                       Image.file(
                                         File(controller.smokealar.value.path
                                             .toString()),
-                                        fit: BoxFit.fill,
+                                        fit:  BoxFit.contain,
                                         height: 120,
                                         width: Get.width,
                                       ),
@@ -1173,7 +1173,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                                           Image.file(
                                             File(controller.smokealar.value.path
                                                 .toString()),
-                                            fit: BoxFit.fill,
+                                            fit:  BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
                                           ),
@@ -1330,7 +1330,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                                       Image.file(
                                         File(controller.coal.value.path
                                             .toString()),
-                                        fit: BoxFit.fill,
+                                        fit:  BoxFit.contain,
                                         height: 120,
                                         width: Get.width,
                                       ),
@@ -1354,7 +1354,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                                           Image.file(
                                             File(controller.coal.value.path
                                                 .toString()),
-                                            fit: BoxFit.fill,
+                                            fit:  BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
                                           ),
@@ -1438,7 +1438,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                                       Image.file(
                                         File(controller.coalarm.value.path
                                             .toString()),
-                                        fit: BoxFit.fill,
+                                        fit:  BoxFit.contain,
                                         height: 120,
                                         width: Get.width,
                                       ),
@@ -1462,7 +1462,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                                           Image.file(
                                             File(controller.coalarm.value.path
                                                 .toString()),
-                                            fit: BoxFit.fill,
+                                            fit:  BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
                                           ),
@@ -1616,7 +1616,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                                   Image.file(
                                     File(controller.heating.value.path
                                         .toString()),
-                                    fit: BoxFit.fill,
+                                    fit:  BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
                                   ),
@@ -1640,7 +1640,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                                       Image.file(
                                         File(controller.heating.value.path
                                             .toString()),
-                                        fit: BoxFit.fill,
+                                        fit:  BoxFit.contain,
                                         height: 120,
                                         width: Get.width,
                                       ),
