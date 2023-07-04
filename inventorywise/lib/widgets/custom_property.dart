@@ -47,7 +47,7 @@ class CustomPropertyState extends State<CustomProperty> {
   late String url8;
   late String url9;
   List<String> imagess = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
-  File image = File("");
+  File imaage = File("");
   File image1 = File("");
   File image2 = File("");
   File image3 = File("");
@@ -292,475 +292,245 @@ class CustomPropertyState extends State<CustomProperty> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  height: 70,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: image.path.isNotEmpty
-                      ? Stack(children: [
-                          Image.file(
-                            File(image.path.toString()),
-                            fit: BoxFit.fill,
-                            height: 120,
-                            width: Get.width,
-                          ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                  padding: EdgeInsets.only(right: 5, top: 5),
-                                  child: InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          image = File("");
-                                        });
-                                      },
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )))),
-                        ])
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                image = await controller.pickImages();
-                                setState(() {});
-                                url1 = await controller.upload(image);
-                                imagess[0] = url1;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[0] = url1;
-                              },
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
+                Flexible(
+                  child: Container(
+                    height: 70,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: imaage.path.isNotEmpty
+                        ? Stack(children: [
+                            Image.file(
+                              File(imaage.path.toString()),
+                              fit: BoxFit.fill,
+                              height: 120,
+                              width: Get.width,
                             ),
-                            SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                var image =
-                                    await controller.pickImageGallerys();
-                                setState(() {});
-                                if (image != null) {
-                                  url1 = await controller.upload(image);
-                                  imagess.add(url1);
+                            Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                    padding: EdgeInsets.only(right: 5, top: 5),
+                                    child: InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            imaage = File("");
+                                          });
+                                        },
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        )))),
+                          ])
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  imaage = await controller.pickImages();
+                                  setState(() {});
+                                  url1 = await controller.upload(imaage);
                                   imagess[0] = url1;
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[0] = url1;
-                                }
-                              },
-                              child: Icon(
-                                Icons.image,
-                                size: 32,
-                                color: Colors.blue,
+                                },
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
+                              SizedBox(
+                                width: 2,
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                   imaage =
+                                      await controller.pickImageGallerys();
+                                  setState(() {});
+                                  if (imaage != null) {
+                                    url1 = await controller.upload(imaage);
+                                    imagess[0] = url1;
+                                    imagess = imagess.toSet().toList();
+                                    // widget.data?[widget.index].images = imagess;
+                                    widget.data?[widget.index].images?[0] =
+                                        url1;
+                                  }
+
+
+                                },
+                                child: Icon(
+                                  Icons.image,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ],
+                          ),
+                  ),
                 ),
                 SizedBox(
                   width: 10,
                 ),
-                Container(
-                  height: 70,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: image1.path.isNotEmpty
-                      ? Stack(children: [
-                          Image.file(
-                            File(image1.path.toString()),
-                            fit: BoxFit.fill,
-                            height: 120,
-                            width: Get.width,
+                Flexible(
+                  child: Container(
+                    height: 70,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: image1.path.isNotEmpty
+                        ? Stack(children: [
+                            Image.file(
+                              File(image1.path.toString()),
+                              fit: BoxFit.fill,
+                              height: 120,
+                              width: Get.width,
+                            ),
+                            Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                    padding: EdgeInsets.only(right: 5, top: 5),
+                                    child: InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            image1 = File("");
+                                          });
+                                        },
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        )))),
+                          ])
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  image1 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url2 = await controller.upload(image1);
+                                  imagess[1] = url2;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[1] = url2;
+                                },
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 2,
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  image1 = await controller.pickImageGallerys();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url2 = await controller.upload(image1);
+                                  imagess[1] = url2;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[1] = url2;
+                                },
+                                child: Icon(
+                                  Icons.image,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ],
                           ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                  padding: EdgeInsets.only(right: 5, top: 5),
-                                  child: InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          image1 = File("");
-                                        });
-                                      },
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )))),
-                        ])
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                image1 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url2 = await controller.upload(image1);
-                                imagess[1] = url2;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[1] = url2;
-                              },
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                image1 = await controller.pickImageGallerys();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url2 = await controller.upload(image1);
-                                imagess[1] = url2;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[1] = url2;
-                              },
-                              child: Icon(
-                                Icons.image,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          ],
-                        ),
+                  ),
                 ),
                 SizedBox(
                   width: 10,
                 ),
-                Container(
-                  height: 70,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: image2.path.isNotEmpty
-                      ? Stack(children: [
-                          Image.file(
-                            File(image2.path.toString()),
-                            fit: BoxFit.fill,
-                            height: 120,
-                            width: Get.width,
+                Flexible(
+                  child: Container(
+                    height: 70,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: image2.path.isNotEmpty
+                        ? Stack(children: [
+                            Image.file(
+                              File(image2.path.toString()),
+                              fit: BoxFit.fill,
+                              height: 120,
+                              width: Get.width,
+                            ),
+                            Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                    padding: EdgeInsets.only(right: 5, top: 5),
+                                    child: InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            image2 = File("");
+                                          });
+                                        },
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        )))),
+                          ])
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  image2 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url3 = await controller.upload(image2);
+                                  imagess[2] = url3;
+                                  print(imagess[2]);
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[2] = url3;
+                                },
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 2,
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  image2 = await controller.pickImageGallerys();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url3 = await controller.upload(image2);
+                                  imagess[2] = url3;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[2] = url3;
+                                },
+                                child: Icon(
+                                  Icons.image,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ],
                           ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                  padding: EdgeInsets.only(right: 5, top: 5),
-                                  child: InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          image2 = File("");
-                                        });
-                                      },
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )))),
-                        ])
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                image2 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url3 = await controller.upload(image2);
-                                imagess[2] = url3;
-                                print(imagess[2]);
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[2] = url3;
-                              },
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                image2 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url3 = await controller.upload(image2);
-                                imagess[2] = url3;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[2] = url3;
-                              },
-                              child: Icon(
-                                Icons.image,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          ],
-                        ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 10, top: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 70,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: image3.path.isNotEmpty
-                      ? Stack(children: [
-                          Image.file(
-                            File(image3.path.toString()),
-                            fit: BoxFit.fill,
-                            height: 120,
-                            width: Get.width,
-                          ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                  padding: EdgeInsets.only(right: 5, top: 5),
-                                  child: InkWell(
-                                      onTap: () {
-                                        image3 = File("");
-                                      },
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )))),
-                        ])
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                image3 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url4 = await controller.upload(image3);
-                                imagess[3] = url4;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[3] = url4;
-                              },
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                image3 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url4 = await controller.upload(image3);
-                                imagess[3] = url4;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[3] = url4;
-                              },
-                              child: Icon(
-                                Icons.image,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          ],
-                        ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 70,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: image4.path.isNotEmpty
-                      ? Stack(children: [
-                          Image.file(
-                            File(image4.path.toString()),
-                            fit: BoxFit.fill,
-                            height: 120,
-                            width: Get.width,
-                          ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                  padding: EdgeInsets.only(right: 5, top: 5),
-                                  child: InkWell(
-                                      onTap: () {
-                                        image4 = File("");
-                                        setState(() {});
-                                      },
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )))),
-                        ])
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                image4 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url5 = await controller.upload(image4);
-                                imagess[4] = url5;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[4] = url5;
-                              },
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                image4 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url5 = await controller.upload(image4);
-                                imagess[4] = url5;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[4] = url5;
-                              },
-                              child: Icon(
-                                Icons.image,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          ],
-                        ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 70,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: image5.path.isNotEmpty
-                      ? Stack(children: [
-                          Image.file(
-                            File(image5.path.toString()),
-                            fit: BoxFit.fill,
-                            height: 120,
-                            width: Get.width,
-                          ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                  padding: EdgeInsets.only(right: 5, top: 5),
-                                  child: InkWell(
-                                      onTap: () {
-                                        image5 = File("");
-                                        setState(() {});
-                                      },
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )))),
-                        ])
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                image5 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url6 = await controller.upload(image5);
-                                imagess[5] = url6;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[5] = url6;
-                              },
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                image5 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url6 = await controller.upload(image5);
-                                imagess[5] = url6;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[5] = url6;
-                              },
-                              child: Icon(
-                                Icons.image,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          ],
-                        ),
+                  ),
                 ),
                 SizedBox(
                   width: 10,
@@ -773,233 +543,483 @@ class CustomPropertyState extends State<CustomProperty> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  height: 70,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: image6.path.isNotEmpty
-                      ? Stack(children: [
-                          Image.file(
-                            File(image6.path.toString()),
-                            fit: BoxFit.fill,
-                            height: 120,
-                            width: Get.width,
+                Flexible(
+                  child: Container(
+                    height: 70,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: image3.path.isNotEmpty
+                        ? Stack(children: [
+                            Image.file(
+                              File(image3.path.toString()),
+                              fit: BoxFit.fill,
+                              height: 120,
+                              width: Get.width,
+                            ),
+                            Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                    padding: EdgeInsets.only(right: 5, top: 5),
+                                    child: InkWell(
+                                        onTap: () {
+                                          image3 = File("");
+                                        },
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        )))),
+                          ])
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  image3 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url4 = await controller.upload(image3);
+                                  imagess[3] = url4;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[3] = url4;
+                                },
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 2,
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  image3 = await controller.pickImageGallerys();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url4 = await controller.upload(image3);
+                                  imagess[3] = url4;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[3] = url4;
+                                },
+                                child: Icon(
+                                  Icons.image,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ],
                           ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                  padding: EdgeInsets.only(right: 5, top: 5),
-                                  child: InkWell(
-                                      onTap: () {
-                                        image6 = File("");
-                                        setState(() {});
-                                      },
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )))),
-                        ])
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                image6 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url7 = await controller.upload(image6);
-                                imagess[6] = url7;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[6] = url7;
-                              },
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                image6 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url7 = await controller.upload(image6);
-                                imagess[6] = url7;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[6] = url7;
-                              },
-                              child: Icon(
-                                Icons.image,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          ],
-                        ),
+                  ),
                 ),
                 SizedBox(
                   width: 10,
                 ),
-                Container(
-                  height: 70,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: image7.path.isNotEmpty
-                      ? Stack(children: [
-                          Image.file(
-                            File(image7.path.toString()),
-                            fit: BoxFit.fill,
-                            height: 120,
-                            width: Get.width,
+                Flexible(
+                  child: Container(
+                    height: 70,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: image4.path.isNotEmpty
+                        ? Stack(children: [
+                            Image.file(
+                              File(image4.path.toString()),
+                              fit: BoxFit.fill,
+                              height: 120,
+                              width: Get.width,
+                            ),
+                            Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                    padding: EdgeInsets.only(right: 5, top: 5),
+                                    child: InkWell(
+                                        onTap: () {
+                                          image4 = File("");
+                                          setState(() {});
+                                        },
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        )))),
+                          ])
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  image4 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url5 = await controller.upload(image4);
+                                  imagess[4] = url5;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[4] = url5;
+                                },
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 2,
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  image4 = await controller.pickImageGallerys();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url5 = await controller.upload(image4);
+                                  imagess[4] = url5;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[4] = url5;
+                                },
+                                child: Icon(
+                                  Icons.image,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ],
                           ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                  padding: EdgeInsets.only(right: 5, top: 5),
-                                  child: InkWell(
-                                      onTap: () {
-                                        image7 = File("");
-                                        setState(() {});
-                                      },
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )))),
-                        ])
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                image7 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url8 = await controller.upload(image7);
-                                imagess[7] = url8;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[7] = url8;
-                              },
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                image7 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url8 = await controller.upload(image7);
-                                imagess[7] = url8;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[7] = url8;
-                              },
-                              child: Icon(
-                                Icons.image,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          ],
-                        ),
+                  ),
                 ),
                 SizedBox(
                   width: 10,
                 ),
-                Container(
-                  height: 70,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: image8.path.isNotEmpty
-                      ? Stack(children: [
-                          Image.file(
-                            File(image8.path.toString()),
-                            fit: BoxFit.fill,
-                            height: 120,
-                            width: Get.width,
+                Flexible(
+                  child: Container(
+                    height: 70,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: image5.path.isNotEmpty
+                        ? Stack(children: [
+                            Image.file(
+                              File(image5.path.toString()),
+                              fit: BoxFit.fill,
+                              height: 120,
+                              width: Get.width,
+                            ),
+                            Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                    padding: EdgeInsets.only(right: 5, top: 5),
+                                    child: InkWell(
+                                        onTap: () {
+                                          image5 = File("");
+                                          setState(() {});
+                                        },
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        )))),
+                          ])
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  image5 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url6 = await controller.upload(image5);
+                                  imagess[5] = url6;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[5] = url6;
+                                },
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 2,
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  image5 = await controller.pickImageGallerys();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url6 = await controller.upload(image5);
+                                  imagess[5] = url6;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[5] = url6;
+                                },
+                                child: Icon(
+                                  Icons.image,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ],
                           ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                  padding: EdgeInsets.only(right: 5, top: 5),
-                                  child: InkWell(
-                                      onTap: () {
-                                        image8 = File("");
-                                        setState(() {});
-                                      },
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )))),
-                        ])
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                image8 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url9 = await controller.upload(image8);
-                                imagess[8] = url9;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[8] = url9;
-                              },
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 32,
-                                color: Colors.blue,
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 10, top: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                  child: Container(
+                    height: 70,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: image6.path.isNotEmpty
+                        ? Stack(children: [
+                            Image.file(
+                              File(image6.path.toString()),
+                              fit: BoxFit.fill,
+                              height: 120,
+                              width: Get.width,
+                            ),
+                            Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                    padding: EdgeInsets.only(right: 5, top: 5),
+                                    child: InkWell(
+                                        onTap: () {
+                                          image6 = File("");
+                                          setState(() {});
+                                        },
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        )))),
+                          ])
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  image6 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url7 = await controller.upload(image6);
+                                  imagess[6] = url7;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[6] = url7;
+                                },
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                image8 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url9 = await controller.upload(image8);
-                                imagess[8] = url9;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[8] = url9;
-                              },
-                              child: Icon(
-                                Icons.image,
-                                size: 32,
-                                color: Colors.blue,
+                              SizedBox(
+                                width: 2,
                               ),
+                              InkWell(
+                                onTap: () async {
+                                  image6 = await controller.pickImageGallerys();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url7 = await controller.upload(image6);
+                                  imagess[6] = url7;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[6] = url7;
+                                },
+                                child: Icon(
+                                  Icons.image,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ],
+                          ),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Flexible(
+                  child: Container(
+                    height: 70,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: image7.path.isNotEmpty
+                        ? Stack(children: [
+                            Image.file(
+                              File(image7.path.toString()),
+                              fit: BoxFit.fill,
+                              height: 120,
+                              width: Get.width,
                             ),
-                          ],
-                        ),
+                            Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                    padding: EdgeInsets.only(right: 5, top: 5),
+                                    child: InkWell(
+                                        onTap: () {
+                                          image7 = File("");
+                                          setState(() {});
+                                        },
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        )))),
+                          ])
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  image7 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url8 = await controller.upload(image7);
+                                  imagess[7] = url8;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[7] = url8;
+                                },
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 2,
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  image7 = await controller.pickImageGallerys();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url8 = await controller.upload(image7);
+                                  imagess[7] = url8;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[7] = url8;
+                                },
+                                child: Icon(
+                                  Icons.image,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ],
+                          ),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Flexible(
+                  child: Container(
+                    height: 70,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: image8.path.isNotEmpty
+                        ? Stack(children: [
+                            Image.file(
+                              File(image8.path.toString()),
+                              fit: BoxFit.fill,
+                              height: 120,
+                              width: Get.width,
+                            ),
+                            Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                    padding: EdgeInsets.only(right: 5, top: 5),
+                                    child: InkWell(
+                                        onTap: () {
+                                          image8 = File("");
+                                          setState(() {});
+                                        },
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        )))),
+                          ])
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  image8 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url9 = await controller.upload(image8);
+                                  imagess[8] = url9;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[8] = url9;
+                                },
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 2,
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  image8 = await controller.pickImageGallerys();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url9 = await controller.upload(image8);
+                                  imagess[8] = url9;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[8] = url9;
+                                },
+                                child: Icon(
+                                  Icons.image,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ],
+                          ),
+                  ),
                 ),
                 SizedBox(
                   width: 10,
@@ -1302,296 +1322,20 @@ class CustomPropertyState1 extends State<CustomProperty1> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  height: 70,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: widget.imgurl[0].url.contains("upload") ||
-                          image.path.isNotEmpty
-                      ? Stack(children: [
-                          image.path.isNotEmpty
-                              ? Image.file(
-                                  File(image.path.toString()),
-                                  fit: BoxFit.fill,
-                                  height: 120,
-                                  width: Get.width,
-                                )
-                              : Image.network(
-                                  Paths.baseUrl +
-                                      "/" +
-                                      widget.imgurl[0].url.toString(),
-                                  fit: BoxFit.fill,
-                                  height: 120,
-                                  width: Get.width,
-                                ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                  padding: EdgeInsets.only(right: 5, top: 5),
-                                  child: InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          image = File("");
-                                          widget.imgurl[0].url = "";
-                                        });
-                                      },
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )))),
-                        ])
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                image = await controller.pickImages();
-                                setState(() {});
-                                url1 = await controller.upload(image);
-                                imagess[0] = url1;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[0] = url1;
-                              },
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                var image =
-                                    await controller.pickImageGallerys();
-                                setState(() {});
-                                if (image != null) {
-                                  url1 = await controller.upload(image);
-                                  imagess.add(url1);
-                                  imagess[0] = url1;
-                                  imagess = imagess.toSet().toList();
-                                  // widget.data?[widget.index].images = imagess;
-                                  widget.data?[widget.index].images?[0] = url1;
-                                }
-                              },
-                              child: Icon(
-                                Icons.image,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          ],
-                        ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 70,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: widget.imgurl[1].url.contains("upload") ||
-                          image1.path.isNotEmpty
-                      ? Stack(children: [
-                          image1.path.isNotEmpty
-                              ? Image.file(
-                                  File(image1.path.toString()),
-                                  fit: BoxFit.fill,
-                                  height: 120,
-                                  width: Get.width,
-                                )
-                              : Image.network(
-                                  Paths.baseUrl +
-                                      "/" +
-                                      widget.imgurl[1].url.toString(),
-                                  fit: BoxFit.fill,
-                                  height: 120,
-                                  width: Get.width,
-                                ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                  padding: EdgeInsets.only(right: 5, top: 5),
-                                  child: InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          image1 = File("");
-                                          widget.imgurl[1].url = "";
-                                        });
-                                      },
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )))),
-                        ])
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                image1 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url2 = await controller.upload(image1);
-                                imagess[1] = url2;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[1] = url2;
-                              },
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                image1 = await controller.pickImageGallerys();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url2 = await controller.upload(image1);
-                                imagess[1] = url2;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[1] = url2;
-                              },
-                              child: Icon(
-                                Icons.image,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          ],
-                        ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 70,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: widget.imgurl[2].url.contains("upload") ||
-                          image2.path.isNotEmpty
-                      ? Stack(children: [
-                          image2.path.isNotEmpty
-                              ? Image.file(
-                                  File(image2.path.toString()),
-                                  fit: BoxFit.fill,
-                                  height: 120,
-                                  width: Get.width,
-                                )
-                              : Image.network(
-                                  Paths.baseUrl +
-                                      "/" +
-                                      widget.imgurl[2].url.toString(),
-                                  fit: BoxFit.fill,
-                                  height: 120,
-                                  width: Get.width,
-                                ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                  padding: EdgeInsets.only(right: 5, top: 5),
-                                  child: InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          image2 = File("");
-                                          widget.imgurl[2].url = "";
-                                        });
-                                      },
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )))),
-                        ])
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                image2 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url3 = await controller.upload(image2);
-                                imagess[2] = url3;
-                                print(imagess[2]);
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[2] = url3;
-                              },
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                image2 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url3 = await controller.upload(image2);
-                                imagess[2] = url3;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[2] = url3;
-                              },
-                              child: Icon(
-                                Icons.image,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          ],
-                        ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 10, top: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 70,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: widget.imgurl[3].url.contains("upload") ||
-                          image3.path.isNotEmpty
-                      ? Stack(
-                          children: [
-                            image3.path.isNotEmpty
+                Flexible(
+                  child: Container(
+                    height: 70,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: widget.imgurl[0].url.contains("upload") ||
+                            image.path.isNotEmpty
+                        ? Stack(children: [
+                            image.path.isNotEmpty
                                 ? Image.file(
-                                    File(image3.path.toString()),
+                                    File(image.path.toString()),
                                     fit: BoxFit.fill,
                                     height: 120,
                                     width: Get.width,
@@ -1599,249 +1343,256 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                 : Image.network(
                                     Paths.baseUrl +
                                         "/" +
-                                        widget.imgurl[3].url.toString(),
+                                        widget.imgurl[0].url.toString(),
                                     fit: BoxFit.fill,
                                     height: 120,
                                     width: Get.width,
                                   ),
                             Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                padding: EdgeInsets.only(right: 5, top: 5),
-                                child: InkWell(
-                                  onTap: () {
-                                    image3 = File("");
-                                    widget.imgurl[3].url = "";
-                                  },
-                                  child: Icon(
-                                    Icons.delete,
-                                    color: Colors.red,
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                    padding: EdgeInsets.only(right: 5, top: 5),
+                                    child: InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            image = File("");
+                                            widget.imgurl[0].url = "";
+                                          });
+                                        },
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        )))),
+                          ])
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  image = await controller.pickImages();
+                                  setState(() {});
+                                  url1 = await controller.upload(image);
+                                  imagess[0] = url1;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[0] = url1;
+                                },
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 2,
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  var image =
+                                      await controller.pickImageGallerys();
+                                  setState(() {});
+                                  if (image != null) {
+                                    url1 = await controller.upload(image);
+                                    imagess.add(url1);
+                                    imagess[0] = url1;
+                                    imagess = imagess.toSet().toList();
+                                    // widget.data?[widget.index].images = imagess;
+                                    widget.data?[widget.index].images?[0] =
+                                        url1;
+                                  }
+                                },
+                                child: Icon(
+                                  Icons.image,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ],
+                          ),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Flexible(
+                  child: Container(
+                    height: 70,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: widget.imgurl[1].url.contains("upload") ||
+                            image1.path.isNotEmpty
+                        ? Stack(children: [
+                            image1.path.isNotEmpty
+                                ? Image.file(
+                                    File(image1.path.toString()),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  )
+                                : Image.network(
+                                    Paths.baseUrl +
+                                        "/" +
+                                        widget.imgurl[1].url.toString(),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
                                   ),
+                            Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                    padding: EdgeInsets.only(right: 5, top: 5),
+                                    child: InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            image1 = File("");
+                                            widget.imgurl[1].url = "";
+                                          });
+                                        },
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        )))),
+                          ])
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  image1 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url2 = await controller.upload(image1);
+                                  imagess[1] = url2;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[1] = url2;
+                                },
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  size: 32,
+                                  color: Colors.blue,
                                 ),
                               ),
-                            ),
-                          ],
-                        )
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                image3 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url4 = await controller.upload(image3);
-                                imagess[3] = url4;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[3] = url4;
-                              },
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 32,
-                                color: Colors.blue,
+                              SizedBox(
+                                width: 2,
                               ),
-                            ),
-                            SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                image3 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url4 = await controller.upload(image3);
-                                imagess[3] = url4;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[3] = url4;
-                              },
-                              child: Icon(
-                                Icons.image,
-                                size: 32,
-                                color: Colors.blue,
+                              InkWell(
+                                onTap: () async {
+                                  image1 = await controller.pickImageGallerys();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url2 = await controller.upload(image1);
+                                  imagess[1] = url2;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[1] = url2;
+                                },
+                                child: Icon(
+                                  Icons.image,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
+                            ],
+                          ),
+                  ),
                 ),
                 SizedBox(
                   width: 10,
                 ),
-                Container(
-                  height: 70,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: widget.imgurl[4].url.contains("upload") ||
-                          image4.path.isNotEmpty
-                      ? Stack(children: [
-                          image4.path.isNotEmpty
-                              ? Image.file(
-                                  File(image4.path.toString()),
-                                  fit: BoxFit.fill,
-                                  height: 120,
-                                  width: Get.width,
-                                )
-                              : Image.network(
-                                  Paths.baseUrl +
-                                      "/" +
-                                      widget.imgurl[4].url.toString(),
-                                  fit: BoxFit.fill,
-                                  height: 120,
-                                  width: Get.width,
+                Flexible(
+                  child: Container(
+                    height: 70,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: widget.imgurl[2].url.contains("upload") ||
+                            image2.path.isNotEmpty
+                        ? Stack(children: [
+                            image2.path.isNotEmpty
+                                ? Image.file(
+                                    File(image2.path.toString()),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  )
+                                : Image.network(
+                                    Paths.baseUrl +
+                                        "/" +
+                                        widget.imgurl[2].url.toString(),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  ),
+                            Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                    padding: EdgeInsets.only(right: 5, top: 5),
+                                    child: InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            image2 = File("");
+                                            widget.imgurl[2].url = "";
+                                          });
+                                        },
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        )))),
+                          ])
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  image2 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url3 = await controller.upload(image2);
+                                  imagess[2] = url3;
+                                  print(imagess[2]);
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[2] = url3;
+                                },
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  size: 32,
+                                  color: Colors.blue,
                                 ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                  padding: EdgeInsets.only(right: 5, top: 5),
-                                  child: InkWell(
-                                      onTap: () {
-                                        image4 = File("");
-                                        widget.imgurl[4].url = "";
-                                        setState(() {});
-                                      },
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )))),
-                        ])
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                image4 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url5 = await controller.upload(image4);
-                                imagess[4] = url5;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[4] = url5;
-                              },
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 32,
-                                color: Colors.blue,
                               ),
-                            ),
-                            SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                image4 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url5 = await controller.upload(image4);
-                                imagess[4] = url5;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[4] = url5;
-                              },
-                              child: Icon(
-                                Icons.image,
-                                size: 32,
-                                color: Colors.blue,
+                              SizedBox(
+                                width: 2,
                               ),
-                            ),
-                          ],
-                        ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 70,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: widget.imgurl[5].url.contains("upload") ||
-                          image5.path.isNotEmpty
-                      ? Stack(children: [
-                          image5.path.isNotEmpty
-                              ? Image.file(
-                                  File(image5.path.toString()),
-                                  fit: BoxFit.fill,
-                                  height: 120,
-                                  width: Get.width,
-                                )
-                              : Image.network(
-                                  Paths.baseUrl +
-                                      "/" +
-                                      widget.imgurl[5].url.toString(),
-                                  fit: BoxFit.fill,
-                                  height: 120,
-                                  width: Get.width,
+                              InkWell(
+                                onTap: () async {
+                                  image2 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url3 = await controller.upload(image2);
+                                  imagess[2] = url3;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[2] = url3;
+                                },
+                                child: Icon(
+                                  Icons.image,
+                                  size: 32,
+                                  color: Colors.blue,
                                 ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                  padding: EdgeInsets.only(right: 5, top: 5),
-                                  child: InkWell(
-                                      onTap: () {
-                                        image5 = File("");
-                                        widget.imgurl[5].url = "";
-                                        setState(() {});
-                                      },
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )))),
-                        ])
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                image5 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url6 = await controller.upload(image5);
-                                imagess[5] = url6;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[5] = url6;
-                              },
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 32,
-                                color: Colors.blue,
                               ),
-                            ),
-                            SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                image5 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url6 = await controller.upload(image5);
-                                imagess[5] = url6;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[5] = url6;
-                              },
-                              child: Icon(
-                                Icons.image,
-                                size: 32,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          ],
-                        ),
+                            ],
+                          ),
+                  ),
                 ),
                 SizedBox(
                   width: 10,
@@ -1854,266 +1605,554 @@ class CustomPropertyState1 extends State<CustomProperty1> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  height: 70,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: widget.imgurl[6].url.contains("upload") ||
-                          image6.path.isNotEmpty
-                      ? Stack(children: [
-                          image6.path.isNotEmpty
-                              ? Image.file(
-                                  File(image6.path.toString()),
-                                  fit: BoxFit.fill,
-                                  height: 120,
-                                  width: Get.width,
-                                )
-                              : Image.network(
-                                  Paths.baseUrl +
-                                      "/" +
-                                      widget.imgurl[6].url.toString(),
-                                  fit: BoxFit.fill,
-                                  height: 120,
-                                  width: Get.width,
-                                ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
+                Flexible(
+                  child: Container(
+                    height: 70,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: widget.imgurl[3].url.contains("upload") ||
+                            image3.path.isNotEmpty
+                        ? Stack(
+                            children: [
+                              image3.path.isNotEmpty
+                                  ? Image.file(
+                                      File(image3.path.toString()),
+                                      fit: BoxFit.fill,
+                                      height: 120,
+                                      width: Get.width,
+                                    )
+                                  : Image.network(
+                                      Paths.baseUrl +
+                                          "/" +
+                                          widget.imgurl[3].url.toString(),
+                                      fit: BoxFit.fill,
+                                      height: 120,
+                                      width: Get.width,
+                                    ),
+                              Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
                                   padding: EdgeInsets.only(right: 5, top: 5),
                                   child: InkWell(
-                                      onTap: () {
-                                        image6 = File("");
-                                        widget.imgurl[6].url = "";
-                                        setState(() {});
-                                      },
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )))),
-                        ])
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                image6 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url7 = await controller.upload(image6);
-                                imagess[6] = url7;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[6] = url7;
-                              },
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 32,
-                                color: Colors.blue,
+                                    onTap: () {
+                                      image3 = File("");
+                                      widget.imgurl[3].url = "";
+                                    },
+                                    child: Icon(
+                                      Icons.delete,
+                                      color: Colors.red,
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                image6 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url7 = await controller.upload(image6);
-                                imagess[6] = url7;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[6] = url7;
-                              },
-                              child: Icon(
-                                Icons.image,
-                                size: 32,
-                                color: Colors.blue,
+                            ],
+                          )
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  image3 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url4 = await controller.upload(image3);
+                                  imagess[3] = url4;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[3] = url4;
+                                },
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
+                              SizedBox(
+                                width: 2,
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  image3 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url4 = await controller.upload(image3);
+                                  imagess[3] = url4;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[3] = url4;
+                                },
+                                child: Icon(
+                                  Icons.image,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ],
+                          ),
+                  ),
                 ),
                 SizedBox(
                   width: 10,
                 ),
-                Container(
-                  height: 70,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: widget.imgurl[7].url.contains("upload") ||
-                          image7.path.isNotEmpty
-                      ? Stack(children: [
-                          image7.path.isNotEmpty
-                              ? Image.file(
-                                  File(image7.path.toString()),
-                                  fit: BoxFit.fill,
-                                  height: 120,
-                                  width: Get.width,
-                                )
-                              : Image.network(
-                                  Paths.baseUrl +
-                                      "/" +
-                                      widget.imgurl[7].url.toString(),
-                                  fit: BoxFit.fill,
-                                  height: 120,
-                                  width: Get.width,
+                Flexible(
+                  child: Container(
+                    height: 70,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: widget.imgurl[4].url.contains("upload") ||
+                            image4.path.isNotEmpty
+                        ? Stack(children: [
+                            image4.path.isNotEmpty
+                                ? Image.file(
+                                    File(image4.path.toString()),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  )
+                                : Image.network(
+                                    Paths.baseUrl +
+                                        "/" +
+                                        widget.imgurl[4].url.toString(),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  ),
+                            Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                    padding: EdgeInsets.only(right: 5, top: 5),
+                                    child: InkWell(
+                                        onTap: () {
+                                          image4 = File("");
+                                          widget.imgurl[4].url = "";
+                                          setState(() {});
+                                        },
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        )))),
+                          ])
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  image4 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url5 = await controller.upload(image4);
+                                  imagess[4] = url5;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[4] = url5;
+                                },
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  size: 32,
+                                  color: Colors.blue,
                                 ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                  padding: EdgeInsets.only(right: 5, top: 5),
-                                  child: InkWell(
-                                      onTap: () {
-                                        image7 = File("");
-                                        widget.imgurl[7].url = "";
-                                        setState(() {});
-                                      },
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )))),
-                        ])
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                image7 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url8 = await controller.upload(image7);
-                                imagess[7] = url8;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[7] = url8;
-                              },
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 32,
-                                color: Colors.blue,
                               ),
-                            ),
-                            SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                image7 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url8 = await controller.upload(image7);
-                                imagess[7] = url8;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[7] = url8;
-                              },
-                              child: Icon(
-                                Icons.image,
-                                size: 32,
-                                color: Colors.blue,
+                              SizedBox(
+                                width: 2,
                               ),
-                            ),
-                          ],
-                        ),
+                              InkWell(
+                                onTap: () async {
+                                  image4 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url5 = await controller.upload(image4);
+                                  imagess[4] = url5;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[4] = url5;
+                                },
+                                child: Icon(
+                                  Icons.image,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ],
+                          ),
+                  ),
                 ),
                 SizedBox(
                   width: 10,
                 ),
-                Container(
-                  height: 70,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: widget.imgurl[8].url.contains("upload") ||
-                          image8.path.isNotEmpty
-                      ? Stack(children: [
-                          image8.path.isNotEmpty
-                              ? Image.file(
-                                  File(image8.path.toString()),
-                                  fit: BoxFit.fill,
-                                  height: 120,
-                                  width: Get.width,
-                                )
-                              : Image.network(
-                                  Paths.baseUrl +
-                                      "/" +
-                                      widget.imgurl[8].url.toString(),
-                                  fit: BoxFit.fill,
-                                  height: 120,
-                                  width: Get.width,
+                Flexible(
+                  child: Container(
+                    height: 70,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: widget.imgurl[5].url.contains("upload") ||
+                            image5.path.isNotEmpty
+                        ? Stack(children: [
+                            image5.path.isNotEmpty
+                                ? Image.file(
+                                    File(image5.path.toString()),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  )
+                                : Image.network(
+                                    Paths.baseUrl +
+                                        "/" +
+                                        widget.imgurl[5].url.toString(),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  ),
+                            Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                    padding: EdgeInsets.only(right: 5, top: 5),
+                                    child: InkWell(
+                                        onTap: () {
+                                          image5 = File("");
+                                          widget.imgurl[5].url = "";
+                                          setState(() {});
+                                        },
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        )))),
+                          ])
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  image5 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url6 = await controller.upload(image5);
+                                  imagess[5] = url6;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[5] = url6;
+                                },
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  size: 32,
+                                  color: Colors.blue,
                                 ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                  padding: EdgeInsets.only(right: 5, top: 5),
-                                  child: InkWell(
-                                      onTap: () {
-                                        image8 = File("");
-                                        widget.imgurl[8].url = "";
-                                        setState(() {});
-                                      },
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )))),
-                        ])
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                image8 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url9 = await controller.upload(image8);
-                                imagess[8] = url9;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[8] = url9;
-                              },
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 32,
-                                color: Colors.blue,
                               ),
-                            ),
-                            SizedBox(
-                              width: 2,
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                image8 = await controller.pickImages();
-                                setState(() {
-                                  print("ff");
-                                });
-                                url9 = await controller.upload(image8);
-                                imagess[8] = url9;
-                                imagess = imagess.toSet().toList();
-                                // widget.data?[widget.index].images = imagess;
-                                widget.data?[widget.index].images?[8] = url9;
-                              },
-                              child: Icon(
-                                Icons.image,
-                                size: 32,
-                                color: Colors.blue,
+                              SizedBox(
+                                width: 2,
                               ),
-                            ),
-                          ],
-                        ),
+                              InkWell(
+                                onTap: () async {
+                                  image5 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url6 = await controller.upload(image5);
+                                  imagess[5] = url6;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[5] = url6;
+                                },
+                                child: Icon(
+                                  Icons.image,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ],
+                          ),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 10, top: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                  child: Container(
+                    height: 70,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: widget.imgurl[6].url.contains("upload") ||
+                            image6.path.isNotEmpty
+                        ? Stack(children: [
+                            image6.path.isNotEmpty
+                                ? Image.file(
+                                    File(image6.path.toString()),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  )
+                                : Image.network(
+                                    Paths.baseUrl +
+                                        "/" +
+                                        widget.imgurl[6].url.toString(),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  ),
+                            Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                    padding: EdgeInsets.only(right: 5, top: 5),
+                                    child: InkWell(
+                                        onTap: () {
+                                          image6 = File("");
+                                          widget.imgurl[6].url = "";
+                                          setState(() {});
+                                        },
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        )))),
+                          ])
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  image6 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url7 = await controller.upload(image6);
+                                  imagess[6] = url7;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[6] = url7;
+                                },
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 2,
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  image6 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url7 = await controller.upload(image6);
+                                  imagess[6] = url7;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[6] = url7;
+                                },
+                                child: Icon(
+                                  Icons.image,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ],
+                          ),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Flexible(
+                  child: Container(
+                    height: 70,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: widget.imgurl[7].url.contains("upload") ||
+                            image7.path.isNotEmpty
+                        ? Stack(children: [
+                            image7.path.isNotEmpty
+                                ? Image.file(
+                                    File(image7.path.toString()),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  )
+                                : Image.network(
+                                    Paths.baseUrl +
+                                        "/" +
+                                        widget.imgurl[7].url.toString(),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  ),
+                            Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                    padding: EdgeInsets.only(right: 5, top: 5),
+                                    child: InkWell(
+                                        onTap: () {
+                                          image7 = File("");
+                                          widget.imgurl[7].url = "";
+                                          setState(() {});
+                                        },
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        )))),
+                          ])
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  image7 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url8 = await controller.upload(image7);
+                                  imagess[7] = url8;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[7] = url8;
+                                },
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 2,
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  image7 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url8 = await controller.upload(image7);
+                                  imagess[7] = url8;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[7] = url8;
+                                },
+                                child: Icon(
+                                  Icons.image,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ],
+                          ),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Flexible(
+                  child: Container(
+                    height: 70,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: widget.imgurl[8].url.contains("upload") ||
+                            image8.path.isNotEmpty
+                        ? Stack(children: [
+                            image8.path.isNotEmpty
+                                ? Image.file(
+                                    File(image8.path.toString()),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  )
+                                : Image.network(
+                                    Paths.baseUrl +
+                                        "/" +
+                                        widget.imgurl[8].url.toString(),
+                                    fit: BoxFit.fill,
+                                    height: 120,
+                                    width: Get.width,
+                                  ),
+                            Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                    padding: EdgeInsets.only(right: 5, top: 5),
+                                    child: InkWell(
+                                        onTap: () {
+                                          image8 = File("");
+                                          widget.imgurl[8].url = "";
+                                          setState(() {});
+                                        },
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        )))),
+                          ])
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  image8 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url9 = await controller.upload(image8);
+                                  imagess[8] = url9;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[8] = url9;
+                                },
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 2,
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  image8 = await controller.pickImages();
+                                  setState(() {
+                                    print("ff");
+                                  });
+                                  url9 = await controller.upload(image8);
+                                  imagess[8] = url9;
+                                  imagess = imagess.toSet().toList();
+                                  // widget.data?[widget.index].images = imagess;
+                                  widget.data?[widget.index].images?[8] = url9;
+                                },
+                                child: Icon(
+                                  Icons.image,
+                                  size: 32,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ],
+                          ),
+                  ),
                 ),
                 SizedBox(
                   width: 10,

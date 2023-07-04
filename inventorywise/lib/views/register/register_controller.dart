@@ -11,8 +11,8 @@ class RegisterController extends GetxController {
   final auth = Authenticator();
   var service = HomeService();
   var isLoading = true.obs;
-  var hide=true.obs;
-  var cplogo="".obs;
+  var hide = true.obs;
+  var cplogo = "".obs;
   final authService = AuthenticationService();
   var et1 = TextEditingController();
   var et2 = TextEditingController();
@@ -26,13 +26,17 @@ class RegisterController extends GetxController {
   void onInit() {
     super.onInit();
   }
+
   Future<String> upload(images) async {
     return await service.uploadImage(images.path);
   }
-  Future<void> register(title,firstname,lastname,email,confirmpassword,password,acceptterm,companyaddress,logo) async {
+
+  Future<void> register(title, firstname, lastname, email, confirmpassword,
+      password, acceptterm, companyaddress, logo) async {
     try {
       isLoading(true);
-      var result = await authService.register(title,firstname,lastname,email,confirmpassword,password,acceptterm,companyaddress,logo);
+      var result = await authService.register(title, firstname, lastname, email,
+          confirmpassword, password, acceptterm, companyaddress, logo);
       isLoading(false);
     } on Exception catch (e) {
       Get.defaultDialog();

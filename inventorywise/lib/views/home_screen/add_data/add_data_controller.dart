@@ -1,17 +1,20 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:camera/camera.dart';
+import 'package:easy_signature_pad/easy_signature_pad.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 
 import '../../../models/addproperty/add_proprert_model.dart';
 import '../../../models/homedata/Home_Data.dart';
 import '../../../service/home/home_service.dart';
 
 class AddDataController extends GetxController {
-
   late CameraController controller;
   var service = HomeService();
   RxInt count = 17.obs;
@@ -19,13 +22,15 @@ class AddDataController extends GetxController {
   var list = 12.obs;
   var index = 0.obs;
   var items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].obs;
-  var type = "Inspection Report".obs;
+  var type = "Inventory Report".obs;
   var t1 = "Working".obs;
   var t2 = "Working".obs;
   var t3 = "Working".obs;
   var t4 = "Working".obs;
   var t5 = "Working".obs;
   var t6 = "Working".obs;
+  var sig1 = File("").obs;
+  var sig2 = File("").obs;
 
   List<TextEditingController> f = [];
 
@@ -82,6 +87,7 @@ class AddDataController extends GetxController {
   var heating = File("").obs;
   String? inspector;
   String? tenant;
+  RxInt se = 0.obs;
   var main = File("").obs;
 
   RxList<File> image = <File>[].obs;
@@ -92,7 +98,7 @@ class AddDataController extends GetxController {
   Future pickImages() async {
     try {
       final imagedata =
-          await ImagePicker().pickImage(source: ImageSource.camera);
+          await ImagePicker().getImage(source: ImageSource.camera);
       if (imagedata == null) return;
       final imageTemp = File(imagedata.path);
       return imageTemp;
@@ -103,11 +109,14 @@ class AddDataController extends GetxController {
 
   Future pickImageGallerys() async {
     try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      final ImagePicker picker = ImagePicker();
+      final pickedFile = await picker.getImage(source: ImageSource.gallery);
+      File image = File(pickedFile!.path);
       if (image == null) return;
+
       final imageTemp = File(image.path);
       this.images.value = imageTemp;
-      return this.images;
+      return this.images.value;
     } on PlatformException catch (e) {
       print('Failed to pick image: $e');
     }
@@ -189,6 +198,66 @@ class AddDataController extends GetxController {
   void deleteData(prop, id) async {
     await service.deleteProperty(
       id,
+    );
+  }
+
+  void bottomSheet() {
+    Get.bottomSheet(
+      EasySignaturePad(
+        onChanged: (image) async {
+          sig1.value = File("");
+          Uint8List convertedBytes = base64Decode(image);
+          final tempDir = await getTemporaryDirectory();
+          sig1.value =
+              await File('${tempDir.path}/${DateTime.now()}.png').create();
+          sig1.value.writeAsBytesSync(convertedBytes);
+          inspector = await upload(sig1.value);
+        },
+        height: Get.height ~/ 2,
+        width: Get.width ~/ 1,
+        penColor: Colors.black,
+        strokeWidth: 1.0,
+        borderRadius: 10.0,
+        borderColor: Colors.grey,
+        backgroundColor: Colors.white,
+        transparentImage: false,
+        transparentSignaturePad: false,
+        hideClearSignatureIcon: false,
+      ),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(35),
+          side: BorderSide(width: 5, color: Colors.black)),
+      enableDrag: false,
+    );
+  }
+
+  void bottomSheet1() {
+    Get.bottomSheet(
+      EasySignaturePad(
+        onChanged: (image) async {
+          sig2.value = File("");
+          Uint8List convertedBytes = base64Decode(image);
+          final tempDir = await getTemporaryDirectory();
+          sig2.value =
+              await File('${tempDir.path}/${DateTime.now()}.png').create();
+          sig2.value.writeAsBytesSync(convertedBytes);
+          tenant = await upload(sig2.value);
+        },
+        height: Get.height ~/ 2,
+        width: Get.width ~/ 1,
+        penColor: Colors.black,
+        strokeWidth: 1.0,
+        borderRadius: 10.0,
+        borderColor: Colors.grey,
+        backgroundColor: Colors.white,
+        transparentImage: false,
+        transparentSignaturePad: false,
+        hideClearSignatureIcon: false,
+      ),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(35),
+          side: BorderSide(width: 5, color: Colors.black)),
+      enableDrag: false,
     );
   }
 

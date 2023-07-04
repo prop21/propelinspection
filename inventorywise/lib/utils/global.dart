@@ -33,13 +33,9 @@ class Cards {
 }
 
 class Paths {
-  // static String baseUrl = 'https://qisstpay.com';
-  // static String baseUrl = 'http://52.77.241.163:9191'; //production
-  // static String baseUrl = 'http://52.221.239.76:9191'; //development
-  // static String baseUrl = 'http://10.128.15.117:4000'; //production
-  static String baseUrl = 'https://api.inventorywise.co.uk';
 
-  //  static String baseUrl = 'https://dev.apis.qisstpay.com'; //development
+  // static String baseUrl = 'http://52.221.239.76:9191'; //development
+  static String baseUrl = 'https://api.inventorywise.co.uk';
   static String authBaseUrl = '$baseUrl/accounts/authenticate';
   static String registerbaseUrl = '$baseUrl/accounts/register';
   static String propertiesBaseUrl = '$baseUrl/properties/getByUserId/';
@@ -66,7 +62,6 @@ class Authenticator {
   String? _ipAddress;
   String? _email;
   String? _logo;
-
 
   void setOtpToken(String? token) {
     _otpToken = token; //'bearer $token';

@@ -4,6 +4,7 @@ import 'dart:typed_data';
 
 import 'package:InventoryWise/views/home_screen/show_data/showdata_controller.dart';
 import 'package:InventoryWise/views/home_screen/update_data/update_data.dart';
+import 'package:InventoryWise/widgets/custom_loader_widget.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_html_to_pdf/flutter_html_to_pdf.dart';
@@ -42,762 +43,886 @@ class Show_Data_Screen extends StatelessWidget {
         centerTitle: true,
       ),
 
-      body: SingleChildScrollView(
-        child: Obx(
-          () => Padding(
-            padding: EdgeInsets.only(left: 15, right: 15),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  "Inventory Report",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  data!.tenantName.toString(),
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-                SizedBox(
-                  height: 14,
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 5, right: 5),
-                  height: 200,
-                  width: Get.width,
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(8)),
-                  child: Image.network(
-                    Paths.baseUrl + "/" + data!.mainImg.toString(),
-                    fit: BoxFit.fill,
+      body: Obx(
+        () => CustomLoaderWidget(
+          isTrue: controller.isLoading.value,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.only(left: 15, right: 15),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 20,
                   ),
-                ),
-                SizedBox(
-                  height: 12,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(right: 5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                  Text(
+                    "Inventory Report",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    data!.tenantName.toString(),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 14,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 5, right: 5),
+                    height: 200,
+                    width: Get.width,
+                    decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(8)),
+                    child: Image.network(
+                      Paths.baseUrl + "/" + data!.mainImg.toString(),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(right: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        InkWell(
+                            onTap: () {
+                              Get.to(() => UpdateDataScreen(
+                                    id: data?.id.toString(),
+                                    data: data,
+                                  ));
+                            },
+                            child: Icon(Icons.edit)),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        InkWell(
+                            onTap: () {
+                              AwesomeDialog(
+                                context: context,
+                                dialogType: DialogType.warning,
+                                animType: AnimType.rightSlide,
+                                title: 'Delete Property',
+                                desc: 'Do you want to delete this property?',
+                                btnCancelOnPress: () {},
+                                btnOkOnPress: () {
+                                  controller.deleteData(data?.id.toString());
+                                },
+                              )..show();
+                            },
+                            child: Icon(Icons.delete)),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      InkWell(
-                          onTap: () {
-                            Get.to(() => UpdateDataScreen(
-                                  id: data?.id.toString(),data: data,
-                                ));
-                          },
-                          child: Icon(Icons.edit)),
-                      SizedBox(
-                        width: 10,
+                      Text(
+                        "Inspection Date:",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.blue),
                       ),
-                      InkWell(
-                          onTap: () {
-                            AwesomeDialog(
-                              context: context,
-                              dialogType: DialogType.warning,
-                              animType: AnimType.rightSlide,
-                              title: 'Delete Property',
-                              desc: 'Do you want to delete this property?',
-                              btnCancelOnPress: () {},
-                              btnOkOnPress: () {
-                                controller.deleteData(data?.id.toString());
-                              },
-                            )..show();
-                          },
-                          child: Icon(Icons.delete)),
+                      Text(
+                        DateTime.parse(data!.inspectionDate.toString())
+                                .day
+                                .toString() +
+                            "-" +
+                            DateTime.parse(data!.inspectionDate.toString())
+                                .month
+                                .toString() +
+                            "-" +
+                            DateTime.parse(data!.inspectionDate.toString())
+                                .year
+                                .toString(),
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox()
                     ],
                   ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Inspection Date:",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.blue),
-                    ),
-                    Text(
-                      DateTime.parse(data!.inspectionDate.toString())
-                              .day
-                              .toString() +
-                          "-" +
-                          DateTime.parse(data!.inspectionDate.toString())
-                              .month
-                              .toString() +
-                          "-" +
-                          DateTime.parse(data!.inspectionDate.toString())
-                              .year
-                              .toString(),
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox()
-                  ],
-                ),
-                Divider(
-                  thickness: 1.5,
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "ECP Date:           ",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.blue),
-                    ),
-                    Text(
-                      DateTime.parse(data!.ecpExpDate.toString())
-                              .day
-                              .toString() +
-                          "-" +
-                          DateTime.parse(data!.ecpExpDate.toString())
-                              .month
-                              .toString() +
-                          "-" +
-                          DateTime.parse(data!.ecpExpDate.toString())
-                              .year
-                              .toString(),
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox()
-                  ],
-                ),
-                Divider(
-                  thickness: 1.5,
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "ECIR Date:         ",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.blue),
-                    ),
-                    Text(
-                      DateTime.parse(data!.ecirExpDate.toString())
-                              .day
-                              .toString() +
-                          "-" +
-                          DateTime.parse(data!.ecirExpDate.toString())
-                              .month
-                              .toString() +
-                          "-" +
-                          DateTime.parse(data!.ecirExpDate.toString())
-                              .year
-                              .toString(),
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox()
-                  ],
-                ),
-                Divider(
-                  thickness: 1.5,
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                        width: 100,
-                        child: Text(
-                          "Gas Saftey Certificate Exipiry Date:",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.blue),
-                        )),
-                    Text(
-                      DateTime.parse(
-                                  data!.gasSafetyCertificateExpDate.toString())
-                              .day
-                              .toString() +
-                          "-" +
-                          DateTime.parse(
-                                  data!.gasSafetyCertificateExpDate.toString())
-                              .month
-                              .toString() +
-                          "-" +
-                          DateTime.parse(
-                                  data!.gasSafetyCertificateExpDate.toString())
-                              .year
-                              .toString(),
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox()
-                  ],
-                ),
-                Divider(
-                  thickness: 1.5,
-                ),
-                Container(
-                  height: 180,
-                  width: Get.width,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: Colors.grey),
+                  Divider(
+                    thickness: 1.5,
                   ),
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 15, right: 15),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Pre-Paid Gas Meter:" + data!.gasMeter.toString(),
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue),
-                            ),
-                            Text(
-                              "Reading:" + data!.gasMeterReading.toString(),
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue),
-                            )
-                          ],
-                        ),
-                        Divider(
-                          thickness: 1.5,
-                        ),
-                        Image.network(
-                          Paths.baseUrl + "/" + data!.gasMeterImg.toString(),
-                          height: 120,
-                          width: Get.width,
-                          fit: BoxFit.fill,
-                        )
-                      ],
-                    ),
+                  SizedBox(
+                    height: 15,
                   ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  height: 180,
-                  width: Get.width,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: Colors.grey),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 15, right: 15),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Pre-Paid Electricity Meter:" +
-                                  data!.electricityMeter.toString(),
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue),
-                            ),
-                            Text(
-                              "Reading:" +
-                                  data!.electricityMeterReading.toString(),
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue),
-                            ),
-                          ],
-                        ),
-                        Divider(
-                          thickness: 1.5,
-                        ),
-                        Image.network(
-                          Paths.baseUrl +
-                              "/" +
-                              data!.electricityMeterImg.toString(),
-                          height: 120,
-                          width: Get.width,
-                          fit: BoxFit.fill,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  height: 180,
-                  width: Get.width,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: Colors.grey),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 15, right: 15),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Water Meter:" + data!.waterMeter.toString(),
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue),
-                            ),
-                            Text(
-                              "Reading:" + data!.waterMeterReading.toString(),
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue),
-                            )
-                          ],
-                        ),
-                        Divider(
-                          thickness: 1.5,
-                        ),
-                        Image.network(
-                          Paths.baseUrl + "/" + data!.waterMeterImg.toString(),
-                          height: 120,
-                          width: Get.width,
-                          fit: BoxFit.fill,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  height: 180,
-                  width: Get.width,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: Colors.grey),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 15, right: 15),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Smoke Alarm:" + data!.smokeAlarm.toString(),
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue),
-                            ),
-                            Text(
-                              "Reading:",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue),
-                            )
-                          ],
-                        ),
-                        Divider(
-                          thickness: 1.5,
-                        ),
-                        Image.network(
-                          Paths.baseUrl +
-                              "/" +
-                              data!.smokeAlarmFrontImg.toString(),
-                          height: 120,
-                          width: Get.width,
-                          fit: BoxFit.fill,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  height: 180,
-                  width: Get.width,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: Colors.grey),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 15, right: 15),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "CO Alarm:" + data!.coAlarm.toString(),
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue),
-                            ),
-                            Text(
-                              "Reading:",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue),
-                            )
-                          ],
-                        ),
-                        Divider(
-                          thickness: 1.5,
-                        ),
-                        Image.network(
-                          Paths.baseUrl +
-                              "/" +
-                              data!.coAlarmFrontImg.toString(),
-                          height: 120,
-                          width: Get.width,
-                          fit: BoxFit.fill,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  height: 180,
-                  width: Get.width,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: Colors.grey),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 15, right: 15),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Heating System Working:" +
-                                  data!.heatingSystem.toString(),
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue),
-                            ),
-                            Text(
-                              "Reading:",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue),
-                            )
-                          ],
-                        ),
-                        Divider(
-                          thickness: 1.5,
-                        ),
-                        Image.network(
-                          Paths.baseUrl +
-                              "/" +
-                              data!.heatingSystemImg.toString(),
-                          height: 120,
-                          width: Get.width,
-                          fit: BoxFit.fill,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                SizedBox(
-                  height: 45.0,
-                  child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    physics: ClampingScrollPhysics(),
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: data?.propertyDetails?.length,
-                    itemBuilder: (BuildContext context, int index) => Container(
-                      margin: EdgeInsets.only(left: 10),
-                      child: MaterialButton(
-                        height: 45,
-                        minWidth: 150,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5)),
-                        color: Colors.blue,
-                        onPressed: () {
-                          controller.value.value = index;
-                        },
-                        child:
-                            Text(data!.propertyDetails![index].name.toString()),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "ECP Date:           ",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.blue),
                       ),
+                      Text(
+                        DateTime.parse(data!.ecpExpDate.toString())
+                                .day
+                                .toString() +
+                            "-" +
+                            DateTime.parse(data!.ecpExpDate.toString())
+                                .month
+                                .toString() +
+                            "-" +
+                            DateTime.parse(data!.ecpExpDate.toString())
+                                .year
+                                .toString(),
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox()
+                    ],
+                  ),
+                  Divider(
+                    thickness: 1.5,
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "ECIR Date:         ",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.blue),
+                      ),
+                      Text(
+                        DateTime.parse(data!.ecirExpDate.toString())
+                                .day
+                                .toString() +
+                            "-" +
+                            DateTime.parse(data!.ecirExpDate.toString())
+                                .month
+                                .toString() +
+                            "-" +
+                            DateTime.parse(data!.ecirExpDate.toString())
+                                .year
+                                .toString(),
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox()
+                    ],
+                  ),
+                  Divider(
+                    thickness: 1.5,
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                          width: 100,
+                          child: Text(
+                            "Gas Saftey Certificate Exipiry Date:",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue),
+                          )),
+                      Text(
+                        DateTime.parse(data!.gasSafetyCertificateExpDate
+                                    .toString())
+                                .day
+                                .toString() +
+                            "-" +
+                            DateTime.parse(data!.gasSafetyCertificateExpDate
+                                    .toString())
+                                .month
+                                .toString() +
+                            "-" +
+                            DateTime.parse(data!.gasSafetyCertificateExpDate
+                                    .toString())
+                                .year
+                                .toString(),
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox()
+                    ],
+                  ),
+                  Divider(
+                    thickness: 1.5,
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(bottom: 10),
+                    width: Get.width,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: Colors.grey),
                     ),
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  width: Get.width,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: Colors.grey),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 15, right: 15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              data!.propertyDetails![controller.value.toInt()]
-                                  .name
-                                  .toString(),
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue,
-                                  fontSize: 18),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          "Walls: " +
-                              data!.propertyDetails![controller.value.toInt()]
-                                  .walls
-                                  .toString(),
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue,
-                              fontSize: 18),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          "Windows: " +
-                              data!.propertyDetails![controller.value.toInt()]
-                                  .walls
-                                  .toString(),
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue,
-                              fontSize: 18),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          "Other Details: " +
-                              data!.propertyDetails![controller.value.toInt()]
-                                  .walls
-                                  .toString(),
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue,
-                              fontSize: 18),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          "Walls: " +
-                              data!.propertyDetails![controller.value.toInt()]
-                                  .walls
-                                  .toString(),
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue,
-                              fontSize: 18),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          "Images",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue,
-                              fontSize: 18),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Center(
-                          child: Wrap(
-                            runSpacing: 20,
-                            spacing: 1,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 15, right: 15),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              for (int i = 0;
-                                  i <
-                                      data!
-                                          .propertyDetails![
-                                              controller.value.toInt()]
-                                          .propertyImages!
-                                          .length;
-                                  i++)
-                                if (data!
-                                    .propertyDetails![controller.value.toInt()]
-                                    .propertyImages![i]
-                                    .url!
-                                    .contains("upload")) ...[
-                                  SizedBox(
-                                      height: 100,
-                                      width: 100,
-                                      child: Image.network(Paths.baseUrl +
-                                          "/" +
-                                          data!
-                                              .propertyDetails![
-                                                  controller.value.toInt()]
-                                              .propertyImages![i]
-                                              .url
-                                              .toString())),
-                                ]
+                              Flexible(
+                                child: Text(
+                                  "Pre-Paid Gas Meter:" +
+                                      data!.gasMeter.toString(),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blue),
+                                ),
+                              ),
+                              Flexible(
+                                child: Text(
+                                  "Reading:" + data!.gasMeterReading.toString(),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blue),
+                                ),
+                              ),
                             ],
                           ),
+                          Divider(
+                            thickness: 1.5,
+                          ),
+                          Image.network(
+                            Paths.baseUrl + "/" + data!.gasMeterImg.toString(),
+                            height: 120,
+                            width: Get.width,
+                            fit: BoxFit.fill,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(bottom: 10),
+                    width: Get.width,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: Colors.grey),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 15, right: 15),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  "Pre-Paid Electricity Meter:" +
+                                      data!.electricityMeter.toString(),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blue),
+                                ),
+                              ),
+                              Flexible(
+                                child: Text(
+                                  "Reading:" +
+                                      data!.electricityMeterReading.toString(),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blue),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Divider(
+                            thickness: 1.5,
+                          ),
+                          Image.network(
+                            Paths.baseUrl +
+                                "/" +
+                                data!.electricityMeterImg.toString(),
+                            height: 120,
+                            width: Get.width,
+                            fit: BoxFit.fill,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(bottom: 10),
+                    width: Get.width,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: Colors.grey),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 15, right: 15),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  "Water Meter:" + data!.waterMeter.toString(),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blue),
+                                ),
+                              ),
+                              Flexible(
+                                child: Text(
+                                  "Reading:" +
+                                      data!.waterMeterReading.toString(),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blue),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Divider(
+                            thickness: 1.5,
+                          ),
+                          Image.network(
+                            Paths.baseUrl +
+                                "/" +
+                                data!.waterMeterImg.toString(),
+                            height: 120,
+                            width: Get.width,
+                            fit: BoxFit.fill,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(bottom: 10),
+                    width: Get.width,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: Colors.grey),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 15, right: 15),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  "Smoke Alarm:" + data!.smokeAlarm.toString(),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blue),
+                                ),
+                              ),
+                              Flexible(
+                                child: Text(
+                                  "Reading:",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blue),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Divider(
+                            thickness: 1.5,
+                          ),
+                          Image.network(
+                            Paths.baseUrl +
+                                "/" +
+                                data!.smokeAlarmFrontImg.toString(),
+                            height: 120,
+                            width: Get.width,
+                            fit: BoxFit.fill,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(bottom: 10),
+                    width: Get.width,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: Colors.grey),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 15, right: 15),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  "CO Alarm:" + data!.coAlarm.toString(),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blue),
+                                ),
+                              ),
+                              Flexible(
+                                child: Text(
+                                  "Reading:",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blue),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Divider(
+                            thickness: 1.5,
+                          ),
+                          Image.network(
+                            Paths.baseUrl +
+                                "/" +
+                                data!.coAlarmFrontImg.toString(),
+                            height: 120,
+                            width: Get.width,
+                            fit: BoxFit.fill,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(bottom: 10),
+                    width: Get.width,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: Colors.grey),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 15, right: 15),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  "Heating System Working:" +
+                                      data!.heatingSystem.toString(),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blue),
+                                ),
+                              ),
+                              Flexible(
+                                  child: Text(
+                                "Reading:",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.blue),
+                              )),
+                            ],
+                          ),
+                          Divider(
+                            thickness: 1.5,
+                          ),
+                          Image.network(
+                            Paths.baseUrl +
+                                "/" +
+                                data!.heatingSystemImg.toString(),
+                            height: 120,
+                            width: Get.width,
+                            fit: BoxFit.fill,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    height: 45.0,
+                    child: ListView.builder(
+                      padding: EdgeInsets.zero,
+                      physics: ClampingScrollPhysics(),
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: data?.propertyDetails?.length,
+                      itemBuilder: (BuildContext context, int index) =>
+                          Container(
+                        margin: EdgeInsets.only(left: 10),
+                        child: MaterialButton(
+                          height: 45,
+                          minWidth: 150,
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(color: Colors.black),
+                              borderRadius: BorderRadius.circular(5)),
+                          color: controller.value.value == index
+                              ? Colors.blue
+                              : Colors.white,
+                          onPressed: () {
+                            controller.value.value = index;
+                          },
+                          child: Text(
+                            data!.propertyDetails![index].name.toString(),
+                            style: TextStyle(
+                                color: controller.value.value == index
+                                    ? Colors.white
+                                    : Colors.black),
+                          ),
                         ),
-                        SizedBox(
-                          height: 15,
-                        )
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    width: Get.width,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: Colors.grey),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 15, right: 15),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                data!.propertyDetails![controller.value.toInt()]
+                                    .name
+                                    .toString(),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.blue,
+                                    fontSize: 18),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          RichText(
+                            text: TextSpan(
+                                text: "Walls: ",
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: data!
+                                        .propertyDetails![
+                                            controller.value.toInt()]
+                                        .walls
+                                        .toString(),
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 18),
+                                  )
+                                ]),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          RichText(
+                            text: TextSpan(
+                                text: "Windows: ",
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: data!
+                                        .propertyDetails![
+                                            controller.value.toInt()]
+                                        .walls
+                                        .toString(),
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 18),
+                                  )
+                                ]),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          RichText(
+                            text: TextSpan(
+                                text: "Others: ",
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: data!
+                                        .propertyDetails![
+                                            controller.value.toInt()]
+                                        .walls
+                                        .toString(),
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 18),
+                                  )
+                                ]),
+                          ),
+                          if (data!.propertyDetails![controller.value.toInt()]
+                                  .name ==
+                              "Kitchen") ...[
+                            SizedBox(
+                              height: 10,
+                            ),
+                            RichText(
+                              text: TextSpan(
+                                  text: "Appliances: ",
+                                  style: TextStyle(
+                                      color: Colors.blue,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text: data!
+                                          .propertyDetails![
+                                              controller.value.toInt()]
+                                          .appliances
+                                          .toString(),
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 18),
+                                    )
+                                  ]),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            RichText(
+                              text: TextSpan(
+                                  text: "Units: ",
+                                  style: TextStyle(
+                                      color: Colors.blue,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text: data!
+                                          .propertyDetails![
+                                              controller.value.toInt()]
+                                          .units
+                                          .toString(),
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 18),
+                                    )
+                                  ]),
+                            ),
+                          ],
+                          SizedBox(
+                            height: 10,
+                          ),
+                          RichText(
+                            text: TextSpan(
+                                text: "Floor: ",
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: data!
+                                        .propertyDetails![
+                                            controller.value.toInt()]
+                                        .floor
+                                        .toString(),
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 18),
+                                  )
+                                ]),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Images",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue,
+                                fontSize: 18),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Center(
+                            child: Wrap(
+                              runSpacing: 20,
+                              spacing: 6,
+                              children: [
+                                for (int i = 0;
+                                    i <
+                                        data!
+                                            .propertyDetails![
+                                                controller.value.toInt()]
+                                            .propertyImages!
+                                            .length;
+                                    i++)
+                                  if (data!
+                                      .propertyDetails![
+                                          controller.value.toInt()]
+                                      .propertyImages![i]
+                                      .url!
+                                      .contains("upload")) ...[
+                                    SizedBox(
+                                        height: 100,
+                                        width: 100,
+                                        child: Image.network(Paths.baseUrl +
+                                            "/" +
+                                            data!
+                                                .propertyDetails![
+                                                    controller.value.toInt()]
+                                                .propertyImages![i]
+                                                .url
+                                                .toString())),
+                                  ]
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Advice For Tenant:",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.blue),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(child: Text(data!.advisedTenantTo.toString())),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Divider(
+                    thickness: 1.5,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Advice For Landlord:",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.blue),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(child: Text(data!.askedLandlordTo.toString())),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Divider(
+                    thickness: 1.5,
+                  ),
+                  Text(
+                    "Summary:",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.blue),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Divider(
+                    thickness: 1.5,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 20, right: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              "Tenant:",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.blue),
+                            ),
+                            Text(data!.tenantName.toString()),
+                          ],
+                        ),
+                        Spacer(),
+                        Column(
+                          children: [
+                            Text(
+                              "Inspector:",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.blue),
+                            ),
+                            Text(data!.inspectorName.toString()),
+                          ],
+                        ),
                       ],
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Advice For Tenant:",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.blue),
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Expanded(child: Text(data!.advisedTenantTo.toString())),
-                  ],
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Divider(
-                  thickness: 1.5,
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  "Advice For Landlord:",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.blue),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Divider(
-                  thickness: 1.5,
-                ),
-                Text(
-                  "Summary:",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.blue),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Divider(
-                  thickness: 1.5,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 20, right: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            "Tenant:",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blue),
-                          ),
-                          Text(data!.tenantName.toString()),
-                        ],
-                      ),
-                      Spacer(),
-                      Column(
-                        children: [
-                          Text(
-                            "Inspector:",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blue),
-                          ),
-                          Text(data!.inspectorName.toString()),
-                        ],
-                      ),
-                    ],
+                  SizedBox(
+                    height: 150,
                   ),
-                ),
-                SizedBox(
-                  height: 150,
-                ),
-                Center(
-                  child: MaterialButton(
-                    onPressed: () async {
-                      final SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
-                      var lo = prefs.getString("logo").toString();
-                      // Directory tempDir = await getTemporaryDirectory();
-                      // final path = '${tempDir.path}/report.pdf';
-                      //
-                      // await Dio().download(
-                      //     "https://api.propelinspections.com/inventory/uploads/umair1686570916.pdf",
-                      //     path);
-                      //
-                      // Share.shareFiles([path]);
-                      // Share.share("https://api.propelinspections.com/inventory/uploads/umair1686570916.pdf");
-                      final htmlContent = """
+                  Center(
+                    child: MaterialButton(
+                      onPressed: () async {
+                        controller.isLoading.value = true;
+                        final SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        var lo = prefs.getString("logo").toString();
+                        final htmlContent = """
                       <!DOCTYPE html>
 <html>
   <head>
@@ -918,7 +1043,7 @@ class Show_Data_Screen extends StatelessWidget {
         font-size: 32px;
         text-align: center;
         background-color: blue;
-        color: white;
+        color: blue;
         border-radius: 14px;
         border-color: black;
         padding-top: 20px;
@@ -930,6 +1055,7 @@ class Show_Data_Screen extends StatelessWidget {
         border-style: solid;
         border-width: medium;
         border-color: black;
+        background-color: blue;
       "
     >
       ${data?.types}
@@ -1348,7 +1474,11 @@ class Show_Data_Screen extends StatelessWidget {
       internal condition at the end of the lease of the Property. Normally, the
       return of the tenancy deposit is based on the outcome of the Check- Out
       report.
-    </div>   
+    </div>  
+    <br>
+    <br> 
+    <br>
+    <br> 
     <div
       style="
         font-size: 28px;
@@ -1678,8 +1808,8 @@ class Show_Data_Screen extends StatelessWidget {
           />
       </div>
     </div>
-    <br>
-    <br>
+
+    
    
    
     
@@ -1734,7 +1864,7 @@ class Show_Data_Screen extends StatelessWidget {
         </tr>
       </table>
     </div>
- <br><br>
+ <br>
     <div  class="image-container" >
    
              ${e.propertyImages?.map((b) => b.url!.contains("upload") ? '''
@@ -1748,7 +1878,7 @@ class Show_Data_Screen extends StatelessWidget {
       </div>
   ''').join('')}
   <br>
-    <br><br>
+    <br>
     <br>
     <div
       style="
@@ -1788,6 +1918,18 @@ class Show_Data_Screen extends StatelessWidget {
     >
       Advice for Landlord:
     </div>
+     <div
+      style="
+        font-size: 28px;
+        color: black;
+        margin-left: 48px;
+        margin-right: 48px;
+        font-weight: 500;
+        margin-top: 10px;
+      "
+    >
+      ${data?.askedLandlordTo}
+    </div>
     <hr
       style="
         border: 2px solid black;
@@ -1796,7 +1938,7 @@ class Show_Data_Screen extends StatelessWidget {
         margin-top: 12px;
       "
     />
-${data?.askedLandlordTo}
+
     <div
       style="
         font-size: 24px;
@@ -1916,26 +2058,26 @@ ${data?.askedLandlordTo}
 </html>
 
 """;
-                      Directory tempDir = await getTemporaryDirectory();
-                      final path = '${tempDir.path}';
-                      final generatedPdfFile =
-                          await FlutterHtmlToPdf.convertFromHtmlContent(
-                        htmlContent,
-                        path,
-                        "report.pdf",
-                      );
-                      Share.shareFiles([generatedPdfFile.path]);
-                    },
-                    child: Text("Export Pdf"),
-                    minWidth: Get.width,
-                    height: 50,
-                    color: Colors.blue,
+                        Directory tempDir = await getTemporaryDirectory();
+                        final path = '${tempDir.path}';
+
+                        final generatedPdfFile =
+                            await FlutterHtmlToPdf.convertFromHtmlContent(
+                                htmlContent, path, "report.pdf");
+                        controller.isLoading.value = false;
+                        Share.shareFiles([generatedPdfFile.path]);
+                      },
+                      child: Text("Export Pdf"),
+                      minWidth: Get.width,
+                      height: 50,
+                      color: Colors.blue,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 100,
-                ),
-              ],
+                  SizedBox(
+                    height: 100,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

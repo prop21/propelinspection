@@ -2,12 +2,14 @@ import 'dart:io';
 
 import 'package:InventoryWise/views/forgot_password/forgot_password_screen.dart';
 import 'package:InventoryWise/views/register/register_controller.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/global.dart';
 import '../login/login_screen.dart';
@@ -101,9 +103,20 @@ class Register_Screen extends StatelessWidget {
                 ),
                 TextField(
                   controller: controller.et4,
+                  obscureText: controller.hide.value,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      suffixIcon: Icon(Icons.visibility)),
+                      suffixIcon: InkWell(
+                          onTap: () {
+                            if (controller.hide.value == false) {
+                              controller.hide.value = true;
+                            } else {
+                              controller.hide.value = false;
+                            }
+                          },
+                          child: Icon(controller.hide.value
+                              ? Icons.visibility
+                              : Icons.visibility_off))),
                 ),
                 SizedBox(
                   height: 20,
@@ -121,14 +134,20 @@ class Register_Screen extends StatelessWidget {
                 Center(
                   child: InkWell(
                     onTap: () async {
+
+                      final SharedPreferences prefs = await SharedPreferences.getInstance();
                       try {
-                        final imagedata = await ImagePicker()
-                            .pickImage(source: ImageSource.gallery);
+                        final ImagePicker picker = ImagePicker();
+// Pick an image.
+                        final pickedFile =
+                            await picker.getImage(source: ImageSource.gallery);
+                        File imagedata = File(pickedFile!.path);
                         if (imagedata == null) return;
                         final imageTemp = File(imagedata.path);
                         imageTemp;
                         controller.cplogo.value =
                             await controller.upload(imageTemp);
+                        prefs.setString("logo", controller.cplogo.value);
                       } on PlatformException catch (e) {
                         print('Failed to pick image: $e');
                       }
@@ -228,7 +247,8 @@ class Register_Screen extends StatelessWidget {
                           controller.et4.text,
                           controller.et4.text,
                           true,
-                          controller.et8.text,controller.cplogo.value);
+                          controller.et8.text,
+                          controller.cplogo.value);
                     },
                     color: Colors.blue,
                     height: 50,

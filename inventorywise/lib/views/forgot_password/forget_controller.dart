@@ -14,19 +14,34 @@ class ForgetController extends GetxController {
   var hide=true.obs;
   var data=<Rows>[].obs;
 
+  var et2=TextEditingController();
+
   final authService = AuthenticationService();
   var et1 = TextEditingController();
 
   @override
   void onInit() {
     super.onInit();
-    resetpassword("");
   }
 
   Future<void> resetpassword(email) async {
     try {
       isLoading(true);
       var result = await authService.forget(email);
+
+      isLoading(false);
+
+    } on Exception catch (e) {
+      print("hello");
+      Get.defaultDialog();
+      isLoading(false);
+      ExceptionHandler().handleException(e);
+    }
+  }
+  Future<void> resetpasswords(email) async {
+    try {
+      isLoading(true);
+      var result = await authService.reset(email);
 
       isLoading(false);
 

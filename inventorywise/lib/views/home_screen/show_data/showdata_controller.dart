@@ -5,6 +5,7 @@ import '../../../service/home/home_service.dart';
 class ShowDataController extends GetxController{
   var value=0.obs;
   var service = HomeService();
+  var isLoading=false.obs;
   @override
   void onInit() {
     super.onInit();
@@ -19,6 +20,6 @@ class ShowDataController extends GetxController{
 
   }
   void deleteData(id) async {
-    await service.deleteProperty(id,);
+    await service.deleteProperty(id);
   }
 }

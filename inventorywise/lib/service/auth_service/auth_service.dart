@@ -11,10 +11,9 @@ class AuthenticationService {
   Future<AuthModel> login(email, pass) async {
     var _http = await ApiResponseInjector().httpDataSource(ApiType.defaultApi);
     try {
-      var res = await _http
-          ?.post(Paths.authBaseUrl, body: {"email": email, "password": pass});
+      var res = await _http?.post(Paths.authBaseUrl,
+          body: {"email": email, "password": pass, "": "true"});
       AuthModel model = AuthModel.fromJson(res);
-      print(res);
       Authenticator().setUserToken(model.jwtToken);
       Authenticator().setUserID(model.id.toString());
       return model;
@@ -29,6 +28,18 @@ class AuthenticationService {
     try {
       var res = await _http?.get(
         Paths.forgotBaseUrl,
+        queryParameters: {"email": email},
+      );
+    } on Exception catch (e) {
+      Get.defaultDialog(title: "Error", middleText: e.toString());
+    }
+  }
+
+  Future<void> reset(email) async {
+    var _http = await ApiResponseInjector().httpDataSource(ApiType.defaultApi);
+    try {
+      var res = await _http?.get(
+        Paths.resetBaseUrl,
         queryParameters: {"email": email},
       );
     } on Exception catch (e) {
@@ -52,7 +63,14 @@ class AuthenticationService {
         "company_address": confirmpassword
       });
       Register model = Register.fromJson(res);
-      Get.offAll(() => Home_Screen());
+      AuthModel m = await login(email, password);
+      Authenticator().setUserID(m.id.toString());
+      Get.offAll(() => Home_Screen(
+            id: m.id.toString(),
+            fname: firstname,
+            lname: lastname,
+            email: email,
+          ));
       Get.defaultDialog(title: "Message", middleText: model.message.toString());
     } on Exception catch (e) {
       Get.defaultDialog(title: "Error", middleText: e.toString());

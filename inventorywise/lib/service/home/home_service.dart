@@ -14,9 +14,8 @@ class HomeService {
   Future<HomeData> getData(id) async {
     var _http = await ApiResponseInjector().httpDataSource(ApiType.defaultApi);
     try {
-      var res = await _http?.get(Paths.propertiesBaseUrl + "1");
+      var res = await _http?.get(Paths.propertiesBaseUrl + id);
       HomeData data = HomeData.fromJson(res);
-
 
       return data;
     } on Exception catch (e) {
@@ -110,7 +109,7 @@ class HomeService {
         "heating_system_img": heatingsystem
       });
       var cont = Get.find<HomeController>();
-      cont.getData("1");
+      cont.getData(Authenticator().getUserID());
       Get.back();
     } on Exception catch (e) {
       Get.defaultDialog(title: "Error", middleText: e.toString());
@@ -183,6 +182,8 @@ class HomeService {
         "co_alarm_back_img": coalarmback,
         "heating_system_img": heatingsystem
       });
+      var cont = Get.find<HomeController>();
+      cont.getData(Authenticator().getUserID());
     } on Exception catch (e) {
       Get.defaultDialog(title: "Error", middleText: e.toString());
     }
@@ -195,7 +196,7 @@ class HomeService {
     try {
       var res =
           await _http?.delete(Paths.deletePropertiesBaseUrl + id, body: {});
-      var cont=Get.find<HomeController>();
+      var cont = Get.find<HomeController>();
       cont.getData(Authenticator().getUserID());
       Get.back();
     } on Exception catch (e) {

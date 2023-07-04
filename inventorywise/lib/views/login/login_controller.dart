@@ -43,6 +43,7 @@ class LoginController extends GetxController {
         prefs.setString("id", result.id.toString());
         prefs.setString("email", result.email.toString());
         prefs.setString("logo", result.companyLogo.toString());
+        print(result.companyLogo);
         Get.offAll(() => Home_Screen(
               id: result.id.toString(),email: result.email,lname: result.lastName,fname:result.firstName ,
             ));
