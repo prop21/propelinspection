@@ -148,6 +148,7 @@ class HomeService {
       var res = await _http
           ?.put(Paths.updatePropertiesBaseUrl + id.toString(), body: {
         "property_details": prop,
+        "proprtyId": id,
         "user_id": Authenticator().getUserID(),
         "property_address": inputFields[0].text,
         "tenant_name": inputFields[1].text,
@@ -184,6 +185,8 @@ class HomeService {
       });
       var cont = Get.find<HomeController>();
       cont.getData(Authenticator().getUserID());
+      Get.back();
+      Get.back();
     } on Exception catch (e) {
       Get.defaultDialog(title: "Error", middleText: e.toString());
     }

@@ -25,16 +25,20 @@ class Show_Data_Screen extends StatelessWidget {
   Rows? data;
   String? email;
   final controller = Get.put(ShowDataController());
+  String decodedString = "";
+  String decodedString1 = "";
   @override
   Widget build(BuildContext context) {
-    final Uint8List bytes = Uint8List.fromList(data!.signatureTenant!.data!);
-    String base64Image = base64Encode(bytes);
-    String decodedString = utf8.decode(base64Decode(base64Image));
-    final Uint8List bytes1 =
-        Uint8List.fromList(data!.signatureInspector!.data!);
-    String base64Image1 = base64Encode(bytes1);
-    String decodedString1 = utf8.decode(base64Decode(base64Image1));
-
+    if (data?.signatureTenant != null && data?.signatureInspector != null) {
+      final Uint8List bytes = Uint8List.fromList(data!.signatureTenant!.data!);
+      String base64Image = base64Encode(bytes);
+      decodedString = utf8.decode(base64Decode(base64Image));
+      final Uint8List bytes1 =
+          Uint8List.fromList(data!.signatureInspector!.data!);
+      String base64Image1 = base64Encode(bytes1);
+      decodedString1 = utf8.decode(base64Decode(base64Image1));
+    }
+    print(data?.id);
     // TODO: implement build
     return Scaffold(
       resizeToAvoidBottomInset: false, // fluter 2.x
@@ -75,12 +79,11 @@ class Show_Data_Screen extends StatelessWidget {
                     margin: EdgeInsets.only(left: 5, right: 5),
                     height: 200,
                     width: Get.width,
-                    decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(8)),
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(8)),
                     child: Image.network(
                       Paths.baseUrl + "/" + data!.mainImg.toString(),
-                      fit: BoxFit.fill,
+                      fit: BoxFit.cover,
                     ),
                   ),
                   SizedBox(
@@ -163,15 +166,15 @@ class Show_Data_Screen extends StatelessWidget {
                             fontWeight: FontWeight.bold, color: Colors.blue),
                       ),
                       Text(
-                        DateTime.parse(data!.ecpExpDate.toString())
+                        DateTime.parse((data?.ecpExpDate).toString())
                                 .day
                                 .toString() +
                             "-" +
-                            DateTime.parse(data!.ecpExpDate.toString())
+                            DateTime.parse((data?.ecpExpDate).toString())
                                 .month
                                 .toString() +
                             "-" +
-                            DateTime.parse(data!.ecpExpDate.toString())
+                            DateTime.parse((data?.ecpExpDate).toString())
                                 .year
                                 .toString(),
                         style: TextStyle(fontWeight: FontWeight.bold),
@@ -293,7 +296,7 @@ class Show_Data_Screen extends StatelessWidget {
                             Paths.baseUrl + "/" + data!.gasMeterImg.toString(),
                             height: 120,
                             width: Get.width,
-                            fit: BoxFit.fill,
+                            fit: BoxFit.contain,
                           )
                         ],
                       ),
@@ -348,7 +351,7 @@ class Show_Data_Screen extends StatelessWidget {
                                 data!.electricityMeterImg.toString(),
                             height: 120,
                             width: Get.width,
-                            fit: BoxFit.fill,
+                            fit: BoxFit.contain,
                           )
                         ],
                       ),
@@ -402,7 +405,7 @@ class Show_Data_Screen extends StatelessWidget {
                                 data!.waterMeterImg.toString(),
                             height: 120,
                             width: Get.width,
-                            fit: BoxFit.fill,
+                            fit: BoxFit.contain,
                           )
                         ],
                       ),
@@ -455,7 +458,7 @@ class Show_Data_Screen extends StatelessWidget {
                                 data!.smokeAlarmFrontImg.toString(),
                             height: 120,
                             width: Get.width,
-                            fit: BoxFit.fill,
+                            fit: BoxFit.contain,
                           )
                         ],
                       ),
@@ -508,7 +511,7 @@ class Show_Data_Screen extends StatelessWidget {
                                 data!.coAlarmFrontImg.toString(),
                             height: 120,
                             width: Get.width,
-                            fit: BoxFit.fill,
+                            fit: BoxFit.contain,
                           )
                         ],
                       ),
@@ -561,7 +564,7 @@ class Show_Data_Screen extends StatelessWidget {
                                 data!.heatingSystemImg.toString(),
                             height: 120,
                             width: Get.width,
-                            fit: BoxFit.fill,
+                            fit: BoxFit.contain,
                           )
                         ],
                       ),
@@ -1480,6 +1483,38 @@ class Show_Data_Screen extends StatelessWidget {
     <br>
     <br>
     <br>
+    <br>
+    <br> 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br> 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br> 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br> 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br> 
+    <br>
+    <br>
+    <br>
+    
+    
+  
+   
+    
+   
+
     
     <div
       style="
@@ -1497,7 +1532,7 @@ class Show_Data_Screen extends StatelessWidget {
       style="
         display: flex;
         margin-left: 48px;
-        margin-top: 30px;
+        margin-top: 10px;
         margin-right: 48px;
         justify-items: center;
         justify-content: center;
@@ -1821,10 +1856,11 @@ class Show_Data_Screen extends StatelessWidget {
       style="
         font-size: 24px;
         color: blue;
-        height:1165px;
+        height:1095px;
         margin-left: 48px;
         font-weight: bold;
-        margin-top: 45px;
+        margin-top: 5px;
+
       "
     >
     <br>
@@ -1834,7 +1870,7 @@ class Show_Data_Screen extends StatelessWidget {
     <div>
       ${e.name}
     </div>
-    <div style="margin-left: 48px; margin-right: 48px; margin-top: 20px">
+    <div style="margin-left: 48px; margin-right: 48px; margin-top: 10px">
       <table id="customers">
         <tr>
           <th>Description</th>
@@ -1844,14 +1880,18 @@ class Show_Data_Screen extends StatelessWidget {
           <td>Floor</td>
           <td>${e.floor}</td>
         </tr>
+        ${e.name == "Kitchen" ? '''<tr>
+                            <td>Appliances</td>
+                            <td>${e.appliances}</td>
+                            </tr>''' : ''''''}
         <tr>
           <td>Walls</td>
           <td>${e.walls}</td>
         </tr>
-        <tr>
+        ${e.name != "Rear Garden" && e.name != "Front & Side Aspects" ? '''<tr>
           <td>Ceiling</td>
           <td>${e.ceiling}</td>
-        </tr>
+        </tr>''' : ''''''}
         <tr>
           <td>Windows</td>
           <td>${e.windows}</td>
@@ -1870,7 +1910,7 @@ class Show_Data_Screen extends StatelessWidget {
     <div  class="image-container" >
    
              ${e.propertyImages?.map((b) => b.url!.contains("upload") ? '''
-      <img  src="${Paths.baseUrl + "/" + b.url.toString()}" alt="" style="width: 300px; height: 250px;" />
+      <img  src="${Paths.baseUrl + "/" + b.url.toString()}" alt="" style="width: 250px; height: 200px;" />
       ''' : '''''').join('')}
     
     </div>
@@ -1878,6 +1918,9 @@ class Show_Data_Screen extends StatelessWidget {
       </div>
   ''').join('')}
   <br>
+    <br>
+    <br>
+    <br>
     <br>
     <br>
     <div
@@ -1960,7 +2003,7 @@ class Show_Data_Screen extends StatelessWidget {
         margin-left: 48px;
         margin-right: 48px;
         font-weight: 500;
-        margin-top: 25px;
+        margin-top: 5px;
       "
     >
       This inventory provides a record of the contents of the property and the
@@ -1978,7 +2021,7 @@ class Show_Data_Screen extends StatelessWidget {
       style="
         display: flex;
         margin-left: 48px;
-        margin-top: 30px;
+        margin-top: 1px;
         margin-right: 48px;
         justify-items: center;
         justify-content: center;
@@ -1988,8 +2031,8 @@ class Show_Data_Screen extends StatelessWidget {
     >
       <div
         style="
-          width: 600px;
-          height: 340px;
+          width: 300px;
+          height: 300px;
 
           border: 6px solid rgb(42, 119, 219);
           border-radius: 14px;
@@ -2000,7 +2043,7 @@ class Show_Data_Screen extends StatelessWidget {
             font-size: 32px;
             color: black;
             font-weight: bold;
-            margin-top: 20px;
+            margin-top: 5px;
             text-align: center;
           "
         >
@@ -2015,13 +2058,13 @@ class Show_Data_Screen extends StatelessWidget {
             margin-top: 20px;
           "
         >
-          <img src="${Paths.baseUrl + "/" + decodedString}" alt="Base64 Image">
+          <img src="${Paths.baseUrl + "/" + decodedString}" alt="Base64 Image" height="200px" width="200px">
         </div>
       </div>
       <div
         style="
-          width: 600px;
-          height: 340px;
+          width: 300px;
+          height: 300px;
           border: 6px solid rgb(42, 119, 219);
           border-radius: 14px;
         "
@@ -2031,7 +2074,7 @@ class Show_Data_Screen extends StatelessWidget {
             font-size: 32px;
             color: black;
             font-weight: bold;
-            margin-top: 20px;
+            margin-top: 5px;
             text-align: center;
           "
         >
@@ -2050,6 +2093,7 @@ class Show_Data_Screen extends StatelessWidget {
             style="border-radius: 12px;"
             src="${Paths.baseUrl + "/" + decodedString1}"
             alt="s1"
+            height="200px" width="200px"
           />
         </div>
       </div>

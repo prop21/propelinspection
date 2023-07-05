@@ -17,9 +17,9 @@ class HomeController extends GetxController {
   var sedata = <Rows>[].obs;
   final authService = HomeService();
   var et1 = TextEditingController();
-  var fname="".obs;
-  var lname="".obs;
-  var email="".obs;
+  var fname = "".obs;
+  var lname = "".obs;
+  var email = "".obs;
   @override
   void onInit() {
     super.onInit();
@@ -40,9 +40,9 @@ class HomeController extends GetxController {
 
   Future<void> getData(id) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    fname.value=prefs.getString("fname").toString();
-    lname.value=prefs.getString("lname").toString();
-    email.value=prefs.getString("email").toString();
+    fname.value = prefs.getString("fname").toString();
+    lname.value = prefs.getString("lname").toString();
+    email.value = prefs.getString("email").toString();
     try {
       isLoading(true);
       var result = await authService.getData(id);

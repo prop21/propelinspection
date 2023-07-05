@@ -34,7 +34,7 @@ class LoginController extends GetxController {
       isLoading(true);
       var result = await authService.login(email, pass);
       isLoading(false);
-      if (result.isVerified==true) {
+      if (result.isVerified == true) {
         Authenticator().setUserID(result.id.toString());
         Authenticator().setEmail(result.email.toString());
         Authenticator().setLogo(result.companyLogo.toString());
@@ -45,7 +45,10 @@ class LoginController extends GetxController {
         prefs.setString("logo", result.companyLogo.toString());
         print(result.companyLogo);
         Get.offAll(() => Home_Screen(
-              id: result.id.toString(),email: result.email,lname: result.lastName,fname:result.firstName ,
+              id: result.id.toString(),
+              email: result.email,
+              lname: result.lastName,
+              fname: result.firstName,
             ));
       }
     } on Exception catch (e) {

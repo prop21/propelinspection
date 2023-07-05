@@ -59,7 +59,7 @@ class Rows {
   String? coAlarmBackImg;
   String? heatingSystemImg;
   String? created;
-  Null? updated;
+  String? updated;
   int? accountId;
   List<PropertyDetails>? propertyDetails;
 

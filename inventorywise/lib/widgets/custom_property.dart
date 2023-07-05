@@ -214,6 +214,25 @@ class CustomPropertyState extends State<CustomProperty> {
                     thickness: 2,
                   ),
                 ],
+                if (widget.name != "Front & Side Aspects" &&
+                    widget.name != "Rear Garden") ...[
+                  TextField(
+                    controller: et3,
+                    onTapOutside: (a) {
+                      if (et3.text.isNotEmpty) {
+                        widget.data?[widget.index].windows = et3.text;
+                      }
+                    },
+                    decoration: InputDecoration(
+                      icon: Text("Ceilings:"),
+                      border: InputBorder.none,
+                      isDense: true,
+                    ),
+                  ),
+                  Divider(
+                    thickness: 2,
+                  ),
+                ],
                 TextField(
                   controller: et3,
                   onTapOutside: (a) {
@@ -1103,13 +1122,30 @@ class CustomPropertyState1 extends State<CustomProperty1> {
     widget.data?[widget.index].name = widget.name;
     widget.data?[widget.index].images = imagess;
     widget.data = widget.data?.toSet().toList();
-    print(widget.data?[widget.index].name);
     et2.text = "Fair";
     et3.text = "Fair";
     et4.text = "Fair";
     et6.text = "Fair";
     et7.text = "Fair";
     et8.text = "Fair";
+    imagess[0] = widget.imgurl[0].url.toString();
+    imagess[1] = widget.imgurl[1].url.toString();
+    imagess[2] = widget.imgurl[2].url.toString();
+    imagess[3] = widget.imgurl[3].url.toString();
+    imagess[4] = widget.imgurl[4].url.toString();
+    imagess[5] = widget.imgurl[5].url.toString();
+    imagess[6] = widget.imgurl[6].url.toString();
+    imagess[7] = widget.imgurl[7].url.toString();
+    imagess[8] = widget.imgurl[8].url.toString();
+    widget.data?[widget.index].images?[0] = widget.imgurl[0].url.toString();
+    widget.data?[widget.index].images?[1] = widget.imgurl[1].url.toString();
+    widget.data?[widget.index].images?[2] = widget.imgurl[2].url.toString();
+    widget.data?[widget.index].images?[3] = widget.imgurl[3].url.toString();
+    widget.data?[widget.index].images?[4] = widget.imgurl[4].url.toString();
+    widget.data?[widget.index].images?[5] = widget.imgurl[5].url.toString();
+    widget.data?[widget.index].images?[6] = widget.imgurl[6].url.toString();
+    widget.data?[widget.index].images?[7] = widget.imgurl[7].url.toString();
+    widget.data?[widget.index].images?[8] = widget.imgurl[8].url.toString();
   }
 
   @override
@@ -1385,12 +1421,10 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  var image =
-                                      await controller.pickImageGallerys();
+                                  image = await controller.pickImageGallerys();
                                   setState(() {});
                                   if (image != null) {
                                     url1 = await controller.upload(image);
-                                    imagess.add(url1);
                                     imagess[0] = url1;
                                     imagess = imagess.toSet().toList();
                                     // widget.data?[widget.index].images = imagess;
@@ -1571,7 +1605,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  image2 = await controller.pickImages();
+                                  image2 = await controller.pickImageGallerys();
                                   setState(() {
                                     print("ff");
                                   });
@@ -1673,7 +1707,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  image3 = await controller.pickImages();
+                                  image3 = await controller.pickImageGallerys();
                                   setState(() {
                                     print("ff");
                                   });
@@ -1763,7 +1797,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  image4 = await controller.pickImages();
+                                  image4 = await controller.pickImageGallerys();
                                   setState(() {
                                     print("ff");
                                   });
@@ -1853,7 +1887,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  image5 = await controller.pickImages();
+                                  image5 = await controller.pickImageGallerys();
                                   setState(() {
                                     print("ff");
                                   });
@@ -1951,7 +1985,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  image6 = await controller.pickImages();
+                                  image6 = await controller.pickImageGallerys();
                                   setState(() {
                                     print("ff");
                                   });
@@ -2041,7 +2075,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  image7 = await controller.pickImages();
+                                  image7 = await controller.pickImageGallerys();
                                   setState(() {
                                     print("ff");
                                   });
@@ -2131,7 +2165,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  image8 = await controller.pickImages();
+                                  image8 = await controller.pickImageGallerys();
                                   setState(() {
                                     print("ff");
                                   });

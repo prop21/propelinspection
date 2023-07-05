@@ -19,9 +19,9 @@ class AddDataController extends GetxController {
   var service = HomeService();
   RxInt count = 17.obs;
   int delid = 0;
-  var list = 12.obs;
+  var list = 14.obs;
   var index = 0.obs;
-  var items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].obs;
+  var items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30].obs;
   var type = "Inventory Report".obs;
   var t1 = "Working".obs;
   var t2 = "Working".obs;

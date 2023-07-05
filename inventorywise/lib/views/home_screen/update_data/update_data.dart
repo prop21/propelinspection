@@ -30,28 +30,42 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
   @override
   Widget build(BuildContext context) {
     model = AddPropertyModel();
+    controller.mainimage = widget.data.mainImg;
+    controller.electricmeterfront = widget.data.electricityMeterImg;
+    controller.gasmeterfront = widget.data.gasMeterImg;
+    controller.watermeterfront = widget.data.waterMeterImg;
+    controller.smokealarmfront = widget.data.smokeAlarmFrontImg;
+    controller.coalarmfront = widget.data.coAlarmFrontImg;
+    controller.heatingsystem = widget.data.heatingSystemImg;
     controller.f[0].text = widget.data.propertyAddress;
     controller.f[1].text = widget.data.tenantName;
     controller.f[2].text = widget.data.inspectorName;
     controller.f[3].text =
+        DateTime.parse(widget.data.inspectionDate.toString()).toString();
+    controller.f[4].text =
+        DateTime.parse(widget.data.ecpExpDate.toString()).toString();
+    controller.f[5].text = DateTime.parse(widget.data.ecirExpDate).toString();
+    controller.f[6].text =
+        DateTime.parse(widget.data.gasSafetyCertificateExpDate).toString();
+    controller.inspectionDateController.text =
         DateTime.parse(widget.data.inspectionDate).day.toString() +
             "-" +
             DateTime.parse(widget.data.inspectionDate).month.toString() +
             "-" +
             DateTime.parse(widget.data.inspectionDate).year.toString();
-    controller.f[4].text =
+    controller.epcExpiryDateController.text =
         DateTime.parse(widget.data.ecpExpDate).day.toString() +
             "-" +
             DateTime.parse(widget.data.ecpExpDate).month.toString() +
             "-" +
             DateTime.parse(widget.data.ecpExpDate).year.toString();
-    controller.f[5].text =
+    controller.ecirExpiryDateController.text =
         DateTime.parse(widget.data.ecirExpDate).day.toString() +
             "-" +
             DateTime.parse(widget.data.ecirExpDate).month.toString() +
             "-" +
             DateTime.parse(widget.data.ecirExpDate).year.toString();
-    controller.f[6].text =
+    controller.gasSafetyCertificateExpiryDateController.text =
         DateTime.parse(widget.data.gasSafetyCertificateExpDate).day.toString() +
             "-" +
             DateTime.parse(widget.data.gasSafetyCertificateExpDate)
@@ -186,7 +200,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                 ? Image.file(
                                     File(
                                         controller.maini.value.path.toString()),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                     height: 120,
                                     width:
                                         controller.maini.value.path.isNotEmpty
@@ -195,7 +209,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                   )
                                 : Image.network(
                                     Paths.baseUrl + "/" + widget.data.mainImg,
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.contain,
                                     height: 120,
                                     width: widget.data.mainImg.isNotEmpty
                                         ? 160
@@ -315,18 +329,20 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                     DateTime? pickedDate = await showDatePicker(
                         context: context,
                         initialDate: DateTime.now(), //get today's date
-                        firstDate: DateTime(
-                            2000), //DateTime.now() - not to allow to choose before today.
+                        firstDate: DateTime
+                            .now(), //DateTime.now() - not to allow to choose before today.
                         lastDate: DateTime(2101));
-                    controller.f[3].text = pickedDate!.day.toString() +
-                        "-" +
-                        pickedDate.month.toString() +
-                        "-" +
-                        pickedDate.year.toString();
+                    controller.f[3].text = pickedDate.toString();
+                    controller.inspectionDateController.text =
+                        pickedDate!.day.toString() +
+                            "-" +
+                            pickedDate.month.toString() +
+                            "-" +
+                            pickedDate.year.toString();
                   },
                   child: TextField(
                     enabled: false,
-                    controller: controller.f[3],
+                    controller: controller.inspectionDateController,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         suffixIcon: Icon(Icons.calendar_month)),
@@ -349,18 +365,20 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                     DateTime? pickedDate = await showDatePicker(
                         context: context,
                         initialDate: DateTime.now(), //get today's date
-                        firstDate: DateTime(
-                            2000), //DateTime.now() - not to allow to choose before today.
+                        firstDate: DateTime
+                            .now(), //DateTime.now() - not to allow to choose before today.
                         lastDate: DateTime(2101));
-                    controller.f[4].text = pickedDate!.day.toString() +
-                        "-" +
-                        pickedDate.month.toString() +
-                        "-" +
-                        pickedDate.year.toString();
+                    controller.f[4].text = pickedDate.toString();
+                    controller.epcExpiryDateController.text =
+                        pickedDate!.day.toString() +
+                            "-" +
+                            pickedDate.month.toString() +
+                            "-" +
+                            pickedDate.year.toString();
                   },
                   child: TextField(
                     enabled: false,
-                    controller: controller.f[4],
+                    controller: controller.epcExpiryDateController,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         suffixIcon: Icon(Icons.calendar_month)),
@@ -383,18 +401,20 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                     DateTime? pickedDate = await showDatePicker(
                         context: context,
                         initialDate: DateTime.now(), //get today's date
-                        firstDate: DateTime(
-                            2000), //DateTime.now() - not to allow to choose before today.
+                        firstDate: DateTime
+                            .now(), //DateTime.now() - not to allow to choose before today.
                         lastDate: DateTime(2101));
-                    controller.f[5].text = pickedDate!.day.toString() +
-                        "-" +
-                        pickedDate.month.toString() +
-                        "-" +
-                        pickedDate.year.toString();
+                    controller.f[5].text = pickedDate.toString();
+                    controller.ecirExpiryDateController.text =
+                        pickedDate!.day.toString() +
+                            "-" +
+                            pickedDate.month.toString() +
+                            "-" +
+                            pickedDate.year.toString();
                   },
                   child: TextField(
                     enabled: false,
-                    controller: controller.f[5],
+                    controller: controller.ecirExpiryDateController,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         suffixIcon: Icon(Icons.calendar_month)),
@@ -417,18 +437,21 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                     DateTime? pickedDate = await showDatePicker(
                         context: context,
                         initialDate: DateTime.now(), //get today's date
-                        firstDate: DateTime(
-                            2000), //DateTime.now() - not to allow to choose before today.
+                        firstDate: DateTime
+                            .now(), //DateTime.now() - not to allow to choose before today.
                         lastDate: DateTime(2101));
-                    controller.f[6].text = pickedDate!.day.toString() +
-                        "-" +
-                        pickedDate.month.toString() +
-                        "-" +
-                        pickedDate.year.toString();
+                    controller.f[6].text = pickedDate.toString();
+                    controller.gasSafetyCertificateExpiryDateController.text =
+                        pickedDate!.day.toString() +
+                            "-" +
+                            pickedDate.month.toString() +
+                            "-" +
+                            pickedDate.year.toString();
                   },
                   child: TextField(
                     enabled: false,
-                    controller: controller.f[6],
+                    controller:
+                        controller.gasSafetyCertificateExpiryDateController,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         suffixIcon: Icon(Icons.calendar_month)),
@@ -537,7 +560,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         ? Image.file(
                                             File(controller.electric.value.path
                                                 .toString()),
-                                            fit: BoxFit.fill,
+                                            fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
                                           )
@@ -545,7 +568,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                             Paths.baseUrl +
                                                 "/" +
                                                 widget.data.electricityMeterImg,
-                                            fit: BoxFit.fill,
+                                            fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
                                           ),
@@ -715,7 +738,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         ? Image.file(
                                             File(controller.gasmeter.value.path
                                                 .toString()),
-                                            fit: BoxFit.fill,
+                                            fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
                                           )
@@ -724,7 +747,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                 "/" +
                                                 widget.data.gasMeterImg
                                                     .toString(),
-                                            fit: BoxFit.fill,
+                                            fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
                                           ),
@@ -893,7 +916,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                             File(controller
                                                 .watermeter.value.path
                                                 .toString()),
-                                            fit: BoxFit.fill,
+                                            fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
                                           )
@@ -901,7 +924,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                             Paths.baseUrl +
                                                 "/" +
                                                 widget.data.waterMeterImg,
-                                            fit: BoxFit.fill,
+                                            fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
                                           ),
@@ -1056,7 +1079,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                             File(controller
                                                 .smokealarm.value.path
                                                 .toString()),
-                                            fit: BoxFit.fill,
+                                            fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
                                           )
@@ -1064,7 +1087,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                             Paths.baseUrl +
                                                 "/" +
                                                 widget.data.smokeAlarmFrontImg,
-                                            fit: BoxFit.fill,
+                                            fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
                                           ),
@@ -1150,7 +1173,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         ? Image.file(
                                             File(controller.smokealar.value.path
                                                 .toString()),
-                                            fit: BoxFit.fill,
+                                            fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
                                           )
@@ -1158,7 +1181,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                             Paths.baseUrl +
                                                 "/" +
                                                 widget.data.smokeAlarmBackImg,
-                                            fit: BoxFit.fill,
+                                            fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
                                           ),
@@ -1310,7 +1333,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         ? Image.file(
                                             File(controller.coal.value.path
                                                 .toString()),
-                                            fit: BoxFit.fill,
+                                            fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
                                           )
@@ -1318,7 +1341,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                             Paths.baseUrl +
                                                 "/" +
                                                 widget.data.coAlarmFrontImg,
-                                            fit: BoxFit.fill,
+                                            fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
                                           ),
@@ -1400,7 +1423,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         ? Image.file(
                                             File(controller.coalarm.value.path
                                                 .toString()),
-                                            fit: BoxFit.fill,
+                                            fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
                                           )
@@ -1408,7 +1431,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                             Paths.baseUrl +
                                                 "/" +
                                                 widget.data.coAlarmBackImg,
-                                            fit: BoxFit.fill,
+                                            fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
                                           ),
@@ -1573,7 +1596,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                       ? Image.file(
                                           File(controller.heating.value.path
                                               .toString()),
-                                          fit: BoxFit.fill,
+                                          fit: BoxFit.contain,
                                           height: 120,
                                           width: Get.width,
                                         )
@@ -1581,7 +1604,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                           Paths.baseUrl +
                                               "/" +
                                               widget.data.heatingSystemImg,
-                                          fit: BoxFit.fill,
+                                          fit: BoxFit.contain,
                                           height: 120,
                                           width: Get.width,
                                         ),
@@ -1710,7 +1733,9 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                     i++)
                   CustomProperty(
                       index: i,
-                      name: "Bedroom " + (i - 7).toString(),
+                      name: "Bedroom " +
+                          (i - (widget.data.propertyDetails.length - 1))
+                              .toString(),
                       data: pd,
                       images: images),
                 SizedBox(

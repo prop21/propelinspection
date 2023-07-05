@@ -3,7 +3,6 @@ import 'package:InventoryWise/views/home_screen/add_data/add_data.dart';
 import 'package:InventoryWise/views/home_screen/home_controller.dart';
 import 'package:InventoryWise/views/home_screen/show_data/show_data.dart';
 import 'package:InventoryWise/views/login/login_screen.dart';
-import 'package:InventoryWise/views/register/register_screen.dart';
 import 'package:InventoryWise/widgets/custom_loader_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +24,7 @@ class Home_Screen extends StatelessWidget {
     controller.fname.value = fname.toString();
     controller.lname.value = lname.toString();
     controller.email.value = email.toString();
-    print(email);
+
     return Scaffold(
       resizeToAvoidBottomInset: false, // fluter 2.x
       floatingActionButton: Container(
@@ -36,7 +35,7 @@ class Home_Screen extends StatelessWidget {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             onPressed: () {
-              if (controller.sedata.value.length < 20) {
+              if (controller.data.value.length < 20) {
                 Get.to(() => AddDataScreen());
               } else {
                 Get.defaultDialog(
@@ -80,14 +79,9 @@ class Home_Screen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(
-                            fname != null
-                                ? fname.toString()
-                                : controller.fname.value.toString() +
-                                            " " +
-                                            lname.toString() !=
-                                        null
-                                    ? lname.toString()
-                                    : controller.lname.toString(),
+                            controller.fname.value.toString() +
+                                " " +
+                                controller.lname.value.toString(),
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold),
@@ -156,7 +150,7 @@ class Home_Screen extends StatelessWidget {
                 children: [
                   Image.asset(
                     "assets/splash/splash.png",
-                    height: 250,
+                    height: 150,
                     width: Get.width,
                     fit: BoxFit.fitWidth,
                   ),
@@ -172,13 +166,15 @@ class Home_Screen extends StatelessWidget {
                     },
                     controller: controller.et1,
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(), hintText: "Search"),
+                        isDense: true,
+                        border: OutlineInputBorder(),
+                        hintText: "Search"),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   SizedBox(
-                    height: Get.height * 0.47,
+                    height: Get.height * 0.61,
                     width: Get.width,
                     child: Obx(
                       () => controller.sedata.length == 0
@@ -187,6 +183,7 @@ class Home_Screen extends StatelessWidget {
                               shrinkWrap: true,
                               itemBuilder: (BuildContext context, int index) =>
                                   Container(
+                                height: 90,
                                 margin: EdgeInsets.only(bottom: 10),
                                 width: Get.width - 5,
                                 decoration: BoxDecoration(
@@ -202,7 +199,7 @@ class Home_Screen extends StatelessWidget {
                                     children: [
                                       Container(
                                         height: 100,
-                                        width: 150,
+                                        width: 130,
                                         decoration: BoxDecoration(
                                             border:
                                                 Border.all(color: Colors.grey),
@@ -217,7 +214,7 @@ class Home_Screen extends StatelessWidget {
                                                 "/" +
                                                 controller.data[index].mainImg
                                                     .toString(),
-                                            fit: BoxFit.fill,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                       ),
@@ -237,7 +234,7 @@ class Home_Screen extends StatelessWidget {
                                               ),
                                               Text(
                                                 controller
-                                                    .data[index].inspectorName
+                                                    .data[index].propertyAddress
                                                     .toString(),
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
@@ -302,6 +299,7 @@ class Home_Screen extends StatelessWidget {
                                   Container(
                                 margin: EdgeInsets.only(bottom: 10),
                                 width: Get.width - 5,
+                                height: 90,
                                 decoration: BoxDecoration(
                                     border: Border.all(color: Colors.grey),
                                     borderRadius: BorderRadius.circular(8)),
@@ -316,7 +314,7 @@ class Home_Screen extends StatelessWidget {
                                     children: [
                                       Container(
                                         height: 100,
-                                        width: 150,
+                                        width: 130,
                                         decoration: BoxDecoration(
                                             border:
                                                 Border.all(color: Colors.grey),
@@ -331,7 +329,7 @@ class Home_Screen extends StatelessWidget {
                                                 "/" +
                                                 controller.sedata[index].mainImg
                                                     .toString(),
-                                            fit: BoxFit.fill,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                       ),
