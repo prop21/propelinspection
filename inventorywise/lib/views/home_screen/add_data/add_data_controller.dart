@@ -20,15 +20,49 @@ class AddDataController extends GetxController {
   RxInt count = 17.obs;
   int delid = 0;
   var list = 14.obs;
+  var temp = File("");
+  var temp1 = File("");
   var index = 0.obs;
-  var items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30].obs;
+  var items = [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30
+  ].obs;
   var type = "Inventory Report".obs;
-  var t1 = "Working".obs;
-  var t2 = "Working".obs;
-  var t3 = "Working".obs;
-  var t4 = "Working".obs;
-  var t5 = "Working".obs;
-  var t6 = "Working".obs;
+  var t1 = "Yes".obs;
+  var t2 = "Yes".obs;
+  var t3 = "Yes".obs;
+  var t4 = "Yes".obs;
+  var t5 = "Yes".obs;
+  var t6 = "Yes".obs;
   var sig1 = File("").obs;
   var sig2 = File("").obs;
 
@@ -201,62 +235,139 @@ class AddDataController extends GetxController {
     );
   }
 
-  void bottomSheet() {
+  void bottomSheet(val) {
+    temp = val;
     Get.bottomSheet(
-      EasySignaturePad(
-        onChanged: (image) async {
-          sig1.value = File("");
-          Uint8List convertedBytes = base64Decode(image);
-          final tempDir = await getTemporaryDirectory();
-          sig1.value =
-              await File('${tempDir.path}/${DateTime.now()}.png').create();
-          sig1.value.writeAsBytesSync(convertedBytes);
-          inspector = await upload(sig1.value);
-        },
-        height: Get.height ~/ 2,
-        width: Get.width ~/ 1,
-        penColor: Colors.black,
-        strokeWidth: 1.0,
-        borderRadius: 10.0,
-        borderColor: Colors.grey,
-        backgroundColor: Colors.white,
-        transparentImage: false,
-        transparentSignaturePad: false,
-        hideClearSignatureIcon: false,
+      isDismissible: false,
+      barrierColor: Colors.transparent,
+      Column(
+        children: [
+          Transform.translate(
+            offset: Offset(0, 10),
+            child: Container(
+                color: Colors.white,
+                width: Get.width,
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      MaterialButton(
+                        onPressed: () async {
+                          inspector = await upload(sig1.value);
+                          Get.back();
+                        },
+                        child: Text("Save"),
+                        color: Colors.blue,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                      ),
+                      MaterialButton(
+                        onPressed: () {
+                          sig1.value = temp;
+                          temp = val;
+                          Get.back();
+                        },
+                        child: Text("Cancel"),
+                        color: Colors.red,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                      ),
+                    ])),
+          ),
+          Flexible(
+            child: EasySignaturePad(
+              onChanged: (image) async {
+                sig1.value = File("");
+                Uint8List convertedBytes = base64Decode(image);
+                final tempDir = await getTemporaryDirectory();
+                sig1.value = await File('${tempDir.path}/${DateTime.now()}.png')
+                    .create();
+                sig1.value.writeAsBytesSync(convertedBytes);
+              },
+              height: Get.height ~/ 2,
+              width: Get.width ~/ 1,
+              penColor: Colors.black,
+              strokeWidth: 5.0,
+              // borderRadius: 10.0,
+              borderColor: Colors.transparent,
+              backgroundColor: Colors.white,
+              transparentImage: false,
+              transparentSignaturePad: false,
+              hideClearSignatureIcon: false,
+            ),
+          ),
+        ],
       ),
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(35),
-          side: BorderSide(width: 5, color: Colors.black)),
+        borderRadius: BorderRadius.circular(35),
+      ),
       enableDrag: false,
     );
   }
 
-  void bottomSheet1() {
+  void bottomSheet1(val) {
+    temp1 = val;
     Get.bottomSheet(
-      EasySignaturePad(
-        onChanged: (image) async {
-          sig2.value = File("");
-          Uint8List convertedBytes = base64Decode(image);
-          final tempDir = await getTemporaryDirectory();
-          sig2.value =
-              await File('${tempDir.path}/${DateTime.now()}.png').create();
-          sig2.value.writeAsBytesSync(convertedBytes);
-          tenant = await upload(sig2.value);
-        },
-        height: Get.height ~/ 2,
-        width: Get.width ~/ 1,
-        penColor: Colors.black,
-        strokeWidth: 1.0,
-        borderRadius: 10.0,
-        borderColor: Colors.grey,
-        backgroundColor: Colors.white,
-        transparentImage: false,
-        transparentSignaturePad: false,
-        hideClearSignatureIcon: false,
-      ),
+      Column(children: [
+        Transform.translate(
+          offset: Offset(0, 10),
+          child: Container(
+            width: Get.width,
+            color: Colors.white,
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  MaterialButton(
+                    onPressed: () async {
+                      tenant = await upload(sig2.value);
+                      Get.back();
+                    },
+                    child: Text("Save"),
+                    color: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                  ),
+                  MaterialButton(
+                    onPressed: () {
+                      sig2.value = temp1;
+                      temp1 = val;
+                      Get.back();
+                    },
+                    child: Text("Cancel"),
+                    color: Colors.red,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                  ),
+                ]),
+          ),
+        ),
+        Flexible(
+          child: EasySignaturePad(
+            onChanged: (image) async {
+              sig2.value = File("");
+              Uint8List convertedBytes = base64Decode(image);
+              final tempDir = await getTemporaryDirectory();
+              sig2.value =
+                  await File('${tempDir.path}/${DateTime.now()}.png').create();
+              sig2.value.writeAsBytesSync(convertedBytes);
+            },
+            height: Get.height ~/ 2,
+            width: Get.width ~/ 1,
+            penColor: Colors.black,
+            strokeWidth: 5.0,
+            // borderRadius: 10.0,
+            borderColor: Colors.transparent,
+            backgroundColor: Colors.white,
+            transparentImage: false,
+            transparentSignaturePad: false,
+            hideClearSignatureIcon: false,
+          ),
+        ),
+      ]),
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(35),
-          side: BorderSide(width: 5, color: Colors.black)),
+        borderRadius: BorderRadius.circular(35),
+      ),
+      isDismissible: false,
+      barrierColor: Colors.transparent,
       enableDrag: false,
     );
   }

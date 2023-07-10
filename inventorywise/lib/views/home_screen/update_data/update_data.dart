@@ -17,8 +17,12 @@ import '../../../widgets/custom_property.dart';
 
 class UpdateDataScreen extends StatefulWidget {
   UpdateDataScreenState createState() => UpdateDataScreenState();
-  UpdateDataScreen({this.id, this.data});
+  UpdateDataScreen(
+      {this.id, this.data, this.tenet, this.inspector, required this.sorted});
   var data;
+  var sorted;
+  String? tenet;
+  String? inspector;
   String? id;
 }
 
@@ -88,6 +92,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
     controller.advisedTenantToController.text = widget.data.advisedTenantTo;
     controller.finalRemarksController.text = widget.data.finalRemarks;
     controller.list.value = widget.data.propertyDetails.length;
+    controller.tenant = widget.tenet;
+    controller.inspector = widget.inspector;
     return Scaffold(
       resizeToAvoidBottomInset: false, // fluter 2.x
       appBar: AppBar(
@@ -329,8 +335,9 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                     DateTime? pickedDate = await showDatePicker(
                         context: context,
                         initialDate: DateTime.now(), //get today's date
-                        firstDate: DateTime
-                            .now(), //DateTime.now() - not to allow to choose before today.
+                        initialEntryMode: DatePickerEntryMode.calendarOnly,
+                        firstDate: DateTime(
+                            2000), //DateTime.now() - not to allow to choose before today.
                         lastDate: DateTime(2101));
                     controller.f[3].text = pickedDate.toString();
                     controller.inspectionDateController.text =
@@ -365,8 +372,9 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                     DateTime? pickedDate = await showDatePicker(
                         context: context,
                         initialDate: DateTime.now(), //get today's date
-                        firstDate: DateTime
-                            .now(), //DateTime.now() - not to allow to choose before today.
+                        initialEntryMode: DatePickerEntryMode.calendarOnly,
+                        firstDate: DateTime(
+                            2000), //DateTime.now() - not to allow to choose before today.
                         lastDate: DateTime(2101));
                     controller.f[4].text = pickedDate.toString();
                     controller.epcExpiryDateController.text =
@@ -401,8 +409,9 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                     DateTime? pickedDate = await showDatePicker(
                         context: context,
                         initialDate: DateTime.now(), //get today's date
-                        firstDate: DateTime
-                            .now(), //DateTime.now() - not to allow to choose before today.
+                        initialEntryMode: DatePickerEntryMode.calendarOnly,
+                        firstDate: DateTime(
+                            2000), //DateTime.now() - not to allow to choose before today.
                         lastDate: DateTime(2101));
                     controller.f[5].text = pickedDate.toString();
                     controller.ecirExpiryDateController.text =
@@ -437,8 +446,9 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                     DateTime? pickedDate = await showDatePicker(
                         context: context,
                         initialDate: DateTime.now(), //get today's date
-                        firstDate: DateTime
-                            .now(), //DateTime.now() - not to allow to choose before today.
+                        initialEntryMode: DatePickerEntryMode.calendarOnly,
+                        firstDate: DateTime(
+                            2000), //DateTime.now() - not to allow to choose before today.
                         lastDate: DateTime(2101));
                     controller.f[6].text = pickedDate.toString();
                     controller.gasSafetyCertificateExpiryDateController.text =
@@ -499,10 +509,10 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                       children: [
                         MaterialButton(
                           onPressed: () {
-                            controller.t1.value = "Working";
+                            controller.t1.value = "Yes";
                           },
                           minWidth: 80,
-                          color: controller.t1.value == "Working"
+                          color: controller.t1.value == "Yes"
                               ? Colors.blue
                               : Colors.white,
                           child: Text("Yes"),
@@ -514,11 +524,11 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                         ),
                         MaterialButton(
                           minWidth: 80,
-                          color: controller.t1.value == "Not Working"
+                          color: controller.t1.value == "No"
                               ? Colors.blue
                               : Colors.white,
                           onPressed: () {
-                            controller.t1.value = "Not Working";
+                            controller.t1.value = "No";
                           },
                           child: Text("No"),
                           shape: OutlineInputBorder(
@@ -553,7 +563,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                 border: Border.all(color: Colors.grey),
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(5)),
-                            child: widget.data.electricityMeterImg != null ||
+                            child: widget.data.electricityMeterImg != "" ||
                                     controller.electric.value.path.isNotEmpty
                                 ? Stack(children: [
                                     controller.electric.value.path.isNotEmpty
@@ -567,7 +577,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         : Image.network(
                                             Paths.baseUrl +
                                                 "/" +
-                                                widget.data.electricityMeterImg,
+                                                (widget.data.electricityMeterImg).toString(),
                                             fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
@@ -677,10 +687,10 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                       children: [
                         MaterialButton(
                           onPressed: () {
-                            controller.t2.value = "Working";
+                            controller.t2.value = "Yes";
                           },
                           minWidth: 80,
-                          color: controller.t2.value == "Working"
+                          color: controller.t2.value == "Yes"
                               ? Colors.blue
                               : Colors.white,
                           child: Text("Yes"),
@@ -692,11 +702,11 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                         ),
                         MaterialButton(
                           minWidth: 80,
-                          color: controller.t2.value == "Not Working"
+                          color: controller.t2.value == "No"
                               ? Colors.blue
                               : Colors.white,
                           onPressed: () {
-                            controller.t2.value = "Not Working";
+                            controller.t2.value = "No";
                           },
                           child: Text("No"),
                           shape: OutlineInputBorder(
@@ -731,7 +741,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                 border: Border.all(color: Colors.grey),
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(5)),
-                            child: widget.data.gasMeterImg != null ||
+                            child: widget.data.gasMeterImg != "" ||
                                     controller.gasmeter.value.path.isNotEmpty
                                 ? Stack(children: [
                                     controller.gasmeter.value.path.isNotEmpty
@@ -854,10 +864,10 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                       children: [
                         MaterialButton(
                           onPressed: () {
-                            controller.t3.value = "Working";
+                            controller.t3.value = "Yes";
                           },
                           minWidth: 80,
-                          color: controller.t3.value == "Working"
+                          color: controller.t3.value == "Yes"
                               ? Colors.blue
                               : Colors.white,
                           child: Text("Yes"),
@@ -869,11 +879,11 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                         ),
                         MaterialButton(
                           minWidth: 80,
-                          color: controller.t3.value == "Not Working"
+                          color: controller.t3.value == "No"
                               ? Colors.blue
                               : Colors.white,
                           onPressed: () {
-                            controller.t3.value = "Not Working";
+                            controller.t3.value = "No";
                           },
                           child: Text("No"),
                           shape: OutlineInputBorder(
@@ -908,7 +918,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                 border: Border.all(color: Colors.grey),
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(5)),
-                            child: widget.data.waterMeterImg != null ||
+                            child: widget.data.waterMeterImg != "" ||
                                     controller.watermeter.value.path.isNotEmpty
                                 ? Stack(children: [
                                     controller.watermeter.value.path.isNotEmpty
@@ -923,7 +933,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         : Image.network(
                                             Paths.baseUrl +
                                                 "/" +
-                                                widget.data.waterMeterImg,
+                                                (widget.data.waterMeterImg).toString(),
                                             fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
@@ -1035,10 +1045,10 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                       children: [
                         MaterialButton(
                           onPressed: () {
-                            controller.t4.value = "Working";
+                            controller.t4.value = "Yes";
                           },
                           minWidth: 80,
-                          color: controller.t4.value == "Working"
+                          color: controller.t4.value == "Yes"
                               ? Colors.blue
                               : Colors.white,
                           child: Text("Yes"),
@@ -1050,11 +1060,11 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                         ),
                         MaterialButton(
                           minWidth: 80,
-                          color: controller.t4.value == "Not Working"
+                          color: controller.t4.value == "No"
                               ? Colors.blue
                               : Colors.white,
                           onPressed: () {
-                            controller.t4.value = "Not Working";
+                            controller.t4.value = "No";
                           },
                           child: Text("No"),
                           shape: OutlineInputBorder(
@@ -1071,7 +1081,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                 border: Border.all(color: Colors.grey),
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(5)),
-                            child: widget.data.smokeAlarmFrontImg != null ||
+                            child: widget.data.smokeAlarmFrontImg != "" ||
                                     controller.smokealarm.value.path.isNotEmpty
                                 ? Stack(children: [
                                     controller.smokealarm.value.path.isNotEmpty
@@ -1086,7 +1096,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         : Image.network(
                                             Paths.baseUrl +
                                                 "/" +
-                                                widget.data.smokeAlarmFrontImg,
+                                                (widget.data.smokeAlarmFrontImg).toString(),
                                             fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
@@ -1166,7 +1176,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                 border: Border.all(color: Colors.grey),
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(5)),
-                            child: widget.data.smokeAlarmBackImg != null ||
+                            child: widget.data.smokeAlarmBackImg != "" ||
                                     controller.smokealar.value.path.isNotEmpty
                                 ? Stack(children: [
                                     controller.smokealar.value.path.isNotEmpty
@@ -1180,7 +1190,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         : Image.network(
                                             Paths.baseUrl +
                                                 "/" +
-                                                widget.data.smokeAlarmBackImg,
+                                                widget.data.smokeAlarmBackImg
+                                                    .toString(),
                                             fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
@@ -1290,10 +1301,10 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                       children: [
                         MaterialButton(
                           onPressed: () {
-                            controller.t5.value = "Working";
+                            controller.t5.value = "Yes";
                           },
                           minWidth: 80,
-                          color: controller.t5.value == "Working"
+                          color: controller.t5.value == "Yes"
                               ? Colors.blue
                               : Colors.white,
                           child: Text("Yes"),
@@ -1305,11 +1316,11 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                         ),
                         MaterialButton(
                           minWidth: 80,
-                          color: controller.t5.value == "Not Working"
+                          color: controller.t5.value == "No"
                               ? Colors.blue
                               : Colors.white,
                           onPressed: () {
-                            controller.t5.value = "Not Working";
+                            controller.t5.value = "No";
                           },
                           child: Text("No"),
                           shape: OutlineInputBorder(
@@ -1326,7 +1337,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                 border: Border.all(color: Colors.grey),
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(5)),
-                            child: widget.data.coAlarmFrontImg != null ||
+                            child: widget.data.coAlarmFrontImg != "" ||
                                     controller.coal.value.path.isNotEmpty
                                 ? Stack(children: [
                                     controller.coal.value.path.isNotEmpty
@@ -1340,7 +1351,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         : Image.network(
                                             Paths.baseUrl +
                                                 "/" +
-                                                widget.data.coAlarmFrontImg,
+                                                widget.data.coAlarmFrontImg
+                                                    .toString(),
                                             fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
@@ -1416,7 +1428,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                 border: Border.all(color: Colors.grey),
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(5)),
-                            child: widget.data.coAlarmBackImg != null ||
+                            child: widget.data.coAlarmBackImg != "" ||
                                     controller.coalarm.value.path.isNotEmpty
                                 ? Stack(children: [
                                     controller.coalarm.value.path.isNotEmpty
@@ -1430,7 +1442,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         : Image.network(
                                             Paths.baseUrl +
                                                 "/" +
-                                                widget.data.coAlarmBackImg,
+                                                widget.data.coAlarmBackImg
+                                                    .toString(),
                                             fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
@@ -1540,10 +1553,10 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                     children: [
                       MaterialButton(
                         onPressed: () {
-                          controller.t6.value = "Working";
+                          controller.t6.value = "Yes";
                         },
                         minWidth: 80,
-                        color: controller.t6.value == "Working"
+                        color: controller.t6.value == "Yes"
                             ? Colors.blue
                             : Colors.white,
                         child: Text("Yes"),
@@ -1555,11 +1568,11 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                       ),
                       MaterialButton(
                         minWidth: 80,
-                        color: controller.t6.value == "Not Working"
+                        color: controller.t6.value == "No"
                             ? Colors.blue
                             : Colors.white,
                         onPressed: () {
-                          controller.t6.value = "Not Working";
+                          controller.t6.value = "No";
                         },
                         child: Text("No"),
                         shape: OutlineInputBorder(
@@ -1589,7 +1602,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                               border: Border.all(color: Colors.grey),
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(5)),
-                          child: widget.data.heatingSystemImg != null ||
+                          child: widget.data.heatingSystemImg != "" ||
                                   controller.heating.value.path.isNotEmpty
                               ? Stack(children: [
                                   controller.heating.value.path.isNotEmpty
@@ -1603,7 +1616,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                       : Image.network(
                                           Paths.baseUrl +
                                               "/" +
-                                              widget.data.heatingSystemImg,
+                                              widget.data.heatingSystemImg
+                                                  .toString(),
                                           fit: BoxFit.contain,
                                           height: 120,
                                           width: Get.width,
@@ -1674,19 +1688,19 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                for (int i = 0; i < widget.data.propertyDetails.length; i++)
+                for (int i = 0; i < widget.sorted.length; i++)
                   if (controller.items.contains(i)) ...[
                     CustomProperty1(
-                        imgurl: widget.data.propertyDetails[i].propertyImages,
-                        walls: widget.data.propertyDetails[i].walls,
-                        units: widget.data.propertyDetails[i].units,
-                        floor: widget.data.propertyDetails[i].floor,
-                        doors: widget.data.propertyDetails[i].doors,
-                        windows: widget.data.propertyDetails[i].windows,
-                        celling: widget.data.propertyDetails[i].ceiling,
-                        appliences: widget.data.propertyDetails[i].appliances,
+                        imgurl: widget.sorted[i].propertyImages,
+                        walls: widget.sorted[i].walls,
+                        units: widget.sorted[i].units,
+                        floor: widget.sorted[i].floor,
+                        doors: widget.sorted[i].doors,
+                        windows: widget.sorted[i].windows,
+                        celling: widget.sorted[i].ceiling,
+                        appliences: widget.sorted[i].appliances,
                         index: i,
-                        name: widget.data.propertyDetails[i].name,
+                        name: widget.sorted[i].name,
                         data: pd,
                         images: images),
                   ],
@@ -1828,31 +1842,37 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                 SizedBox(
                   height: 10,
                 ),
-                ListView(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    children: [
-                      EasySignaturePad(
-                        onChanged: (image) async {
-                          Uint8List convertedBytes = base64Decode(image);
-                          final tempDir = await getTemporaryDirectory();
-                          File file =
-                              await File('${tempDir.path}/image.png').create();
-                          file.writeAsBytesSync(convertedBytes);
-                          controller.inspector = await controller.upload(file);
-                        },
-                        height: Get.width ~/ 2,
-                        width: Get.width ~/ 1,
-                        penColor: Colors.black,
-                        strokeWidth: 1.0,
-                        borderRadius: 10.0,
-                        borderColor: Colors.grey,
-                        backgroundColor: Colors.white,
-                        transparentImage: false,
-                        transparentSignaturePad: false,
-                        hideClearSignatureIcon: false,
-                      ),
-                    ]),
+                InkWell(
+                  onTap: () {
+                    controller.bottomSheet(controller.sig1.value);
+                  },
+                  child: controller.sig1.value.existsSync()
+                      ? Container(
+                          height: 200,
+                          width: Get.width,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Colors.black)),
+                          child: controller.sig1.value.existsSync()
+                              ? Image.file(controller.sig1.value, errorBuilder:
+                                  (BuildContext context, Object exception,
+                                      StackTrace? stackTrace) {
+                                  return Text('');
+                                })
+                              : SizedBox())
+                      : Container(
+                          height: 200,
+                          width: Get.width,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Colors.black)),
+                          child: Image.network(
+                              Paths.baseUrl + "/" + widget.inspector.toString(),
+                              errorBuilder: (BuildContext context,
+                                  Object exception, StackTrace? stackTrace) {
+                            return Text('');
+                          })),
+                ),
                 SizedBox(
                   height: 10,
                 ),
@@ -1864,31 +1884,37 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                 SizedBox(
                   height: 10,
                 ),
-                ListView(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    children: [
-                      EasySignaturePad(
-                        onChanged: (image) async {
-                          Uint8List convertedBytes = base64Decode(image);
-                          final tempDir = await getTemporaryDirectory();
-                          File file =
-                              await File('${tempDir.path}/image.png').create();
-                          file.writeAsBytesSync(convertedBytes);
-                          controller.tenant = await controller.upload(file);
-                        },
-                        height: Get.width ~/ 2,
-                        width: Get.width ~/ 1,
-                        penColor: Colors.black,
-                        strokeWidth: 1.0,
-                        borderRadius: 10.0,
-                        borderColor: Colors.grey,
-                        backgroundColor: Colors.white,
-                        transparentImage: false,
-                        transparentSignaturePad: false,
-                        hideClearSignatureIcon: false,
-                      ),
-                    ]),
+                InkWell(
+                  onTap: () {
+                    controller.bottomSheet1(controller.sig2.value);
+                  },
+                  child: controller.sig2.value.existsSync()
+                      ? Container(
+                          height: 200,
+                          width: Get.width,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Colors.black)),
+                          child: controller.sig2.value.existsSync()
+                              ? Image.file(controller.sig2.value, errorBuilder:
+                                  (BuildContext context, Object exception,
+                                      StackTrace? stackTrace) {
+                                  return Text('');
+                                })
+                              : SizedBox())
+                      : Container(
+                          height: 200,
+                          width: Get.width,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Colors.black)),
+                          child: Image.network(
+                              Paths.baseUrl + "/" + widget.tenet.toString(),
+                              errorBuilder: (BuildContext context,
+                                  Object exception, StackTrace? stackTrace) {
+                            return Text('');
+                          })),
+                ),
                 SizedBox(
                   height: 20,
                 ),

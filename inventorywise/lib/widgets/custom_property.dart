@@ -127,6 +127,8 @@ class CustomPropertyState extends State<CustomProperty> {
                   if (widget.index >= 7) {
                     controller.list.value--;
                   }
+                  widget.data
+                      ?.removeWhere((element) => element.name == widget.name);
                 },
                 child: Icon(
                   Icons.delete,
@@ -1190,6 +1192,8 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                   if (widget.index >= 7) {
                     controller.list.value--;
                   }
+                  widget.data
+                      ?.removeWhere((element) => element.name == widget.name);
                 },
                 child: Icon(
                   Icons.delete,

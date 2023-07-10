@@ -23,12 +23,123 @@ import '../../../utils/global.dart';
 class Show_Data_Screen extends StatelessWidget {
   Show_Data_Screen({this.data, this.email});
   Rows? data;
+  Rows? temp;
   String? email;
   final controller = Get.put(ShowDataController());
   String decodedString = "";
   String decodedString1 = "";
   @override
   Widget build(BuildContext context) {
+    List<String> orderList = [
+      'Front & Side Aspects',
+      'Entrance Hall',
+      'Living Room 1',
+      'Living Room 2',
+      'Kitchen',
+      'Rear Garden',
+      'Landing',
+      'Bedroom 1',
+      'Bedroom 2',
+      'Bedroom 3',
+      'Bedroom 4',
+      'Bedroom 5',
+      'Bathroom 1',
+      'Bathroom 2',
+    ];
+
+    List<PropertyDetails> propertyList = [
+      // Add more PropertyDetails objects as needed
+    ];
+    for (int i = 0; i < data!.propertyDetails!.length; i++) {
+      if (data!.propertyDetails![i].name.toString() == 'Front & Side Aspects') {
+        propertyList.add(data!.propertyDetails![i]);
+      }
+    }
+    for (int i = 0; i < data!.propertyDetails!.length; i++) {
+      if (data!.propertyDetails![i].name.toString() == 'Entrance Hall') {
+        propertyList.add(data!.propertyDetails![i]);
+      }
+    }
+    for (int i = 0; i < data!.propertyDetails!.length; i++) {
+      if (data!.propertyDetails![i].name.toString() == 'Living Room 1') {
+        propertyList.add(data!.propertyDetails![i]);
+      }
+    }
+    for (int i = 0; i < data!.propertyDetails!.length; i++) {
+      if (data!.propertyDetails![i].name.toString() == 'Living Room 2') {
+        propertyList.add(data!.propertyDetails![i]);
+      }
+    }
+    for (int i = 0; i < data!.propertyDetails!.length; i++) {
+      if (data!.propertyDetails![i].name.toString() == 'Kitchen') {
+        propertyList.add(data!.propertyDetails![i]);
+      }
+    }
+    for (int i = 0; i < data!.propertyDetails!.length; i++) {
+      if (data!.propertyDetails![i].name.toString() == 'Rear Garden') {
+        propertyList.add(data!.propertyDetails![i]);
+      }
+    }
+    for (int i = 0; i < data!.propertyDetails!.length; i++) {
+      if (data!.propertyDetails![i].name.toString() == 'Landing') {
+        propertyList.add(data!.propertyDetails![i]);
+      }
+    }
+    for (int i = 0; i < data!.propertyDetails!.length; i++) {
+      if (data!.propertyDetails![i].name.toString() == 'Bedroom 1') {
+        propertyList.add(data!.propertyDetails![i]);
+      }
+    }
+    for (int i = 0; i < data!.propertyDetails!.length; i++) {
+      if (data!.propertyDetails![i].name.toString() == 'Bedroom 2') {
+        propertyList.add(data!.propertyDetails![i]);
+      }
+    }
+    for (int i = 0; i < data!.propertyDetails!.length; i++) {
+      if (data!.propertyDetails![i].name.toString() == 'Bedroom 3') {
+        propertyList.add(data!.propertyDetails![i]);
+      }
+    }
+    for (int i = 0; i < data!.propertyDetails!.length; i++) {
+      if (data!.propertyDetails![i].name.toString() == 'Bedroom 4') {
+        propertyList.add(data!.propertyDetails![i]);
+      }
+    }
+    for (int i = 0; i < data!.propertyDetails!.length; i++) {
+      if (data!.propertyDetails![i].name.toString() == 'Bedroom 5') {
+        propertyList.add(data!.propertyDetails![i]);
+      }
+    }
+    for (int i = 0; i < data!.propertyDetails!.length; i++) {
+      if (data!.propertyDetails![i].name.toString() == 'Bathroom 1') {
+        propertyList.add(data!.propertyDetails![i]);
+      }
+    }
+    for (int i = 0; i < data!.propertyDetails!.length; i++) {
+      if (data!.propertyDetails![i].name.toString() == 'Bathroom 2') {
+        propertyList.add(data!.propertyDetails![i]);
+      }
+    }
+
+    // data?.propertyDetails?.sort((a, b) {
+    //   List<String> order = [
+    //     'Front & Side Aspects',
+    //     'Entrance Hall',
+    //     'Living Room 1',
+    //     'Living Room 2',
+    //     'Kitchen',
+    //     'Rear Garden',
+    //     'Landing',
+    //     'Bedroom 1',
+    //     'Bedroom 2',
+    //     'Bedroom 3',
+    //     'Bedroom 4',
+    //     'Bedroom 5',
+    //     'Bathroom 1',
+    //     'Bathroom 2'
+    //   ];
+    //   return order.indexOf(a.name!).compareTo(order.indexOf(b.name!));
+    // });
     if (data?.signatureTenant != null && data?.signatureInspector != null) {
       final Uint8List bytes = Uint8List.fromList(data!.signatureTenant!.data!);
       String base64Image = base64Encode(bytes);
@@ -61,15 +172,27 @@ class Show_Data_Screen extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    "Inventory Report",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  Center(
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black, width: 2)),
+                      height: 60,
+                      width: 200,
+                      child: Text(
+                        (data?.types.toString()).toString(),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Colors.blue),
+                      ),
+                    ),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   Text(
-                    data!.tenantName.toString(),
+                    data!.propertyAddress.toString(),
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
                   SizedBox(
@@ -99,6 +222,9 @@ class Show_Data_Screen extends StatelessWidget {
                               Get.to(() => UpdateDataScreen(
                                     id: data?.id.toString(),
                                     data: data,
+                                    sorted: propertyList,
+                                    tenet: decodedString,
+                                    inspector: decodedString1,
                                   ));
                             },
                             child: Icon(Icons.edit)),
@@ -127,12 +253,14 @@ class Show_Data_Screen extends StatelessWidget {
                     height: 15,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Inspection Date:",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.blue),
+                      SizedBox(
+                        width: 120,
+                        child: Text(
+                          "Inspection Date:",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, color: Colors.blue),
+                        ),
                       ),
                       Text(
                         DateTime.parse(data!.inspectionDate.toString())
@@ -148,7 +276,9 @@ class Show_Data_Screen extends StatelessWidget {
                                 .toString(),
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      SizedBox()
+                      SizedBox(
+                        width: 10,
+                      ),
                     ],
                   ),
                   Divider(
@@ -158,12 +288,39 @@ class Show_Data_Screen extends StatelessWidget {
                     height: 15,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      SizedBox(
+                        width: 120,
+                        child: Text(
+                          "Inspection By:",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, color: Colors.blue),
+                        ),
+                      ),
                       Text(
-                        "ECP Date:           ",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.blue),
+                        data!.inspectorName.toString(),
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                    ],
+                  ),
+                  Divider(
+                    thickness: 1.5,
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 70,
+                        child: Text(
+                          "ECP Date:           ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, color: Colors.blue),
+                        ),
                       ),
                       Text(
                         DateTime.parse((data?.ecpExpDate).toString())
@@ -179,7 +336,9 @@ class Show_Data_Screen extends StatelessWidget {
                                 .toString(),
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      SizedBox()
+                      SizedBox(
+                        width: 10,
+                      ),
                     ],
                   ),
                   Divider(
@@ -189,12 +348,14 @@ class Show_Data_Screen extends StatelessWidget {
                     height: 15,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "ECIR Date:         ",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.blue),
+                      SizedBox(
+                        width: 80,
+                        child: Text(
+                          "ECIR Date:         ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, color: Colors.blue),
+                        ),
                       ),
                       Text(
                         DateTime.parse(data!.ecirExpDate.toString())
@@ -210,7 +371,9 @@ class Show_Data_Screen extends StatelessWidget {
                                 .toString(),
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      SizedBox()
+                      SizedBox(
+                        width: 10,
+                      )
                     ],
                   ),
                   Divider(
@@ -220,10 +383,9 @@ class Show_Data_Screen extends StatelessWidget {
                     height: 15,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                          width: 100,
+                          width: 250,
                           child: Text(
                             "Gas Saftey Certificate Exipiry Date:",
                             style: TextStyle(
@@ -247,7 +409,9 @@ class Show_Data_Screen extends StatelessWidget {
                                 .toString(),
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      SizedBox()
+                      SizedBox(
+                        width: 10,
+                      )
                     ],
                   ),
                   Divider(
@@ -271,20 +435,40 @@ class Show_Data_Screen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Flexible(
-                                child: Text(
-                                  "Pre-Paid Gas Meter:" +
-                                      data!.gasMeter.toString(),
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blue),
+                                child: RichText(
+                                  text: TextSpan(
+                                      text: "Pre-Paid Gas Meter:",
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text: data!.gasMeter.toString(),
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                          ),
+                                        )
+                                      ]),
                                 ),
                               ),
                               Flexible(
-                                child: Text(
-                                  "Reading:" + data!.gasMeterReading.toString(),
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blue),
+                                child: RichText(
+                                  text: TextSpan(
+                                      text: "Reading:",
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text:
+                                              data!.gasMeterReading.toString(),
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                          ),
+                                        )
+                                      ]),
                                 ),
                               ),
                             ],
@@ -323,21 +507,41 @@ class Show_Data_Screen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Flexible(
-                                child: Text(
-                                  "Pre-Paid Electricity Meter:" +
-                                      data!.electricityMeter.toString(),
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blue),
+                                child: RichText(
+                                  text: TextSpan(
+                                      text: "Pre-Paid Electricity Meter:",
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text:
+                                              data!.electricityMeter.toString(),
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                          ),
+                                        )
+                                      ]),
                                 ),
                               ),
                               Flexible(
-                                child: Text(
-                                  "Reading:" +
-                                      data!.electricityMeterReading.toString(),
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blue),
+                                child: RichText(
+                                  text: TextSpan(
+                                      text: "Reading:",
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text: data!.electricityMeterReading
+                                              .toString(),
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                          ),
+                                        )
+                                      ]),
                                 ),
                               ),
                             ],
@@ -378,20 +582,40 @@ class Show_Data_Screen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Flexible(
-                                child: Text(
-                                  "Water Meter:" + data!.waterMeter.toString(),
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blue),
+                                child: RichText(
+                                  text: TextSpan(
+                                      text: "Water Meter:",
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text: data!.waterMeter.toString(),
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                          ),
+                                        )
+                                      ]),
                                 ),
                               ),
                               Flexible(
-                                child: Text(
-                                  "Reading:" +
-                                      data!.waterMeterReading.toString(),
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blue),
+                                child: RichText(
+                                  text: TextSpan(
+                                      text: "Reading:",
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text: data!.waterMeterReading
+                                              .toString(),
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                          ),
+                                        )
+                                      ]),
                                 ),
                               ),
                             ],
@@ -432,21 +656,31 @@ class Show_Data_Screen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Flexible(
-                                child: Text(
-                                  "Smoke Alarm:" + data!.smokeAlarm.toString(),
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blue),
+                                child: RichText(
+                                  text: TextSpan(
+                                      text: "Smoke Alarm:",
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text: data!.smokeAlarm.toString(),
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                          ),
+                                        )
+                                      ]),
                                 ),
                               ),
-                              Flexible(
-                                child: Text(
-                                  "Reading:",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blue),
-                                ),
-                              ),
+                              // Flexible(
+                              //   child: Text(
+                              //     "Reading:",
+                              //     style: TextStyle(
+                              //         fontWeight: FontWeight.bold,
+                              //         color: Colors.blue),
+                              //   ),
+                              // ),
                             ],
                           ),
                           Divider(
@@ -485,19 +719,21 @@ class Show_Data_Screen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Flexible(
-                                child: Text(
-                                  "CO Alarm:" + data!.coAlarm.toString(),
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blue),
-                                ),
-                              ),
-                              Flexible(
-                                child: Text(
-                                  "Reading:",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blue),
+                                child: RichText(
+                                  text: TextSpan(
+                                      text: "CO Alarm:",
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text: data!.coAlarm.toString(),
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                          ),
+                                        )
+                                      ]),
                                 ),
                               ),
                             ],
@@ -538,21 +774,31 @@ class Show_Data_Screen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Flexible(
-                                child: Text(
-                                  "Heating System Working:" +
-                                      data!.heatingSystem.toString(),
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blue),
+                                child: RichText(
+                                  text: TextSpan(
+                                      text: "Heating System Working:",
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text: data!.heatingSystem.toString(),
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                          ),
+                                        )
+                                      ]),
                                 ),
                               ),
-                              Flexible(
-                                  child: Text(
-                                "Reading:",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.blue),
-                              )),
+
+                              // Flexible(
+                              //     child: Text(
+                              //   "Reading:",
+                              //   style: TextStyle(
+                              //       fontWeight: FontWeight.bold,
+                              //       color: Colors.blue),
+                              // )),
                             ],
                           ),
                           Divider(
@@ -580,7 +826,7 @@ class Show_Data_Screen extends StatelessWidget {
                       physics: ClampingScrollPhysics(),
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
-                      itemCount: data?.propertyDetails?.length,
+                      itemCount: propertyList.length,
                       itemBuilder: (BuildContext context, int index) =>
                           Container(
                         margin: EdgeInsets.only(left: 10),
@@ -597,7 +843,7 @@ class Show_Data_Screen extends StatelessWidget {
                             controller.value.value = index;
                           },
                           child: Text(
-                            data!.propertyDetails![index].name.toString(),
+                            propertyList[index].name.toString(),
                             style: TextStyle(
                                 color: controller.value.value == index
                                     ? Colors.white
@@ -628,7 +874,7 @@ class Show_Data_Screen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                data!.propertyDetails![controller.value.toInt()]
+                                propertyList[controller.value.toInt()]
                                     .name
                                     .toString(),
                                 style: TextStyle(
@@ -650,13 +896,11 @@ class Show_Data_Screen extends StatelessWidget {
                                     fontSize: 18),
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: data!
-                                        .propertyDetails![
-                                            controller.value.toInt()]
+                                    text: propertyList[controller.value.toInt()]
                                         .walls
                                         .toString(),
                                     style: TextStyle(
-                                        color: Colors.black, fontSize: 18),
+                                        color: Colors.black, fontSize: 14),
                                   )
                                 ]),
                           ),
@@ -672,44 +916,19 @@ class Show_Data_Screen extends StatelessWidget {
                                     fontSize: 18),
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: data!
-                                        .propertyDetails![
-                                            controller.value.toInt()]
+                                    text: propertyList[controller.value.toInt()]
                                         .walls
                                         .toString(),
                                     style: TextStyle(
-                                        color: Colors.black, fontSize: 18),
+                                        color: Colors.black, fontSize: 14),
                                   )
                                 ]),
                           ),
                           SizedBox(
                             height: 10,
                           ),
-                          RichText(
-                            text: TextSpan(
-                                text: "Others: ",
-                                style: TextStyle(
-                                    color: Colors.blue,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18),
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: data!
-                                        .propertyDetails![
-                                            controller.value.toInt()]
-                                        .walls
-                                        .toString(),
-                                    style: TextStyle(
-                                        color: Colors.black, fontSize: 18),
-                                  )
-                                ]),
-                          ),
-                          if (data!.propertyDetails![controller.value.toInt()]
-                                  .name ==
+                          if (propertyList[controller.value.toInt()].name ==
                               "Kitchen") ...[
-                            SizedBox(
-                              height: 10,
-                            ),
                             RichText(
                               text: TextSpan(
                                   text: "Appliances: ",
@@ -719,13 +938,12 @@ class Show_Data_Screen extends StatelessWidget {
                                       fontSize: 18),
                                   children: <TextSpan>[
                                     TextSpan(
-                                      text: data!
-                                          .propertyDetails![
-                                              controller.value.toInt()]
-                                          .appliances
-                                          .toString(),
+                                      text:
+                                          propertyList[controller.value.toInt()]
+                                              .appliances
+                                              .toString(),
                                       style: TextStyle(
-                                          color: Colors.black, fontSize: 18),
+                                          color: Colors.black, fontSize: 14),
                                     )
                                   ]),
                             ),
@@ -741,20 +959,19 @@ class Show_Data_Screen extends StatelessWidget {
                                       fontSize: 18),
                                   children: <TextSpan>[
                                     TextSpan(
-                                      text: data!
-                                          .propertyDetails![
-                                              controller.value.toInt()]
-                                          .units
-                                          .toString(),
+                                      text:
+                                          propertyList[controller.value.toInt()]
+                                              .units
+                                              .toString(),
                                       style: TextStyle(
-                                          color: Colors.black, fontSize: 18),
+                                          color: Colors.black, fontSize: 14),
                                     )
                                   ]),
                             ),
+                            SizedBox(
+                              height: 10,
+                            ),
                           ],
-                          SizedBox(
-                            height: 10,
-                          ),
                           RichText(
                             text: TextSpan(
                                 text: "Floor: ",
@@ -764,13 +981,31 @@ class Show_Data_Screen extends StatelessWidget {
                                     fontSize: 18),
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: data!
-                                        .propertyDetails![
-                                            controller.value.toInt()]
+                                    text: propertyList[controller.value.toInt()]
                                         .floor
                                         .toString(),
                                     style: TextStyle(
-                                        color: Colors.black, fontSize: 18),
+                                        color: Colors.black, fontSize: 14),
+                                  )
+                                ]),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          RichText(
+                            text: TextSpan(
+                                text: "Details: ",
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: propertyList[controller.value.toInt()]
+                                        .description
+                                        .toString(),
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 14),
                                   )
                                 ]),
                           ),
@@ -794,29 +1029,29 @@ class Show_Data_Screen extends StatelessWidget {
                               children: [
                                 for (int i = 0;
                                     i <
-                                        data!
-                                            .propertyDetails![
-                                                controller.value.toInt()]
+                                        propertyList[controller.value.toInt()]
                                             .propertyImages!
                                             .length;
                                     i++)
-                                  if (data!
-                                      .propertyDetails![
-                                          controller.value.toInt()]
+                                  if (propertyList[controller.value.toInt()]
                                       .propertyImages![i]
                                       .url!
                                       .contains("upload")) ...[
                                     SizedBox(
                                         height: 100,
                                         width: 100,
-                                        child: Image.network(Paths.baseUrl +
-                                            "/" +
-                                            data!
-                                                .propertyDetails![
-                                                    controller.value.toInt()]
-                                                .propertyImages![i]
-                                                .url
-                                                .toString())),
+                                        child: Image.network(
+                                          Paths.baseUrl +
+                                              "/" +
+                                              propertyList[
+                                                      controller.value.toInt()]
+                                                  .propertyImages![i]
+                                                  .url
+                                                  .toString(),
+                                          height: 100,
+                                          width: 100,
+                                          fit: BoxFit.cover,
+                                        )),
                                   ]
                               ],
                             ),
@@ -873,10 +1108,20 @@ class Show_Data_Screen extends StatelessWidget {
                   Divider(
                     thickness: 1.5,
                   ),
-                  Text(
-                    "Summary:",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.blue),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Summary:",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.blue),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(child: Text(data!.finalRemarks.toString())),
+                    ],
                   ),
                   SizedBox(
                     height: 5,
@@ -892,24 +1137,46 @@ class Show_Data_Screen extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              "Tenant:",
+                              "Tenant\ Signature",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.blue),
                             ),
                             Text(data!.tenantName.toString()),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              height: 150,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.black)),
+                              child: Image.network(
+                                  Paths.baseUrl + "/" + decodedString),
+                            )
                           ],
                         ),
                         Spacer(),
                         Column(
                           children: [
                             Text(
-                              "Inspector:",
+                              "Inspector\ Signature",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.blue),
                             ),
                             Text(data!.inspectorName.toString()),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              height: 150,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.black)),
+                              child: Image.network(
+                                  Paths.baseUrl + "/" + decodedString1),
+                            )
                           ],
                         ),
                       ],
@@ -945,7 +1212,7 @@ class Show_Data_Screen extends StatelessWidget {
     table,
     td,
     th {
-      border: 1px solid black;
+      border-bottom:1px solid black;
     }
 .image-container {
   display: grid;
@@ -958,25 +1225,38 @@ class Show_Data_Screen extends StatelessWidget {
   height: auto;
 }
 
-    table {
+    
+@media print {
+   body {
+      -webkit-print-color-adjust: exact;
+   }
+   table {
       border-collapse: collapse;
+      border: 1px solid black;
       width: 30%;
     }
-
+td,
+th{
+border-bottom:1px solid black;
+padding-left: 30px;
+}
     #customers {
       font-family: Arial, Helvetica, sans-serif;
       border-collapse: collapse;
       width: 100%;
+      background-color: #FFFFFF !important;
+      
     }
 
     #customers td,
     #customers th {
       border: 1px solid #ddd;
       padding: 8px;
+      color:black;
+      background-color: #FFFFFF !important;
     }
-
-    #customers tr:nth-child(even) {
-      background-color: #f2f2f2;
+   #customers tr:nth-child(even) {
+      background-color: #03a5fc !important;
     }
 
     #customers tr:hover {
@@ -987,9 +1267,11 @@ class Show_Data_Screen extends StatelessWidget {
       padding-top: 12px;
       padding-bottom: 12px;
       text-align: left;
-      background-color: blue;
+      background-color: #03a5fc !important;
       color: white;
     }
+}
+    
   </style>
 
   <body>
@@ -1012,30 +1294,30 @@ class Show_Data_Screen extends StatelessWidget {
           </div>
           <div style="">
             <div style="display: flex; gap: 6px">
-              <div style="color: blue; font-size: 18px; font-weight: bold">
+              <div style="color: #03a5fc; font-size: 18px; font-weight: bold">
                 Company:
               </div>
-              <div style="color: black; font-size: 18px">"Promptmove Limited"</div>
+              <div style="color: black; font-size: 16px">Promptmove Limited</div>
             </div>
 
             <div style="display: flex; gap: 6px">
-              <div style="color: blue; font-size: 18px; font-weight: bold">
+              <div style="color: #03a5fc; font-size: 18px; font-weight: bold">
                 Address:
               </div>
-              <div style="color: black; font-size: 18px">${data?.propertyAddress}</div>
+              <div style="color: black; font-size: 16px">  &ensp; ${data!.propertyAddress.toString()}</div>
             </div>
 
             <div style="display: flex; gap: 6px">
-              <div style="color: blue; font-size: 18px; font-weight: bold">
+              <div style="color: #03a5fc; font-size: 18px; font-weight: bold">
                 Phone:
               </div>
-              <div style="color: black; font-size: 18px">01582 611040</div>
+              <div style="color: black; font-size: 16px"> &ensp;&ensp;&ensp; 01582 611040</div>
             </div>
             <div style="display: flex; gap: 6px">
-              <div style="color: blue; font-size: 18px; font-weight: bold">
+              <div style="color: #03a5fc; font-size: 18px; font-weight: bold">
                 Email:
               </div>
-              <div style="color: black; font-size: 18px">${email}</div>
+              <div style="color: black; font-size: 16px">&ensp;&ensp;&ensp;&ensp;${email}</div>
             </div>
           </div>
         </div>
@@ -1045,20 +1327,20 @@ class Show_Data_Screen extends StatelessWidget {
       style="
         font-size: 32px;
         text-align: center;
-        background-color: blue;
-        color: blue;
+        color: white;
         border-radius: 14px;
         border-color: black;
-        padding-top: 20px;
-        padding-bottom: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
         border: 10px;
         margin-left: 100px;
         margin-right: 100px;
         margin-top:20px;
+        margin-bottom:20px;
         border-style: solid;
         border-width: medium;
         border-color: black;
-        background-color: blue;
+        background-color: #03a5fc;
       "
     >
       ${data?.types}
@@ -1067,11 +1349,12 @@ class Show_Data_Screen extends StatelessWidget {
       style="
         font-size: 32px;
         color: black;
+        margin-bottom:20px;
         text-align: center;
         font-weight: bold;
       "
     >
-      ${data?.inspectorName}
+      ${data?.propertyAddress}
     </div>
     <div style="display: flex; justify-content: center; align-items: center">
       <img style="border-radius: 12px; border-radius: 12px; width: 400px; height: 250px" src="${Paths.baseUrl + '/' + data!.mainImg.toString()}" alt="s1"/>
@@ -1084,7 +1367,7 @@ class Show_Data_Screen extends StatelessWidget {
         margin-top: 30px;
       "
     >
-      <table style="width:100%">
+      <table style="width:90%">
         <tr>
           <td
             style="
@@ -1092,6 +1375,7 @@ class Show_Data_Screen extends StatelessWidget {
               font-weight: bold;
               padding-top: 8px;
               padding-bottom: 8px;
+              width:60%
             "
           >
             Inspected By
@@ -1102,6 +1386,7 @@ class Show_Data_Screen extends StatelessWidget {
               padding-top: 8px;
               padding-bottom: 8px;
               font-weight: 300;
+              width:50%
             "
           >
             ${data?.inspectorName}
@@ -1134,7 +1419,7 @@ class Show_Data_Screen extends StatelessWidget {
             Date of Inspection
           </td>
           <td style="font-size: 24px; padding-top: 8px; padding-bottom: 8px">
-            ${data?.inspectionDate}
+            ${DateTime.parse(data!.inspectionDate.toString()).day.toString() + "-" + DateTime.parse(data!.inspectionDate.toString()).month.toString() + "-" + DateTime.parse(data!.inspectionDate.toString()).year.toString()}
           </td>
         </tr>
         <tr>
@@ -1149,7 +1434,7 @@ class Show_Data_Screen extends StatelessWidget {
             EPC Expiry Date
           </td>
           <td style="font-size: 24px; padding-top: 8px; padding-bottom: 8px">
-            ${data?.ecpExpDate}
+           ${DateTime.parse(data!.ecpExpDate.toString()).day.toString() + "-" + DateTime.parse(data!.ecpExpDate.toString()).month.toString() + "-" + DateTime.parse(data!.ecpExpDate.toString()).year.toString()}
           </td>
         </tr>
         <tr>
@@ -1164,7 +1449,7 @@ class Show_Data_Screen extends StatelessWidget {
             Gas Safety Certificate Expiry Date
           </td>
           <td style="font-size: 24px; padding-top: 8px; padding-bottom: 8px">
-            ${data?.gasSafetyCertificateExpDate}
+           ${DateTime.parse(data!.gasSafetyCertificateExpDate.toString()).day.toString() + "-" + DateTime.parse(data!.gasSafetyCertificateExpDate.toString()).month.toString() + "-" + DateTime.parse(data!.gasSafetyCertificateExpDate.toString()).year.toString()}
           </td>
         </tr>
         <tr>
@@ -1179,7 +1464,7 @@ class Show_Data_Screen extends StatelessWidget {
             EICR Expiry Date
           </td>
           <td style="font-size: 24px; padding-top: 8px; padding-bottom: 8px">
-            ${data?.ecirExpDate}
+            ${DateTime.parse(data!.ecirExpDate.toString()).day.toString() + "-" + DateTime.parse(data!.ecirExpDate.toString()).month.toString() + "-" + DateTime.parse(data!.ecirExpDate.toString()).year.toString()}
           </td>
         </tr>
       </table>
@@ -1187,8 +1472,9 @@ class Show_Data_Screen extends StatelessWidget {
     <div
       style="
         font-size: 32px;
-        color: blue;
+        color: #03a5fc;
         margin-left: 36px;
+         text-align: center;
         font-weight: bold;
         margin-top: 6px;
       "
@@ -1201,15 +1487,24 @@ class Show_Data_Screen extends StatelessWidget {
         margin-top: 10px;
         border: 1px solid black;
         border-radius: 14px;
+        font-size: 18px;
         margin-left: 36px;
+        padding-left: 15px;
+        padding-top: 15px;
         margin-right: 36px;
       "
-    ></div>
+    >${data?.finalRemarks}</div>
+    <br>
+    <br>
+     <br>
+    <br> <br>
+    <br> 
     <div
       style="
         font-size: 24px;
-        color: blue;
+        color: #03a5fc;
         margin-left: 48px;
+         text-align: center;
         font-weight: bold;
         margin-top: 6px;
       "
@@ -1313,7 +1608,13 @@ class Show_Data_Screen extends StatelessWidget {
       evidence, it may be relied upon and used by the Landlord, the Tenant and
       Letting Agent.
     </div>
-
+ <br>
+    <br> <br>
+    <br> <br>
+    <br> <br>
+    <br>
+     <br>
+    <br>
     <div
       style="
         font-size: 26px;
@@ -1378,7 +1679,15 @@ class Show_Data_Screen extends StatelessWidget {
       give any advice on the cost of any repair work, or the types of repair
       which should be used.
     </div>
-
+ <br>
+    <br> <br>
+    <br> <br>
+    <br> <br>
+    <br> <br>
+    <br>
+    <br>
+    <br> <br>
+    <br>
     <div
       style="
         font-size: 26px;
@@ -1419,7 +1728,15 @@ class Show_Data_Screen extends StatelessWidget {
       locked or where full access is not possible, for example, attics or
       excessively full cupboards or outbuildings are not inspected.
     </div>
-
+ <br>
+    <br> <br>
+    <br> <br>
+    <br> <br>
+    <br> <br>
+    <br> <br>
+    <br> 
+    <br> <br>
+    <br> 
     <div
       style="
         font-size: 26px;
@@ -1493,14 +1810,7 @@ class Show_Data_Screen extends StatelessWidget {
     <br>
     <br>
     <br>
-    <br>
     <br> 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br> 
-    <br>
     <br>
     <br>
     <br>
@@ -1508,6 +1818,9 @@ class Show_Data_Screen extends StatelessWidget {
     <br>
     <br>
     <br>
+    <br> 
+    <br>
+    
     
     
   
@@ -1519,13 +1832,14 @@ class Show_Data_Screen extends StatelessWidget {
     <div
       style="
         font-size: 28px;
-        color: blue;
+        color: #03a5fc;
         margin-left: 36px;
+        text-align: center;
         font-weight: bold;
         margin-top: 6px;
       "
     >
-      Metres and Alarms
+      Meters and Alarms
     </div>
 
     <div
@@ -1542,8 +1856,8 @@ class Show_Data_Screen extends StatelessWidget {
     >
        <div
         style="
-          width: 450px;
-          height: 305px;
+          width: 510px;
+          height: 260px;
 
           border: 4px solid rgb(207, 206, 206);
           border-radius: 14px;
@@ -1555,29 +1869,33 @@ class Show_Data_Screen extends StatelessWidget {
             justify-content: space-between;
             margin-left: 24px;
             margin-right: 24px;
-            margin-top: 16px;
+            margin-top: 5px;
             
           "
         >
-          <div style="font-size: 24px; color: blue; font-weight: bold">
+          <div style="font-size: 12px; color: #03a5fc; font-weight: bold">
             Pre-Paid Gas Meter:<span
-              style="font-size: 24px; color: black; font-weight: bold"
+              style="font-size: 12px; color: black; font-weight: bold"
               >${data?.gasMeter}</span
             >
           </div>
 
-          <div style="font-size: 24px; color: blue; font-weight: bold">
-            Reading:${data?.gasMeterReading}
+          <div style="font-size: 12px; color: #03a5fc; font-weight: bold">
+            Reading:
+            <span
+              style="font-size: 12px; color: black; font-weight: bold"
+              >${data?.gasMeterReading}</span
+            >
           </div>
           
         </div>
         
         <hr
-          style="border: 1px solid blue; margin-left: 24px; margin-right: 24px"
+          style="border: 1px solid #03a5fc; margin-left: 24px; margin-right: 24px"
         />
         
         <img
-            style="border-radius: 12px; width: 320px; height: 200px;display: block;
+            style="border-radius: 12px; width: 250px; height: 180px;display: block; text-align: center;object-fit: cover;
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
@@ -1590,8 +1908,8 @@ class Show_Data_Screen extends StatelessWidget {
 
       <div
         style="
-          width: 450px;
-          height: 305px;
+          width: 560px;
+          height: 260px;
 
           border: 4px solid rgb(207, 206, 206);
           border-radius: 14px;
@@ -1607,25 +1925,30 @@ class Show_Data_Screen extends StatelessWidget {
             
           "
         >
-          <div style="font-size: 24px; color: blue; font-weight: bold">
+          <div style="font-size: 12px; color: #03a5fc; font-weight: bold">
             Pre-Paid Electric Meter:<span
-              style="font-size: 24px; color: black; font-weight: bold"
+              style="font-size: 12px; color: black; font-weight: bold"
               >${data?.electricityMeter}</span
             >
           </div>
 
-          <div style="font-size: 24px; color: blue; font-weight: bold">
-            Reading:${data?.electricityMeterReading}
+          <div style="font-size: 14px; color: #03a5fc; font-weight: bold">
+            Reading:
+            <span
+              style="font-size: 12px; color: black; font-weight: bold"
+              >${data?.electricityMeterReading}</span
+            >
+            
           </div>
           
         </div>
         
         <hr
-          style="border: 1px solid blue; margin-left: 24px; margin-right: 24px"
+          style="border: 1px solid #03a5fc; margin-left: 24px; margin-right: 24px"
         />
         
         <img
-            style="border-radius: 12px; width: 320px; height: 200px;display: block;
+            style="border-radius: 12px; width: 250px; height: 180px;display: block; text-align: center;object-fit: cover;
   margin-left: auto;
   margin-right: auto;
   "
@@ -1649,8 +1972,8 @@ class Show_Data_Screen extends StatelessWidget {
     >
       <div
         style="
-          width: 450px;
-          height: 305px;
+          width: 510px;
+          height: 260px;
 
           border: 4px solid rgb(207, 206, 206);
           border-radius: 14px;
@@ -1666,25 +1989,23 @@ class Show_Data_Screen extends StatelessWidget {
             
           "
         >
-          <div style="font-size: 24px; color: blue; font-weight: bold">
+          <div style="font-size: 12px; color: #03a5fc; font-weight: bold">
             Heating System:<span
-              style="font-size: 24px; color: black; font-weight: bold"
+              style="font-size: 12px; color: black; font-weight: bold"
               >${data?.heatingSystem}</span
             >
           </div>
-<div style="font-size: 24px; color: white; font-weight: bold">
-            Reading:${data?.waterMeterReading}
-          </div>
+
           
           
         </div>
         
         <hr
-          style="border: 1px solid blue; margin-left: 24px; margin-right: 24px"
+          style="border: 1px solid #03a5fc; margin-left: 24px; margin-right: 24px"
         />
         
         <img
-            style="border-radius: 12px; width: 320px; height: 200px;display: block;
+            style="border-radius: 12px; width: 250px; height: 180px;display: block; text-align: center;object-fit: cover;
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
@@ -1696,8 +2017,8 @@ class Show_Data_Screen extends StatelessWidget {
       </div>
       <div
         style="
-          width: 450px;
-          height: 305px;
+          width: 560px;
+          height: 260px;
 
           border: 4px solid rgb(207, 206, 206);
           border-radius: 14px;
@@ -1713,25 +2034,30 @@ class Show_Data_Screen extends StatelessWidget {
             
           "
         >
-          <div style="font-size: 24px; color: blue; font-weight: bold">
+          <div style="font-size: 12px; color: #03a5fc; font-weight: bold">
             Water Meter:<span
-              style="font-size: 24px; color: black; font-weight: bold"
+              style="font-size: 12px; color: black; font-weight: bold"
               >${data?.waterMeter}</span
             >
           </div>
 
-          <div style="font-size: 24px; color: blue; font-weight: bold">
-            Reading:${data?.waterMeterReading}
+          <div style="font-size: 12px; color: #03a5fc; font-weight: bold">
+            Reading:
+             <span
+              style="font-size: 12px; color: black; font-weight: bold"
+              >${data?.waterMeterReading}</span
+            >
+            
           </div>
           
         </div>
         
         <hr
-          style="border: 1px solid blue; margin-left: 24px; margin-right: 24px"
+          style="border: 1px solid #03a5fc; margin-left: 24px; margin-right: 24px"
         />
         
         <img
-            style="border-radius: 12px; width: 320px; height: 200px;display: block;
+            style="border-radius: 12px; width: 250px; height: 180px;display: block; text-align: center;object-fit: cover;
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
@@ -1757,8 +2083,8 @@ class Show_Data_Screen extends StatelessWidget {
     >
       <div
         style="
-          width: 450px;
-          height: 305px;
+          width: 510px;
+          height: 260px;
 
           border: 4px solid rgb(207, 206, 206);
           border-radius: 14px;
@@ -1774,9 +2100,9 @@ class Show_Data_Screen extends StatelessWidget {
             
           "
         >
-          <div style="font-size: 24px; color: blue; font-weight: bold">
+          <div style="font-size: 12px; color: #03a5fc; font-weight: bold">
             Smoking Alarm:<span
-              style="font-size: 24px; color: black; font-weight: bold"
+              style="font-size: 12px; color: black; font-weight: bold"
               >${data?.smokeAlarm}</span
             >
           </div>
@@ -1785,11 +2111,11 @@ class Show_Data_Screen extends StatelessWidget {
         </div>
         
         <hr
-          style="border: 1px solid blue; margin-left: 24px; margin-right: 24px"
+          style="border: 1px solid #03a5fc; margin-left: 24px; margin-right: 24px"
         />
         
         <img
-            style="border-radius: 12px; width: 320px; height: 230px;display: block;
+            style="border-radius: 12px; width: 250px; height: 180px;display: block; text-align: center;object-fit: cover;
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
@@ -1801,8 +2127,8 @@ class Show_Data_Screen extends StatelessWidget {
       </div>
       <div
         style="
-          width: 450px;
-          height: 305px;
+          width: 560px;
+          height: 260px;
 
           border: 4px solid rgb(207, 206, 206);
           border-radius: 14px;
@@ -1818,9 +2144,9 @@ class Show_Data_Screen extends StatelessWidget {
             
           "
         >
-          <div style="font-size: 24px; color: blue; font-weight: bold">
+          <div style="font-size: 12px; color: #03a5fc; font-weight: bold">
             CO Alarm:<span
-              style="font-size: 24px; color: black; font-weight: bold"
+              style="font-size: 12px; color: black; font-weight: bold"
               >${data?.coAlarm}</span
             >
           </div>
@@ -1830,11 +2156,11 @@ class Show_Data_Screen extends StatelessWidget {
         </div>
         
         <hr
-          style="border: 1px solid blue; margin-left: 24px; margin-right: 24px"
+          style="border: 1px solid #03a5fc; margin-left: 24px; margin-right: 24px"
         />
         
         <img
-            style="border-radius: 12px; width: 320px; height: 230px;display: block;
+            style="border-radius: 12px; width: 250px; height: 180px;display: block; text-align: center;object-fit: cover;
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
@@ -1845,18 +2171,21 @@ class Show_Data_Screen extends StatelessWidget {
           />
       </div>
     </div>
+    <br>
+    <br>
+    <br>
 
     
    
    
     
   
-    ${data?.propertyDetails?.map((e) => '''
+    ${propertyList.map((e) => '''
       <div
       style="
         font-size: 24px;
-        color: blue;
-        height:1095px;
+        color: #03a5fc;
+        height:1045px;
         margin-left: 48px;
         font-weight: bold;
         margin-top: 5px;
@@ -1867,42 +2196,42 @@ class Show_Data_Screen extends StatelessWidget {
     <br>
     <br>
     
-    <div>
+    <div style="margin-left: 30px;text-align: center;">
       ${e.name}
     </div>
-    <div style="margin-left: 48px; margin-right: 48px; margin-top: 10px">
+    <div style="margin-left: 38px; margin-right: 38px; margin-top: 10px">
       <table id="customers">
-        <tr>
+        <tr >
           <th>Description</th>
-          <th>Details</th>
+          <th style="width:80%">Details</th>
         </tr>
         <tr>
           <td>Floor</td>
-          <td>${e.floor}</td>
+          <td style="font-weight: normal;">${e.floor}</td>
         </tr>
         ${e.name == "Kitchen" ? '''<tr>
                             <td>Appliances</td>
-                            <td>${e.appliances}</td>
+                            <td style="font-weight: normal;">${e.appliances}</td>
                             </tr>''' : ''''''}
         <tr>
           <td>Walls</td>
-          <td>${e.walls}</td>
+          <td style="font-weight: normal;">${e.walls}</td>
         </tr>
         ${e.name != "Rear Garden" && e.name != "Front & Side Aspects" ? '''<tr>
           <td>Ceiling</td>
-          <td>${e.ceiling}</td>
+          <td style="font-weight: normal;">${e.ceiling}</td>
         </tr>''' : ''''''}
         <tr>
           <td>Windows</td>
-          <td>${e.windows}</td>
+          <td style="font-weight: normal;">${e.windows}</td>
         </tr>
         <tr>
           <td>Doors</td>
-          <td>${e.walls}</td>
+          <td style="font-weight: normal;">${e.walls}</td>
         </tr>
         <tr>
-          <td>Description</td>
-          <td>${e.description}</td>
+          <td>Details</td>
+          <td style="font-weight: normal;">${e.description}</td>
         </tr>
       </table>
     </div>
@@ -1910,7 +2239,7 @@ class Show_Data_Screen extends StatelessWidget {
     <div  class="image-container" >
    
              ${e.propertyImages?.map((b) => b.url!.contains("upload") ? '''
-      <img  src="${Paths.baseUrl + "/" + b.url.toString()}" alt="" style="width: 250px; height: 200px;" />
+      <img  src="${Paths.baseUrl + "/" + b.url.toString()}" alt="" style="width: 150px; height: 150px;object-fit: cover;" />
       ''' : '''''').join('')}
     
     </div>
@@ -1921,13 +2250,13 @@ class Show_Data_Screen extends StatelessWidget {
     <br>
     <br>
     <br>
-    <br>
-    <br>
+    
     <div
       style="
         font-size: 28px;
-        color: blue;
+        color: #03a5fc;
         margin-left: 48px;
+         text-align: center;
         font-weight: bold;
         margin-top: 25px;
       "
@@ -1953,8 +2282,9 @@ class Show_Data_Screen extends StatelessWidget {
     <div
       style="
         font-size: 28px;
-        color: blue;
+        color: #03a5fc;
         margin-left: 48px;
+         text-align: center;
         font-weight: bold;
         margin-top: 25px;
       "
@@ -1985,7 +2315,7 @@ class Show_Data_Screen extends StatelessWidget {
     <div
       style="
         font-size: 24px;
-        color: blue;
+        color: #03a5fc;
         text-align: center;
         margin-left: 48px;
         font-weight: bold;
@@ -2040,7 +2370,7 @@ class Show_Data_Screen extends StatelessWidget {
       >
         <div
           style="
-            font-size: 32px;
+            font-size: 24px;
             color: black;
             font-weight: bold;
             margin-top: 5px;
@@ -2071,7 +2401,7 @@ class Show_Data_Screen extends StatelessWidget {
       >
         <div
           style="
-            font-size: 32px;
+            font-size: 24px;
             color: black;
             font-weight: bold;
             margin-top: 5px;

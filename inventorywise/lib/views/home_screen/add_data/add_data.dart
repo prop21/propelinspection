@@ -27,10 +27,10 @@ class AddDataScreenState extends State<AddDataScreen> {
   List<List<String>> images = [];
   @override
   Widget build(BuildContext context) {
-    controller.f[3].text=DateTime.now().toString();
-    controller.f[4].text=DateTime.now().toString();
-    controller.f[5].text=DateTime.now().toString();
-    controller.f[6].text=DateTime.now().toString();
+    controller.f[3].text = DateTime.now().toString();
+    controller.f[4].text = DateTime.now().toString();
+    controller.f[5].text = DateTime.now().toString();
+    controller.f[6].text = DateTime.now().toString();
     controller.inspectionDateController.text = DateTime.now().day.toString() +
         "-" +
         DateTime.now().month.toString() +
@@ -173,18 +173,20 @@ class AddDataScreenState extends State<AddDataScreen> {
                                 width: Get.width,
                               ),
                               Align(
-                                  alignment: Alignment.topRight,
-                                  child: Padding(
-                                      padding:
-                                          EdgeInsets.only(right: 5, top: 5),
-                                      child: InkWell(
-                                          onTap: () {
-                                            controller.maini.value = File("");
-                                          },
-                                          child: Icon(
-                                            Icons.delete,
-                                            color: Colors.red,
-                                          )))),
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                  padding: EdgeInsets.only(right: 5, top: 5),
+                                  child: InkWell(
+                                    onTap: () {
+                                      controller.maini.value = File("");
+                                    },
+                                    child: Icon(
+                                      Icons.delete,
+                                      color: Colors.red,
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ])
                           : Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -286,9 +288,11 @@ class AddDataScreenState extends State<AddDataScreen> {
                     onTap: () async {
                       DateTime? pickedDate = await showDatePicker(
                           context: context,
-                          initialDate: DateTime.now(), //get today's date
-                          firstDate: DateTime
-                              .now(), //DateTime.now() - not to allow to choose before today.
+                          initialDate: DateTime.now(),
+                          initialEntryMode: DatePickerEntryMode.calendarOnly,
+                          //get today's date
+                          firstDate: DateTime(
+                              2000), //DateTime.now() - not to allow to choose before today.
                           lastDate: DateTime(2101));
 
                       controller.f[3].text = pickedDate.toString();
@@ -324,8 +328,9 @@ class AddDataScreenState extends State<AddDataScreen> {
                       DateTime? pickedDate = await showDatePicker(
                           context: context,
                           initialDate: DateTime.now(), //get today's date
-                          firstDate: DateTime
-                              .now(), //DateTime.now() - not to allow to choose before today.
+                          initialEntryMode: DatePickerEntryMode.calendarOnly,
+                          firstDate: DateTime(
+                              2000), //DateTime.now() - not to allow to choose before today.
                           lastDate: DateTime(2101));
                       controller.f[4].text = pickedDate.toString();
                       controller.epcExpiryDateController.text =
@@ -360,8 +365,9 @@ class AddDataScreenState extends State<AddDataScreen> {
                       DateTime? pickedDate = await showDatePicker(
                           context: context,
                           initialDate: DateTime.now(), //get today's date
-                          firstDate: DateTime
-                              .now(), //DateTime.now() - not to allow to choose before today.
+                          initialEntryMode: DatePickerEntryMode.calendarOnly,
+                          firstDate: DateTime(
+                              2000), //DateTime.now() - not to allow to choose before today.
                           lastDate: DateTime(2101));
                       controller.f[5].text = pickedDate.toString();
                       controller.ecirExpiryDateController.text =
@@ -396,8 +402,9 @@ class AddDataScreenState extends State<AddDataScreen> {
                       DateTime? pickedDate = await showDatePicker(
                           context: context,
                           initialDate: DateTime.now(), //get today's date
-                          firstDate: DateTime
-                              .now(), //DateTime.now() - not to allow to choose before today.
+                          initialEntryMode: DatePickerEntryMode.calendarOnly,
+                          firstDate: DateTime(
+                              2000), //DateTime.now() - not to allow to choose before today.
                           lastDate: DateTime(2101));
 
                       controller.f[6].text = pickedDate.toString();
@@ -460,10 +467,10 @@ class AddDataScreenState extends State<AddDataScreen> {
                         children: [
                           MaterialButton(
                             onPressed: () {
-                              controller.t1.value = "Working";
+                              controller.t1.value = "Yes";
                             },
                             minWidth: 80,
-                            color: controller.t1.value == "Working"
+                            color: controller.t1.value == "Yes"
                                 ? Colors.blue
                                 : Colors.white,
                             child: Text("Yes"),
@@ -475,11 +482,11 @@ class AddDataScreenState extends State<AddDataScreen> {
                           ),
                           MaterialButton(
                             minWidth: 80,
-                            color: controller.t1.value == "Not Working"
+                            color: controller.t1.value == "No"
                                 ? Colors.blue
                                 : Colors.white,
                             onPressed: () {
-                              controller.t1.value = "Not Working";
+                              controller.t1.value = "No";
                             },
                             child: Text("No"),
                             shape: OutlineInputBorder(
@@ -635,10 +642,10 @@ class AddDataScreenState extends State<AddDataScreen> {
                         children: [
                           MaterialButton(
                             onPressed: () {
-                              controller.t2.value = "Working";
+                              controller.t2.value = "Yes";
                             },
                             minWidth: 80,
-                            color: controller.t2.value == "Working"
+                            color: controller.t2.value == "Yes"
                                 ? Colors.blue
                                 : Colors.white,
                             child: Text("Yes"),
@@ -650,11 +657,11 @@ class AddDataScreenState extends State<AddDataScreen> {
                           ),
                           MaterialButton(
                             minWidth: 80,
-                            color: controller.t2.value == "Not Working"
+                            color: controller.t2.value == "No"
                                 ? Colors.blue
                                 : Colors.white,
                             onPressed: () {
-                              controller.t2.value = "Not Working";
+                              controller.t2.value = "No";
                             },
                             child: Text("No"),
                             shape: OutlineInputBorder(
@@ -810,10 +817,10 @@ class AddDataScreenState extends State<AddDataScreen> {
                         children: [
                           MaterialButton(
                             onPressed: () {
-                              controller.t3.value = "Working";
+                              controller.t3.value = "Yes";
                             },
                             minWidth: 80,
-                            color: controller.t3.value == "Working"
+                            color: controller.t3.value == "Yes"
                                 ? Colors.blue
                                 : Colors.white,
                             child: Text("Yes"),
@@ -825,11 +832,11 @@ class AddDataScreenState extends State<AddDataScreen> {
                           ),
                           MaterialButton(
                             minWidth: 80,
-                            color: controller.t3.value == "Not Working"
+                            color: controller.t3.value == "No"
                                 ? Colors.blue
                                 : Colors.white,
                             onPressed: () {
-                              controller.t3.value = "Not Working";
+                              controller.t3.value = "No";
                             },
                             child: Text("No"),
                             shape: OutlineInputBorder(
@@ -1013,10 +1020,10 @@ class AddDataScreenState extends State<AddDataScreen> {
                         children: [
                           MaterialButton(
                             onPressed: () {
-                              controller.t4.value = "Working";
+                              controller.t4.value = "Yes";
                             },
                             minWidth: 80,
-                            color: controller.t4.value == "Working"
+                            color: controller.t4.value == "Yes"
                                 ? Colors.blue
                                 : Colors.white,
                             child: Text("Yes"),
@@ -1028,11 +1035,11 @@ class AddDataScreenState extends State<AddDataScreen> {
                           ),
                           MaterialButton(
                             minWidth: 80,
-                            color: controller.t4.value == "Not Working"
+                            color: controller.t4.value == "No"
                                 ? Colors.blue
                                 : Colors.white,
                             onPressed: () {
-                              controller.t4.value = "Not Working";
+                              controller.t4.value = "No";
                             },
                             child: Text("No"),
                             shape: OutlineInputBorder(
@@ -1305,10 +1312,10 @@ class AddDataScreenState extends State<AddDataScreen> {
                         children: [
                           MaterialButton(
                             onPressed: () {
-                              controller.t5.value = "Working";
+                              controller.t5.value = "Yes";
                             },
                             minWidth: 80,
-                            color: controller.t5.value == "Working"
+                            color: controller.t5.value == "Yes"
                                 ? Colors.blue
                                 : Colors.white,
                             child: Text("Yes"),
@@ -1320,11 +1327,11 @@ class AddDataScreenState extends State<AddDataScreen> {
                           ),
                           MaterialButton(
                             minWidth: 80,
-                            color: controller.t5.value == "Not Working"
+                            color: controller.t5.value == "No"
                                 ? Colors.blue
                                 : Colors.white,
                             onPressed: () {
-                              controller.t5.value = "Not Working";
+                              controller.t5.value = "No";
                             },
                             child: Text("No"),
                             shape: OutlineInputBorder(
@@ -1592,10 +1599,10 @@ class AddDataScreenState extends State<AddDataScreen> {
                       children: [
                         MaterialButton(
                           onPressed: () {
-                            controller.t6.value = "Working";
+                            controller.t6.value = "Yes";
                           },
                           minWidth: 80,
-                          color: controller.t6.value == "Working"
+                          color: controller.t6.value == "Yes"
                               ? Colors.blue
                               : Colors.white,
                           child: Text("Yes"),
@@ -1607,11 +1614,11 @@ class AddDataScreenState extends State<AddDataScreen> {
                         ),
                         MaterialButton(
                           minWidth: 80,
-                          color: controller.t6.value == "Not Working"
+                          color: controller.t6.value == "No"
                               ? Colors.blue
                               : Colors.white,
                           onPressed: () {
-                            controller.t6.value = "Not Working";
+                            controller.t6.value = "No";
                           },
                           child: Text("No"),
                           shape: OutlineInputBorder(
@@ -1903,7 +1910,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      controller.bottomSheet();
+                      controller.bottomSheet(controller.sig1.value);
                     },
                     child: Container(
                         height: 200,
@@ -1932,7 +1939,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      controller.bottomSheet1();
+                      controller.bottomSheet1(controller.sig2.value);
                     },
                     child: Container(
                         height: 200,
