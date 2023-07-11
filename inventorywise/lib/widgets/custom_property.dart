@@ -4,6 +4,8 @@ import 'package:InventoryWise/models/addproperty/add_proprert_model.dart';
 import 'package:InventoryWise/views/home_screen/add_data/add_data_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gal/gal.dart';
+
 import 'package:get/get.dart';
 
 import '../utils/global.dart';
@@ -356,6 +358,7 @@ class CustomPropertyState extends State<CustomProperty> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[0] = url1;
+                                  await Gal.putImage(imaage.path);
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -437,6 +440,7 @@ class CustomPropertyState extends State<CustomProperty> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[1] = url2;
+                                  await Gal.putImage(image1.path);
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -518,6 +522,7 @@ class CustomPropertyState extends State<CustomProperty> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[2] = url3;
+                                  await Gal.putImage(image2.path);
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -604,6 +609,7 @@ class CustomPropertyState extends State<CustomProperty> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[3] = url4;
+                                  await Gal.putImage(image3.path);
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -683,6 +689,7 @@ class CustomPropertyState extends State<CustomProperty> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[4] = url5;
+                                  await Gal.putImage(image5.path);
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -762,6 +769,7 @@ class CustomPropertyState extends State<CustomProperty> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[5] = url6;
+                                  await Gal.putImage(image5.path);
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -849,6 +857,7 @@ class CustomPropertyState extends State<CustomProperty> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[6] = url7;
+                                  await Gal.putImage(image6.path);
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -928,6 +937,7 @@ class CustomPropertyState extends State<CustomProperty> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[7] = url8;
+                                  await Gal.putImage(image7.path);
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -1007,6 +1017,7 @@ class CustomPropertyState extends State<CustomProperty> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[8] = url9;
+                                  await Gal.putImage(image8.path);
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -1413,6 +1424,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[0] = url1;
+                                  await Gal.putImage(image.path);
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -1505,6 +1517,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[1] = url2;
+                                  await Gal.putImage(image1.path);
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -1597,6 +1610,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[2] = url3;
+                                  await Gal.putImage(image2.path);
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -1699,6 +1713,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[3] = url4;
+                                  await Gal.putImage(image3.path);
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -1789,6 +1804,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[4] = url5;
+                                  await Gal.putImage(image4.path);
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -1879,6 +1895,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[5] = url6;
+                                  await Gal.putImage(image5.path);
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -1977,6 +1994,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[6] = url7;
+                                  await Gal.putImage(image6.path);
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -2067,6 +2085,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[7] = url8;
+                                  await Gal.putImage(image7.path);
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -2157,6 +2176,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[8] = url9;
+                                  await Gal.putImage(image8.path);
                                 },
                                 child: Icon(
                                   Icons.camera_alt,

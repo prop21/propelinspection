@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../utils/global.dart';
 
@@ -120,6 +121,40 @@ class Home_Screen extends StatelessWidget {
                   onTap: () {
                     Get.to(() => Forgot_Screen());
                   },
+                ),
+                ListTile(
+                  leading: Icon(Icons.mail),
+                  trailing: Icon(Icons.keyboard_arrow_right),
+                  title: Text('Contact US'),
+                  onTap: () {
+                    controller.openUrl(
+                        "mailto:<support@inventorywise@.co.uk>?subject=<>&body=<>");
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.policy),
+                  trailing: Icon(Icons.keyboard_arrow_right),
+                  title: Text('Terms & Conditions'),
+                  onTap: () {
+                    Get.to(() => we());
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.policy),
+                  trailing: Switch(
+                    value: controller.sw.value,
+                    onChanged: (bool valu) {
+                      controller.sw.value = valu;
+
+                      if (valu) {
+                        Get.changeTheme(ThemeData.dark());
+                      } else {
+                        Get.changeTheme(ThemeData.light());
+                      }
+                    },
+                  ),
+                  title: Text('Dark Theme'),
+                  onTap: () {},
                 ),
                 Spacer(),
                 ListTile(
@@ -418,5 +453,37 @@ class Home_Screen extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class we extends StatelessWidget {
+  WebViewController controller = WebViewController()
+    ..setJavaScriptMode(JavaScriptMode.unrestricted)
+    ..setBackgroundColor(const Color(0x00000000))
+    ..setNavigationDelegate(
+      NavigationDelegate(
+        onProgress: (int progress) {
+          // Update loading bar.
+        },
+        onPageStarted: (String url) {},
+        onPageFinished: (String url) {},
+        onWebResourceError: (WebResourceError error) {},
+        onNavigationRequest: (NavigationRequest request) {
+          if (request.url.startsWith('https://www.youtube.com/')) {
+            return NavigationDecision.prevent;
+          }
+          return NavigationDecision.navigate;
+        },
+      ),
+    )
+    ..loadRequest(Uri.parse('https://propelinspections.com/term-condition/'));
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Terms & Conditions'),
+        ),
+        body: WebViewWidget(controller: controller));
   }
 }

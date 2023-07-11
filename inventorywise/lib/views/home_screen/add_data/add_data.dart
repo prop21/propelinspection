@@ -8,6 +8,7 @@ import 'package:InventoryWise/widgets/custom_loader_widget.dart';
 import 'package:easy_signature_pad/easy_signature_pad.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gal/gal.dart';
 import 'dart:io';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -199,6 +200,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                       controller.mainimage = await controller
                                           .upload(controller.maini.value);
                                     }
+                                    await Gal.putImage(
+                                        controller.maini.value.path);
                                   },
                                   child: Icon(
                                     Icons.camera_alt,
@@ -294,7 +297,6 @@ class AddDataScreenState extends State<AddDataScreen> {
                           firstDate: DateTime(
                               2000), //DateTime.now() - not to allow to choose before today.
                           lastDate: DateTime(2101));
-
                       controller.f[3].text = pickedDate.toString();
                       controller.inspectionDateController.text =
                           pickedDate!.day.toString() +
@@ -390,7 +392,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                     height: 20,
                   ),
                   Text(
-                    "Gas Saftey Certificate Expiry Date",
+                    "Gas Safety Certificate Expiry Date",
                     style: TextStyle(
                         color: Colors.black.withOpacity(0.8), fontSize: 16),
                   ),
@@ -565,6 +567,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                                       controller
                                                           .electric.value);
                                             }
+                                            await Gal.putImage(
+                                                controller.electric.value.path);
                                           },
                                           child: Icon(
                                             Icons.camera_alt,
@@ -740,6 +744,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                                       controller
                                                           .gasmeter.value);
                                             }
+                                            await Gal.putImage(
+                                                controller.gasmeter.value.path);
                                           },
                                           child: Icon(
                                             Icons.camera_alt,
@@ -942,6 +948,9 @@ class AddDataScreenState extends State<AddDataScreen> {
                                                           controller.watermeter
                                                               .value);
                                                 }
+                                                await Gal.putImage(
+                                                    controller
+                                                        .watermeter.value.path);
                                               },
                                               child: Icon(
                                                 Icons.camera_alt,
@@ -1124,6 +1133,9 @@ class AddDataScreenState extends State<AddDataScreen> {
                                                           controller.smokealarm
                                                               .value);
                                                 }
+                                                await Gal.putImage(
+                                                    controller
+                                                        .smokealarm.value.path);
                                               },
                                               child: Icon(
                                                 Icons.camera_alt,
@@ -1257,6 +1269,9 @@ class AddDataScreenState extends State<AddDataScreen> {
                                                           controller
                                                               .smokealar.value);
                                                 }
+                                                await Gal.putImage(
+                                                    controller
+                                                        .smokealar.value.path);
                                               },
                                               child: Icon(
                                                 Icons.image,
@@ -1414,6 +1429,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                                           controller
                                                               .coal.value);
                                                 }
+                                                await Gal.putImage(
+                                                    controller.coal.value.path);
                                               },
                                               child: Icon(
                                                 Icons.camera_alt,
@@ -1522,6 +1539,9 @@ class AddDataScreenState extends State<AddDataScreen> {
                                                           controller
                                                               .coalarm.value);
                                                 }
+                                                await Gal.putImage(
+                                                    controller
+                                                        .coalarm.value.path);
                                               },
                                               child: Icon(
                                                 Icons.camera_alt,
@@ -1698,6 +1718,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                                   await controller.upload(
                                                       controller.heating.value);
                                             }
+                                            await Gal.putImage(
+                                                controller.heating.value.path);
                                           },
                                           child: Icon(
                                             Icons.camera_alt,

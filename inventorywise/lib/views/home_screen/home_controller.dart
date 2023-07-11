@@ -4,6 +4,7 @@ import 'package:InventoryWise/utils/global.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../http/exception_checker.dart';
 import '../../models/homedata/Home_Data.dart';
@@ -15,6 +16,7 @@ class HomeController extends GetxController {
   var hide = true.obs;
   var data = <Rows>[].obs;
   var sedata = <Rows>[].obs;
+  var sw=true.obs;
   final authService = HomeService();
   var et1 = TextEditingController();
   var fname = "".obs;
@@ -37,7 +39,13 @@ class HomeController extends GetxController {
     print(sedata.length);
     isLoading.value = false;
   }
-
+  Future<void> openUrl(String url) async {
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
   Future<void> getData(id) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     fname.value = prefs.getString("fname").toString();

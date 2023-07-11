@@ -204,9 +204,15 @@ class Show_Data_Screen extends StatelessWidget {
                     width: Get.width,
                     decoration:
                         BoxDecoration(borderRadius: BorderRadius.circular(8)),
-                    child: Image.network(
-                      Paths.baseUrl + "/" + data!.mainImg.toString(),
-                      fit: BoxFit.cover,
+                    child: PhysicalModel(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.blue,
+                      elevation: 18,
+                      shadowColor: Colors.black,
+                      child: Image.network(
+                        Paths.baseUrl + "/" + data!.mainImg.toString(),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -299,6 +305,31 @@ class Show_Data_Screen extends StatelessWidget {
                       ),
                       Text(
                         data!.inspectorName.toString(),
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                    ],
+                  ),
+                  Divider(
+                    thickness: 1.5,
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 120,
+                        child: Text(
+                          "Tenant Name:",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, color: Colors.blue),
+                        ),
+                      ),
+                      Text(
+                        data!.tenantName.toString(),
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
@@ -1294,30 +1325,30 @@ padding-left: 30px;
           </div>
           <div style="">
             <div style="display: flex; gap: 6px">
-              <div style="color: #03a5fc; font-size: 18px; font-weight: bold">
+              <div style="color: #03a5fc; font-size: 18px; font-weight: bold";>
                 Company:
               </div>
-              <div style="color: black; font-size: 16px">Promptmove Limited</div>
+              <div style="color: black; font-size: 14px; padding-top: 3px;"; >Promptmove Limited</div>
             </div>
 
             <div style="display: flex; gap: 6px">
               <div style="color: #03a5fc; font-size: 18px; font-weight: bold">
                 Address:
               </div>
-              <div style="color: black; font-size: 16px">  &ensp; ${data!.propertyAddress.toString()}</div>
+              <div style="color: black; font-size: 14px; padding-top: 2px;">  &ensp; ${data!.propertyAddress.toString()}</div>
             </div>
 
             <div style="display: flex; gap: 6px">
               <div style="color: #03a5fc; font-size: 18px; font-weight: bold">
                 Phone:
               </div>
-              <div style="color: black; font-size: 16px"> &ensp;&ensp;&ensp; 01582 611040</div>
+              <div style="color: black; font-size: 14px;padding-top: 3px;"> &ensp;&ensp;&ensp; 01582 611040</div>
             </div>
             <div style="display: flex; gap: 6px">
               <div style="color: #03a5fc; font-size: 18px; font-weight: bold">
                 Email:
               </div>
-              <div style="color: black; font-size: 16px">&ensp;&ensp;&ensp;&ensp;${email}</div>
+              <div style="color: black; font-size: 14px; padding-top: 2px;">&ensp;&ensp;&ensp;&ensp;${email}</div>
             </div>
           </div>
         </div>
@@ -1834,7 +1865,6 @@ padding-left: 30px;
         font-size: 28px;
         color: #03a5fc;
         margin-left: 36px;
-        text-align: center;
         font-weight: bold;
         margin-top: 6px;
       "
@@ -2196,14 +2226,14 @@ padding-left: 30px;
     <br>
     <br>
     
-    <div style="margin-left: 30px;text-align: center;">
+    <div style="margin-left: 30px;">
       ${e.name}
     </div>
     <div style="margin-left: 38px; margin-right: 38px; margin-top: 10px">
       <table id="customers">
         <tr >
           <th>Description</th>
-          <th style="width:80%">Details</th>
+          <th style="width:80%;text-align: center;">Details</th>
         </tr>
         <tr>
           <td>Floor</td>
@@ -2266,7 +2296,7 @@ padding-left: 30px;
 
     <div
       style="
-        font-size: 28px;
+        font-size: 24px;
         color: black;
         margin-left: 48px;
         margin-right: 48px;
@@ -2281,7 +2311,7 @@ padding-left: 30px;
     />
     <div
       style="
-        font-size: 28px;
+        font-size: 24px;
         color: #03a5fc;
         margin-left: 48px;
          text-align: center;
@@ -2293,7 +2323,7 @@ padding-left: 30px;
     </div>
      <div
       style="
-        font-size: 28px;
+        font-size: 24px;
         color: black;
         margin-left: 48px;
         margin-right: 48px;

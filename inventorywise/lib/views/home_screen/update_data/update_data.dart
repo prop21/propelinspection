@@ -7,6 +7,7 @@ import 'package:InventoryWise/views/home_screen/add_data/add_data_controller.dar
 import 'package:easy_signature_pad/easy_signature_pad.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gal/gal.dart';
 import 'dart:io';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -245,6 +246,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                     controller.mainimage = await controller
                                         .upload(controller.maini.value);
                                   }
+                                  await Gal.putImage(
+                                      controller.maini.value.path);
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -577,7 +580,9 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         : Image.network(
                                             Paths.baseUrl +
                                                 "/" +
-                                                (widget.data.electricityMeterImg).toString(),
+                                                (widget.data
+                                                        .electricityMeterImg)
+                                                    .toString(),
                                             fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
@@ -612,6 +617,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                 await controller.upload(
                                                     controller.electric.value);
                                           }
+                                          await Gal.putImage(
+                                              controller.electric.value.path);
                                         },
                                         child: Icon(
                                           Icons.camera_alt,
@@ -790,6 +797,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                 await controller.upload(
                                                     controller.gasmeter.value);
                                           }
+                                          await Gal.putImage(
+                                              controller.gasmeter.value.path);
                                         },
                                         child: Icon(
                                           Icons.camera_alt,
@@ -933,7 +942,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         : Image.network(
                                             Paths.baseUrl +
                                                 "/" +
-                                                (widget.data.waterMeterImg).toString(),
+                                                (widget.data.waterMeterImg)
+                                                    .toString(),
                                             fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
@@ -969,6 +979,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                     controller
                                                         .watermeter.value);
                                           }
+                                          await Gal.putImage(
+                                              controller.watermeter.value.path);
                                         },
                                         child: Icon(
                                           Icons.camera_alt,
@@ -1096,7 +1108,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         : Image.network(
                                             Paths.baseUrl +
                                                 "/" +
-                                                (widget.data.smokeAlarmFrontImg).toString(),
+                                                (widget.data.smokeAlarmFrontImg)
+                                                    .toString(),
                                             fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
@@ -1132,6 +1145,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                     controller
                                                         .smokealarm.value);
                                           }
+                                          await Gal.putImage(
+                                              controller.smokealarm.value.path);
                                         },
                                         child: Icon(
                                           Icons.camera_alt,
@@ -1226,6 +1241,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                 await controller.upload(
                                                     controller.smokealar.value);
                                           }
+                                          await Gal.putImage(
+                                              controller.smokealar.value.path);
                                         },
                                         child: Icon(
                                           Icons.camera_alt,
@@ -1386,6 +1403,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                 await controller.upload(
                                                     controller.coal.value);
                                           }
+                                          await Gal.putImage(
+                                              controller.coal.value.path);
                                         },
                                         child: Icon(
                                           Icons.camera_alt,
@@ -1478,6 +1497,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                 await controller.upload(
                                                     controller.coalarm.value);
                                           }
+                                          await Gal.putImage(
+                                              controller.coalarm.value.path);
                                         },
                                         child: Icon(
                                           Icons.camera_alt,
@@ -1651,6 +1672,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                               await controller.upload(
                                                   controller.heating.value);
                                         }
+                                        await Gal.putImage(
+                                            controller.heating.value.path);
                                       },
                                       child: Icon(
                                         Icons.camera_alt,
