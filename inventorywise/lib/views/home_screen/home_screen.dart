@@ -140,7 +140,7 @@ class Home_Screen extends StatelessWidget {
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.policy),
+                  leading: Icon(Icons.color_lens),
                   trailing: Switch(
                     value: controller.sw.value,
                     onChanged: (bool valu) {
