@@ -285,7 +285,7 @@ class PropertyImages {
   int? id;
   String? url;
   String? created;
-  Null? updated;
+  Null updated;
   int? propertyDetailId;
 
   PropertyImages(

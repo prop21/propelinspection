@@ -25,7 +25,6 @@ class Home_Screen extends StatelessWidget {
     controller.fname.value = fname.toString();
     controller.lname.value = lname.toString();
     controller.email.value = email.toString();
-
     return Scaffold(
       resizeToAvoidBottomInset: false, // fluter 2.x
       floatingActionButton: Container(

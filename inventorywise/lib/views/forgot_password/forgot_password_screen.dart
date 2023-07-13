@@ -26,7 +26,7 @@ class Forgot_Screen extends StatelessWidget {
               width: Get.width,
               fit: BoxFit.fitWidth,
             ),
-            Text("Enter your valid email",style: TextStyle(color: Colors.black.withOpacity(0.8),fontSize: 16),),
+            Text("Enter your valid email",style: TextStyle(color: Theme.of(context).textTheme.bodyText2?.color,fontSize: 16),),
             SizedBox(
               height: 5,
             ),

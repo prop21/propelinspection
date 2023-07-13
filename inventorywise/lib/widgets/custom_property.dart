@@ -142,7 +142,7 @@ class CustomPropertyState extends State<CustomProperty> {
           Text(
             widget.name.toString(),
             style:
-                TextStyle(color: Colors.black.withOpacity(0.8), fontSize: 16),
+                TextStyle(color: Theme.of(context).textTheme.bodyText2?.color, fontSize: 16),
           ),
           SizedBox(
             height: 10,
@@ -291,7 +291,7 @@ class CustomPropertyState extends State<CustomProperty> {
           Text(
             "Other Details",
             style:
-                TextStyle(color: Colors.black.withOpacity(0.8), fontSize: 16),
+                TextStyle(color: Theme.of(context).textTheme.bodyText2?.color, fontSize: 16),
           ),
           SizedBox(
             height: 10,
@@ -1216,7 +1216,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
           Text(
             widget.name.toString(),
             style:
-                TextStyle(color: Colors.black.withOpacity(0.8), fontSize: 16),
+                TextStyle(color: Theme.of(context).textTheme.bodyText2?.color, fontSize: 16),
           ),
           SizedBox(
             height: 10,
@@ -1346,7 +1346,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
           Text(
             "Other Details",
             style:
-                TextStyle(color: Colors.black.withOpacity(0.8), fontSize: 16),
+                TextStyle(color:Theme.of(context).textTheme.bodyText2?.color, fontSize: 16),
           ),
           SizedBox(
             height: 10,

@@ -1,9 +1,5 @@
 import 'dart:async';
 import 'package:get/get.dart';
-
-
-import 'package:InventoryWise/utils/global.dart';
-
 import 'dart:io';
 import 'package:InventoryWise/widgets/custom_dialogs.dart';
 

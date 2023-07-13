@@ -45,6 +45,15 @@ class Show_Data_Screen extends StatelessWidget {
       'Bedroom 5',
       'Bathroom 1',
       'Bathroom 2',
+      'Room 1',
+      'Room 2',
+      'Room 3',
+      'Room 4',
+      'Room 5',
+      'Room 6',
+      'Room 7',
+      'Room 8',
+      'Room 9',
     ];
 
     List<PropertyDetails> propertyList = [
@@ -119,6 +128,16 @@ class Show_Data_Screen extends StatelessWidget {
       if (data!.propertyDetails![i].name.toString() == 'Bathroom 2') {
         propertyList.add(data!.propertyDetails![i]);
       }
+    }
+    for (int i = 0; i < data!.propertyDetails!.length; i++) {
+      for (int j = 0; j < data!.propertyDetails!.length; j++) {
+        if (data!.propertyDetails![j].name.toString() == 'Room ${i}') {
+          propertyList.add(data!.propertyDetails![j]);
+        }
+      }
+    }
+    for (int i = 15; i < data!.propertyDetails!.length; i++) {
+      propertyList.add(data!.propertyDetails![i]);
     }
 
     // data?.propertyDetails?.sort((a, b) {
@@ -477,7 +496,10 @@ class Show_Data_Screen extends StatelessWidget {
                                         TextSpan(
                                           text: data!.gasMeter.toString(),
                                           style: TextStyle(
-                                            color: Colors.black,
+                                            color: Theme.of(context)
+                                                .textTheme
+                                                .bodyText2
+                                                ?.color,
                                           ),
                                         )
                                       ]),
@@ -496,7 +518,10 @@ class Show_Data_Screen extends StatelessWidget {
                                           text:
                                               data!.gasMeterReading.toString(),
                                           style: TextStyle(
-                                            color: Colors.black,
+                                            color: Theme.of(context)
+                                                .textTheme
+                                                .bodyText2
+                                                ?.color,
                                           ),
                                         )
                                       ]),
@@ -550,7 +575,10 @@ class Show_Data_Screen extends StatelessWidget {
                                           text:
                                               data!.electricityMeter.toString(),
                                           style: TextStyle(
-                                            color: Colors.black,
+                                            color: Theme.of(context)
+                                                .textTheme
+                                                .bodyText2
+                                                ?.color,
                                           ),
                                         )
                                       ]),
@@ -569,7 +597,10 @@ class Show_Data_Screen extends StatelessWidget {
                                           text: data!.electricityMeterReading
                                               .toString(),
                                           style: TextStyle(
-                                            color: Colors.black,
+                                            color: Theme.of(context)
+                                                .textTheme
+                                                .bodyText2
+                                                ?.color,
                                           ),
                                         )
                                       ]),
@@ -624,7 +655,10 @@ class Show_Data_Screen extends StatelessWidget {
                                         TextSpan(
                                           text: data!.waterMeter.toString(),
                                           style: TextStyle(
-                                            color: Colors.black,
+                                            color: Theme.of(context)
+                                                .textTheme
+                                                .bodyText2
+                                                ?.color,
                                           ),
                                         )
                                       ]),
@@ -643,7 +677,10 @@ class Show_Data_Screen extends StatelessWidget {
                                           text: data!.waterMeterReading
                                               .toString(),
                                           style: TextStyle(
-                                            color: Colors.black,
+                                            color: Theme.of(context)
+                                                .textTheme
+                                                .bodyText2
+                                                ?.color,
                                           ),
                                         )
                                       ]),
@@ -698,7 +735,10 @@ class Show_Data_Screen extends StatelessWidget {
                                         TextSpan(
                                           text: data!.smokeAlarm.toString(),
                                           style: TextStyle(
-                                            color: Colors.black,
+                                            color: Theme.of(context)
+                                                .textTheme
+                                                .bodyText2
+                                                ?.color,
                                           ),
                                         )
                                       ]),
@@ -761,7 +801,10 @@ class Show_Data_Screen extends StatelessWidget {
                                         TextSpan(
                                           text: data!.coAlarm.toString(),
                                           style: TextStyle(
-                                            color: Colors.black,
+                                            color: Theme.of(context)
+                                                .textTheme
+                                                .bodyText2
+                                                ?.color,
                                           ),
                                         )
                                       ]),
@@ -816,7 +859,10 @@ class Show_Data_Screen extends StatelessWidget {
                                         TextSpan(
                                           text: data!.heatingSystem.toString(),
                                           style: TextStyle(
-                                            color: Colors.black,
+                                            color: Theme.of(context)
+                                                .textTheme
+                                                .bodyText2
+                                                ?.color,
                                           ),
                                         )
                                       ]),
@@ -931,7 +977,11 @@ class Show_Data_Screen extends StatelessWidget {
                                         .walls
                                         .toString(),
                                     style: TextStyle(
-                                        color: Colors.black, fontSize: 14),
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2
+                                            ?.color,
+                                        fontSize: 14),
                                   )
                                 ]),
                           ),
@@ -951,7 +1001,11 @@ class Show_Data_Screen extends StatelessWidget {
                                         .walls
                                         .toString(),
                                     style: TextStyle(
-                                        color: Colors.black, fontSize: 14),
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2
+                                            ?.color,
+                                        fontSize: 14),
                                   )
                                 ]),
                           ),
@@ -974,7 +1028,11 @@ class Show_Data_Screen extends StatelessWidget {
                                               .appliances
                                               .toString(),
                                       style: TextStyle(
-                                          color: Colors.black, fontSize: 14),
+                                          color: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2
+                                              ?.color,
+                                          fontSize: 14),
                                     )
                                   ]),
                             ),
@@ -995,7 +1053,11 @@ class Show_Data_Screen extends StatelessWidget {
                                               .units
                                               .toString(),
                                       style: TextStyle(
-                                          color: Colors.black, fontSize: 14),
+                                          color: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2
+                                              ?.color,
+                                          fontSize: 14),
                                     )
                                   ]),
                             ),
@@ -1016,7 +1078,11 @@ class Show_Data_Screen extends StatelessWidget {
                                         .floor
                                         .toString(),
                                     style: TextStyle(
-                                        color: Colors.black, fontSize: 14),
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2
+                                            ?.color,
+                                        fontSize: 14),
                                   )
                                 ]),
                           ),
@@ -1036,7 +1102,11 @@ class Show_Data_Screen extends StatelessWidget {
                                         .description
                                         .toString(),
                                     style: TextStyle(
-                                        color: Colors.black, fontSize: 14),
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2
+                                            ?.color,
+                                        fontSize: 14),
                                   )
                                 ]),
                           ),
@@ -1323,32 +1393,32 @@ padding-left: 30px;
               alt="Logo"
             />
           </div>
-          <div style="">
+          <div style="margin-top: 20px;margin-right: 20px;">
             <div style="display: flex; gap: 6px">
-              <div style="color: #03a5fc; font-size: 18px; font-weight: bold";>
+              <div style="color: #03a5fc; font-size: 14px; font-weight: bold";>
                 Company:
               </div>
-              <div style="color: black; font-size: 14px; padding-top: 3px;"; >Promptmove Limited</div>
+              <div style="color: black; font-size: 12px; padding-top: 3px;"; >Promptmove Limited</div>
             </div>
 
             <div style="display: flex; gap: 6px">
-              <div style="color: #03a5fc; font-size: 18px; font-weight: bold">
+              <div style="color: #03a5fc; font-size: 14px; font-weight: bold">
                 Address:
               </div>
-              <div style="color: black; font-size: 14px; padding-top: 2px;">  &ensp; ${data!.propertyAddress.toString()}</div>
+              <div style="color: black; font-size: 12px; padding-top: 2px;">  &ensp; ${data!.propertyAddress.toString()}</div>
             </div>
 
             <div style="display: flex; gap: 6px">
-              <div style="color: #03a5fc; font-size: 18px; font-weight: bold">
+              <div style="color: #03a5fc; font-size: 14px; font-weight: bold">
                 Phone:
               </div>
-              <div style="color: black; font-size: 14px;padding-top: 3px;"> &ensp;&ensp;&ensp; 01582 611040</div>
+              <div style="color: black; font-size: 12px;padding-top: 3px;"> &ensp;&ensp;&ensp; 01582 611040</div>
             </div>
             <div style="display: flex; gap: 6px">
-              <div style="color: #03a5fc; font-size: 18px; font-weight: bold">
+              <div style="color: #03a5fc; font-size: 14px; font-weight: bold">
                 Email:
               </div>
-              <div style="color: black; font-size: 14px; padding-top: 2px;">&ensp;&ensp;&ensp;&ensp;${email}</div>
+              <div style="color: black; font-size: 12px; padding-top: 2px;">&ensp;&ensp;&ensp;&ensp;${email}</div>
             </div>
           </div>
         </div>
@@ -1356,7 +1426,7 @@ padding-left: 30px;
     </header>
     <div
       style="
-        font-size: 32px;
+        font-size: 28px;
         text-align: center;
         color: white;
         border-radius: 14px;
@@ -1378,7 +1448,7 @@ padding-left: 30px;
     </div>
     <div
       style="
-        font-size: 32px;
+        font-size: 14px;
         color: black;
         margin-bottom:20px;
         text-align: center;
@@ -1398,26 +1468,26 @@ padding-left: 30px;
         margin-top: 30px;
       "
     >
-      <table style="width:90%">
+      <table style="width:70%">
         <tr>
           <td
             style="
-              font-size: 24px;
+              font-size: 14px;
               font-weight: bold;
               padding-top: 8px;
               padding-bottom: 8px;
-              width:60%
+              width:50%
             "
           >
             Inspected By
           </td>
           <td
             style="
-              font-size: 24px;
+              font-size: 14px;
               padding-top: 8px;
               padding-bottom: 8px;
               font-weight: 300;
-              width:50%
+              width:80%
             "
           >
             ${data?.inspectorName}
@@ -1426,7 +1496,7 @@ padding-left: 30px;
         <tr>
           <td
             style="
-              font-size: 24px;
+              font-size: 14px;
               font-weight: bold;
               padding-top: 8px;
               padding-bottom: 8px;
@@ -1434,14 +1504,14 @@ padding-left: 30px;
           >
             Tenants name
           </td>
-          <td style="font-size: 24px; padding-top: 8px; padding-bottom: 8px">
+          <td style="font-size: 14px; padding-top: 8px; padding-bottom: 8px">
             ${data?.tenantName}
           </td>
         </tr>
         <tr>
           <td
             style="
-              font-size: 24px;
+              font-size: 14px;
               font-weight: bold;
               padding-top: 8px;
               padding-bottom: 8px;
@@ -1449,14 +1519,14 @@ padding-left: 30px;
           >
             Date of Inspection
           </td>
-          <td style="font-size: 24px; padding-top: 8px; padding-bottom: 8px">
+          <td style="font-size: 14px; padding-top: 8px; padding-bottom: 8px">
             ${DateTime.parse(data!.inspectionDate.toString()).day.toString() + "-" + DateTime.parse(data!.inspectionDate.toString()).month.toString() + "-" + DateTime.parse(data!.inspectionDate.toString()).year.toString()}
           </td>
         </tr>
         <tr>
           <td
             style="
-              font-size: 24px;
+              font-size: 14px;
               font-weight: bold;
               padding-top: 8px;
               padding-bottom: 8px;
@@ -1464,14 +1534,14 @@ padding-left: 30px;
           >
             EPC Expiry Date
           </td>
-          <td style="font-size: 24px; padding-top: 8px; padding-bottom: 8px">
+          <td style="font-size: 14px; padding-top: 8px; padding-bottom: 8px">
            ${DateTime.parse(data!.ecpExpDate.toString()).day.toString() + "-" + DateTime.parse(data!.ecpExpDate.toString()).month.toString() + "-" + DateTime.parse(data!.ecpExpDate.toString()).year.toString()}
           </td>
         </tr>
         <tr>
           <td
             style="
-              font-size: 24px;
+              font-size: 14px;
               font-weight: bold;
               padding-top: 8px;
               padding-bottom: 8px;
@@ -1479,14 +1549,14 @@ padding-left: 30px;
           >
             Gas Safety Certificate Expiry Date
           </td>
-          <td style="font-size: 24px; padding-top: 8px; padding-bottom: 8px">
+          <td style="font-size: 14px; padding-top: 8px; padding-bottom: 8px">
            ${DateTime.parse(data!.gasSafetyCertificateExpDate.toString()).day.toString() + "-" + DateTime.parse(data!.gasSafetyCertificateExpDate.toString()).month.toString() + "-" + DateTime.parse(data!.gasSafetyCertificateExpDate.toString()).year.toString()}
           </td>
         </tr>
         <tr>
           <td
             style="
-              font-size: 24px;
+              font-size: 14px;
               font-weight: bold;
               padding-top: 8px;
               padding-bottom: 8px;
@@ -1494,7 +1564,7 @@ padding-left: 30px;
           >
             EICR Expiry Date
           </td>
-          <td style="font-size: 24px; padding-top: 8px; padding-bottom: 8px">
+          <td style="font-size: 14px; padding-top: 8px; padding-bottom: 8px">
             ${DateTime.parse(data!.ecirExpDate.toString()).day.toString() + "-" + DateTime.parse(data!.ecirExpDate.toString()).month.toString() + "-" + DateTime.parse(data!.ecirExpDate.toString()).year.toString()}
           </td>
         </tr>
@@ -1502,7 +1572,7 @@ padding-left: 30px;
     </div>
     <div
       style="
-        font-size: 32px;
+        font-size: 18px;
         color: #03a5fc;
         margin-left: 36px;
          text-align: center;
@@ -1518,7 +1588,7 @@ padding-left: 30px;
         margin-top: 10px;
         border: 1px solid black;
         border-radius: 14px;
-        font-size: 18px;
+        font-size: 14px;
         margin-left: 36px;
         padding-left: 15px;
         padding-top: 15px;
@@ -1530,9 +1600,13 @@ padding-left: 30px;
      <br>
     <br> <br>
     <br> 
+    <br> <br>
+    <br> 
+    <br> <br>
+    <br> 
     <div
       style="
-        font-size: 24px;
+        font-size: 18px;
         color: #03a5fc;
         margin-left: 48px;
          text-align: center;
@@ -1544,7 +1618,7 @@ padding-left: 30px;
     </div>
     <div
       style="
-        font-size: 26px;
+        font-size: 14px;
         color: black;
         font-weight: bold;
         margin-left: 48px;
@@ -1556,7 +1630,7 @@ padding-left: 30px;
     </div>
     <div
       style="
-        font-size: 26px;
+        font-size: 12px;
         font-weight: 500;
         margin-left: 48px;
         margin-right: 48px;
@@ -1568,22 +1642,10 @@ padding-left: 30px;
       its internal condition at the outset of the lease of the Property.
     </div>
 
-    <div
-      style="
-        font-size: 26px;
-        color: black;
-        font-weight: bold;
-        margin-left: 48px;
-        font-weight: bold;
-        margin-top: 12px;
-      "
-    >
-      What is an Inventory Check-In Report?
-    </div>
 
     <div
       style="
-        font-size: 26px;
+        font-size: 14px;
         color: black;
         font-weight: bold;
         margin-left: 48px;
@@ -1595,7 +1657,7 @@ padding-left: 30px;
     </div>
     <div
       style="
-        font-size: 26px;
+        font-size: 12px;
         font-weight: 500;
         margin-left: 48px;
         margin-right: 48px;
@@ -1616,7 +1678,7 @@ padding-left: 30px;
 
     <div
       style="
-        font-size: 26px;
+        font-size: 14px;
         color: black;
         font-weight: bold;
         margin-left: 48px;
@@ -1628,7 +1690,7 @@ padding-left: 30px;
     </div>
     <div
       style="
-        font-size: 26px;
+        font-size: 12px;
         font-weight: 500;
         margin-left: 48px;
         margin-right: 48px;
@@ -1639,16 +1701,10 @@ padding-left: 30px;
       evidence, it may be relied upon and used by the Landlord, the Tenant and
       Letting Agent.
     </div>
- <br>
-    <br> <br>
-    <br> <br>
-    <br> <br>
-    <br>
-     <br>
-    <br>
+
     <div
       style="
-        font-size: 26px;
+        font-size: 14px;
         color: black;
         font-weight: bold;
         margin-left: 48px;
@@ -1660,7 +1716,7 @@ padding-left: 30px;
     </div>
     <div
       style="
-        font-size: 26px;
+        font-size: 12px;
         font-weight: 500;
         margin-left: 48px;
         margin-right: 48px;
@@ -1681,7 +1737,7 @@ padding-left: 30px;
 
     <div
       style="
-        font-size: 26px;
+        font-size: 14px;
         color: black;
         font-weight: bold;
         margin-left: 48px;
@@ -1693,7 +1749,7 @@ padding-left: 30px;
     </div>
     <div
       style="
-        font-size: 26px;
+        font-size: 12px;
         font-weight: 500;
         margin-left: 48px;
         margin-right: 48px;
@@ -1710,18 +1766,10 @@ padding-left: 30px;
       give any advice on the cost of any repair work, or the types of repair
       which should be used.
     </div>
- <br>
-    <br> <br>
-    <br> <br>
-    <br> <br>
-    <br> <br>
-    <br>
-    <br>
-    <br> <br>
-    <br>
+
     <div
       style="
-        font-size: 26px;
+        font-size: 14px;
         color: black;
         font-weight: bold;
         margin-left: 48px;
@@ -1733,7 +1781,7 @@ padding-left: 30px;
     </div>
     <div
       style="
-        font-size: 26px;
+        font-size: 12px;
         font-weight: 500;
         margin-left: 48px;
         margin-right: 48px;
@@ -1759,18 +1807,9 @@ padding-left: 30px;
       locked or where full access is not possible, for example, attics or
       excessively full cupboards or outbuildings are not inspected.
     </div>
- <br>
-    <br> <br>
-    <br> <br>
-    <br> <br>
-    <br> <br>
-    <br> <br>
-    <br> 
-    <br> <br>
-    <br> 
     <div
       style="
-        font-size: 26px;
+        font-size: 14px;
         color: black;
         font-weight: bold;
         margin-left: 48px;
@@ -1782,7 +1821,7 @@ padding-left: 30px;
     </div>
     <div
       style="
-        font-size: 26px;
+        font-size: 12px;
         font-weight: 500;
         margin-left: 48px;
         margin-right: 48px;
@@ -1801,7 +1840,7 @@ padding-left: 30px;
 
     <div
       style="
-        font-size: 20px;
+        font-size: 14px;
         color: black;
         font-weight: bold;
         margin-left: 48px;
@@ -1813,7 +1852,7 @@ padding-left: 30px;
     </div>
     <div
       style="
-        font-size: 20px;
+        font-size: 12px;
         font-weight: 500;
         margin-left: 48px;
         margin-right: 48px;
@@ -1826,32 +1865,11 @@ padding-left: 30px;
       return of the tenancy deposit is based on the outcome of the Check- Out
       report.
     </div>  
+ <br>
+ <br>
+ <br>
     <br>
-    <br> 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br> 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br> 
-    <br>
-    <br>
-    <br>
-    <br> 
-    <br>
-    <br>
-    <br>
-    <br> 
-    <br>
-    <br>
-    <br>
-    <br> 
-    <br>
-    
+ <br>
     
     
   
@@ -1862,9 +1880,9 @@ padding-left: 30px;
     
     <div
       style="
-        font-size: 28px;
+        font-size: 14px;
         color: #03a5fc;
-        margin-left: 36px;
+        margin-left: 50px;
         font-weight: bold;
         margin-top: 6px;
       "
@@ -2000,9 +2018,60 @@ padding-left: 30px;
         gap: 35px;
       "
     >
-      <div
+    <div
         style="
           width: 510px;
+          height: 260px;
+          border: 4px solid rgb(207, 206, 206);
+          border-radius: 14px;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-left: 24px;
+            margin-right: 24px;
+            margin-top: 16px;
+            
+          "
+        >
+          <div style="font-size: 12px; color: #03a5fc; font-weight: bold">
+            Water Meter:<span
+              style="font-size: 12px; color: black; font-weight: bold"
+              >${data?.waterMeter}</span
+            >
+          </div>
+
+          <div style="font-size: 14px; color: #03a5fc; font-weight: bold">
+            Reading:
+             <span
+              style="font-size: 12px; color: black; font-weight: bold"
+              >${data?.waterMeterReading}</span
+            >
+            
+          </div>
+          
+        </div>
+        
+        <hr
+          style="border: 1px solid #03a5fc; margin-left: 24px; margin-right: 24px"
+        />
+        
+        <img
+            style="border-radius: 12px; width: 250px; height: 180px;display: block; text-align: center;object-fit: cover;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  "
+            src="${Paths.baseUrl + "/" + data!.waterMeterImg.toString()}"
+            alt="s1"
+          />
+      </div>
+      <div
+        style="
+           width: 560px;
           height: 260px;
 
           border: 4px solid rgb(207, 206, 206);
@@ -2045,58 +2114,7 @@ padding-left: 30px;
             alt="s1"
           />
       </div>
-      <div
-        style="
-          width: 560px;
-          height: 260px;
-
-          border: 4px solid rgb(207, 206, 206);
-          border-radius: 14px;
-        "
-      >
-        <div
-          style="
-            display: flex;
-            justify-content: space-between;
-            margin-left: 24px;
-            margin-right: 24px;
-            margin-top: 16px;
-            
-          "
-        >
-          <div style="font-size: 12px; color: #03a5fc; font-weight: bold">
-            Water Meter:<span
-              style="font-size: 12px; color: black; font-weight: bold"
-              >${data?.waterMeter}</span
-            >
-          </div>
-
-          <div style="font-size: 12px; color: #03a5fc; font-weight: bold">
-            Reading:
-             <span
-              style="font-size: 12px; color: black; font-weight: bold"
-              >${data?.waterMeterReading}</span
-            >
-            
-          </div>
-          
-        </div>
-        
-        <hr
-          style="border: 1px solid #03a5fc; margin-left: 24px; margin-right: 24px"
-        />
-        
-        <img
-            style="border-radius: 12px; width: 250px; height: 180px;display: block; text-align: center;object-fit: cover;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: auto;
-  margin-bottom: auto;
-  "
-            src="${Paths.baseUrl + "/" + data!.waterMeterImg.toString()}"
-            alt="s1"
-          />
-      </div>
+      
     </div>
 
      <div
@@ -2115,7 +2133,6 @@ padding-left: 30px;
         style="
           width: 510px;
           height: 260px;
-
           border: 4px solid rgb(207, 206, 206);
           border-radius: 14px;
         "
@@ -2226,42 +2243,42 @@ padding-left: 30px;
     <br>
     <br>
     
-    <div style="margin-left: 30px;">
+    <div style="margin-left: 40px; font-size: 14px;">
       ${e.name}
     </div>
     <div style="margin-left: 38px; margin-right: 38px; margin-top: 10px">
       <table id="customers">
         <tr >
-          <th>Description</th>
-          <th style="width:80%;text-align: center;">Details</th>
+          <th style="font-size: 12px;">Description</th>
+          <th style="width:80%;text-align: center; font-size: 12px;">Details</th>
         </tr>
         <tr>
-          <td>Floor</td>
-          <td style="font-weight: normal;">${e.floor}</td>
+          <td style="font-size: 12px;">Floor</td>
+          <td style="font-size: 12px;">${e.floor}</td>
         </tr>
         ${e.name == "Kitchen" ? '''<tr>
-                            <td>Appliances</td>
-                            <td style="font-weight: normal;">${e.appliances}</td>
+                            <td style="font-size: 12px;">Appliances</td>
+                            <td style="font-size: 12px;">${e.appliances}</td>
                             </tr>''' : ''''''}
         <tr>
-          <td>Walls</td>
-          <td style="font-weight: normal;">${e.walls}</td>
+          <td style="font-size: 12px;">Walls</td>
+          <td style="font-size: 12px;">${e.walls}</td>
         </tr>
         ${e.name != "Rear Garden" && e.name != "Front & Side Aspects" ? '''<tr>
-          <td>Ceiling</td>
-          <td style="font-weight: normal;">${e.ceiling}</td>
+          <td style="font-size: 12px;">Ceiling</td>
+          <td style="font-size: 12px;">${e.ceiling}</td>
         </tr>''' : ''''''}
         <tr>
-          <td>Windows</td>
-          <td style="font-weight: normal;">${e.windows}</td>
+          <td style="font-size: 12px;">Windows</td>
+          <td style="font-size: 12px;">${e.windows}</td>
         </tr>
         <tr>
-          <td>Doors</td>
-          <td style="font-weight: normal;">${e.walls}</td>
+          <td style="font-size: 12px;">Doors</td>
+          <td style="font-size: 12px;">${e.walls}</td>
         </tr>
         <tr>
-          <td>Details</td>
-          <td style="font-weight: normal;">${e.description}</td>
+          <td style="font-size: 12px;">Details</td>
+          <td style="font-size: 12px;">${e.description}</td>
         </tr>
       </table>
     </div>
@@ -2280,10 +2297,12 @@ padding-left: 30px;
     <br>
     <br>
     <br>
-    
+    <br>
+ <br>
+    <br>
     <div
       style="
-        font-size: 28px;
+        font-size: 14px;
         color: #03a5fc;
         margin-left: 48px;
          text-align: center;
@@ -2296,7 +2315,7 @@ padding-left: 30px;
 
     <div
       style="
-        font-size: 24px;
+        font-size: 12px;
         color: black;
         margin-left: 48px;
         margin-right: 48px;
@@ -2311,7 +2330,7 @@ padding-left: 30px;
     />
     <div
       style="
-        font-size: 24px;
+        font-size: 14px;
         color: #03a5fc;
         margin-left: 48px;
          text-align: center;
@@ -2323,7 +2342,7 @@ padding-left: 30px;
     </div>
      <div
       style="
-        font-size: 24px;
+        font-size: 12px;
         color: black;
         margin-left: 48px;
         margin-right: 48px;
@@ -2344,7 +2363,7 @@ padding-left: 30px;
 
     <div
       style="
-        font-size: 24px;
+        font-size: 14px;
         color: #03a5fc;
         text-align: center;
         margin-left: 48px;
@@ -2357,7 +2376,7 @@ padding-left: 30px;
 
     <div
       style="
-        font-size: 24px;
+        font-size: 12px;
         color: black;
         text-align: center;
         margin-left: 48px;
@@ -2376,7 +2395,8 @@ padding-left: 30px;
       and areas listed in the property are in good, clean, serviceable condition
       unless otherwise stated.
     </div>
-
+<br>
+<br>
     <div
       style="
         display: flex;
@@ -2400,7 +2420,7 @@ padding-left: 30px;
       >
         <div
           style="
-            font-size: 24px;
+            font-size: 14px;
             color: black;
             font-weight: bold;
             margin-top: 5px;
@@ -2431,7 +2451,7 @@ padding-left: 30px;
       >
         <div
           style="
-            font-size: 24px;
+            font-size: 14px;
             color: black;
             font-weight: bold;
             margin-top: 5px;

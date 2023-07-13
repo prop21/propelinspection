@@ -237,7 +237,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                   Text(
                     "Property Address",
                     style: TextStyle(
-                        color: Colors.black.withOpacity(0.8), fontSize: 16),
+                        color: Theme.of(context).textTheme.bodyText2?.color,
+                        fontSize: 16),
                   ),
                   SizedBox(
                     height: 5,
@@ -252,7 +253,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                   Text(
                     "Tenant Name",
                     style: TextStyle(
-                        color: Colors.black.withOpacity(0.8), fontSize: 16),
+                        color: Theme.of(context).textTheme.bodyText2?.color,
+                        fontSize: 16),
                   ),
                   SizedBox(
                     height: 5,
@@ -267,7 +269,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                   Text(
                     "Inspector Name",
                     style: TextStyle(
-                        color: Colors.black.withOpacity(0.8), fontSize: 16),
+                        color: Theme.of(context).textTheme.bodyText2?.color,
+                        fontSize: 16),
                   ),
                   SizedBox(
                     height: 5,
@@ -282,7 +285,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                   Text(
                     "Inspection Date",
                     style: TextStyle(
-                        color: Colors.black.withOpacity(0.8), fontSize: 16),
+                        color: Theme.of(context).textTheme.bodyText2?.color,
+                        fontSize: 16),
                   ),
                   SizedBox(
                     height: 5,
@@ -320,7 +324,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                   Text(
                     "ECP Expiry Date",
                     style: TextStyle(
-                        color: Colors.black.withOpacity(0.8), fontSize: 16),
+                        color: Theme.of(context).textTheme.bodyText2?.color,
+                        fontSize: 16),
                   ),
                   SizedBox(
                     height: 5,
@@ -357,7 +362,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                   Text(
                     "ECIR Expiry Date",
                     style: TextStyle(
-                        color: Colors.black.withOpacity(0.8), fontSize: 16),
+                        color: Theme.of(context).textTheme.bodyText2?.color,
+                        fontSize: 16),
                   ),
                   SizedBox(
                     height: 5,
@@ -394,7 +400,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                   Text(
                     "Gas Safety Certificate Expiry Date",
                     style: TextStyle(
-                        color: Colors.black.withOpacity(0.8), fontSize: 16),
+                        color: Theme.of(context).textTheme.bodyText2?.color,
+                        fontSize: 16),
                   ),
                   SizedBox(
                     height: 5,
@@ -437,7 +444,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                         child: Text(
                           "Pre-Paid Electricity Meter",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.8),
+                              color:
+                                  Theme.of(context).textTheme.bodyText2?.color,
                               fontSize: 16),
                         ),
                       ),
@@ -447,7 +455,10 @@ class AddDataScreenState extends State<AddDataScreen> {
                           child: Text(
                             "   Reading",
                             style: TextStyle(
-                                color: Colors.black.withOpacity(0.8),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2
+                                    ?.color,
                                 fontSize: 16),
                           ),
                         ),
@@ -614,7 +625,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                         child: Text(
                           "Pre-Paid Gas Meter",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.8),
+                              color:
+                                  Theme.of(context).textTheme.bodyText2?.color,
                               fontSize: 16),
                         ),
                       ),
@@ -624,7 +636,10 @@ class AddDataScreenState extends State<AddDataScreen> {
                           child: Text(
                             "   Reading",
                             style: TextStyle(
-                                color: Colors.black.withOpacity(0.8),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2
+                                    ?.color,
                                 fontSize: 16),
                           ),
                         ),
@@ -791,7 +806,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                         child: Text(
                           "Water Meter",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.8),
+                              color:
+                                  Theme.of(context).textTheme.bodyText2?.color,
                               fontSize: 16),
                         ),
                       ),
@@ -801,7 +817,10 @@ class AddDataScreenState extends State<AddDataScreen> {
                           child: Text(
                             "   Reading",
                             style: TextStyle(
-                                color: Colors.black.withOpacity(0.8),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2
+                                    ?.color,
                                 fontSize: 16),
                           ),
                         ),
@@ -948,9 +967,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                                           controller.watermeter
                                                               .value);
                                                 }
-                                                await Gal.putImage(
-                                                    controller
-                                                        .watermeter.value.path);
+                                                await Gal.putImage(controller
+                                                    .watermeter.value.path);
                                               },
                                               child: Icon(
                                                 Icons.camera_alt,
@@ -997,7 +1015,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                         child: Text(
                           "Smoke Alarm",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.8),
+                              color:
+                                  Theme.of(context).textTheme.bodyText2?.color,
                               fontSize: 16),
                         ),
                       ),
@@ -1007,7 +1026,10 @@ class AddDataScreenState extends State<AddDataScreen> {
                           child: Text(
                             "",
                             style: TextStyle(
-                                color: Colors.black.withOpacity(0.8),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2
+                                    ?.color,
                                 fontSize: 16),
                           ),
                         ),
@@ -1133,9 +1155,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                                           controller.smokealarm
                                                               .value);
                                                 }
-                                                await Gal.putImage(
-                                                    controller
-                                                        .smokealarm.value.path);
+                                                await Gal.putImage(controller
+                                                    .smokealarm.value.path);
                                               },
                                               child: Icon(
                                                 Icons.camera_alt,
@@ -1269,9 +1290,6 @@ class AddDataScreenState extends State<AddDataScreen> {
                                                           controller
                                                               .smokealar.value);
                                                 }
-                                                await Gal.putImage(
-                                                    controller
-                                                        .smokealar.value.path);
                                               },
                                               child: Icon(
                                                 Icons.image,
@@ -1295,7 +1313,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                         child: Text(
                           "CO Alarm",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.8),
+                              color:
+                                  Theme.of(context).textTheme.bodyText2?.color,
                               fontSize: 16),
                         ),
                       ),
@@ -1305,7 +1324,10 @@ class AddDataScreenState extends State<AddDataScreen> {
                           child: Text(
                             "",
                             style: TextStyle(
-                                color: Colors.black.withOpacity(0.8),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2
+                                    ?.color,
                                 fontSize: 16),
                           ),
                         ),
@@ -1539,9 +1561,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                                           controller
                                                               .coalarm.value);
                                                 }
-                                                await Gal.putImage(
-                                                    controller
-                                                        .coalarm.value.path);
+                                                await Gal.putImage(controller
+                                                    .coalarm.value.path);
                                               },
                                               child: Icon(
                                                 Icons.camera_alt,
@@ -1587,7 +1608,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                         child: Text(
                           "Heating System",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.8),
+                              color:
+                                  Theme.of(context).textTheme.bodyText2?.color,
                               fontSize: 16),
                         ),
                       ),
@@ -1597,7 +1619,10 @@ class AddDataScreenState extends State<AddDataScreen> {
                           child: Text(
                             "",
                             style: TextStyle(
-                                color: Colors.black.withOpacity(0.8),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2
+                                    ?.color,
                                 fontSize: 16),
                           ),
                         ),
@@ -1877,7 +1902,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                   Text(
                     "Asked Landlord to",
                     style: TextStyle(
-                        color: Colors.black.withOpacity(0.8), fontSize: 16),
+                        color: Theme.of(context).textTheme.bodyText2?.color,
+                        fontSize: 16),
                   ),
                   SizedBox(
                     height: 10,
@@ -1893,7 +1919,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                   Text(
                     "Advised Tenant to",
                     style: TextStyle(
-                        color: Colors.black.withOpacity(0.8), fontSize: 16),
+                        color: Theme.of(context).textTheme.bodyText2?.color,
+                        fontSize: 16),
                   ),
                   SizedBox(
                     height: 10,
@@ -1909,7 +1936,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                   Text(
                     "Final Remarks",
                     style: TextStyle(
-                        color: Colors.black.withOpacity(0.8), fontSize: 16),
+                        color: Theme.of(context).textTheme.bodyText2?.color,
+                        fontSize: 16),
                   ),
                   SizedBox(
                     height: 10,
@@ -1925,7 +1953,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                   Text(
                     "Inspector\' Signature",
                     style: TextStyle(
-                        color: Colors.black.withOpacity(0.8), fontSize: 16),
+                        color: Theme.of(context).textTheme.bodyText2?.color,
+                        fontSize: 16),
                   ),
                   SizedBox(
                     height: 10,
@@ -1954,7 +1983,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                   Text(
                     "Tenant\'s Signature",
                     style: TextStyle(
-                        color: Colors.black.withOpacity(0.8), fontSize: 16),
+                        color: Theme.of(context).textTheme.bodyText2?.color,
+                        fontSize: 16),
                   ),
                   SizedBox(
                     height: 10,
@@ -1988,7 +2018,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                     onPressed: () {
                       pd = pd.toSet().toList();
                       model?.propertyDetails = pd;
-                      controller.addData(pd);
+                      print(model?.propertyDetails?.length);
+                      controller.addData(model?.propertyDetails);
                     },
                     color: Colors.blue,
                     child: Text(

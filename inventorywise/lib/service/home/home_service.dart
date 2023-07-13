@@ -108,7 +108,7 @@ class HomeService {
         "co_alarm_back_img": coalarmback,
         "heating_system_img": heatingsystem
       });
-      var cont = Get.find<HomeController>();
+      var cont = Get.put(HomeController());
       cont.getData(Authenticator().getUserID());
       Get.back();
     } on Exception catch (e) {

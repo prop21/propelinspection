@@ -283,7 +283,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                 Text(
                   "Property Address",
                   style: TextStyle(
-                      color: Colors.black.withOpacity(0.8), fontSize: 16),
+                      color: Theme.of(context).textTheme.bodyText2?.color,
+                      fontSize: 16),
                 ),
                 SizedBox(
                   height: 5,
@@ -298,7 +299,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                 Text(
                   "Tenant Name",
                   style: TextStyle(
-                      color: Colors.black.withOpacity(0.8), fontSize: 16),
+                      color: Theme.of(context).textTheme.bodyText2?.color,
+                      fontSize: 16),
                 ),
                 SizedBox(
                   height: 5,
@@ -313,7 +315,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                 Text(
                   "Inspector Name",
                   style: TextStyle(
-                      color: Colors.black.withOpacity(0.8), fontSize: 16),
+                      color: Theme.of(context).textTheme.bodyText2?.color,
+                      fontSize: 16),
                 ),
                 SizedBox(
                   height: 5,
@@ -328,7 +331,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                 Text(
                   "Inspection Date",
                   style: TextStyle(
-                      color: Colors.black.withOpacity(0.8), fontSize: 16),
+                      color: Theme.of(context).textTheme.bodyText2?.color,
+                      fontSize: 16),
                 ),
                 SizedBox(
                   height: 5,
@@ -365,7 +369,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                 Text(
                   "ECP Expiry Date",
                   style: TextStyle(
-                      color: Colors.black.withOpacity(0.8), fontSize: 16),
+                      color: Theme.of(context).textTheme.bodyText2?.color,
+                      fontSize: 16),
                 ),
                 SizedBox(
                   height: 5,
@@ -402,7 +407,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                 Text(
                   "ECIR Expiry Date",
                   style: TextStyle(
-                      color: Colors.black.withOpacity(0.8), fontSize: 16),
+                      color: Theme.of(context).textTheme.bodyText2?.color,
+                      fontSize: 16),
                 ),
                 SizedBox(
                   height: 5,
@@ -439,7 +445,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                 Text(
                   "Gas Saftey Certificate Expiry Date",
                   style: TextStyle(
-                      color: Colors.black.withOpacity(0.8), fontSize: 16),
+                      color: Theme.of(context).textTheme.bodyText2?.color,
+                      fontSize: 16),
                 ),
                 SizedBox(
                   height: 5,
@@ -481,7 +488,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                       child: Text(
                         "Pre-Paid Electricity Meter",
                         style: TextStyle(
-                            color: Colors.black.withOpacity(0.8), fontSize: 16),
+                            color: Theme.of(context).textTheme.bodyText2?.color,
+                            fontSize: 16),
                       ),
                     ),
                     Flexible(
@@ -490,7 +498,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                         child: Text(
                           "Reading",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.8),
+                              color:
+                                  Theme.of(context).textTheme.bodyText2?.color,
                               fontSize: 16),
                         ),
                       ),
@@ -663,7 +672,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                       child: Text(
                         "Pre-Paid Gas Meter",
                         style: TextStyle(
-                            color: Colors.black.withOpacity(0.8), fontSize: 16),
+                            color: Theme.of(context).textTheme.bodyText2?.color,
+                            fontSize: 16),
                       ),
                     ),
                     Flexible(
@@ -672,7 +682,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                         child: Text(
                           "Reading",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.8),
+                              color:
+                                  Theme.of(context).textTheme.bodyText2?.color,
                               fontSize: 16),
                         ),
                       ),
@@ -842,7 +853,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                       child: Text(
                         "Water Meter",
                         style: TextStyle(
-                            color: Colors.black.withOpacity(0.8), fontSize: 16),
+                            color: Theme.of(context).textTheme.bodyText2?.color,
+                            fontSize: 16),
                       ),
                     ),
                     Flexible(
@@ -851,7 +863,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                         child: Text(
                           "Reading",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.8),
+                              color:
+                                  Theme.of(context).textTheme.bodyText2?.color,
                               fontSize: 16),
                         ),
                       ),
@@ -1026,7 +1039,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                       child: Text(
                         "Smoke Alarm",
                         style: TextStyle(
-                            color: Colors.black.withOpacity(0.8), fontSize: 16),
+                            color: Theme.of(context).textTheme.bodyText2?.color,
+                            fontSize: 16),
                       ),
                     ),
                     Flexible(
@@ -1035,7 +1049,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                         child: Text(
                           "",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.8),
+                              color:
+                                  Theme.of(context).textTheme.bodyText2?.color,
                               fontSize: 16),
                         ),
                       ),
@@ -1287,7 +1302,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                       child: Text(
                         "CO Alarm",
                         style: TextStyle(
-                            color: Colors.black.withOpacity(0.8), fontSize: 16),
+                            color: Theme.of(context).textTheme.bodyText2?.color,
+                            fontSize: 16),
                       ),
                     ),
                     Flexible(
@@ -1543,7 +1559,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                       child: Text(
                         "Heating System",
                         style: TextStyle(
-                            color: Colors.black.withOpacity(0.8), fontSize: 16),
+                            color: Theme.of(context).textTheme.bodyText2?.color,
+                            fontSize: 16),
                       ),
                     ),
                     Flexible(
@@ -1552,7 +1569,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                         child: Text(
                           "",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.8),
+                              color:
+                                  Theme.of(context).textTheme.bodyText2?.color,
                               fontSize: 16),
                         ),
                       ),
@@ -1770,9 +1788,11 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                     i++)
                   CustomProperty(
                       index: i,
-                      name: "Bedroom " +
-                          (i - (widget.data.propertyDetails.length - 1))
-                              .toString(),
+                      name: "Room "
+                      // +
+                      // (i - (widget.data.propertyDetails.length - 1))
+                      //     .toString()
+                      ,
                       data: pd,
                       images: images),
                 SizedBox(
@@ -1812,7 +1832,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                 Text(
                   "Asked Landlord to",
                   style: TextStyle(
-                      color: Colors.black.withOpacity(0.8), fontSize: 16),
+                      color: Theme.of(context).textTheme.bodyText2?.color,
+                      fontSize: 16),
                 ),
                 SizedBox(
                   height: 10,
@@ -1828,7 +1849,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                 Text(
                   "Advised Tenant to",
                   style: TextStyle(
-                      color: Colors.black.withOpacity(0.8), fontSize: 16),
+                      color: Theme.of(context).textTheme.bodyText2?.color,
+                      fontSize: 16),
                 ),
                 SizedBox(
                   height: 10,
@@ -1844,7 +1866,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                 Text(
                   "Final Remarks",
                   style: TextStyle(
-                      color: Colors.black.withOpacity(0.8), fontSize: 16),
+                      color: Theme.of(context).textTheme.bodyText2?.color,
+                      fontSize: 16),
                 ),
                 SizedBox(
                   height: 10,
@@ -1860,7 +1883,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                 Text(
                   "Inspector\' Signature",
                   style: TextStyle(
-                      color: Colors.black.withOpacity(0.8), fontSize: 16),
+                      color: Theme.of(context).textTheme.bodyText2?.color,
+                      fontSize: 16),
                 ),
                 SizedBox(
                   height: 10,
@@ -1949,7 +1973,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                   onPressed: () {
                     pd = pd.toSet().toList();
                     model?.propertyDetails = pd;
-                    controller.updateData(pd, widget.id);
+                    controller.updateData(model?.propertyDetails, widget.id);
                   },
                   color: Colors.blue,
                   child: Text("Update Property"),

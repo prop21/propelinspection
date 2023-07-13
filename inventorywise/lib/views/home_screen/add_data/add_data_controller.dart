@@ -131,8 +131,8 @@ class AddDataController extends GetxController {
 
   Future pickImages() async {
     try {
-      final imagedata =
-          await ImagePicker().getImage(source: ImageSource.camera);
+      final imagedata = await ImagePicker()
+          .getImage(source: ImageSource.camera, imageQuality: 10);
       if (imagedata == null) return;
       final imageTemp = File(imagedata.path);
       return imageTemp;
@@ -144,7 +144,8 @@ class AddDataController extends GetxController {
   Future pickImageGallerys() async {
     try {
       final ImagePicker picker = ImagePicker();
-      final pickedFile = await picker.getImage(source: ImageSource.gallery);
+      final pickedFile =
+          await picker.getImage(source: ImageSource.gallery, imageQuality: 10);
       File image = File(pickedFile!.path);
       if (image == null) return;
 
