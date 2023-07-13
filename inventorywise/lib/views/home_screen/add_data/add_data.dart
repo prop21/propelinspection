@@ -1859,10 +1859,14 @@ class AddDataScreenState extends State<AddDataScreen> {
                         data: pd,
                         images: images),
                   ],
-                  for (int i = 14; i < controller.list.value; i++)
+                  for (int i = controller.te.value;
+                      i < controller.list.value;
+                      i++)
                     CustomProperty(
                         index: i,
-                        name: "Room " + (i - 13).toString(),
+                        name: "Room " +
+                            (controller.list.value - (controller.te.value))
+                                .toString(),
                         data: pd,
                         images: images),
                   SizedBox(
@@ -1878,6 +1882,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                       height: 50,
                       onPressed: () {
                         controller.list.value++;
+                        // controller.te.value++;
                       },
                       child: SizedBox(
                         width: 110,

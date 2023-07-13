@@ -23,6 +23,7 @@ class AddDataController extends GetxController {
   var temp = File("");
   var temp1 = File("");
   var index = 0.obs;
+  var te=14.obs;
   var items = [
     0,
     1,

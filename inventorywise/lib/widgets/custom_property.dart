@@ -126,9 +126,10 @@ class CustomPropertyState extends State<CustomProperty> {
                 onTap: () {
                   controller.count.value = 1;
                   controller.items.remove(widget.index);
-                  if (widget.index >= 7) {
-                    controller.list.value--;
-                  }
+
+                  controller.list.value--;
+                  controller.te.value--;
+
                   widget.data
                       ?.removeWhere((element) => element.name == widget.name);
                 },
@@ -141,8 +142,9 @@ class CustomPropertyState extends State<CustomProperty> {
           ),
           Text(
             widget.name.toString(),
-            style:
-                TextStyle(color: Theme.of(context).textTheme.bodyText2?.color, fontSize: 16),
+            style: TextStyle(
+                color: Theme.of(context).textTheme.bodyText2?.color,
+                fontSize: 16),
           ),
           SizedBox(
             height: 10,
@@ -290,8 +292,9 @@ class CustomPropertyState extends State<CustomProperty> {
           ),
           Text(
             "Other Details",
-            style:
-                TextStyle(color: Theme.of(context).textTheme.bodyText2?.color, fontSize: 16),
+            style: TextStyle(
+                color: Theme.of(context).textTheme.bodyText2?.color,
+                fontSize: 16),
           ),
           SizedBox(
             height: 10,
@@ -1215,8 +1218,9 @@ class CustomPropertyState1 extends State<CustomProperty1> {
           ),
           Text(
             widget.name.toString(),
-            style:
-                TextStyle(color: Theme.of(context).textTheme.bodyText2?.color, fontSize: 16),
+            style: TextStyle(
+                color: Theme.of(context).textTheme.bodyText2?.color,
+                fontSize: 16),
           ),
           SizedBox(
             height: 10,
@@ -1345,8 +1349,9 @@ class CustomPropertyState1 extends State<CustomProperty1> {
           ),
           Text(
             "Other Details",
-            style:
-                TextStyle(color:Theme.of(context).textTheme.bodyText2?.color, fontSize: 16),
+            style: TextStyle(
+                color: Theme.of(context).textTheme.bodyText2?.color,
+                fontSize: 16),
           ),
           SizedBox(
             height: 10,
