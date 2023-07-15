@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:InventoryWise/views/home_screen/add_data/add_data_controller.dart';
 import 'package:InventoryWise/views/home_screen/show_data/showdata_controller.dart';
 import 'package:InventoryWise/views/home_screen/update_data/update_data.dart';
 import 'package:InventoryWise/widgets/custom_loader_widget.dart';
@@ -68,7 +69,6 @@ class Show_Data_Screen extends StatelessWidget {
         data?.propertyDetails![i].propertyImages?.forEach((element) {
           im.add(element.url.toString());
         });
-
         propertyL.add(pp.PropertyDetails(
             name: data?.propertyDetails?[i].name,
             description: data?.propertyDetails?[i].description,
@@ -342,29 +342,6 @@ class Show_Data_Screen extends StatelessWidget {
             images: im));
       }
     }
-    controller.isLoading.value = false;
-    // for (int i = 0; i < data!.propertyDetails!.length; i++) {
-    //   for (int j = 0; j < data!.propertyDetails!.length; j++) {
-    //     if (data!.propertyDetails![j].name.toString() == 'Room ${i}') {
-    //       propertyList.add(data!.propertyDetails![j]);
-    //       List<String>? im = [];
-    //       data?.propertyDetails![i].propertyImages?.forEach((element) {
-    //         im.add(element.url.toString());
-    //       });
-    //       propertyL.add(pp.PropertyDetails(
-    //           name: data?.propertyDetails?[i].name,
-    //           description: data?.propertyDetails?[i].description,
-    //           floor: data?.propertyDetails?[i].floor,
-    //           walls: data?.propertyDetails?[i].walls,
-    //           ceiling: data?.propertyDetails?[i].ceiling,
-    //           windows: data?.propertyDetails?[i].windows,
-    //           doors: data?.propertyDetails?[i].doors,
-    //           units: data?.propertyDetails?[i].units,
-    //           appliances: data?.propertyDetails?[i].appliances,
-    //           images: im));
-    //     }
-    //   }
-    // }
     for (int i = 0; i < data!.propertyDetails!.length; i++) {
       if (data!.propertyDetails![i].name.toString() != 'Front & Side Aspects' &&
           data!.propertyDetails![i].name.toString() != 'Entrance Hall' &&
@@ -398,25 +375,8 @@ class Show_Data_Screen extends StatelessWidget {
             images: im));
       }
     }
-    // data?.propertyDetails?.sort((a, b) {
-    //   List<String> order = [
-    //     'Front & Side Aspects',
-    //     'Entrance Hall',
-    //     'Living Room 1',
-    //     'Living Room 2',
-    //     'Kitchen',
-    //     'Rear Garden',
-    //     'Landing',
-    //     'Bedroom 1',
-    //     'Bedroom 2',
-    //     'Bedroom 3',
-    //     'Bedroom 4',
-    //     'Bedroom 5',
-    //     'Bathroom 1',
-    //     'Bathroom 2'
-    //   ];
-    //   return order.indexOf(a.name!).compareTo(order.indexOf(b.name!));
-    // });
+    controller.isLoading.value = false;
+
     if (data?.signatureTenant != null && data?.signatureInspector != null) {
       final Uint8List bytes = Uint8List.fromList(data!.signatureTenant!.data!);
       String base64Image = base64Encode(bytes);

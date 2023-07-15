@@ -1078,10 +1078,12 @@ class CustomProperty1 extends StatefulWidget {
       this.doors,
       this.imgurl,
       this.celling,
+      this.da,
       this.walls});
   List<PropertyDetails>? data;
   String? name;
   String? units;
+  List<PropertyDetails>? da;
   var imgurl;
   String? celling;
   String? floor;
@@ -1140,8 +1142,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
     et6.text = "Fair";
     et7.text = "Fair";
     et8.text = "Fair";
-    print("hello");
-    print(widget.imgurl.length);
+
     imagess[0] = (widget.imgurl[0]).toString();
     imagess[1] = widget.imgurl[1].toString();
     imagess[2] = widget.imgurl[2].toString();
@@ -1200,8 +1201,12 @@ class CustomPropertyState1 extends State<CustomProperty1> {
               InkWell(
                 onTap: () {
                   controller.upprop.value.removeAt(widget.index);
+                  widget.da?.removeAt(widget.index);
+                  controller.update();
                   print(controller.upprop.length);
                   setState(() {});
+                  controller.loading.value = true;
+                  controller.loading.value = false;
                 },
                 child: Icon(
                   Icons.delete,
