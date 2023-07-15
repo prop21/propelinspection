@@ -10,8 +10,8 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 
-import '../../../models/addproperty/add_proprert_model.dart';
-import '../../../models/homedata/Home_Data.dart';
+import '../../../models/addproperty/add_proprert_model.dart' as pp;
+import '../../../models/homedata/Home_Data.dart' as tt;
 import '../../../service/home/home_service.dart';
 
 class AddDataController extends GetxController {
@@ -23,7 +23,26 @@ class AddDataController extends GetxController {
   var temp = File("");
   var temp1 = File("");
   var index = 0.obs;
-  var te=14.obs;
+  var te = 14.obs;
+  var upprop=<pp.PropertyDetails>[].obs;
+  var prop = <pp.PropertyDetails>[
+
+  pp.PropertyDetails(name: 'Front & Side Aspects'),
+  pp.PropertyDetails(name: 'Entrance Hall'),
+  pp.PropertyDetails(name: 'Living Room 1'),
+  pp.PropertyDetails(name: 'Living Room 2'),
+  pp.PropertyDetails(name: 'Kitchen'),
+  pp.PropertyDetails(name: 'Rear Garden'),
+  pp.PropertyDetails(name: 'Landing'),
+  pp.PropertyDetails(name: 'Bedroom 1'),
+  pp.PropertyDetails(name: 'Bedroom 2'),
+  pp.PropertyDetails(name: 'Bedroom 3'),
+  pp.PropertyDetails(name: 'Bedroom 4'),
+  pp.PropertyDetails(name: 'Bedroom 5'),
+  pp.PropertyDetails(name: 'Bathroom 1'),
+  pp.PropertyDetails(name: 'Bathroom 2'),
+
+  ].obs;
   var items = [
     0,
     1,

@@ -12,6 +12,7 @@ import 'package:gal/gal.dart';
 import 'dart:io';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 
@@ -1782,93 +1783,13 @@ class AddDataScreenState extends State<AddDataScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                  if (controller.items.contains(0)) ...[
-                    CustomProperty(
-                        index: 0,
-                        name: "Front & Side Aspects",
-                        data: pd,
-                        images: images),
-                  ],
-                  if (controller.items.contains(1)) ...[
-                    CustomProperty(
-                        index: 1,
-                        name: "Entrance Hall",
-                        data: pd,
-                        images: images),
-                  ],
-                  if (controller.items.contains(2)) ...[
-                    CustomProperty(
-                        index: 2,
-                        name: "Living Room 1",
-                        data: pd,
-                        images: images),
-                  ],
-                  if (controller.items.contains(3)) ...[
-                    CustomProperty(
-                        index: 3,
-                        name: "Living Room 2",
-                        data: pd,
-                        images: images),
-                  ],
-                  if (controller.items.contains(4)) ...[
-                    CustomProperty(
-                        index: 4, name: "Kitchen", data: pd, images: images),
-                  ],
-                  if (controller.items.contains(5)) ...[
-                    CustomProperty(
-                        index: 5,
-                        name: "Rear Garden",
-                        data: pd,
-                        images: images),
-                  ],
-                  if (controller.items.contains(6)) ...[
-                    CustomProperty(
-                        index: 6, name: "Landing", data: pd, images: images),
-                  ],
-                  if (controller.items.contains(7)) ...[
-                    CustomProperty(
-                        index: 7, name: "Bedroom 1", data: pd, images: images),
-                  ],
-                  if (controller.items.contains(8)) ...[
-                    CustomProperty(
-                        index: 8, name: "Bedroom 2", data: pd, images: images),
-                  ],
-                  if (controller.items.contains(9)) ...[
-                    CustomProperty(
-                        index: 9, name: "Bedroom 3", data: pd, images: images),
-                  ],
-                  if (controller.items.contains(10)) ...[
-                    CustomProperty(
-                        index: 10, name: "Bedroom 4", data: pd, images: images),
-                  ],
-                  if (controller.items.contains(11)) ...[
-                    CustomProperty(
-                        index: 11, name: "Bedroom 5", data: pd, images: images),
-                  ],
-                  if (controller.items.contains(12)) ...[
-                    CustomProperty(
-                        index: 12,
-                        name: "Bathroom 1",
-                        data: pd,
-                        images: images),
-                  ],
-                  if (controller.items.contains(13)) ...[
-                    CustomProperty(
-                        index: 13,
-                        name: "Bathroom 2",
-                        data: pd,
-                        images: images),
-                  ],
-                  for (int i = controller.te.value;
-                      i < controller.list.value;
-                      i++)
+                  for (int i = 0; i < controller.prop.value.length; i++) ...[
                     CustomProperty(
                         index: i,
-                        name: "Room " +
-                            (controller.list.value - (controller.te.value))
-                                .toString(),
-                        data: pd,
-                        images: images),
+                        name: controller.prop[i].name,
+                        data: controller.prop.value,
+                        images: images)
+                  ],
                   SizedBox(
                     height: 20,
                   ),
@@ -1881,7 +1802,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                       minWidth: 10,
                       height: 50,
                       onPressed: () {
-                        controller.list.value++;
+                        controller.prop.add(PropertyDetails(name: "Room"));
                         // controller.te.value++;
                       },
                       child: SizedBox(
@@ -2022,9 +1943,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                         borderRadius: BorderRadius.circular(25)),
                     onPressed: () {
                       pd = pd.toSet().toList();
-                      model?.propertyDetails = pd;
-                      print(model?.propertyDetails?.length);
-                      controller.addData(model?.propertyDetails);
+                      model?.propertyDetails = controller.prop.value;
+                      controller.addData(controller.prop.value);
                     },
                     color: Colors.blue,
                     child: Text(

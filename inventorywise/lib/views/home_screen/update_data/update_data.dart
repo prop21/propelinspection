@@ -1,18 +1,11 @@
-import 'dart:convert';
-import 'dart:typed_data';
-
 import 'package:InventoryWise/models/addproperty/add_proprert_model.dart';
 import 'package:InventoryWise/views/home_screen/add_data/add_data_controller.dart';
-
-import 'package:easy_signature_pad/easy_signature_pad.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gal/gal.dart';
 import 'dart:io';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:path_provider/path_provider.dart';
-
 import '../../../utils/global.dart';
 import '../../../widgets/custom_property.dart';
 
@@ -21,7 +14,7 @@ class UpdateDataScreen extends StatefulWidget {
   UpdateDataScreen(
       {this.id, this.data, this.tenet, this.inspector, required this.sorted});
   var data;
-  var sorted;
+  List<PropertyDetails> sorted;
   String? tenet;
   String? inspector;
   String? id;
@@ -32,6 +25,12 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
   AddPropertyModel? model;
   List<PropertyDetails> pd = [];
   List<List<String>> images = [];
+  @override
+  void initState() {
+    super.initState();
+    controller.upprop.addAll(widget.sorted);
+  }
+
   @override
   Widget build(BuildContext context) {
     model = AddPropertyModel();
@@ -1729,71 +1728,19 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                for (int i = 0; i < widget.sorted.length; i++)
-                  if (controller.items.contains(i)) ...[
-                    CustomProperty1(
-                        imgurl: widget.sorted[i].propertyImages,
-                        walls: widget.sorted[i].walls,
-                        units: widget.sorted[i].units,
-                        floor: widget.sorted[i].floor,
-                        doors: widget.sorted[i].doors,
-                        windows: widget.sorted[i].windows,
-                        celling: widget.sorted[i].ceiling,
-                        appliences: widget.sorted[i].appliances,
-                        index: i,
-                        name: widget.sorted[i].name,
-                        data: pd,
-                        images: images),
-                  ],
-                // if (controller.items.contains(0)) ...[
-                //   CustomProperty(
-                //       index: 0,
-                //       name: "Front & Side Aspects",
-                //       data: pd,
-                //       images: images),
-                // ],
-                // if (controller.items.contains(1)) ...[
-                //   CustomProperty(
-                //       index: 1,
-                //       name: "Entrance Hall",
-                //       data: pd,
-                //       images: images),
-                // ],
-                // if (controller.items.contains(2)) ...[
-                //   CustomProperty(
-                //       index: 2, name: "Kitchen", data: pd, images: images),
-                // ],
-                // if (controller.items.contains(3)) ...[
-                //   CustomProperty(
-                //       index: 3, name: "Rear garden", data: pd, images: images),
-                // ],
-                // if (controller.items.contains(4)) ...[
-                //   CustomProperty(
-                //       index: 4, name: "Bathroom", data: pd, images: images),
-                // ],
-                // if (controller.items.contains(5)) ...[
-                //   CustomProperty(
-                //       index: 5, name: "Bathroom 1", data: pd, images: images),
-                // ],
-                // if (controller.items.contains(6)) ...[
-                //   CustomProperty(
-                //       index: 6, name: "Lounge", data: pd, images: images),
-                // ],
-                // if (controller.items.contains(7)) ...[
-                //   CustomProperty(
-                //       index: 7, name: "Bedroom", data: pd, images: images),
-                // ],
-                for (int i = widget.data.propertyDetails.length;
-                    i < controller.list.value;
-                    i++)
-                  CustomProperty(
+                for (int i = 0; i < controller.upprop.length; i++)
+                  CustomProperty1(
+                      imgurl: controller.upprop[i].images,
+                      walls: controller.upprop[i].walls,
+                      units: controller.upprop[i].units,
+                      floor: controller.upprop[i].floor,
+                      doors: controller.upprop[i].doors,
+                      windows: controller.upprop[i].windows,
+                      celling: controller.upprop[i].ceiling,
+                      appliences: controller.upprop[i].appliances,
                       index: i,
-                      name: "Room "
-                      // +
-                      // (i - (widget.data.propertyDetails.length - 1))
-                      //     .toString()
-                      ,
-                      data: pd,
+                      name: controller.upprop[i].name,
+                      data: controller.upprop.value,
                       images: images),
                 SizedBox(
                   height: 20,
@@ -1807,7 +1754,9 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                     minWidth: 10,
                     height: 50,
                     onPressed: () {
-                      controller.list.value++;
+                      // controller.list.value++;
+                      controller.upprop.value
+                          .add(PropertyDetails(name: "Room"));
                     },
                     child: SizedBox(
                       width: 110,
@@ -1973,7 +1922,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                   onPressed: () {
                     pd = pd.toSet().toList();
                     model?.propertyDetails = pd;
-                    controller.updateData(model?.propertyDetails, widget.id);
+                    controller.updateData(controller.upprop.value, widget.id);
                   },
                   color: Colors.blue,
                   child: Text("Update Property"),

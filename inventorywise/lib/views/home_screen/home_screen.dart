@@ -22,6 +22,7 @@ class Home_Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+
     controller.fname.value = fname.toString();
     controller.lname.value = lname.toString();
     controller.email.value = email.toString();

@@ -17,6 +17,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../models/addproperty/add_proprert_model.dart' as pp;
+
 import '../../../models/homedata/Home_Data.dart';
 import '../../../utils/global.dart';
 
@@ -56,90 +58,346 @@ class Show_Data_Screen extends StatelessWidget {
       'Room 9',
     ];
 
-    List<PropertyDetails> propertyList = [
-      // Add more PropertyDetails objects as needed
-    ];
+    List<PropertyDetails> propertyList = [];
+    List<pp.PropertyDetails> propertyL = [];
+    controller.isLoading.value = true;
     for (int i = 0; i < data!.propertyDetails!.length; i++) {
       if (data!.propertyDetails![i].name.toString() == 'Front & Side Aspects') {
         propertyList.add(data!.propertyDetails![i]);
+        List<String>? im = [];
+        data?.propertyDetails![i].propertyImages?.forEach((element) {
+          im.add(element.url.toString());
+        });
+
+        propertyL.add(pp.PropertyDetails(
+            name: data?.propertyDetails?[i].name,
+            description: data?.propertyDetails?[i].description,
+            floor: data?.propertyDetails?[i].floor,
+            walls: data?.propertyDetails?[i].walls,
+            ceiling: data?.propertyDetails?[i].ceiling,
+            windows: data?.propertyDetails?[i].windows,
+            doors: data?.propertyDetails?[i].doors,
+            units: data?.propertyDetails?[i].units,
+            appliances: data?.propertyDetails?[i].appliances,
+            images: im));
       }
     }
     for (int i = 0; i < data!.propertyDetails!.length; i++) {
       if (data!.propertyDetails![i].name.toString() == 'Entrance Hall') {
         propertyList.add(data!.propertyDetails![i]);
+        List<String>? im = [];
+        data?.propertyDetails![i].propertyImages?.forEach((element) {
+          im.add(element.url.toString());
+        });
+        propertyL.add(pp.PropertyDetails(
+            name: data?.propertyDetails?[i].name,
+            description: data?.propertyDetails?[i].description,
+            floor: data?.propertyDetails?[i].floor,
+            walls: data?.propertyDetails?[i].walls,
+            ceiling: data?.propertyDetails?[i].ceiling,
+            windows: data?.propertyDetails?[i].windows,
+            doors: data?.propertyDetails?[i].doors,
+            units: data?.propertyDetails?[i].units,
+            appliances: data?.propertyDetails?[i].appliances,
+            images: im));
       }
     }
     for (int i = 0; i < data!.propertyDetails!.length; i++) {
       if (data!.propertyDetails![i].name.toString() == 'Living Room 1') {
         propertyList.add(data!.propertyDetails![i]);
+        List<String>? im = [];
+        data?.propertyDetails![i].propertyImages?.forEach((element) {
+          im.add(element.url.toString());
+        });
+        propertyL.add(pp.PropertyDetails(
+            name: data?.propertyDetails?[i].name,
+            description: data?.propertyDetails?[i].description,
+            floor: data?.propertyDetails?[i].floor,
+            walls: data?.propertyDetails?[i].walls,
+            ceiling: data?.propertyDetails?[i].ceiling,
+            windows: data?.propertyDetails?[i].windows,
+            doors: data?.propertyDetails?[i].doors,
+            units: data?.propertyDetails?[i].units,
+            appliances: data?.propertyDetails?[i].appliances,
+            images: im));
       }
     }
     for (int i = 0; i < data!.propertyDetails!.length; i++) {
       if (data!.propertyDetails![i].name.toString() == 'Living Room 2') {
         propertyList.add(data!.propertyDetails![i]);
+        List<String>? im = [];
+        data?.propertyDetails![i].propertyImages?.forEach((element) {
+          im.add(element.url.toString());
+        });
+        propertyL.add(pp.PropertyDetails(
+            name: data?.propertyDetails?[i].name,
+            description: data?.propertyDetails?[i].description,
+            floor: data?.propertyDetails?[i].floor,
+            walls: data?.propertyDetails?[i].walls,
+            ceiling: data?.propertyDetails?[i].ceiling,
+            windows: data?.propertyDetails?[i].windows,
+            doors: data?.propertyDetails?[i].doors,
+            units: data?.propertyDetails?[i].units,
+            appliances: data?.propertyDetails?[i].appliances,
+            images: im));
       }
     }
     for (int i = 0; i < data!.propertyDetails!.length; i++) {
       if (data!.propertyDetails![i].name.toString() == 'Kitchen') {
         propertyList.add(data!.propertyDetails![i]);
+        List<String>? im = [];
+        data?.propertyDetails![i].propertyImages?.forEach((element) {
+          im.add(element.url.toString());
+        });
+        propertyL.add(pp.PropertyDetails(
+            name: data?.propertyDetails?[i].name,
+            description: data?.propertyDetails?[i].description,
+            floor: data?.propertyDetails?[i].floor,
+            walls: data?.propertyDetails?[i].walls,
+            ceiling: data?.propertyDetails?[i].ceiling,
+            windows: data?.propertyDetails?[i].windows,
+            doors: data?.propertyDetails?[i].doors,
+            units: data?.propertyDetails?[i].units,
+            appliances: data?.propertyDetails?[i].appliances,
+            images: im));
       }
     }
     for (int i = 0; i < data!.propertyDetails!.length; i++) {
       if (data!.propertyDetails![i].name.toString() == 'Rear Garden') {
         propertyList.add(data!.propertyDetails![i]);
+        List<String>? im = [];
+        data?.propertyDetails![i].propertyImages?.forEach((element) {
+          im.add(element.url.toString());
+        });
+        propertyL.add(pp.PropertyDetails(
+            name: data?.propertyDetails?[i].name,
+            description: data?.propertyDetails?[i].description,
+            floor: data?.propertyDetails?[i].floor,
+            walls: data?.propertyDetails?[i].walls,
+            ceiling: data?.propertyDetails?[i].ceiling,
+            windows: data?.propertyDetails?[i].windows,
+            doors: data?.propertyDetails?[i].doors,
+            units: data?.propertyDetails?[i].units,
+            appliances: data?.propertyDetails?[i].appliances,
+            images: im));
       }
     }
     for (int i = 0; i < data!.propertyDetails!.length; i++) {
       if (data!.propertyDetails![i].name.toString() == 'Landing') {
         propertyList.add(data!.propertyDetails![i]);
+        List<String>? im = [];
+        data?.propertyDetails![i].propertyImages?.forEach((element) {
+          im.add(element.url.toString());
+        });
+        propertyL.add(pp.PropertyDetails(
+            name: data?.propertyDetails?[i].name,
+            description: data?.propertyDetails?[i].description,
+            floor: data?.propertyDetails?[i].floor,
+            walls: data?.propertyDetails?[i].walls,
+            ceiling: data?.propertyDetails?[i].ceiling,
+            windows: data?.propertyDetails?[i].windows,
+            doors: data?.propertyDetails?[i].doors,
+            units: data?.propertyDetails?[i].units,
+            appliances: data?.propertyDetails?[i].appliances,
+            images: im));
       }
     }
     for (int i = 0; i < data!.propertyDetails!.length; i++) {
       if (data!.propertyDetails![i].name.toString() == 'Bedroom 1') {
         propertyList.add(data!.propertyDetails![i]);
+        List<String>? im = [];
+        data?.propertyDetails![i].propertyImages?.forEach((element) {
+          im.add(element.url.toString());
+        });
+        propertyL.add(pp.PropertyDetails(
+            name: data?.propertyDetails?[i].name,
+            description: data?.propertyDetails?[i].description,
+            floor: data?.propertyDetails?[i].floor,
+            walls: data?.propertyDetails?[i].walls,
+            ceiling: data?.propertyDetails?[i].ceiling,
+            windows: data?.propertyDetails?[i].windows,
+            doors: data?.propertyDetails?[i].doors,
+            units: data?.propertyDetails?[i].units,
+            appliances: data?.propertyDetails?[i].appliances,
+            images: im));
       }
     }
     for (int i = 0; i < data!.propertyDetails!.length; i++) {
       if (data!.propertyDetails![i].name.toString() == 'Bedroom 2') {
         propertyList.add(data!.propertyDetails![i]);
+        List<String>? im = [];
+        data?.propertyDetails![i].propertyImages?.forEach((element) {
+          im.add(element.url.toString());
+        });
+        propertyL.add(pp.PropertyDetails(
+            name: data?.propertyDetails?[i].name,
+            description: data?.propertyDetails?[i].description,
+            floor: data?.propertyDetails?[i].floor,
+            walls: data?.propertyDetails?[i].walls,
+            ceiling: data?.propertyDetails?[i].ceiling,
+            windows: data?.propertyDetails?[i].windows,
+            doors: data?.propertyDetails?[i].doors,
+            units: data?.propertyDetails?[i].units,
+            appliances: data?.propertyDetails?[i].appliances,
+            images: im));
       }
     }
     for (int i = 0; i < data!.propertyDetails!.length; i++) {
       if (data!.propertyDetails![i].name.toString() == 'Bedroom 3') {
         propertyList.add(data!.propertyDetails![i]);
+        List<String>? im = [];
+        data?.propertyDetails![i].propertyImages?.forEach((element) {
+          im.add(element.url.toString());
+        });
+        propertyL.add(pp.PropertyDetails(
+            name: data?.propertyDetails?[i].name,
+            description: data?.propertyDetails?[i].description,
+            floor: data?.propertyDetails?[i].floor,
+            walls: data?.propertyDetails?[i].walls,
+            ceiling: data?.propertyDetails?[i].ceiling,
+            windows: data?.propertyDetails?[i].windows,
+            doors: data?.propertyDetails?[i].doors,
+            units: data?.propertyDetails?[i].units,
+            appliances: data?.propertyDetails?[i].appliances,
+            images: im));
       }
     }
     for (int i = 0; i < data!.propertyDetails!.length; i++) {
       if (data!.propertyDetails![i].name.toString() == 'Bedroom 4') {
         propertyList.add(data!.propertyDetails![i]);
+        List<String>? im = [];
+        data?.propertyDetails![i].propertyImages?.forEach((element) {
+          im.add(element.url.toString());
+        });
+        propertyL.add(pp.PropertyDetails(
+            name: data?.propertyDetails?[i].name,
+            description: data?.propertyDetails?[i].description,
+            floor: data?.propertyDetails?[i].floor,
+            walls: data?.propertyDetails?[i].walls,
+            ceiling: data?.propertyDetails?[i].ceiling,
+            windows: data?.propertyDetails?[i].windows,
+            doors: data?.propertyDetails?[i].doors,
+            units: data?.propertyDetails?[i].units,
+            appliances: data?.propertyDetails?[i].appliances,
+            images: im));
       }
     }
     for (int i = 0; i < data!.propertyDetails!.length; i++) {
       if (data!.propertyDetails![i].name.toString() == 'Bedroom 5') {
         propertyList.add(data!.propertyDetails![i]);
+        List<String>? im = [];
+        data?.propertyDetails![i].propertyImages?.forEach((element) {
+          im.add(element.url.toString());
+        });
+        propertyL.add(pp.PropertyDetails(
+            name: data?.propertyDetails?[i].name,
+            description: data?.propertyDetails?[i].description,
+            floor: data?.propertyDetails?[i].floor,
+            walls: data?.propertyDetails?[i].walls,
+            ceiling: data?.propertyDetails?[i].ceiling,
+            windows: data?.propertyDetails?[i].windows,
+            doors: data?.propertyDetails?[i].doors,
+            units: data?.propertyDetails?[i].units,
+            appliances: data?.propertyDetails?[i].appliances,
+            images: im));
       }
     }
     for (int i = 0; i < data!.propertyDetails!.length; i++) {
       if (data!.propertyDetails![i].name.toString() == 'Bathroom 1') {
         propertyList.add(data!.propertyDetails![i]);
+        List<String>? im = [];
+        data?.propertyDetails![i].propertyImages?.forEach((element) {
+          im.add(element.url.toString());
+        });
+        propertyL.add(pp.PropertyDetails(
+            name: data?.propertyDetails?[i].name,
+            description: data?.propertyDetails?[i].description,
+            floor: data?.propertyDetails?[i].floor,
+            walls: data?.propertyDetails?[i].walls,
+            ceiling: data?.propertyDetails?[i].ceiling,
+            windows: data?.propertyDetails?[i].windows,
+            doors: data?.propertyDetails?[i].doors,
+            units: data?.propertyDetails?[i].units,
+            appliances: data?.propertyDetails?[i].appliances,
+            images: im));
       }
     }
     for (int i = 0; i < data!.propertyDetails!.length; i++) {
       if (data!.propertyDetails![i].name.toString() == 'Bathroom 2') {
         propertyList.add(data!.propertyDetails![i]);
+        List<String>? im = [];
+        data?.propertyDetails![i].propertyImages?.forEach((element) {
+          im.add(element.url.toString());
+        });
+        propertyL.add(pp.PropertyDetails(
+            name: data?.propertyDetails?[i].name,
+            description: data?.propertyDetails?[i].description,
+            floor: data?.propertyDetails?[i].floor,
+            walls: data?.propertyDetails?[i].walls,
+            ceiling: data?.propertyDetails?[i].ceiling,
+            windows: data?.propertyDetails?[i].windows,
+            doors: data?.propertyDetails?[i].doors,
+            units: data?.propertyDetails?[i].units,
+            appliances: data?.propertyDetails?[i].appliances,
+            images: im));
       }
     }
+    controller.isLoading.value = false;
+    // for (int i = 0; i < data!.propertyDetails!.length; i++) {
+    //   for (int j = 0; j < data!.propertyDetails!.length; j++) {
+    //     if (data!.propertyDetails![j].name.toString() == 'Room ${i}') {
+    //       propertyList.add(data!.propertyDetails![j]);
+    //       List<String>? im = [];
+    //       data?.propertyDetails![i].propertyImages?.forEach((element) {
+    //         im.add(element.url.toString());
+    //       });
+    //       propertyL.add(pp.PropertyDetails(
+    //           name: data?.propertyDetails?[i].name,
+    //           description: data?.propertyDetails?[i].description,
+    //           floor: data?.propertyDetails?[i].floor,
+    //           walls: data?.propertyDetails?[i].walls,
+    //           ceiling: data?.propertyDetails?[i].ceiling,
+    //           windows: data?.propertyDetails?[i].windows,
+    //           doors: data?.propertyDetails?[i].doors,
+    //           units: data?.propertyDetails?[i].units,
+    //           appliances: data?.propertyDetails?[i].appliances,
+    //           images: im));
+    //     }
+    //   }
+    // }
     for (int i = 0; i < data!.propertyDetails!.length; i++) {
-      for (int j = 0; j < data!.propertyDetails!.length; j++) {
-        if (data!.propertyDetails![j].name.toString() == 'Room ${i}') {
-          propertyList.add(data!.propertyDetails![j]);
-        }
+      if (data!.propertyDetails![i].name.toString() != 'Front & Side Aspects' &&
+          data!.propertyDetails![i].name.toString() != 'Entrance Hall' &&
+          data!.propertyDetails![i].name.toString() != 'Living Room 1' &&
+          data!.propertyDetails![i].name.toString() != 'Living Room 2' &&
+          data!.propertyDetails![i].name.toString() != 'Kitchen' &&
+          data!.propertyDetails![i].name.toString() != 'Rear Garden' &&
+          data!.propertyDetails![i].name.toString() != 'Landing' &&
+          data!.propertyDetails![i].name.toString() != 'Bedroom 1' &&
+          data!.propertyDetails![i].name.toString() != 'Bedroom 2' &&
+          data!.propertyDetails![i].name.toString() != 'Bedroom 3' &&
+          data!.propertyDetails![i].name.toString() != 'Bedroom 4' &&
+          data!.propertyDetails![i].name.toString() != 'Bedroom 5' &&
+          data!.propertyDetails![i].name.toString() != 'Bathroom 1' &&
+          data!.propertyDetails![i].name.toString() != 'Bathroom 2') {
+        propertyList.add(data!.propertyDetails![i]);
+        List<String>? im = [];
+        data?.propertyDetails![i].propertyImages?.forEach((element) {
+          im.add(element.url.toString());
+        });
+        propertyL.add(pp.PropertyDetails(
+            name: data?.propertyDetails?[i].name,
+            description: data?.propertyDetails?[i].description,
+            floor: data?.propertyDetails?[i].floor,
+            walls: data?.propertyDetails?[i].walls,
+            ceiling: data?.propertyDetails?[i].ceiling,
+            windows: data?.propertyDetails?[i].windows,
+            doors: data?.propertyDetails?[i].doors,
+            units: data?.propertyDetails?[i].units,
+            appliances: data?.propertyDetails?[i].appliances,
+            images: im));
       }
     }
-    for (int i = 15; i < data!.propertyDetails!.length; i++) {
-      propertyList.add(data!.propertyDetails![i]);
-    }
-
     // data?.propertyDetails?.sort((a, b) {
     //   List<String> order = [
     //     'Front & Side Aspects',
@@ -168,7 +426,6 @@ class Show_Data_Screen extends StatelessWidget {
       String base64Image1 = base64Encode(bytes1);
       decodedString1 = utf8.decode(base64Decode(base64Image1));
     }
-    print(data?.id);
     // TODO: implement build
     return Scaffold(
       resizeToAvoidBottomInset: false, // fluter 2.x
@@ -221,16 +478,21 @@ class Show_Data_Screen extends StatelessWidget {
                     margin: EdgeInsets.only(left: 5, right: 5),
                     height: 200,
                     width: Get.width,
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(8)),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(width: 3, color: Colors.grey),
+                    ),
                     child: PhysicalModel(
                       borderRadius: BorderRadius.circular(20),
                       color: Colors.blue,
                       elevation: 18,
                       shadowColor: Colors.black,
-                      child: Image.network(
-                        Paths.baseUrl + "/" + data!.mainImg.toString(),
-                        fit: BoxFit.cover,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.network(
+                          Paths.baseUrl + "/" + data!.mainImg.toString(),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
@@ -247,7 +509,7 @@ class Show_Data_Screen extends StatelessWidget {
                               Get.to(() => UpdateDataScreen(
                                     id: data?.id.toString(),
                                     data: data,
-                                    sorted: propertyList,
+                                    sorted: propertyL,
                                     tenet: decodedString,
                                     inspector: decodedString1,
                                   ));

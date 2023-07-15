@@ -2,10 +2,10 @@ import 'package:get/get.dart';
 
 import '../../../service/home/home_service.dart';
 
-class ShowDataController extends GetxController{
-  var value=0.obs;
+class ShowDataController extends GetxController {
+  var value = 0.obs;
   var service = HomeService();
-  var isLoading=false.obs;
+  var isLoading = false.obs;
   List<String> myList = [
     'Front & Side Aspects',
     'Entrance Hall',
@@ -25,16 +25,18 @@ class ShowDataController extends GetxController{
   @override
   void onInit() {
     super.onInit();
-
-
+    isLoading.value = true;
+    Future.delayed(Duration(seconds: 2), () {
+      isLoading.value = false;
+    });
   }
+
   @override
-  void onReady(){
+  void onReady() {
     // Get called after widget is rendered on the screen
     super.onReady();
-
-
   }
+
   void deleteData(id) async {
     await service.deleteProperty(id);
   }

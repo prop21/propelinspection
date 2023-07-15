@@ -72,13 +72,12 @@ class CustomPropertyState extends State<CustomProperty> {
   int i = 0;
   void initState() {
     super.initState();
-    pd = PropertyDetails();
-    widget.data?.add(pd!);
-    widget.data?[widget.index] = pd!;
+    // pd = PropertyDetails();
+    // widget.data?.add(pd!);
+    // widget.data?[widget.index] = pd!;
     widget.data?[widget.index].name = widget.name;
     widget.data?[widget.index].images = imagess;
-    widget.data = widget.data?.toSet().toList();
-    print(widget.data?[widget.index].name);
+    // widget.data = widget.data?.toSet().toList();
     et2.text = "Fair";
     et3.text = "Fair";
     et4.text = "Fair";
@@ -124,14 +123,11 @@ class CustomPropertyState extends State<CustomProperty> {
             children: [
               InkWell(
                 onTap: () {
-                  controller.count.value = 1;
-                  controller.items.remove(widget.index);
-
-                  controller.list.value--;
-                  controller.te.value--;
-
-                  widget.data
-                      ?.removeWhere((element) => element.name == widget.name);
+                  controller.prop.removeAt(widget.index);
+                  print(controller.prop.length);
+                  // controller.prop
+                  //      .removeWhere((element) => element.name == widget.name);
+                  // controller.prop.value=controller.prop.toSet().toList();
                 },
                 child: Icon(
                   Icons.delete,
@@ -1132,36 +1128,38 @@ class CustomPropertyState1 extends State<CustomProperty1> {
   int i = 0;
   void initState() {
     super.initState();
-    pd = PropertyDetails();
-    widget.data?.add(pd!);
-    widget.data?[widget.index] = pd!;
+    // pd = PropertyDetails();
+    // widget.data?.add(pd!);
+    // widget.data?[widget.index] = pd!;
     widget.data?[widget.index].name = widget.name;
     widget.data?[widget.index].images = imagess;
-    widget.data = widget.data?.toSet().toList();
+    // widget.data = widget.data?.toSet().toList();
     et2.text = "Fair";
     et3.text = "Fair";
     et4.text = "Fair";
     et6.text = "Fair";
     et7.text = "Fair";
     et8.text = "Fair";
-    imagess[0] = widget.imgurl[0].url.toString();
-    imagess[1] = widget.imgurl[1].url.toString();
-    imagess[2] = widget.imgurl[2].url.toString();
-    imagess[3] = widget.imgurl[3].url.toString();
-    imagess[4] = widget.imgurl[4].url.toString();
-    imagess[5] = widget.imgurl[5].url.toString();
-    imagess[6] = widget.imgurl[6].url.toString();
-    imagess[7] = widget.imgurl[7].url.toString();
-    imagess[8] = widget.imgurl[8].url.toString();
-    widget.data?[widget.index].images?[0] = widget.imgurl[0].url.toString();
-    widget.data?[widget.index].images?[1] = widget.imgurl[1].url.toString();
-    widget.data?[widget.index].images?[2] = widget.imgurl[2].url.toString();
-    widget.data?[widget.index].images?[3] = widget.imgurl[3].url.toString();
-    widget.data?[widget.index].images?[4] = widget.imgurl[4].url.toString();
-    widget.data?[widget.index].images?[5] = widget.imgurl[5].url.toString();
-    widget.data?[widget.index].images?[6] = widget.imgurl[6].url.toString();
-    widget.data?[widget.index].images?[7] = widget.imgurl[7].url.toString();
-    widget.data?[widget.index].images?[8] = widget.imgurl[8].url.toString();
+    print("hello");
+    print(widget.imgurl.length);
+    imagess[0] = (widget.imgurl[0]).toString();
+    imagess[1] = widget.imgurl[1].toString();
+    imagess[2] = widget.imgurl[2].toString();
+    imagess[3] = widget.imgurl[3].toString();
+    imagess[4] = widget.imgurl[4].toString();
+    imagess[5] = widget.imgurl[5].toString();
+    imagess[6] = widget.imgurl[6].toString();
+    imagess[7] = widget.imgurl[7].toString();
+    imagess[8] = widget.imgurl[8].toString();
+    widget.data?[widget.index].images?[0] = widget.imgurl[0].toString();
+    widget.data?[widget.index].images?[1] = widget.imgurl[1].toString();
+    widget.data?[widget.index].images?[2] = widget.imgurl[2].toString();
+    widget.data?[widget.index].images?[3] = widget.imgurl[3].toString();
+    widget.data?[widget.index].images?[4] = widget.imgurl[4].toString();
+    widget.data?[widget.index].images?[5] = widget.imgurl[5].toString();
+    widget.data?[widget.index].images?[6] = widget.imgurl[6].toString();
+    widget.data?[widget.index].images?[7] = widget.imgurl[7].toString();
+    widget.data?[widget.index].images?[8] = widget.imgurl[8].toString();
   }
 
   @override
@@ -1201,13 +1199,9 @@ class CustomPropertyState1 extends State<CustomProperty1> {
             children: [
               InkWell(
                 onTap: () {
-                  controller.count.value = 1;
-                  controller.items.remove(widget.index);
-                  if (widget.index >= 7) {
-                    controller.list.value--;
-                  }
-                  widget.data
-                      ?.removeWhere((element) => element.name == widget.name);
+                  controller.upprop.value.removeAt(widget.index);
+                  print(controller.upprop.length);
+                  setState(() {});
                 },
                 child: Icon(
                   Icons.delete,
@@ -1383,7 +1377,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                         border: Border.all(color: Colors.grey),
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(5)),
-                    child: widget.imgurl[0].url.contains("upload") ||
+                    child: widget.imgurl[0].contains("upload") ||
                             image.path.isNotEmpty
                         ? Stack(children: [
                             image.path.isNotEmpty
@@ -1396,7 +1390,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                 : Image.network(
                                     Paths.baseUrl +
                                         "/" +
-                                        widget.imgurl[0].url.toString(),
+                                        widget.imgurl[0].toString(),
                                     fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
@@ -1409,7 +1403,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                         onTap: () {
                                           setState(() {
                                             image = File("");
-                                            widget.imgurl[0].url = "";
+                                            widget.imgurl[0] = "";
                                           });
                                         },
                                         child: Icon(
@@ -1474,7 +1468,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                         border: Border.all(color: Colors.grey),
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(5)),
-                    child: widget.imgurl[1].url.contains("upload") ||
+                    child: widget.imgurl[1].contains("upload") ||
                             image1.path.isNotEmpty
                         ? Stack(children: [
                             image1.path.isNotEmpty
@@ -1487,7 +1481,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                 : Image.network(
                                     Paths.baseUrl +
                                         "/" +
-                                        widget.imgurl[1].url.toString(),
+                                        widget.imgurl[1].toString(),
                                     fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
@@ -1500,7 +1494,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                         onTap: () {
                                           setState(() {
                                             image1 = File("");
-                                            widget.imgurl[1].url = "";
+                                            widget.imgurl[1] = "";
                                           });
                                         },
                                         child: Icon(
@@ -1566,7 +1560,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                         border: Border.all(color: Colors.grey),
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(5)),
-                    child: widget.imgurl[2].url.contains("upload") ||
+                    child: widget.imgurl[2].contains("upload") ||
                             image2.path.isNotEmpty
                         ? Stack(children: [
                             image2.path.isNotEmpty
@@ -1579,7 +1573,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                 : Image.network(
                                     Paths.baseUrl +
                                         "/" +
-                                        widget.imgurl[2].url.toString(),
+                                        widget.imgurl[2].toString(),
                                     fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
@@ -1592,7 +1586,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                         onTap: () {
                                           setState(() {
                                             image2 = File("");
-                                            widget.imgurl[2].url = "";
+                                            widget.imgurl[2] = "";
                                           });
                                         },
                                         child: Icon(
@@ -1667,7 +1661,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                         border: Border.all(color: Colors.grey),
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(5)),
-                    child: widget.imgurl[3].url.contains("upload") ||
+                    child: widget.imgurl[3].contains("upload") ||
                             image3.path.isNotEmpty
                         ? Stack(
                             children: [
@@ -1681,7 +1675,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   : Image.network(
                                       Paths.baseUrl +
                                           "/" +
-                                          widget.imgurl[3].url.toString(),
+                                          widget.imgurl[3].toString(),
                                       fit: BoxFit.contain,
                                       height: 120,
                                       width: Get.width,
@@ -1693,7 +1687,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   child: InkWell(
                                     onTap: () {
                                       image3 = File("");
-                                      widget.imgurl[3].url = "";
+                                      widget.imgurl[3] = "";
                                     },
                                     child: Icon(
                                       Icons.delete,
@@ -1762,7 +1756,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                         border: Border.all(color: Colors.grey),
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(5)),
-                    child: widget.imgurl[4].url.contains("upload") ||
+                    child: widget.imgurl[4].contains("upload") ||
                             image4.path.isNotEmpty
                         ? Stack(children: [
                             image4.path.isNotEmpty
@@ -1775,7 +1769,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                 : Image.network(
                                     Paths.baseUrl +
                                         "/" +
-                                        widget.imgurl[4].url.toString(),
+                                        widget.imgurl[4].toString(),
                                     fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
@@ -1787,7 +1781,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     child: InkWell(
                                         onTap: () {
                                           image4 = File("");
-                                          widget.imgurl[4].url = "";
+                                          widget.imgurl[4] = "";
                                           setState(() {});
                                         },
                                         child: Icon(
@@ -1853,7 +1847,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                         border: Border.all(color: Colors.grey),
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(5)),
-                    child: widget.imgurl[5].url.contains("upload") ||
+                    child: widget.imgurl[5].contains("upload") ||
                             image5.path.isNotEmpty
                         ? Stack(children: [
                             image5.path.isNotEmpty
@@ -1866,7 +1860,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                 : Image.network(
                                     Paths.baseUrl +
                                         "/" +
-                                        widget.imgurl[5].url.toString(),
+                                        widget.imgurl[5].toString(),
                                     fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
@@ -1878,7 +1872,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     child: InkWell(
                                         onTap: () {
                                           image5 = File("");
-                                          widget.imgurl[5].url = "";
+                                          widget.imgurl[5] = "";
                                           setState(() {});
                                         },
                                         child: Icon(
@@ -1952,7 +1946,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                         border: Border.all(color: Colors.grey),
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(5)),
-                    child: widget.imgurl[6].url.contains("upload") ||
+                    child: widget.imgurl[6].contains("upload") ||
                             image6.path.isNotEmpty
                         ? Stack(children: [
                             image6.path.isNotEmpty
@@ -1965,7 +1959,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                 : Image.network(
                                     Paths.baseUrl +
                                         "/" +
-                                        widget.imgurl[6].url.toString(),
+                                        widget.imgurl[6].toString(),
                                     fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
@@ -1977,7 +1971,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     child: InkWell(
                                         onTap: () {
                                           image6 = File("");
-                                          widget.imgurl[6].url = "";
+                                          widget.imgurl[6] = "";
                                           setState(() {});
                                         },
                                         child: Icon(
@@ -2043,7 +2037,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                         border: Border.all(color: Colors.grey),
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(5)),
-                    child: widget.imgurl[7].url.contains("upload") ||
+                    child: widget.imgurl[7].contains("upload") ||
                             image7.path.isNotEmpty
                         ? Stack(children: [
                             image7.path.isNotEmpty
@@ -2056,7 +2050,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                 : Image.network(
                                     Paths.baseUrl +
                                         "/" +
-                                        widget.imgurl[7].url.toString(),
+                                        widget.imgurl[7].toString(),
                                     fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
@@ -2068,7 +2062,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     child: InkWell(
                                         onTap: () {
                                           image7 = File("");
-                                          widget.imgurl[7].url = "";
+                                          widget.imgurl[7] = "";
                                           setState(() {});
                                         },
                                         child: Icon(
@@ -2134,7 +2128,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                         border: Border.all(color: Colors.grey),
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(5)),
-                    child: widget.imgurl[8].url.contains("upload") ||
+                    child: widget.imgurl[8].contains("upload") ||
                             image8.path.isNotEmpty
                         ? Stack(children: [
                             image8.path.isNotEmpty
@@ -2147,7 +2141,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                 : Image.network(
                                     Paths.baseUrl +
                                         "/" +
-                                        widget.imgurl[8].url.toString(),
+                                        widget.imgurl[8].toString(),
                                     fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
@@ -2159,7 +2153,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     child: InkWell(
                                         onTap: () {
                                           image8 = File("");
-                                          widget.imgurl[8].url = "";
+                                          widget.imgurl[8] = "";
                                           setState(() {});
                                         },
                                         child: Icon(
