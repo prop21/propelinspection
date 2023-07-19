@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:gal/gal.dart';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../utils/global.dart';
 
@@ -123,8 +124,9 @@ class CustomPropertyState extends State<CustomProperty> {
             children: [
               InkWell(
                 onTap: () {
-                  controller.prop.removeAt(widget.index);
-                  print(controller.prop.length);
+                  if (controller.prop.length > 1) {
+                    controller.prop.removeAt(widget.index);
+                  }
                   // controller.prop
                   //      .removeWhere((element) => element.name == widget.name);
                   // controller.prop.value=controller.prop.toSet().toList();
@@ -137,7 +139,7 @@ class CustomPropertyState extends State<CustomProperty> {
             ],
           ),
           Text(
-            widget.name.toString(),
+            et1.text.isNotEmpty ? et1.text : widget.name.toString(),
             style: TextStyle(
                 color: Theme.of(context).textTheme.bodyText2?.color,
                 fontSize: 16),
@@ -147,9 +149,15 @@ class CustomPropertyState extends State<CustomProperty> {
           ),
           TextField(
             controller: et1,
+            onChanged: (t) {
+              controller.loading.value = true;
+              controller.loading.value = false;
+            },
             onTapOutside: (a) {
               if (et1.text.isNotEmpty) {
                 widget.data?[widget.index].name = et1.text;
+                controller.loading.value = true;
+                controller.loading.value = false;
               }
             },
             decoration: InputDecoration(
@@ -1200,13 +1208,15 @@ class CustomPropertyState1 extends State<CustomProperty1> {
             children: [
               InkWell(
                 onTap: () {
-                  controller.upprop.value.removeAt(widget.index);
-                  widget.da?.removeAt(widget.index);
-                  controller.update();
-                  print(controller.upprop.length);
-                  setState(() {});
-                  controller.loading.value = true;
-                  controller.loading.value = false;
+                  if (controller.upprop.value.length > 1) {
+                    controller.upprop.value.removeAt(widget.index);
+                    widget.da?.removeAt(widget.index);
+                    controller.update();
+                    print(controller.upprop.length);
+                    setState(() {});
+                    controller.loading.value = true;
+                    controller.loading.value = false;
+                  }
                 },
                 child: Icon(
                   Icons.delete,
@@ -1216,7 +1226,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
             ],
           ),
           Text(
-            widget.name.toString(),
+            et1.text.isNotEmpty ? et1.text : widget.name.toString(),
             style: TextStyle(
                 color: Theme.of(context).textTheme.bodyText2?.color,
                 fontSize: 16),
@@ -1226,6 +1236,10 @@ class CustomPropertyState1 extends State<CustomProperty1> {
           ),
           TextField(
             controller: et1,
+            onChanged: (t) {
+              controller.loading.value = true;
+              controller.loading.value = false;
+            },
             onTapOutside: (a) {
               if (et1.text.isNotEmpty) {
                 widget.data?[widget.index].name = et1.text;

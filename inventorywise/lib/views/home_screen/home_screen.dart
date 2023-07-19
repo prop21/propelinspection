@@ -176,86 +176,204 @@ class Home_Screen extends StatelessWidget {
       body: Obx(
         () => CustomLoaderWidget(
           isTrue: controller.isLoading.value,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.only(left: 15, right: 15),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    "assets/splash/splash.png",
-                    height: 150,
-                    width: Get.width,
-                    fit: BoxFit.fitWidth,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextField(
-                    onChanged: (name) {
-                      controller.serachdata(name);
-                      if (name.length == 0) {
-                        controller.sedata.value.clear();
-                      }
-                    },
-                    controller: controller.et1,
-                    decoration: InputDecoration(
-                        isDense: true,
-                        border: OutlineInputBorder(),
-                        hintText: "Search"),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  SizedBox(
-                    height: Get.height * 0.61,
-                    width: Get.width,
-                    child: Obx(
-                      () => controller.sedata.length == 0
-                          ? ListView.builder(
-                              itemCount: controller.data.length,
-                              shrinkWrap: true,
-                              itemBuilder: (BuildContext context, int index) =>
-                                  Container(
-                                height: 90,
-                                margin: EdgeInsets.only(bottom: 10),
-                                width: Get.width - 5,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: InkWell(
-                                  onTap: () {
-                                    Get.to(() => Show_Data_Screen(
-                                          data: controller.data[index],
-                                        ));
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        height: 100,
-                                        width: 130,
-                                        decoration: BoxDecoration(
-                                            border:
-                                                Border.all(color: Colors.grey),
+          child: Stack(children: [
+            SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.only(left: 15, right: 15),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      "assets/splash/splash.png",
+                      height: 150,
+                      width: Get.width,
+                      fit: BoxFit.fitWidth,
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    TextField(
+                      onChanged: (name) {
+                        controller.serachdata(name);
+                        if (name.length == 0) {
+                          controller.sedata.value.clear();
+                        }
+                      },
+                      controller: controller.et1,
+                      decoration: InputDecoration(
+                          isDense: true,
+                          border: OutlineInputBorder(),
+                          hintText: "Search"),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(
+                      height: Get.height * 0.61,
+                      width: Get.width,
+                      child: Obx(
+                        () => controller.sedata.length == 0
+                            ? ListView.builder(
+                                itemCount: controller.data.length,
+                                shrinkWrap: true,
+                                itemBuilder:
+                                    (BuildContext context, int index) =>
+                                        Container(
+                                  height: 90,
+                                  margin: EdgeInsets.only(bottom: 10),
+                                  width: Get.width - 5,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Get.to(() => Show_Data_Screen(
+                                            data: controller.data[index],
+                                          ));
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          height: 100,
+                                          width: 130,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: Colors.grey),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                              color: Colors.blue),
+                                          child: ClipRRect(
                                             borderRadius:
-                                                BorderRadius.circular(8),
-                                            color: Colors.blue),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: Image.network(
-                                            Paths.baseUrl +
-                                                "/" +
-                                                controller.data[index].mainImg
-                                                    .toString(),
-                                            fit: BoxFit.cover,
+                                                BorderRadius.circular(8.0),
+                                            child: Image.network(
+                                              Paths.baseUrl +
+                                                  "/" +
+                                                  controller.data[index].mainImg
+                                                      .toString(),
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Expanded(
-                                        flex: 10,
-                                        child: Container(
+                                        Expanded(
+                                          flex: 10,
+                                          child: Container(
+                                            padding: EdgeInsets.only(left: 10),
+                                            height: 100,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Text(
+                                                  controller.data[index]
+                                                      .propertyAddress
+                                                      .toString(),
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.blue),
+                                                ),
+                                                SizedBox(
+                                                  height: 8,
+                                                ),
+                                                Text(
+                                                  "Inspection Date:" +
+                                                      DateTime.parse(controller
+                                                              .data[index]
+                                                              .inspectionDate
+                                                              .toString())
+                                                          .day
+                                                          .toString() +
+                                                      "-" +
+                                                      DateTime.parse(controller
+                                                              .data[index]
+                                                              .inspectionDate
+                                                              .toString())
+                                                          .month
+                                                          .toString() +
+                                                      "-" +
+                                                      DateTime.parse(controller
+                                                              .data[index]
+                                                              .inspectionDate
+                                                              .toString())
+                                                          .year
+                                                          .toString(),
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                Container(
+                                                  width: 180,
+                                                  child: Text(
+                                                    overflow: TextOverflow.clip,
+                                                    softWrap: false,
+                                                    "Inspector Name:" +
+                                                        controller.data[index]
+                                                            .inspectorName
+                                                            .toString(),
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              )
+                            : ListView.builder(
+                                itemCount: controller.sedata.length,
+                                shrinkWrap: true,
+                                itemBuilder:
+                                    (BuildContext context, int index) =>
+                                        Container(
+                                  margin: EdgeInsets.only(bottom: 10),
+                                  width: Get.width - 5,
+                                  height: 90,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Get.to(() => Show_Data_Screen(
+                                            data: controller.sedata[index],
+                                            email: email,
+                                          ));
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          height: 100,
+                                          width: 130,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: Colors.grey),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                              color: Colors.blue),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image.network(
+                                              Paths.baseUrl +
+                                                  "/" +
+                                                  controller
+                                                      .sedata[index].mainImg
+                                                      .toString(),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
                                           padding: EdgeInsets.only(left: 10),
                                           height: 100,
                                           child: Column(
@@ -269,7 +387,7 @@ class Home_Screen extends StatelessWidget {
                                               ),
                                               Text(
                                                 controller
-                                                    .data[index].propertyAddress
+                                                    .sedata[index].inspectorName
                                                     .toString(),
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
@@ -281,21 +399,21 @@ class Home_Screen extends StatelessWidget {
                                               Text(
                                                 "Inspection Date:" +
                                                     DateTime.parse(controller
-                                                            .data[index]
+                                                            .sedata[index]
                                                             .inspectionDate
                                                             .toString())
                                                         .day
                                                         .toString() +
                                                     "-" +
                                                     DateTime.parse(controller
-                                                            .data[index]
+                                                            .sedata[index]
                                                             .inspectionDate
                                                             .toString())
                                                         .month
                                                         .toString() +
                                                     "-" +
                                                     DateTime.parse(controller
-                                                            .data[index]
+                                                            .sedata[index]
                                                             .inspectionDate
                                                             .toString())
                                                         .year
@@ -310,7 +428,7 @@ class Home_Screen extends StatelessWidget {
                                                   overflow: TextOverflow.clip,
                                                   softWrap: false,
                                                   "Inspector Name:" +
-                                                      controller.data[index]
+                                                      controller.sedata[index]
                                                           .inspectorName
                                                           .toString(),
                                                   style: TextStyle(
@@ -321,135 +439,33 @@ class Home_Screen extends StatelessWidget {
                                             ],
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            )
-                          : ListView.builder(
-                              itemCount: controller.sedata.length,
-                              shrinkWrap: true,
-                              itemBuilder: (BuildContext context, int index) =>
-                                  Container(
-                                margin: EdgeInsets.only(bottom: 10),
-                                width: Get.width - 5,
-                                height: 90,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: InkWell(
-                                  onTap: () {
-                                    Get.to(() => Show_Data_Screen(
-                                          data: controller.sedata[index],
-                                          email: email,
-                                        ));
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        height: 100,
-                                        width: 130,
-                                        decoration: BoxDecoration(
-                                            border:
-                                                Border.all(color: Colors.grey),
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                            color: Colors.blue),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: Image.network(
-                                            Paths.baseUrl +
-                                                "/" +
-                                                controller.sedata[index].mainImg
-                                                    .toString(),
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        padding: EdgeInsets.only(left: 10),
-                                        height: 100,
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            SizedBox(
-                                              height: 5,
-                                            ),
-                                            Text(
-                                              controller
-                                                  .sedata[index].inspectorName
-                                                  .toString(),
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.blue),
-                                            ),
-                                            SizedBox(
-                                              height: 8,
-                                            ),
-                                            Text(
-                                              "Inspection Date:" +
-                                                  DateTime.parse(controller
-                                                          .sedata[index]
-                                                          .inspectionDate
-                                                          .toString())
-                                                      .day
-                                                      .toString() +
-                                                  "-" +
-                                                  DateTime.parse(controller
-                                                          .sedata[index]
-                                                          .inspectionDate
-                                                          .toString())
-                                                      .month
-                                                      .toString() +
-                                                  "-" +
-                                                  DateTime.parse(controller
-                                                          .sedata[index]
-                                                          .inspectionDate
-                                                          .toString())
-                                                      .year
-                                                      .toString(),
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            Container(
-                                              width: 180,
-                                              child: Text(
-                                                overflow: TextOverflow.clip,
-                                                softWrap: false,
-                                                "Inspector Name:" +
-                                                    controller.sedata[index]
-                                                        .inspectorName
-                                                        .toString(),
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 3,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                ],
+                    SizedBox(
+                      height: 3,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                  padding: EdgeInsets.only(bottom: 20),
+                  child: Text(
+                    "Version: 1.8.0",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )),
+            )
+          ]),
         ),
       ),
     );
