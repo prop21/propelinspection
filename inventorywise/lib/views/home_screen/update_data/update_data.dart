@@ -1788,6 +1788,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                         index: i,
                         name: controller.upprop[i].name,
                         data: controller.upprop.value,
+                        desc: controller.upprop[i].description,
                         da: widget.sorted,
                         images: images),
                   SizedBox(

@@ -111,7 +111,12 @@ class Home_Screen extends StatelessWidget {
                     height: 100,
                     color: Colors.white,
                     width: Get.width,
-                    child: Image.asset("assets/splash/splash.png"),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Settings",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
                   )
                 ]),
                 ListTile(
@@ -128,7 +133,7 @@ class Home_Screen extends StatelessWidget {
                   title: Text('Contact US'),
                   onTap: () {
                     controller.openUrl(
-                        "mailto:<support@inventorywise@.co.uk>?subject=<>&body=<>");
+                        "mailto:<support@inventorywise@.co.uk>?subject=&body=");
                   },
                 ),
                 ListTile(
@@ -179,16 +184,19 @@ class Home_Screen extends StatelessWidget {
           child: Stack(children: [
             SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.only(left: 15, right: 15),
+                padding: EdgeInsets.only(left: 20, right: 20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset(
-                      "assets/splash/splash.png",
-                      height: 150,
-                      width: Get.width,
-                      fit: BoxFit.fitWidth,
+                    Padding(
+                      padding: EdgeInsets.only(left: 50, right: 50),
+                      child: Image.asset(
+                        "assets/splash/splash.png",
+                        height: 100,
+                        width: Get.width,
+                        fit: BoxFit.fitWidth,
+                      ),
                     ),
                     SizedBox(
                       height: 5,
@@ -461,7 +469,7 @@ class Home_Screen extends StatelessWidget {
               child: Padding(
                   padding: EdgeInsets.only(bottom: 20),
                   child: Text(
-                    "Version: 1.8.0",
+                    "Version: 1.8.1",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   )),
             )

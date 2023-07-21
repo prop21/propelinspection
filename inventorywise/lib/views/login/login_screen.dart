@@ -22,17 +22,17 @@ class Login_Screen extends StatelessWidget {
       ),
       body: Obx(
         () => Padding(
-          padding: EdgeInsets.only(left: 15, right: 15),
+          padding: EdgeInsets.only(left: 20, right: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(
+              Padding(padding: EdgeInsets.only(left: 40,right: 40),child:Image.asset(
                 "assets/splash/splash.png",
-                height: 250,
+                height: 150,
                 width: Get.width,
                 fit: BoxFit.fitWidth,
-              ),
+              ),),
               Text(
                 "Username",
                 style: TextStyle(
@@ -97,8 +97,6 @@ class Login_Screen extends StatelessWidget {
                           title: "Input Field Is Missing",
                           middleText: "Enter Correct email and password");
                     }
-
-
                   },
                   color: Colors.blue,
                   height: 50,

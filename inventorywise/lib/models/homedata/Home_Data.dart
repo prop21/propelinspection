@@ -65,42 +65,42 @@ class Rows {
 
   Rows(
       {this.id,
-        this.propertyAddress,
-        this.tenantName,
-        this.inspectorName,
-        this.inspectionDate,
-        this.ecpExpDate,
-        this.ecirExpDate,
-        this.gasSafetyCertificateExpDate,
-        this.electricityMeter,
-        this.gasMeter,
-        this.waterMeter,
-        this.smokeAlarm,
-        this.coAlarm,
-        this.heatingSystem,
-        this.signatureInspector,
-        this.advisedTenantTo,
-        this.askedLandlordTo,
-        this.contractorInstructed,
-        this.gasMeterReading,
-        this.electricityMeterReading,
-        this.types,
-        this.signatureTenant,
-        this.finalRemarks,
-        this.mainImg,
-        this.waterMeterReading,
-        this.electricityMeterImg,
-        this.gasMeterImg,
-        this.waterMeterImg,
-        this.smokeAlarmFrontImg,
-        this.smokeAlarmBackImg,
-        this.coAlarmFrontImg,
-        this.coAlarmBackImg,
-        this.heatingSystemImg,
-        this.created,
-        this.updated,
-        this.accountId,
-        this.propertyDetails});
+      this.propertyAddress,
+      this.tenantName,
+      this.inspectorName,
+      this.inspectionDate,
+      this.ecpExpDate,
+      this.ecirExpDate,
+      this.gasSafetyCertificateExpDate,
+      this.electricityMeter,
+      this.gasMeter,
+      this.waterMeter,
+      this.smokeAlarm,
+      this.coAlarm,
+      this.heatingSystem,
+      this.signatureInspector,
+      this.advisedTenantTo,
+      this.askedLandlordTo,
+      this.contractorInstructed,
+      this.gasMeterReading,
+      this.electricityMeterReading,
+      this.types,
+      this.signatureTenant,
+      this.finalRemarks,
+      this.mainImg,
+      this.waterMeterReading,
+      this.electricityMeterImg,
+      this.gasMeterImg,
+      this.waterMeterImg,
+      this.smokeAlarmFrontImg,
+      this.smokeAlarmBackImg,
+      this.coAlarmFrontImg,
+      this.coAlarmBackImg,
+      this.heatingSystemImg,
+      this.created,
+      this.updated,
+      this.accountId,
+      this.propertyDetails});
 
   Rows.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -234,22 +234,22 @@ class PropertyDetails {
 
   PropertyDetails(
       {this.name,
-        this.description,
-        this.floor,
-        this.walls,
-        this.ceiling,
-        this.windows,
-        this.doors,
-        this.units,
-        this.appliances,
-        this.propertyImages});
+      this.description,
+      this.floor,
+      this.walls,
+      this.ceiling,
+      this.windows,
+      this.doors,
+      this.units,
+      this.appliances,
+      this.propertyImages});
 
   PropertyDetails.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     description = json['description'];
     floor = json['floor'];
     walls = json['walls'];
-    appliances = json["Appliances"];
+    appliances = json["appliances"];
     units = json["units"];
     doors = json["doors"];
     ceiling = json['ceiling'];
@@ -269,7 +269,7 @@ class PropertyDetails {
     data['floor'] = this.floor;
     data['walls'] = this.walls;
     data["units"] = this.units;
-    data["Appliances"] = this.units;
+    data["appliances"] = this.units;
     data["doors"] = this.doors;
     data['ceiling'] = this.ceiling;
     data['windows'] = this.windows;

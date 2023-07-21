@@ -248,7 +248,10 @@ class Register_Screen extends StatelessWidget {
                           controller.et4.text,
                           true,
                           controller.et8.text,
-                          controller.cplogo.value);
+                          controller.cplogo.value,
+                          controller.et5.text,
+                          controller.et7.text,
+                          controller.et6.text);
                     },
                     color: Colors.blue,
                     height: 50,

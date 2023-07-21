@@ -67,6 +67,7 @@ class CustomPropertyState extends State<CustomProperty> {
   TextEditingController et6 = TextEditingController();
   TextEditingController et7 = TextEditingController();
   TextEditingController et8 = TextEditingController();
+  TextEditingController et9 = TextEditingController();
   PropertyDetails? pd;
 
   final controller = Get.find<AddDataController>();
@@ -85,6 +86,7 @@ class CustomPropertyState extends State<CustomProperty> {
     et6.text = "Fair";
     et7.text = "Fair";
     et8.text = "Fair";
+    et9.text = "Fair";
   }
 
   @override
@@ -108,6 +110,9 @@ class CustomPropertyState extends State<CustomProperty> {
     widget.appliences != null
         ? et7.text = widget.appliences.toString()
         : et7.text = "Fair";
+    widget.celling != null
+        ? et9.text = widget.celling.toString()
+        : et9.text = "Fair";
 
     return Container(
       padding: EdgeInsets.all(5),
@@ -227,10 +232,10 @@ class CustomPropertyState extends State<CustomProperty> {
                 if (widget.name != "Front & Side Aspects" &&
                     widget.name != "Rear Garden") ...[
                   TextField(
-                    controller: et3,
+                    controller: et9,
                     onTapOutside: (a) {
-                      if (et3.text.isNotEmpty) {
-                        widget.data?[widget.index].windows = et3.text;
+                      if (et9.text.isNotEmpty) {
+                        widget.data?[widget.index].ceiling = et9.text;
                       }
                     },
                     decoration: InputDecoration(
@@ -1086,6 +1091,7 @@ class CustomProperty1 extends StatefulWidget {
       this.doors,
       this.imgurl,
       this.celling,
+      this.desc,
       this.da,
       this.walls});
   List<PropertyDetails>? data;
@@ -1099,6 +1105,7 @@ class CustomProperty1 extends StatefulWidget {
   String? windows;
   String? doors;
   String? walls;
+  String? desc;
 
   int index;
   List<List<String>> images;
@@ -1132,6 +1139,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
   TextEditingController et6 = TextEditingController();
   TextEditingController et7 = TextEditingController();
   TextEditingController et8 = TextEditingController();
+  TextEditingController et9 = TextEditingController();
   PropertyDetails? pd;
 
   final controller = Get.find<AddDataController>();
@@ -1192,6 +1200,10 @@ class CustomPropertyState1 extends State<CustomProperty1> {
     widget.appliences != null
         ? et7.text = widget.appliences.toString()
         : et7.text = "Fair";
+    widget.celling != null
+        ? et9.text = widget.celling.toString()
+        : et9.text = "Fair";
+    widget.desc != null ? et5.text = widget.desc.toString() : et5.text = "";
 
     return Container(
       padding: EdgeInsets.all(5),
@@ -1322,6 +1334,25 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                     isDense: true,
                   ),
                 ),
+                if (widget.name != "Rear Garden" &&
+                    widget.name != "Front \& Side Aspects") ...[
+                  Divider(
+                    thickness: 2,
+                  ),
+                  TextField(
+                    controller: et9,
+                    onTapOutside: (a) {
+                      if (et9.text.isNotEmpty) {
+                        widget.data?[widget.index].ceiling = et9.text;
+                      }
+                    },
+                    decoration: InputDecoration(
+                      icon: Text("Ceilings:"),
+                      border: InputBorder.none,
+                      isDense: true,
+                    ),
+                  ),
+                ],
                 Divider(
                   thickness: 2,
                 ),

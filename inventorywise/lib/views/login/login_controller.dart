@@ -35,6 +35,7 @@ class LoginController extends GetxController {
       var result = await authService.login(email, pass);
       isLoading(false);
       if (result.isVerified == true) {
+        print(result);
         Authenticator().setUserID(result.id.toString());
         Authenticator().setEmail(result.email.toString());
         Authenticator().setLogo(result.companyLogo.toString());
@@ -43,6 +44,10 @@ class LoginController extends GetxController {
         prefs.setString("id", result.id.toString());
         prefs.setString("email", result.email.toString());
         prefs.setString("logo", result.companyLogo.toString());
+        prefs.setString("cname", result.company_name.toString());
+        prefs.setString("cmobile", result.mobile_number.toString());
+        prefs.setString("caddress", result.company_address.toString());
+        prefs.setString("cemail", result.company_email.toString());
         print(result.companyLogo);
         Get.offAll(() => Home_Screen(
               id: result.id.toString(),

@@ -1,5 +1,6 @@
 import 'package:InventoryWise/models/authmodel/auth_model.dart';
 import 'package:InventoryWise/views/home_screen/home_screen.dart';
+import 'package:InventoryWise/views/login/login_screen.dart';
 import 'package:get/get.dart';
 import '../../http/api_response_handler.dart';
 import '../../utils/global.dart';
@@ -44,8 +45,19 @@ class AuthenticationService {
     }
   }
 
-  Future<void> register(title, firstname, lastname, email, confirmpassword,
-      password, acceptterm, companyaddress, logo) async {
+  Future<void> register(
+      title,
+      firstname,
+      lastname,
+      email,
+      confirmpassword,
+      password,
+      acceptterm,
+      companyaddress,
+      logo,
+      company_name,
+      company_email,
+      company_mobile) async {
     var _http = await ApiResponseInjector().httpDataSource(ApiType.defaultApi);
     try {
       var res = await _http?.post(Paths.registerbaseUrl, body: {
@@ -57,17 +69,15 @@ class AuthenticationService {
         "password": password,
         "acceptTerms": acceptterm,
         "company_logo": logo,
-        "company_address": confirmpassword
+        "company_address": confirmpassword,
+        "mobile_number": company_mobile,
+        "company_name": company_name,
+        "company_email": company_email
       });
       Register model = Register.fromJson(res);
       AuthModel m = await login(email, password);
       Authenticator().setUserID(m.id.toString());
-      Get.offAll(() => Home_Screen(
-            id: m.id.toString(),
-            fname: firstname,
-            lname: lastname,
-            email: email,
-          ));
+      Get.offAll(() => Login_Screen());
       Get.defaultDialog(title: "Message", middleText: model.message.toString());
     } on Exception catch (e) {
       Get.defaultDialog(title: "Error", middleText: e.toString());

@@ -32,11 +32,11 @@ class RegisterController extends GetxController {
   }
 
   Future<void> register(title, firstname, lastname, email, confirmpassword,
-      password, acceptterm, companyaddress, logo) async {
+      password, acceptterm, companyaddress, logo,company_name,company_email,company_mobile) async {
     try {
       isLoading(true);
       var result = await authService.register(title, firstname, lastname, email,
-          confirmpassword, password, acceptterm, companyaddress, logo);
+          confirmpassword, password, acceptterm, companyaddress, logo,company_name,company_email,company_mobile);
       isLoading(false);
     } on Exception catch (e) {
       Get.defaultDialog();

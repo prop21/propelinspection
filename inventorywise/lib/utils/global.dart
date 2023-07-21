@@ -33,8 +33,7 @@ class Cards {
 }
 
 class Paths {
-
-  // static String baseUrl = 'http://52.221.239.76:9191'; //development
+  // static String baseUrl = 'http://192.168.0.74:4000'; //development
   static String baseUrl = 'https://api.inventorywise.co.uk';
   static String authBaseUrl = '$baseUrl/accounts/authenticate';
   static String registerbaseUrl = '$baseUrl/accounts/register';

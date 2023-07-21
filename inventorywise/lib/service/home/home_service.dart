@@ -70,7 +70,6 @@ class HomeService {
       hmeter,
       type) async {
     var _http = await ApiResponseInjector().httpDataSource(ApiType.defaultApi);
-    print(prop);
     try {
       var res = await _http?.post(Paths.addPropertiesBaseUrl, body: {
         "property_details": prop,

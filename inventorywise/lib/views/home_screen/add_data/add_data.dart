@@ -1837,7 +1837,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                   TextField(
                     controller: controller.askedLandlordToController,
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(), hintText: "Descriptions"),
+                        border: OutlineInputBorder(), hintText: ""),
                   ),
                   SizedBox(
                     height: 10,
@@ -1854,13 +1854,13 @@ class AddDataScreenState extends State<AddDataScreen> {
                   TextField(
                     controller: controller.advisedTenantToController,
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(), hintText: "Descriptions"),
+                        border: OutlineInputBorder(), hintText: ""),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Text(
-                    "Final Remarks",
+                    "Summary",
                     style: TextStyle(
                         color: Theme.of(context).textTheme.bodyText2?.color,
                         fontSize: 16),
@@ -1871,7 +1871,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                   TextField(
                     controller: controller.finalRemarksController,
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(), hintText: "Descriptions"),
+                        border: OutlineInputBorder(), hintText: ""),
                   ),
                   SizedBox(
                     height: 10,

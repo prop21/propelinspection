@@ -185,7 +185,7 @@ class PropertyDetails {
     description = json['description'];
     floor = json['floor'];
     walls = json['walls'];
-    appliances = json["Appliances"];
+    appliances = json["appliances"];
     units = json["units"];
     doors = json["doors"];
     ceiling = json['ceiling'];
@@ -200,7 +200,7 @@ class PropertyDetails {
     data['floor'] = this.floor;
     data['walls'] = this.walls;
     data["units"] = this.units;
-    data["Appliances"] = this.appliances;
+    data["appliances"] = this.appliances;
     data["doors"] = this.doors;
     data['ceiling'] = this.ceiling;
     data['windows'] = this.windows;

@@ -33,348 +33,29 @@ class Show_Data_Screen extends StatelessWidget {
   String decodedString1 = "";
   @override
   Widget build(BuildContext context) {
-    List<String> orderList = [
-      'Front & Side Aspects',
-      'Entrance Hall',
-      'Living Room 1',
-      'Living Room 2',
-      'Kitchen',
-      'Rear Garden',
-      'Landing',
-      'Bedroom 1',
-      'Bedroom 2',
-      'Bedroom 3',
-      'Bedroom 4',
-      'Bedroom 5',
-      'Bathroom 1',
-      'Bathroom 2',
-      'Room 1',
-      'Room 2',
-      'Room 3',
-      'Room 4',
-      'Room 5',
-      'Room 6',
-      'Room 7',
-      'Room 8',
-      'Room 9',
-    ];
-
     List<PropertyDetails> propertyList = [];
     List<pp.PropertyDetails> propertyL = [];
     controller.isLoading.value = true;
     for (int i = 0; i < data!.propertyDetails!.length; i++) {
-      if (data!.propertyDetails![i].name.toString() == 'Front & Side Aspects') {
-        propertyList.add(data!.propertyDetails![i]);
-        List<String>? im = [];
-        data?.propertyDetails![i].propertyImages?.forEach((element) {
-          im.add(element.url.toString());
-        });
-        propertyL.add(pp.PropertyDetails(
-            name: data?.propertyDetails?[i].name,
-            description: data?.propertyDetails?[i].description,
-            floor: data?.propertyDetails?[i].floor,
-            walls: data?.propertyDetails?[i].walls,
-            ceiling: data?.propertyDetails?[i].ceiling,
-            windows: data?.propertyDetails?[i].windows,
-            doors: data?.propertyDetails?[i].doors,
-            units: data?.propertyDetails?[i].units,
-            appliances: data?.propertyDetails?[i].appliances,
-            images: im));
-      }
+      propertyList.add(data!.propertyDetails![i]);
+      print(data!.propertyDetails?[i].name);
+      List<String>? im = [];
+      data?.propertyDetails![i].propertyImages?.forEach((element) {
+        im.add(element.url.toString());
+      });
+      propertyL.add(pp.PropertyDetails(
+          name: data?.propertyDetails?[i].name,
+          description: data?.propertyDetails?[i].description,
+          floor: data?.propertyDetails?[i].floor,
+          walls: data?.propertyDetails?[i].walls,
+          ceiling: data?.propertyDetails?[i].ceiling,
+          windows: data?.propertyDetails?[i].windows,
+          doors: data?.propertyDetails?[i].doors,
+          units: data?.propertyDetails?[i].units,
+          appliances: data?.propertyDetails?[i].appliances,
+          images: im));
     }
-    for (int i = 0; i < data!.propertyDetails!.length; i++) {
-      if (data!.propertyDetails![i].name.toString() == 'Entrance Hall') {
-        propertyList.add(data!.propertyDetails![i]);
-        List<String>? im = [];
-        data?.propertyDetails![i].propertyImages?.forEach((element) {
-          im.add(element.url.toString());
-        });
-        propertyL.add(pp.PropertyDetails(
-            name: data?.propertyDetails?[i].name,
-            description: data?.propertyDetails?[i].description,
-            floor: data?.propertyDetails?[i].floor,
-            walls: data?.propertyDetails?[i].walls,
-            ceiling: data?.propertyDetails?[i].ceiling,
-            windows: data?.propertyDetails?[i].windows,
-            doors: data?.propertyDetails?[i].doors,
-            units: data?.propertyDetails?[i].units,
-            appliances: data?.propertyDetails?[i].appliances,
-            images: im));
-      }
-    }
-    for (int i = 0; i < data!.propertyDetails!.length; i++) {
-      if (data!.propertyDetails![i].name.toString() == 'Living Room 1') {
-        propertyList.add(data!.propertyDetails![i]);
-        List<String>? im = [];
-        data?.propertyDetails![i].propertyImages?.forEach((element) {
-          im.add(element.url.toString());
-        });
-        propertyL.add(pp.PropertyDetails(
-            name: data?.propertyDetails?[i].name,
-            description: data?.propertyDetails?[i].description,
-            floor: data?.propertyDetails?[i].floor,
-            walls: data?.propertyDetails?[i].walls,
-            ceiling: data?.propertyDetails?[i].ceiling,
-            windows: data?.propertyDetails?[i].windows,
-            doors: data?.propertyDetails?[i].doors,
-            units: data?.propertyDetails?[i].units,
-            appliances: data?.propertyDetails?[i].appliances,
-            images: im));
-      }
-    }
-    for (int i = 0; i < data!.propertyDetails!.length; i++) {
-      if (data!.propertyDetails![i].name.toString() == 'Living Room 2') {
-        propertyList.add(data!.propertyDetails![i]);
-        List<String>? im = [];
-        data?.propertyDetails![i].propertyImages?.forEach((element) {
-          im.add(element.url.toString());
-        });
-        propertyL.add(pp.PropertyDetails(
-            name: data?.propertyDetails?[i].name,
-            description: data?.propertyDetails?[i].description,
-            floor: data?.propertyDetails?[i].floor,
-            walls: data?.propertyDetails?[i].walls,
-            ceiling: data?.propertyDetails?[i].ceiling,
-            windows: data?.propertyDetails?[i].windows,
-            doors: data?.propertyDetails?[i].doors,
-            units: data?.propertyDetails?[i].units,
-            appliances: data?.propertyDetails?[i].appliances,
-            images: im));
-      }
-    }
-    for (int i = 0; i < data!.propertyDetails!.length; i++) {
-      if (data!.propertyDetails![i].name.toString() == 'Kitchen') {
-        propertyList.add(data!.propertyDetails![i]);
-        List<String>? im = [];
-        data?.propertyDetails![i].propertyImages?.forEach((element) {
-          im.add(element.url.toString());
-        });
-        propertyL.add(pp.PropertyDetails(
-            name: data?.propertyDetails?[i].name,
-            description: data?.propertyDetails?[i].description,
-            floor: data?.propertyDetails?[i].floor,
-            walls: data?.propertyDetails?[i].walls,
-            ceiling: data?.propertyDetails?[i].ceiling,
-            windows: data?.propertyDetails?[i].windows,
-            doors: data?.propertyDetails?[i].doors,
-            units: data?.propertyDetails?[i].units,
-            appliances: data?.propertyDetails?[i].appliances,
-            images: im));
-      }
-    }
-    for (int i = 0; i < data!.propertyDetails!.length; i++) {
-      if (data!.propertyDetails![i].name.toString() == 'Rear Garden') {
-        propertyList.add(data!.propertyDetails![i]);
-        List<String>? im = [];
-        data?.propertyDetails![i].propertyImages?.forEach((element) {
-          im.add(element.url.toString());
-        });
-        propertyL.add(pp.PropertyDetails(
-            name: data?.propertyDetails?[i].name,
-            description: data?.propertyDetails?[i].description,
-            floor: data?.propertyDetails?[i].floor,
-            walls: data?.propertyDetails?[i].walls,
-            ceiling: data?.propertyDetails?[i].ceiling,
-            windows: data?.propertyDetails?[i].windows,
-            doors: data?.propertyDetails?[i].doors,
-            units: data?.propertyDetails?[i].units,
-            appliances: data?.propertyDetails?[i].appliances,
-            images: im));
-      }
-    }
-    for (int i = 0; i < data!.propertyDetails!.length; i++) {
-      if (data!.propertyDetails![i].name.toString() == 'Landing') {
-        propertyList.add(data!.propertyDetails![i]);
-        List<String>? im = [];
-        data?.propertyDetails![i].propertyImages?.forEach((element) {
-          im.add(element.url.toString());
-        });
-        propertyL.add(pp.PropertyDetails(
-            name: data?.propertyDetails?[i].name,
-            description: data?.propertyDetails?[i].description,
-            floor: data?.propertyDetails?[i].floor,
-            walls: data?.propertyDetails?[i].walls,
-            ceiling: data?.propertyDetails?[i].ceiling,
-            windows: data?.propertyDetails?[i].windows,
-            doors: data?.propertyDetails?[i].doors,
-            units: data?.propertyDetails?[i].units,
-            appliances: data?.propertyDetails?[i].appliances,
-            images: im));
-      }
-    }
-    for (int i = 0; i < data!.propertyDetails!.length; i++) {
-      if (data!.propertyDetails![i].name.toString() == 'Bedroom 1') {
-        propertyList.add(data!.propertyDetails![i]);
-        List<String>? im = [];
-        data?.propertyDetails![i].propertyImages?.forEach((element) {
-          im.add(element.url.toString());
-        });
-        propertyL.add(pp.PropertyDetails(
-            name: data?.propertyDetails?[i].name,
-            description: data?.propertyDetails?[i].description,
-            floor: data?.propertyDetails?[i].floor,
-            walls: data?.propertyDetails?[i].walls,
-            ceiling: data?.propertyDetails?[i].ceiling,
-            windows: data?.propertyDetails?[i].windows,
-            doors: data?.propertyDetails?[i].doors,
-            units: data?.propertyDetails?[i].units,
-            appliances: data?.propertyDetails?[i].appliances,
-            images: im));
-      }
-    }
-    for (int i = 0; i < data!.propertyDetails!.length; i++) {
-      if (data!.propertyDetails![i].name.toString() == 'Bedroom 2') {
-        propertyList.add(data!.propertyDetails![i]);
-        List<String>? im = [];
-        data?.propertyDetails![i].propertyImages?.forEach((element) {
-          im.add(element.url.toString());
-        });
-        propertyL.add(pp.PropertyDetails(
-            name: data?.propertyDetails?[i].name,
-            description: data?.propertyDetails?[i].description,
-            floor: data?.propertyDetails?[i].floor,
-            walls: data?.propertyDetails?[i].walls,
-            ceiling: data?.propertyDetails?[i].ceiling,
-            windows: data?.propertyDetails?[i].windows,
-            doors: data?.propertyDetails?[i].doors,
-            units: data?.propertyDetails?[i].units,
-            appliances: data?.propertyDetails?[i].appliances,
-            images: im));
-      }
-    }
-    for (int i = 0; i < data!.propertyDetails!.length; i++) {
-      if (data!.propertyDetails![i].name.toString() == 'Bedroom 3') {
-        propertyList.add(data!.propertyDetails![i]);
-        List<String>? im = [];
-        data?.propertyDetails![i].propertyImages?.forEach((element) {
-          im.add(element.url.toString());
-        });
-        propertyL.add(pp.PropertyDetails(
-            name: data?.propertyDetails?[i].name,
-            description: data?.propertyDetails?[i].description,
-            floor: data?.propertyDetails?[i].floor,
-            walls: data?.propertyDetails?[i].walls,
-            ceiling: data?.propertyDetails?[i].ceiling,
-            windows: data?.propertyDetails?[i].windows,
-            doors: data?.propertyDetails?[i].doors,
-            units: data?.propertyDetails?[i].units,
-            appliances: data?.propertyDetails?[i].appliances,
-            images: im));
-      }
-    }
-    for (int i = 0; i < data!.propertyDetails!.length; i++) {
-      if (data!.propertyDetails![i].name.toString() == 'Bedroom 4') {
-        propertyList.add(data!.propertyDetails![i]);
-        List<String>? im = [];
-        data?.propertyDetails![i].propertyImages?.forEach((element) {
-          im.add(element.url.toString());
-        });
-        propertyL.add(pp.PropertyDetails(
-            name: data?.propertyDetails?[i].name,
-            description: data?.propertyDetails?[i].description,
-            floor: data?.propertyDetails?[i].floor,
-            walls: data?.propertyDetails?[i].walls,
-            ceiling: data?.propertyDetails?[i].ceiling,
-            windows: data?.propertyDetails?[i].windows,
-            doors: data?.propertyDetails?[i].doors,
-            units: data?.propertyDetails?[i].units,
-            appliances: data?.propertyDetails?[i].appliances,
-            images: im));
-      }
-    }
-    for (int i = 0; i < data!.propertyDetails!.length; i++) {
-      if (data!.propertyDetails![i].name.toString() == 'Bedroom 5') {
-        propertyList.add(data!.propertyDetails![i]);
-        List<String>? im = [];
-        data?.propertyDetails![i].propertyImages?.forEach((element) {
-          im.add(element.url.toString());
-        });
-        propertyL.add(pp.PropertyDetails(
-            name: data?.propertyDetails?[i].name,
-            description: data?.propertyDetails?[i].description,
-            floor: data?.propertyDetails?[i].floor,
-            walls: data?.propertyDetails?[i].walls,
-            ceiling: data?.propertyDetails?[i].ceiling,
-            windows: data?.propertyDetails?[i].windows,
-            doors: data?.propertyDetails?[i].doors,
-            units: data?.propertyDetails?[i].units,
-            appliances: data?.propertyDetails?[i].appliances,
-            images: im));
-      }
-    }
-    for (int i = 0; i < data!.propertyDetails!.length; i++) {
-      if (data!.propertyDetails![i].name.toString() == 'Bathroom 1') {
-        propertyList.add(data!.propertyDetails![i]);
-        List<String>? im = [];
-        data?.propertyDetails![i].propertyImages?.forEach((element) {
-          im.add(element.url.toString());
-        });
-        propertyL.add(pp.PropertyDetails(
-            name: data?.propertyDetails?[i].name,
-            description: data?.propertyDetails?[i].description,
-            floor: data?.propertyDetails?[i].floor,
-            walls: data?.propertyDetails?[i].walls,
-            ceiling: data?.propertyDetails?[i].ceiling,
-            windows: data?.propertyDetails?[i].windows,
-            doors: data?.propertyDetails?[i].doors,
-            units: data?.propertyDetails?[i].units,
-            appliances: data?.propertyDetails?[i].appliances,
-            images: im));
-      }
-    }
-    for (int i = 0; i < data!.propertyDetails!.length; i++) {
-      if (data!.propertyDetails![i].name.toString() == 'Bathroom 2') {
-        propertyList.add(data!.propertyDetails![i]);
-        List<String>? im = [];
-        data?.propertyDetails![i].propertyImages?.forEach((element) {
-          im.add(element.url.toString());
-        });
-        propertyL.add(pp.PropertyDetails(
-            name: data?.propertyDetails?[i].name,
-            description: data?.propertyDetails?[i].description,
-            floor: data?.propertyDetails?[i].floor,
-            walls: data?.propertyDetails?[i].walls,
-            ceiling: data?.propertyDetails?[i].ceiling,
-            windows: data?.propertyDetails?[i].windows,
-            doors: data?.propertyDetails?[i].doors,
-            units: data?.propertyDetails?[i].units,
-            appliances: data?.propertyDetails?[i].appliances,
-            images: im));
-      }
-    }
-    for (int i = 0; i < data!.propertyDetails!.length; i++) {
-      if (data!.propertyDetails![i].name.toString() != 'Front & Side Aspects' &&
-          data!.propertyDetails![i].name.toString() != 'Entrance Hall' &&
-          data!.propertyDetails![i].name.toString() != 'Living Room 1' &&
-          data!.propertyDetails![i].name.toString() != 'Living Room 2' &&
-          data!.propertyDetails![i].name.toString() != 'Kitchen' &&
-          data!.propertyDetails![i].name.toString() != 'Rear Garden' &&
-          data!.propertyDetails![i].name.toString() != 'Landing' &&
-          data!.propertyDetails![i].name.toString() != 'Bedroom 1' &&
-          data!.propertyDetails![i].name.toString() != 'Bedroom 2' &&
-          data!.propertyDetails![i].name.toString() != 'Bedroom 3' &&
-          data!.propertyDetails![i].name.toString() != 'Bedroom 4' &&
-          data!.propertyDetails![i].name.toString() != 'Bedroom 5' &&
-          data!.propertyDetails![i].name.toString() != 'Bathroom 1' &&
-          data!.propertyDetails![i].name.toString() != 'Bathroom 2') {
-        propertyList.add(data!.propertyDetails![i]);
-        List<String>? im = [];
-        data?.propertyDetails![i].propertyImages?.forEach((element) {
-          im.add(element.url.toString());
-        });
-        propertyL.add(pp.PropertyDetails(
-            name: data?.propertyDetails?[i].name,
-            description: data?.propertyDetails?[i].description,
-            floor: data?.propertyDetails?[i].floor,
-            walls: data?.propertyDetails?[i].walls,
-            ceiling: data?.propertyDetails?[i].ceiling,
-            windows: data?.propertyDetails?[i].windows,
-            doors: data?.propertyDetails?[i].doors,
-            units: data?.propertyDetails?[i].units,
-            appliances: data?.propertyDetails?[i].appliances,
-            images: im));
-      }
-    }
+
     controller.isLoading.value = false;
 
     if (data?.signatureTenant != null && data?.signatureInspector != null) {
@@ -386,6 +67,7 @@ class Show_Data_Screen extends StatelessWidget {
       String base64Image1 = base64Encode(bytes1);
       decodedString1 = utf8.decode(base64Decode(base64Image1));
     }
+    print(data?.id);
     // TODO: implement build
     return Scaffold(
       resizeToAvoidBottomInset: false, // fluter 2.x
@@ -1125,7 +807,7 @@ class Show_Data_Screen extends StatelessWidget {
                       physics: ClampingScrollPhysics(),
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
-                      itemCount: propertyList.length,
+                      itemCount: data?.propertyDetails?.length,
                       itemBuilder: (BuildContext context, int index) =>
                           Container(
                         margin: EdgeInsets.only(left: 10),
@@ -1142,7 +824,8 @@ class Show_Data_Screen extends StatelessWidget {
                             controller.value.value = index;
                           },
                           child: Text(
-                            propertyList[index].name.toString(),
+                            (data?.propertyDetails![index].name.toString())
+                                .toString(),
                             style: TextStyle(
                                 color: controller.value.value == index
                                     ? Colors.white
@@ -1207,6 +890,45 @@ class Show_Data_Screen extends StatelessWidget {
                                   )
                                 ]),
                           ),
+                          if (propertyList[controller.value.toInt()]
+                                      .name
+                                      .toString() !=
+                                  "Rear Garden" &&
+                              propertyList[controller.value.toInt()]
+                                      .name
+                                      .toString() !=
+                                  "Front \& Side Aspects") ...[
+                            SizedBox(
+                              height: 10,
+                            ),
+                            RichText(
+                              text: TextSpan(
+                                  text: "Ceilings: ",
+                                  style: TextStyle(
+                                      color: Colors.blue,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text:
+                                          propertyList[controller.value.toInt()]
+                                                      .ceiling !=
+                                                  null
+                                              ? propertyList[
+                                                      controller.value.toInt()]
+                                                  .ceiling
+                                                  .toString()
+                                              : "",
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2
+                                              ?.color,
+                                          fontSize: 14),
+                                    )
+                                  ]),
+                            ),
+                          ],
                           SizedBox(
                             height: 10,
                           ),
@@ -1360,9 +1082,12 @@ class Show_Data_Screen extends StatelessWidget {
                                       .propertyImages![i]
                                       .url!
                                       .contains("upload")) ...[
-                                    SizedBox(
+                                    Container(
                                         height: 100,
                                         width: 100,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: Colors.grey, width: 2)),
                                         child: Image.network(
                                           Paths.baseUrl +
                                               "/" +
@@ -1514,7 +1239,12 @@ class Show_Data_Screen extends StatelessWidget {
                         controller.isLoading.value = true;
                         final SharedPreferences prefs =
                             await SharedPreferences.getInstance();
-                        var lo = prefs.getString("logo").toString();
+                        var lo = await prefs.getString("logo").toString();
+                        var em = await prefs.getString("email").toString();
+                        var cem = await prefs.getString("cemail").toString();
+                        var cmob = await prefs.getString("cmobile").toString();
+                        var cadd = await prefs.getString("caddress").toString();
+                        var cname = await prefs.getString("cname").toString();
                         final htmlContent = """
                       <!DOCTYPE html>
 <html>
@@ -1546,6 +1276,8 @@ class Show_Data_Screen extends StatelessWidget {
 .image-container img {
   width: 100%;
   height: auto;
+  border-style: solid;
+  border-color: grey;
 }
 
     
@@ -1610,7 +1342,7 @@ padding-left: 30px;
         >
           <div>
             <img
-              style="width: 230px; height: 100px"
+              style="width: 230px; height: 100px; object-fit: contain;"
               src="${Paths.baseUrl + "/" + lo}"
               alt="Logo"
             />
@@ -1620,27 +1352,27 @@ padding-left: 30px;
               <div style="color: #03a5fc; font-size: 14px; font-weight: bold";>
                 Company:
               </div>
-              <div style="color: black; font-size: 12px; padding-top: 3px;"; >Promptmove Limited</div>
+              <div style="color: black; font-size: 12px; padding-top: 1px;"; >${cname}</div>
             </div>
 
             <div style="display: flex; gap: 6px">
               <div style="color: #03a5fc; font-size: 14px; font-weight: bold">
                 Address:
               </div>
-              <div style="color: black; font-size: 12px; padding-top: 2px;">  &ensp; ${data!.propertyAddress.toString()}</div>
+              <div style="color: black; font-size: 12px; padding-top: 2px;">  &ensp; ${cadd.toString()}</div>
             </div>
 
             <div style="display: flex; gap: 6px">
               <div style="color: #03a5fc; font-size: 14px; font-weight: bold">
                 Phone:
               </div>
-              <div style="color: black; font-size: 12px;padding-top: 3px;"> &ensp;&ensp;&ensp; 01582 611040</div>
+              <div style="color: black; font-size: 12px;padding-top: 3px;"> &ensp;&ensp;&ensp; ${cmob}</div>
             </div>
             <div style="display: flex; gap: 6px">
               <div style="color: #03a5fc; font-size: 14px; font-weight: bold">
                 Email:
               </div>
-              <div style="color: black; font-size: 12px; padding-top: 2px;">&ensp;&ensp;&ensp;&ensp;${email}</div>
+              <div style="color: black; font-size: 12px; padding-top: 2px;">&ensp;&ensp;&ensp;&ensp;${cem}</div>
             </div>
           </div>
         </div>
@@ -1662,6 +1394,7 @@ padding-left: 30px;
         margin-bottom:20px;
         border-style: solid;
         border-width: medium;
+        font-weight: bold;
         border-color: black;
         background-color: #03a5fc;
       "
@@ -1670,7 +1403,7 @@ padding-left: 30px;
     </div>
     <div
       style="
-        font-size: 14px;
+        font-size: 20px;
         color: black;
         margin-bottom:20px;
         text-align: center;
@@ -1680,7 +1413,7 @@ padding-left: 30px;
       ${data?.propertyAddress}
     </div>
     <div style="display: flex; justify-content: center; align-items: center">
-      <img style="border-radius: 12px; border-radius: 12px; width: 400px; height: 250px" src="${Paths.baseUrl + '/' + data!.mainImg.toString()}" alt="s1"/>
+      <img style="border-radius: 12px; border: 5px solid gray; width: 400px; height: 250px; object-fit: contain;" src="${Paths.baseUrl + '/' + data!.mainImg.toString()}" alt="s1"/>
     </div>
     <div
       style="
@@ -1824,7 +1557,6 @@ padding-left: 30px;
     <br> 
     <br> <br>
     <br> 
-    <br> <br>
     <br> 
     <div
       style="
@@ -2102,7 +1834,7 @@ padding-left: 30px;
     
     <div
       style="
-        font-size: 14px;
+        font-size: 16px;
         color: #03a5fc;
         margin-left: 50px;
         font-weight: bold;
@@ -2465,7 +2197,7 @@ padding-left: 30px;
     <br>
     <br>
     
-    <div style="margin-left: 40px; font-size: 14px;">
+    <div style="margin-left: 40px; font-size: 16px;">
       ${e.name}
     </div>
     <div style="margin-left: 38px; margin-right: 38px; margin-top: 10px">
@@ -2476,31 +2208,31 @@ padding-left: 30px;
         </tr>
         <tr>
           <td style="font-size: 12px;">Floor</td>
-          <td style="font-size: 12px;">${e.floor}</td>
+          <td style="font-size: 10px;font-weight: 500;">${e.floor}</td>
         </tr>
         ${e.name == "Kitchen" ? '''<tr>
                             <td style="font-size: 12px;">Appliances</td>
-                            <td style="font-size: 12px;">${e.appliances}</td>
+                            <td style="font-size: 10px;font-weight: 500;">${e.appliances}</td>
                             </tr>''' : ''''''}
         <tr>
           <td style="font-size: 12px;">Walls</td>
-          <td style="font-size: 12px;">${e.walls}</td>
+          <td style="font-size: 10px;font-weight: 500;">${e.walls}</td>
         </tr>
         ${e.name != "Rear Garden" && e.name != "Front & Side Aspects" ? '''<tr>
           <td style="font-size: 12px;">Ceiling</td>
-          <td style="font-size: 12px;">${e.ceiling}</td>
+          <td style="font-size: 10px;font-weight: 500;">${e.ceiling}</td>
         </tr>''' : ''''''}
         <tr>
           <td style="font-size: 12px;">Windows</td>
-          <td style="font-size: 12px;">${e.windows}</td>
+          <td style="font-size: 10px;font-weight: 500;">${e.windows}</td>
         </tr>
         <tr>
           <td style="font-size: 12px;">Doors</td>
-          <td style="font-size: 12px;">${e.walls}</td>
+          <td style="font-size: 10px;font-weight: 500;">${e.walls}</td>
         </tr>
         <tr>
           <td style="font-size: 12px;">Details</td>
-          <td style="font-size: 12px;">${e.description}</td>
+          <td style="font-size: 10px;font-weight: 500;">${e.description}</td>
         </tr>
       </table>
     </div>

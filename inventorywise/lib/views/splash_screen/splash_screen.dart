@@ -24,7 +24,7 @@ class Splash_Screen extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       body: Center(
-        child: Image.asset("assets/splash/splash.png"),
+        child: Padding(padding: EdgeInsets.only(left: 20,right: 20),child:Image.asset("assets/splash/splash.png")),
       ),
     );
   }
