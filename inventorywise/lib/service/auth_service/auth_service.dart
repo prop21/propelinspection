@@ -69,7 +69,7 @@ class AuthenticationService {
         "password": password,
         "acceptTerms": acceptterm,
         "company_logo": logo,
-        "company_address": confirmpassword,
+        "company_address": companyaddress,
         "mobile_number": company_mobile,
         "company_name": company_name,
         "company_email": company_email

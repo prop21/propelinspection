@@ -92,10 +92,10 @@ class AddDataController extends GetxController {
   TextEditingController tenantNameController = TextEditingController();
   TextEditingController inspectorNameController = TextEditingController();
   TextEditingController inspectionDateController = TextEditingController();
-  TextEditingController epcExpiryDateController = TextEditingController();
-  TextEditingController ecirExpiryDateController = TextEditingController();
-  TextEditingController gasSafetyCertificateExpiryDateController =
-      TextEditingController();
+  // TextEditingController epcExpiryDateController = TextEditingController();
+  // TextEditingController ecirExpiryDateController = TextEditingController();
+  // TextEditingController gasSafetyCertificateExpiryDateController =
+  //     TextEditingController();
   TextEditingController electricityMeterController = TextEditingController();
   TextEditingController gasMeterController = TextEditingController();
   TextEditingController smokeAlarmController = TextEditingController();

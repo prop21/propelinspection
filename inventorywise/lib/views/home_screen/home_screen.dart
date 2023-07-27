@@ -109,14 +109,13 @@ class Home_Screen extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(left: 20, right: 20, top: 30),
                     height: 100,
-                    color: Colors.white,
                     width: Get.width,
                     alignment: Alignment.center,
-                    child: Text(
-                      "Settings",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                    ),
+                    // child: Text(
+                    //   "Settings",
+                    //   style:
+                    //       TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    // ),
                   )
                 ]),
                 ListTile(
@@ -134,6 +133,14 @@ class Home_Screen extends StatelessWidget {
                   onTap: () {
                     controller.openUrl(
                         "mailto:<support@inventorywise@.co.uk>?subject=&body=");
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.open_in_browser),
+                  trailing: Icon(Icons.keyboard_arrow_right),
+                  title: Text('Visit Our Website'),
+                  onTap: () {
+                    Get.to(() => we1());
                   },
                 ),
                 ListTile(
@@ -469,7 +476,7 @@ class Home_Screen extends StatelessWidget {
               child: Padding(
                   padding: EdgeInsets.only(bottom: 20),
                   child: Text(
-                    "Version: 1.8.1",
+                    "Version: 1.8.2",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   )),
             )
@@ -507,6 +514,38 @@ class we extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Terms & Conditions'),
+        ),
+        body: WebViewWidget(controller: controller));
+  }
+}
+
+class we1 extends StatelessWidget {
+  WebViewController controller = WebViewController()
+    ..setJavaScriptMode(JavaScriptMode.unrestricted)
+    ..setBackgroundColor(const Color(0x00000000))
+    ..setNavigationDelegate(
+      NavigationDelegate(
+        onProgress: (int progress) {
+          // Update loading bar.
+        },
+        onPageStarted: (String url) {},
+        onPageFinished: (String url) {},
+        onWebResourceError: (WebResourceError error) {},
+        onNavigationRequest: (NavigationRequest request) {
+          if (request.url.startsWith('https://www.youtube.com/')) {
+            return NavigationDecision.prevent;
+          }
+          return NavigationDecision.navigate;
+        },
+      ),
+    )
+    ..loadRequest(Uri.parse('https://inventorywise.co.uk/'));
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Our WebSite'),
         ),
         body: WebViewWidget(controller: controller));
   }

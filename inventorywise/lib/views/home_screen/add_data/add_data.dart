@@ -38,22 +38,22 @@ class AddDataScreenState extends State<AddDataScreen> {
         DateTime.now().month.toString() +
         "-" +
         DateTime.now().year.toString();
-    controller.epcExpiryDateController.text = DateTime.now().day.toString() +
-        "-" +
-        DateTime.now().month.toString() +
-        "-" +
-        DateTime.now().year.toString();
-    controller.ecirExpiryDateController.text = DateTime.now().day.toString() +
-        "-" +
-        DateTime.now().month.toString() +
-        "-" +
-        DateTime.now().year.toString();
-    controller.gasSafetyCertificateExpiryDateController.text =
-        DateTime.now().day.toString() +
-            "-" +
-            DateTime.now().month.toString() +
-            "-" +
-            DateTime.now().year.toString();
+    // controller.epcExpiryDateController.text = DateTime.now().day.toString() +
+    //     "-" +
+    //     DateTime.now().month.toString() +
+    //     "-" +
+    //     DateTime.now().year.toString();
+    // controller.ecirExpiryDateController.text = DateTime.now().day.toString() +
+    //     "-" +
+    //     DateTime.now().month.toString() +
+    //     "-" +
+    //     DateTime.now().year.toString();
+    // controller.gasSafetyCertificateExpiryDateController.text =
+    //     DateTime.now().day.toString() +
+    //         "-" +
+    //         DateTime.now().month.toString() +
+    //         "-" +
+    //         DateTime.now().year.toString();
     controller.advisedTenantToController.text =
         "To Keep the property clean, tidy and adequately ventilated at all times.";
     model = AddPropertyModel();
@@ -319,122 +319,122 @@ class AddDataScreenState extends State<AddDataScreen> {
                       style: TextStyle(color: Colors.blue, fontSize: 18),
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    "ECP Expiry Date",
-                    style: TextStyle(
-                        color: Theme.of(context).textTheme.bodyText2?.color,
-                        fontSize: 16),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  InkWell(
-                    onTap: () async {
-                      DateTime? pickedDate = await showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(), //get today's date
-                          initialEntryMode: DatePickerEntryMode.calendarOnly,
-                          firstDate: DateTime(
-                              2000), //DateTime.now() - not to allow to choose before today.
-                          lastDate: DateTime(2101));
-                      controller.f[4].text = pickedDate.toString();
-                      controller.epcExpiryDateController.text =
-                          pickedDate!.day.toString() +
-                              "-" +
-                              pickedDate.month.toString() +
-                              "-" +
-                              pickedDate.year.toString();
-                    },
-                    child: TextField(
-                      enabled: false,
-                      controller: controller.epcExpiryDateController,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          suffixIcon: Icon(Icons.calendar_month)),
-                      style: TextStyle(color: Colors.blue, fontSize: 18),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    "ECIR Expiry Date",
-                    style: TextStyle(
-                        color: Theme.of(context).textTheme.bodyText2?.color,
-                        fontSize: 16),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  InkWell(
-                    onTap: () async {
-                      DateTime? pickedDate = await showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(), //get today's date
-                          initialEntryMode: DatePickerEntryMode.calendarOnly,
-                          firstDate: DateTime(
-                              2000), //DateTime.now() - not to allow to choose before today.
-                          lastDate: DateTime(2101));
-                      controller.f[5].text = pickedDate.toString();
-                      controller.ecirExpiryDateController.text =
-                          pickedDate!.day.toString() +
-                              "-" +
-                              pickedDate.month.toString() +
-                              "-" +
-                              pickedDate.year.toString();
-                    },
-                    child: TextField(
-                      enabled: false,
-                      controller: controller.ecirExpiryDateController,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          suffixIcon: Icon(Icons.calendar_month)),
-                      style: TextStyle(color: Colors.blue, fontSize: 18),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    "Gas Safety Certificate Expiry Date",
-                    style: TextStyle(
-                        color: Theme.of(context).textTheme.bodyText2?.color,
-                        fontSize: 16),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  InkWell(
-                    onTap: () async {
-                      DateTime? pickedDate = await showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(), //get today's date
-                          initialEntryMode: DatePickerEntryMode.calendarOnly,
-                          firstDate: DateTime(
-                              2000), //DateTime.now() - not to allow to choose before today.
-                          lastDate: DateTime(2101));
-
-                      controller.f[6].text = pickedDate.toString();
-                      controller.gasSafetyCertificateExpiryDateController.text =
-                          pickedDate!.day.toString() +
-                              "-" +
-                              pickedDate.month.toString() +
-                              "-" +
-                              pickedDate.year.toString();
-                    },
-                    child: TextField(
-                      enabled: false,
-                      controller:
-                          controller.gasSafetyCertificateExpiryDateController,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          suffixIcon: Icon(Icons.calendar_month)),
-                      style: TextStyle(color: Colors.blue, fontSize: 18),
-                    ),
-                  ),
+                  // SizedBox(
+                  //   height: 20,
+                  // ),
+                  // Text(
+                  //   "ECP Expiry Date",
+                  //   style: TextStyle(
+                  //       color: Theme.of(context).textTheme.bodyText2?.color,
+                  //       fontSize: 16),
+                  // ),
+                  // SizedBox(
+                  //   height: 5,
+                  // ),
+                  // InkWell(
+                  //   onTap: () async {
+                  //     DateTime? pickedDate = await showDatePicker(
+                  //         context: context,
+                  //         initialDate: DateTime.now(), //get today's date
+                  //         initialEntryMode: DatePickerEntryMode.calendarOnly,
+                  //         firstDate: DateTime(
+                  //             2000), //DateTime.now() - not to allow to choose before today.
+                  //         lastDate: DateTime(2101));
+                  //     controller.f[4].text = pickedDate.toString();
+                  //     controller.epcExpiryDateController.text =
+                  //         pickedDate!.day.toString() +
+                  //             "-" +
+                  //             pickedDate.month.toString() +
+                  //             "-" +
+                  //             pickedDate.year.toString();
+                  //   },
+                  //   child: TextField(
+                  //     enabled: false,
+                  //     controller: controller.epcExpiryDateController,
+                  //     decoration: InputDecoration(
+                  //         border: OutlineInputBorder(),
+                  //         suffixIcon: Icon(Icons.calendar_month)),
+                  //     style: TextStyle(color: Colors.blue, fontSize: 18),
+                  //   ),
+                  // ),
+                  // SizedBox(
+                  //   height: 20,
+                  // ),
+                  // Text(
+                  //   "ECIR Expiry Date",
+                  //   style: TextStyle(
+                  //       color: Theme.of(context).textTheme.bodyText2?.color,
+                  //       fontSize: 16),
+                  // ),
+                  // SizedBox(
+                  //   height: 5,
+                  // ),
+                  // InkWell(
+                  //   onTap: () async {
+                  //     DateTime? pickedDate = await showDatePicker(
+                  //         context: context,
+                  //         initialDate: DateTime.now(), //get today's date
+                  //         initialEntryMode: DatePickerEntryMode.calendarOnly,
+                  //         firstDate: DateTime(
+                  //             2000), //DateTime.now() - not to allow to choose before today.
+                  //         lastDate: DateTime(2101));
+                  //     controller.f[5].text = pickedDate.toString();
+                  //     controller.ecirExpiryDateController.text =
+                  //         pickedDate!.day.toString() +
+                  //             "-" +
+                  //             pickedDate.month.toString() +
+                  //             "-" +
+                  //             pickedDate.year.toString();
+                  //   },
+                  //   child: TextField(
+                  //     enabled: false,
+                  //     controller: controller.ecirExpiryDateController,
+                  //     decoration: InputDecoration(
+                  //         border: OutlineInputBorder(),
+                  //         suffixIcon: Icon(Icons.calendar_month)),
+                  //     style: TextStyle(color: Colors.blue, fontSize: 18),
+                  //   ),
+                  // ),
+                  // SizedBox(
+                  //   height: 20,
+                  // ),
+                  // Text(
+                  //   "Gas Safety Certificate Expiry Date",
+                  //   style: TextStyle(
+                  //       color: Theme.of(context).textTheme.bodyText2?.color,
+                  //       fontSize: 16),
+                  // ),
+                  // SizedBox(
+                  //   height: 5,
+                  // ),
+                  // InkWell(
+                  //   onTap: () async {
+                  //     DateTime? pickedDate = await showDatePicker(
+                  //         context: context,
+                  //         initialDate: DateTime.now(), //get today's date
+                  //         initialEntryMode: DatePickerEntryMode.calendarOnly,
+                  //         firstDate: DateTime(
+                  //             2000), //DateTime.now() - not to allow to choose before today.
+                  //         lastDate: DateTime(2101));
+                  //
+                  //     controller.f[6].text = pickedDate.toString();
+                  //     controller.gasSafetyCertificateExpiryDateController.text =
+                  //         pickedDate!.day.toString() +
+                  //             "-" +
+                  //             pickedDate.month.toString() +
+                  //             "-" +
+                  //             pickedDate.year.toString();
+                  //   },
+                  //   child: TextField(
+                  //     enabled: false,
+                  //     controller:
+                  //         controller.gasSafetyCertificateExpiryDateController,
+                  //     decoration: InputDecoration(
+                  //         border: OutlineInputBorder(),
+                  //         suffixIcon: Icon(Icons.calendar_month)),
+                  //     style: TextStyle(color: Colors.blue, fontSize: 18),
+                  //   ),
+                  // ),
                   SizedBox(
                     height: 20,
                   ),

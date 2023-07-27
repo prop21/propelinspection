@@ -87,11 +87,6 @@ class CustomPropertyState extends State<CustomProperty> {
     et7.text = "Fair";
     et8.text = "Fair";
     et9.text = "Fair";
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
     widget.walls != null
         ? et2.text = widget.walls.toString()
         : et2.text = "Fair";
@@ -113,6 +108,11 @@ class CustomPropertyState extends State<CustomProperty> {
     widget.celling != null
         ? et9.text = widget.celling.toString()
         : et9.text = "Fair";
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
 
     return Container(
       padding: EdgeInsets.all(5),
@@ -1204,7 +1204,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
         ? et9.text = widget.celling.toString()
         : et9.text = "Fair";
     widget.desc != null ? et5.text = widget.desc.toString() : et5.text = "";
-
+    print(widget.desc);
     return Container(
       padding: EdgeInsets.all(5),
       margin: EdgeInsets.only(bottom: 15),

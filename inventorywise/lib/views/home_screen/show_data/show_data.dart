@@ -266,111 +266,111 @@ class Show_Data_Screen extends StatelessWidget {
                   SizedBox(
                     height: 15,
                   ),
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: 70,
-                        child: Text(
-                          "ECP Date:           ",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.blue),
-                        ),
-                      ),
-                      Text(
-                        DateTime.parse((data?.ecpExpDate).toString())
-                                .day
-                                .toString() +
-                            "-" +
-                            DateTime.parse((data?.ecpExpDate).toString())
-                                .month
-                                .toString() +
-                            "-" +
-                            DateTime.parse((data?.ecpExpDate).toString())
-                                .year
-                                .toString(),
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                    ],
-                  ),
-                  Divider(
-                    thickness: 1.5,
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: 80,
-                        child: Text(
-                          "ECIR Date:         ",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.blue),
-                        ),
-                      ),
-                      Text(
-                        DateTime.parse(data!.ecirExpDate.toString())
-                                .day
-                                .toString() +
-                            "-" +
-                            DateTime.parse(data!.ecirExpDate.toString())
-                                .month
-                                .toString() +
-                            "-" +
-                            DateTime.parse(data!.ecirExpDate.toString())
-                                .year
-                                .toString(),
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      )
-                    ],
-                  ),
-                  Divider(
-                    thickness: 1.5,
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    children: [
-                      SizedBox(
-                          width: 250,
-                          child: Text(
-                            "Gas Saftey Certificate Exipiry Date:",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blue),
-                          )),
-                      Text(
-                        DateTime.parse(data!.gasSafetyCertificateExpDate
-                                    .toString())
-                                .day
-                                .toString() +
-                            "-" +
-                            DateTime.parse(data!.gasSafetyCertificateExpDate
-                                    .toString())
-                                .month
-                                .toString() +
-                            "-" +
-                            DateTime.parse(data!.gasSafetyCertificateExpDate
-                                    .toString())
-                                .year
-                                .toString(),
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      )
-                    ],
-                  ),
-                  Divider(
-                    thickness: 1.5,
-                  ),
+                  // Row(
+                  //   children: [
+                  //     SizedBox(
+                  //       width: 70,
+                  //       child: Text(
+                  //         "ECP Date:           ",
+                  //         style: TextStyle(
+                  //             fontWeight: FontWeight.bold, color: Colors.blue),
+                  //       ),
+                  //     ),
+                  //     Text(
+                  //       DateTime.parse((data?.ecpExpDate).toString())
+                  //               .day
+                  //               .toString() +
+                  //           "-" +
+                  //           DateTime.parse((data?.ecpExpDate).toString())
+                  //               .month
+                  //               .toString() +
+                  //           "-" +
+                  //           DateTime.parse((data?.ecpExpDate).toString())
+                  //               .year
+                  //               .toString(),
+                  //       style: TextStyle(fontWeight: FontWeight.bold),
+                  //     ),
+                  //     SizedBox(
+                  //       width: 10,
+                  //     ),
+                  //   ],
+                  // ),
+                  // Divider(
+                  //   thickness: 1.5,
+                  // ),
+                  // SizedBox(
+                  //   height: 15,
+                  // ),
+                  // Row(
+                  //   children: [
+                  //     SizedBox(
+                  //       width: 80,
+                  //       child: Text(
+                  //         "ECIR Date:         ",
+                  //         style: TextStyle(
+                  //             fontWeight: FontWeight.bold, color: Colors.blue),
+                  //       ),
+                  //     ),
+                  //     Text(
+                  //       DateTime.parse(data!.ecirExpDate.toString())
+                  //               .day
+                  //               .toString() +
+                  //           "-" +
+                  //           DateTime.parse(data!.ecirExpDate.toString())
+                  //               .month
+                  //               .toString() +
+                  //           "-" +
+                  //           DateTime.parse(data!.ecirExpDate.toString())
+                  //               .year
+                  //               .toString(),
+                  //       style: TextStyle(fontWeight: FontWeight.bold),
+                  //     ),
+                  //     SizedBox(
+                  //       width: 10,
+                  //     )
+                  //   ],
+                  // ),
+                  // Divider(
+                  //   thickness: 1.5,
+                  // ),
+                  // SizedBox(
+                  //   height: 15,
+                  // ),
+                  // Row(
+                  //   children: [
+                  //     SizedBox(
+                  //         width: 250,
+                  //         child: Text(
+                  //           "Gas Saftey Certificate Exipiry Date:",
+                  //           style: TextStyle(
+                  //               fontWeight: FontWeight.bold,
+                  //               color: Colors.blue),
+                  //         )),
+                  //     Text(
+                  //       DateTime.parse(data!.gasSafetyCertificateExpDate
+                  //                   .toString())
+                  //               .day
+                  //               .toString() +
+                  //           "-" +
+                  //           DateTime.parse(data!.gasSafetyCertificateExpDate
+                  //                   .toString())
+                  //               .month
+                  //               .toString() +
+                  //           "-" +
+                  //           DateTime.parse(data!.gasSafetyCertificateExpDate
+                  //                   .toString())
+                  //               .year
+                  //               .toString(),
+                  //       style: TextStyle(fontWeight: FontWeight.bold),
+                  //     ),
+                  //     SizedBox(
+                  //       width: 10,
+                  //     )
+                  //   ],
+                  // ),
+                  // Divider(
+                  //   thickness: 1.5,
+                  // ),
                   Container(
                     padding: EdgeInsets.only(bottom: 10),
                     width: Get.width,
@@ -942,7 +942,7 @@ class Show_Data_Screen extends StatelessWidget {
                                 children: <TextSpan>[
                                   TextSpan(
                                     text: propertyList[controller.value.toInt()]
-                                        .walls
+                                        .windows
                                         .toString(),
                                     style: TextStyle(
                                         color: Theme.of(context)
@@ -1020,6 +1020,30 @@ class Show_Data_Screen extends StatelessWidget {
                                   TextSpan(
                                     text: propertyList[controller.value.toInt()]
                                         .floor
+                                        .toString(),
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2
+                                            ?.color,
+                                        fontSize: 14),
+                                  )
+                                ]),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          RichText(
+                            text: TextSpan(
+                                text: "Doors: ",
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: propertyList[controller.value.toInt()]
+                                        .doors
                                         .toString(),
                                     style: TextStyle(
                                         color: Theme.of(context)
@@ -1240,6 +1264,8 @@ class Show_Data_Screen extends StatelessWidget {
                         final SharedPreferences prefs =
                             await SharedPreferences.getInstance();
                         var lo = await prefs.getString("logo").toString();
+                        print(lo);
+                        print(data?.coAlarmFrontImg);
                         var em = await prefs.getString("email").toString();
                         var cem = await prefs.getString("cemail").toString();
                         var cmob = await prefs.getString("cmobile").toString();
@@ -1343,7 +1369,7 @@ padding-left: 30px;
           <div>
             <img
               style="width: 230px; height: 100px; object-fit: contain;"
-              src="${Paths.baseUrl + "/" + lo}"
+              src="${Paths.baseUrl + "/" + lo.toString()}"
               alt="Logo"
             />
           </div>
@@ -1388,8 +1414,8 @@ padding-left: 30px;
         padding-top: 10px;
         padding-bottom: 10px;
         border: 10px;
-        margin-left: 100px;
-        margin-right: 100px;
+        margin-left: 200px;
+        margin-right: 200px;
         margin-top:20px;
         margin-bottom:20px;
         border-style: solid;
@@ -1413,7 +1439,7 @@ padding-left: 30px;
       ${data?.propertyAddress}
     </div>
     <div style="display: flex; justify-content: center; align-items: center">
-      <img style="border-radius: 12px; border: 5px solid gray; width: 400px; height: 250px; object-fit: contain;" src="${Paths.baseUrl + '/' + data!.mainImg.toString()}" alt="s1"/>
+      <img style="border-radius: 12px; border: 5px solid gray; height: 250px; object-fit: contain;" src="${Paths.baseUrl + '/' + data!.mainImg.toString()}" alt="s1"/>
     </div>
     <div
       style="
@@ -1457,7 +1483,7 @@ padding-left: 30px;
               padding-bottom: 8px;
             "
           >
-            Tenants name
+            Tenants Name
           </td>
           <td style="font-size: 14px; padding-top: 8px; padding-bottom: 8px">
             ${data?.tenantName}
@@ -1478,61 +1504,19 @@ padding-left: 30px;
             ${DateTime.parse(data!.inspectionDate.toString()).day.toString() + "-" + DateTime.parse(data!.inspectionDate.toString()).month.toString() + "-" + DateTime.parse(data!.inspectionDate.toString()).year.toString()}
           </td>
         </tr>
-        <tr>
-          <td
-            style="
-              font-size: 14px;
-              font-weight: bold;
-              padding-top: 8px;
-              padding-bottom: 8px;
-            "
-          >
-            EPC Expiry Date
-          </td>
-          <td style="font-size: 14px; padding-top: 8px; padding-bottom: 8px">
-           ${DateTime.parse(data!.ecpExpDate.toString()).day.toString() + "-" + DateTime.parse(data!.ecpExpDate.toString()).month.toString() + "-" + DateTime.parse(data!.ecpExpDate.toString()).year.toString()}
-          </td>
-        </tr>
-        <tr>
-          <td
-            style="
-              font-size: 14px;
-              font-weight: bold;
-              padding-top: 8px;
-              padding-bottom: 8px;
-            "
-          >
-            Gas Safety Certificate Expiry Date
-          </td>
-          <td style="font-size: 14px; padding-top: 8px; padding-bottom: 8px">
-           ${DateTime.parse(data!.gasSafetyCertificateExpDate.toString()).day.toString() + "-" + DateTime.parse(data!.gasSafetyCertificateExpDate.toString()).month.toString() + "-" + DateTime.parse(data!.gasSafetyCertificateExpDate.toString()).year.toString()}
-          </td>
-        </tr>
-        <tr>
-          <td
-            style="
-              font-size: 14px;
-              font-weight: bold;
-              padding-top: 8px;
-              padding-bottom: 8px;
-            "
-          >
-            EICR Expiry Date
-          </td>
-          <td style="font-size: 14px; padding-top: 8px; padding-bottom: 8px">
-            ${DateTime.parse(data!.ecirExpDate.toString()).day.toString() + "-" + DateTime.parse(data!.ecirExpDate.toString()).month.toString() + "-" + DateTime.parse(data!.ecirExpDate.toString()).year.toString()}
-          </td>
-        </tr>
+        
+       
       </table>
     </div>
+   
     <div
       style="
-        font-size: 18px;
+        font-size: 20px;
         color: #03a5fc;
         margin-left: 36px;
          text-align: center;
         font-weight: bold;
-        margin-top: 6px;
+        margin-top: 20px;
       "
     >
       Summary
@@ -1558,6 +1542,14 @@ padding-left: 30px;
     <br> <br>
     <br> 
     <br> 
+    <br>
+    <br> 
+    <br> 
+    <br>
+    <br> 
+    
+   
+   
     <div
       style="
         font-size: 18px;
@@ -1565,7 +1557,8 @@ padding-left: 30px;
         margin-left: 48px;
          text-align: center;
         font-weight: bold;
-        margin-top: 6px;
+        margin-top: 10px;
+
       "
     >
       Important Information
@@ -2186,7 +2179,7 @@ padding-left: 30px;
       style="
         font-size: 24px;
         color: #03a5fc;
-        height:1045px;
+        height:1048px;
         margin-left: 48px;
         font-weight: bold;
         margin-top: 5px;
@@ -2197,7 +2190,7 @@ padding-left: 30px;
     <br>
     <br>
     
-    <div style="margin-left: 40px; font-size: 16px;">
+    <div style="margin-left: 40px; font-size: 18px;">
       ${e.name}
     </div>
     <div style="margin-left: 38px; margin-right: 38px; margin-top: 10px">
@@ -2214,13 +2207,18 @@ padding-left: 30px;
                             <td style="font-size: 12px;">Appliances</td>
                             <td style="font-size: 10px;font-weight: 500;">${e.appliances}</td>
                             </tr>''' : ''''''}
+                             ${e.name == "Kitchen" ? '''<tr>
+                            <td style="font-size: 12px;">Units</td>
+                            <td style="font-size: 10px;font-weight: 500;">${e.units}</td>
+                            </tr>''' : ''''''}
         <tr>
+        
           <td style="font-size: 12px;">Walls</td>
           <td style="font-size: 10px;font-weight: 500;">${e.walls}</td>
         </tr>
         ${e.name != "Rear Garden" && e.name != "Front & Side Aspects" ? '''<tr>
           <td style="font-size: 12px;">Ceiling</td>
-          <td style="font-size: 10px;font-weight: 500;">${e.ceiling}</td>
+          <td style="font-size: 10px;font-weight: 500;">${e.ceiling != null ? e.ceiling : ""}</td>
         </tr>''' : ''''''}
         <tr>
           <td style="font-size: 12px;">Windows</td>
@@ -2232,7 +2230,7 @@ padding-left: 30px;
         </tr>
         <tr>
           <td style="font-size: 12px;">Details</td>
-          <td style="font-size: 10px;font-weight: 500;">${e.description}</td>
+          <td style="font-size: 10px;font-weight: 500;">${e.description != null ? e.description : ""}</td>
         </tr>
       </table>
     </div>
