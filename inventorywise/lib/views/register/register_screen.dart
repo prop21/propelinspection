@@ -140,7 +140,7 @@ class Register_Screen extends StatelessWidget {
                         final ImagePicker picker = ImagePicker();
 // Pick an image.
                         final pickedFile =
-                            await picker.getImage(source: ImageSource.gallery);
+                            await picker.pickImage(source: ImageSource.gallery);
                         File imagedata = File(pickedFile!.path);
                         if (imagedata == null) return;
                         final imageTemp = File(imagedata.path);

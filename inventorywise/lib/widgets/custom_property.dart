@@ -110,6 +110,19 @@ class CustomPropertyState extends State<CustomProperty> {
         : et9.text = "Fair";
   }
 
+  void dispose() {
+    super.dispose();
+    et1.dispose();
+    et2.dispose();
+    et3.dispose();
+    et4.dispose();
+    et5.dispose();
+    et6.dispose();
+    et7.dispose();
+    et8.dispose();
+    et9.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -370,7 +383,9 @@ class CustomPropertyState extends State<CustomProperty> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[0] = url1;
-                                  await Gal.putImage(imaage.path);
+                                  if (imaage.existsSync()) {
+                                    await Gal.putImage(imaage.path);
+                                  }
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -452,7 +467,9 @@ class CustomPropertyState extends State<CustomProperty> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[1] = url2;
-                                  await Gal.putImage(image1.path);
+                                  if (image1.existsSync()) {
+                                    await Gal.putImage(image1.path);
+                                  }
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -534,7 +551,10 @@ class CustomPropertyState extends State<CustomProperty> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[2] = url3;
-                                  await Gal.putImage(image2.path);
+                                  // await Gal.putImage(image2.path);
+                                  if (image2.existsSync()) {
+                                    await Gal.putImage(image2.path);
+                                  }
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -621,7 +641,10 @@ class CustomPropertyState extends State<CustomProperty> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[3] = url4;
-                                  await Gal.putImage(image3.path);
+                                  // await Gal.putImage(image3.path);
+                                  if (image3.existsSync()) {
+                                    await Gal.putImage(image3.path);
+                                  }
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -701,7 +724,10 @@ class CustomPropertyState extends State<CustomProperty> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[4] = url5;
-                                  await Gal.putImage(image5.path);
+                                  // await Gal.putImage(image5.path);
+                                  if (image5.existsSync()) {
+                                    await Gal.putImage(image5.path);
+                                  }
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -781,7 +807,10 @@ class CustomPropertyState extends State<CustomProperty> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[5] = url6;
-                                  await Gal.putImage(image5.path);
+                                  // await Gal.putImage(image5.path);
+                                  if (image5.existsSync()) {
+                                    await Gal.putImage(image5.path);
+                                  }
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -869,7 +898,10 @@ class CustomPropertyState extends State<CustomProperty> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[6] = url7;
-                                  await Gal.putImage(image6.path);
+                                  // await Gal.putImage(image6.path);
+                                  if (image6.existsSync()) {
+                                    await Gal.putImage(image6.path);
+                                  }
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -949,7 +981,10 @@ class CustomPropertyState extends State<CustomProperty> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[7] = url8;
-                                  await Gal.putImage(image7.path);
+                                  // await Gal.putImage(image7.path);
+                                  if (image7.existsSync()) {
+                                    await Gal.putImage(image7.path);
+                                  }
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -1029,7 +1064,10 @@ class CustomPropertyState extends State<CustomProperty> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[8] = url9;
-                                  await Gal.putImage(image8.path);
+                                  // await Gal.putImage(image8.path);
+                                  if (image8.existsSync()) {
+                                    await Gal.putImage(image8.path);
+                                  }
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -1177,6 +1215,19 @@ class CustomPropertyState1 extends State<CustomProperty1> {
     widget.data?[widget.index].images?[6] = widget.imgurl[6].toString();
     widget.data?[widget.index].images?[7] = widget.imgurl[7].toString();
     widget.data?[widget.index].images?[8] = widget.imgurl[8].toString();
+  }
+
+  void dispose() {
+    super.dispose();
+    et1.dispose();
+    et2.dispose();
+    et3.dispose();
+    et4.dispose();
+    et5.dispose();
+    et6.dispose();
+    et7.dispose();
+    et8.dispose();
+    et9.dispose();
   }
 
   @override
@@ -1473,7 +1524,10 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[0] = url1;
-                                  await Gal.putImage(image.path);
+                                  // await Gal.putImage(image.path);
+                                  if (image.existsSync()) {
+                                    await Gal.putImage(image.path);
+                                  }
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -1566,7 +1620,10 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[1] = url2;
-                                  await Gal.putImage(image1.path);
+                                  // await Gal.putImage(image1.path);
+                                  if (image1.existsSync()) {
+                                    await Gal.putImage(image1.path);
+                                  }
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -1659,7 +1716,10 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[2] = url3;
-                                  await Gal.putImage(image2.path);
+                                  // await Gal.putImage(image2.path);
+                                  if (image2.existsSync()) {
+                                    await Gal.putImage(image2.path);
+                                  }
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -1762,7 +1822,10 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[3] = url4;
-                                  await Gal.putImage(image3.path);
+                                  // await Gal.putImage(image3.path);
+                                  if (image3.existsSync()) {
+                                    await Gal.putImage(image3.path);
+                                  }
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -1853,7 +1916,10 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[4] = url5;
-                                  await Gal.putImage(image4.path);
+                                  // await Gal.putImage(image4.path);
+                                  if (image4.existsSync()) {
+                                    await Gal.putImage(image4.path);
+                                  }
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -1944,7 +2010,10 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[5] = url6;
-                                  await Gal.putImage(image5.path);
+                                  // await Gal.putImage(image5.path);
+                                  if (image5.existsSync()) {
+                                    await Gal.putImage(image5.path);
+                                  }
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -2043,7 +2112,10 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[6] = url7;
-                                  await Gal.putImage(image6.path);
+                                  // await Gal.putImage(image6.path);
+                                  if (image6.existsSync()) {
+                                    await Gal.putImage(image6.path);
+                                  }
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -2134,7 +2206,10 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[7] = url8;
-                                  await Gal.putImage(image7.path);
+                                  // await Gal.putImage(image7.path);
+                                  if (image7.existsSync()) {
+                                    await Gal.putImage(image7.path);
+                                  }
                                 },
                                 child: Icon(
                                   Icons.camera_alt,
@@ -2225,7 +2300,10 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                   imagess = imagess.toSet().toList();
                                   // widget.data?[widget.index].images = imagess;
                                   widget.data?[widget.index].images?[8] = url9;
-                                  await Gal.putImage(image8.path);
+                                  // await Gal.putImage(image8.path);
+                                  if (image8.existsSync()) {
+                                    await Gal.putImage(image8.path);
+                                  }
                                 },
                                 child: Icon(
                                   Icons.camera_alt,

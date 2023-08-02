@@ -251,8 +251,10 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                       controller.mainimage = await controller
                                           .upload(controller.maini.value);
                                     }
-                                    await Gal.putImage(
-                                        controller.maini.value.path);
+                                    if (controller.maini.value.existsSync()) {
+                                      await Gal.putImage(
+                                          controller.maini.value.path);
+                                    }
                                   },
                                   child: Icon(
                                     Icons.camera_alt,
@@ -637,8 +639,11 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                       controller
                                                           .electric.value);
                                             }
-                                            await Gal.putImage(
-                                                controller.electric.value.path);
+                                            if (controller.electric.value
+                                                .existsSync()) {
+                                              await Gal.putImage(controller
+                                                  .electric.value.path);
+                                            }
                                           },
                                           child: Icon(
                                             Icons.camera_alt,
@@ -827,8 +832,11 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                       controller
                                                           .gasmeter.value);
                                             }
-                                            await Gal.putImage(
-                                                controller.gasmeter.value.path);
+                                            if (controller.gasmeter.value
+                                                .existsSync()) {
+                                              await Gal.putImage(controller
+                                                  .gasmeter.value.path);
+                                            }
                                           },
                                           child: Icon(
                                             Icons.camera_alt,
@@ -1019,8 +1027,9 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                       controller
                                                           .watermeter.value);
                                             }
-                                            await Gal.putImage(controller
-                                                .watermeter.value.path);
+                                            if (controller.watermeter.value.existsSync()) {
+                                              await Gal.putImage(controller.watermeter.value.path);
+                                            }
                                           },
                                           child: Icon(
                                             Icons.camera_alt,
@@ -1194,8 +1203,9 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                       controller
                                                           .smokealarm.value);
                                             }
-                                            await Gal.putImage(controller
-                                                .smokealarm.value.path);
+                                            if (controller.smokealarm.value.existsSync()) {
+                                              await Gal.putImage(controller.smokealarm.value.path);
+                                            }
                                           },
                                           child: Icon(
                                             Icons.camera_alt,
@@ -1293,8 +1303,9 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                       controller
                                                           .smokealar.value);
                                             }
-                                            await Gal.putImage(controller
-                                                .smokealar.value.path);
+                                            if (controller.smokealar.value.existsSync()) {
+                                              await Gal.putImage(controller.smokealar.value.path);
+                                            }
                                           },
                                           child: Icon(
                                             Icons.camera_alt,
@@ -1459,8 +1470,9 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                   await controller.upload(
                                                       controller.coal.value);
                                             }
-                                            await Gal.putImage(
-                                                controller.coal.value.path);
+                                            if (controller.coal.value.existsSync()) {
+                                              await Gal.putImage(controller.coal.value.path);
+                                            }
                                           },
                                           child: Icon(
                                             Icons.camera_alt,
@@ -1554,8 +1566,9 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                   await controller.upload(
                                                       controller.coalarm.value);
                                             }
-                                            await Gal.putImage(
-                                                controller.coalarm.value.path);
+                                            if (controller.coalarm.value.existsSync()) {
+                                              await Gal.putImage(controller.coalarm.value.path);
+                                            }
                                           },
                                           child: Icon(
                                             Icons.camera_alt,
@@ -1735,8 +1748,9 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                 await controller.upload(
                                                     controller.heating.value);
                                           }
-                                          await Gal.putImage(
-                                              controller.heating.value.path);
+                                          if (controller.heating.value.existsSync()) {
+                                            await Gal.putImage(controller.heating.value.path);
+                                          }
                                         },
                                         child: Icon(
                                           Icons.camera_alt,

@@ -476,7 +476,7 @@ class Home_Screen extends StatelessWidget {
               child: Padding(
                   padding: EdgeInsets.only(bottom: 20),
                   child: Text(
-                    "Version: 1.8.2",
+                    "Version: 1.8.4",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   )),
             )

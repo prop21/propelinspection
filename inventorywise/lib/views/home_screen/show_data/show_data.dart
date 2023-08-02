@@ -2226,7 +2226,7 @@ padding-left: 30px;
         </tr>
         <tr>
           <td style="font-size: 12px;">Doors</td>
-          <td style="font-size: 10px;font-weight: 500;">${e.walls}</td>
+          <td style="font-size: 10px;font-weight: 500;">${e.doors}</td>
         </tr>
         <tr>
           <td style="font-size: 12px;">Details</td>
