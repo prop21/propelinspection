@@ -222,6 +222,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                       Paths.baseUrl + "/" + widget.data.mainImg,
                                       fit: BoxFit.contain,
                                       height: 120,
+                                      cacheHeight: 150,
+                                      cacheWidth: 200,
                                       width: widget.data.mainImg.isNotEmpty
                                           ? 160
                                           : Get.width),
@@ -594,6 +596,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                   .electric.value.path
                                                   .toString()),
                                               fit: BoxFit.contain,
+                                              cacheHeight: 150,
+                                              cacheWidth: 200,
                                               height: 120,
                                               width: Get.width,
                                             )
@@ -604,6 +608,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                           .electricityMeterImg)
                                                       .toString(),
                                               fit: BoxFit.contain,
+                                              cacheHeight: 150,
+                                              cacheWidth: 200,
                                               height: 120,
                                               width: Get.width,
                                             ),
@@ -787,6 +793,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                               File(controller
                                                   .gasmeter.value.path
                                                   .toString()),
+                                              cacheHeight: 150,
+                                              cacheWidth: 200,
                                               fit: BoxFit.contain,
                                               height: 120,
                                               width: Get.width,
@@ -796,6 +804,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                   "/" +
                                                   widget.data.gasMeterImg
                                                       .toString(),
+                                              cacheHeight: 150,
+                                              cacheWidth: 200,
                                               fit: BoxFit.contain,
                                               height: 120,
                                               width: Get.width,
@@ -982,6 +992,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                               File(controller
                                                   .watermeter.value.path
                                                   .toString()),
+                                              cacheHeight: 150,
+                                              cacheWidth: 200,
                                               fit: BoxFit.contain,
                                               height: 120,
                                               width: Get.width,
@@ -992,6 +1004,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                   (widget.data.waterMeterImg)
                                                       .toString(),
                                               fit: BoxFit.contain,
+                                              cacheHeight: 150,
+                                              cacheWidth: 200,
                                               height: 120,
                                               width: Get.width,
                                             ),
@@ -1027,8 +1041,10 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                       controller
                                                           .watermeter.value);
                                             }
-                                            if (controller.watermeter.value.existsSync()) {
-                                              await Gal.putImage(controller.watermeter.value.path);
+                                            if (controller.watermeter.value
+                                                .existsSync()) {
+                                              await Gal.putImage(controller
+                                                  .watermeter.value.path);
                                             }
                                           },
                                           child: Icon(
@@ -1159,6 +1175,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                   .toString()),
                                               fit: BoxFit.contain,
                                               height: 120,
+                                              cacheHeight: 150,
+                                              cacheWidth: 200,
                                               width: Get.width,
                                             )
                                           : Image.network(
@@ -1169,6 +1187,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                       .toString(),
                                               fit: BoxFit.contain,
                                               height: 120,
+                                              cacheHeight: 150,
+                                              cacheWidth: 200,
                                               width: Get.width,
                                             ),
                                       Align(
@@ -1203,8 +1223,10 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                       controller
                                                           .smokealarm.value);
                                             }
-                                            if (controller.smokealarm.value.existsSync()) {
-                                              await Gal.putImage(controller.smokealarm.value.path);
+                                            if (controller.smokealarm.value
+                                                .existsSync()) {
+                                              await Gal.putImage(controller
+                                                  .smokealarm.value.path);
                                             }
                                           },
                                           child: Icon(
@@ -1259,6 +1281,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                   .smokealar.value.path
                                                   .toString()),
                                               fit: BoxFit.contain,
+                                              cacheHeight: 150,
+                                              cacheWidth: 200,
                                               height: 120,
                                               width: Get.width,
                                             )
@@ -1268,6 +1292,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                   widget.data.smokeAlarmBackImg
                                                       .toString(),
                                               fit: BoxFit.contain,
+                                              cacheHeight: 150,
+                                              cacheWidth: 200,
                                               height: 120,
                                               width: Get.width,
                                             ),
@@ -1303,8 +1329,10 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                       controller
                                                           .smokealar.value);
                                             }
-                                            if (controller.smokealar.value.existsSync()) {
-                                              await Gal.putImage(controller.smokealar.value.path);
+                                            if (controller.smokealar.value
+                                                .existsSync()) {
+                                              await Gal.putImage(controller
+                                                  .smokealar.value.path);
                                             }
                                           },
                                           child: Icon(
@@ -1429,6 +1457,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                   .toString()),
                                               fit: BoxFit.contain,
                                               height: 120,
+                                              cacheHeight: 150,
+                                              cacheWidth: 200,
                                               width: Get.width,
                                             )
                                           : Image.network(
@@ -1438,6 +1468,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                       .toString(),
                                               fit: BoxFit.contain,
                                               height: 120,
+                                              cacheHeight: 150,
+                                              cacheWidth: 200,
                                               width: Get.width,
                                             ),
                                       Align(
@@ -1470,8 +1502,10 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                   await controller.upload(
                                                       controller.coal.value);
                                             }
-                                            if (controller.coal.value.existsSync()) {
-                                              await Gal.putImage(controller.coal.value.path);
+                                            if (controller.coal.value
+                                                .existsSync()) {
+                                              await Gal.putImage(
+                                                  controller.coal.value.path);
                                             }
                                           },
                                           child: Icon(
@@ -1524,6 +1558,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                   .toString()),
                                               fit: BoxFit.contain,
                                               height: 120,
+                                              cacheHeight: 150,
+                                              cacheWidth: 200,
                                               width: Get.width,
                                             )
                                           : Image.network(
@@ -1533,6 +1569,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                       .toString(),
                                               fit: BoxFit.contain,
                                               height: 120,
+                                              cacheHeight: 150,
+                                              cacheWidth: 200,
                                               width: Get.width,
                                             ),
                                       Align(
@@ -1566,8 +1604,10 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                   await controller.upload(
                                                       controller.coalarm.value);
                                             }
-                                            if (controller.coalarm.value.existsSync()) {
-                                              await Gal.putImage(controller.coalarm.value.path);
+                                            if (controller.coalarm.value
+                                                .existsSync()) {
+                                              await Gal.putImage(controller
+                                                  .coalarm.value.path);
                                             }
                                           },
                                           child: Icon(
@@ -1705,6 +1745,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                         ? Image.file(
                                             File(controller.heating.value.path
                                                 .toString()),
+                                            cacheHeight: 150,
+                                            cacheWidth: 200,
                                             fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
@@ -1714,6 +1756,8 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                 "/" +
                                                 widget.data.heatingSystemImg
                                                     .toString(),
+                                            cacheHeight: 150,
+                                            cacheWidth: 200,
                                             fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
@@ -1748,8 +1792,10 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                                                 await controller.upload(
                                                     controller.heating.value);
                                           }
-                                          if (controller.heating.value.existsSync()) {
-                                            await Gal.putImage(controller.heating.value.path);
+                                          if (controller.heating.value
+                                              .existsSync()) {
+                                            await Gal.putImage(
+                                                controller.heating.value.path);
                                           }
                                         },
                                         child: Icon(
@@ -1915,6 +1961,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                   ),
                   InkWell(
                     onTap: () {
+                      controller.countb.value = 0;
                       controller.bottomSheet(controller.sig1.value);
                     },
                     child: controller.sig1.value.existsSync()
@@ -1960,6 +2007,7 @@ class UpdateDataScreenState extends State<UpdateDataScreen> {
                   ),
                   InkWell(
                     onTap: () {
+                      controller.countb.value = 0;
                       controller.bottomSheet1(controller.sig2.value);
                     },
                     child: controller.sig2.value.existsSync()

@@ -161,6 +161,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                 File(controller.maini.value.path.toString()),
                                 fit: BoxFit.cover,
                                 height: 120,
+                                cacheHeight: 150,
+                                cacheWidth: 200,
                                 width: Get.width,
                               ),
                               Align(
@@ -538,6 +540,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                             .toString()),
                                         fit: BoxFit.contain,
                                         height: 120,
+                                        cacheHeight: 150,
+                                        cacheWidth: 200,
                                         width: Get.width,
                                       ),
                                       Align(
@@ -721,6 +725,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                         File(controller.gasmeter.value.path
                                             .toString()),
                                         fit: BoxFit.contain,
+                                        cacheHeight: 150,
+                                        cacheWidth: 200,
                                         height: 120,
                                         width: Get.width,
                                       ),
@@ -929,6 +935,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                             File(controller
                                                 .watermeter.value.path
                                                 .toString()),
+                                            cacheHeight: 150,
+                                            cacheWidth: 200,
                                             fit: BoxFit.contain,
                                             height: 120,
                                             width: Get.width,
@@ -1096,6 +1104,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                         File(controller.smokealarm.value.path
                                             .toString()),
                                         fit: BoxFit.contain,
+                                        cacheHeight: 150,
+                                        cacheWidth: 200,
                                         height: 120,
                                         width: Get.width,
                                       ),
@@ -1121,6 +1131,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                                 .smokealarm.value.path
                                                 .toString()),
                                             fit: BoxFit.contain,
+                                            cacheHeight: 150,
+                                            cacheWidth: 200,
                                             height: 120,
                                             width: Get.width,
                                           ),
@@ -1212,6 +1224,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                         File(controller.smokealar.value.path
                                             .toString()),
                                         fit: BoxFit.contain,
+                                        cacheHeight: 150,
+                                        cacheWidth: 200,
                                         height: 120,
                                         width: Get.width,
                                       ),
@@ -1236,6 +1250,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                             File(controller.smokealar.value.path
                                                 .toString()),
                                             fit: BoxFit.contain,
+                                            cacheHeight: 150,
+                                            cacheWidth: 200,
                                             height: 120,
                                             width: Get.width,
                                           ),
@@ -1427,6 +1443,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                                 .toString()),
                                             fit: BoxFit.contain,
                                             height: 120,
+                                            cacheHeight: 150,
+                                            cacheWidth: 200,
                                             width: Get.width,
                                           ),
                                           Align(
@@ -1539,6 +1557,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                             File(controller.coalarm.value.path
                                                 .toString()),
                                             fit: BoxFit.contain,
+                                            cacheHeight: 150,
+                                            cacheWidth: 200,
                                             height: 120,
                                             width: Get.width,
                                           ),
@@ -1702,6 +1722,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                     File(controller.heating.value.path
                                         .toString()),
                                     fit: BoxFit.contain,
+                                    cacheHeight: 150,
+                                    cacheWidth: 200,
                                     height: 120,
                                     width: Get.width,
                                   ),
@@ -1727,6 +1749,8 @@ class AddDataScreenState extends State<AddDataScreen> {
                                             .toString()),
                                         fit: BoxFit.contain,
                                         height: 120,
+                                        cacheHeight: 150,
+                                        cacheWidth: 200,
                                         width: Get.width,
                                       ),
                                       Align(
@@ -1904,6 +1928,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                   ),
                   InkWell(
                     onTap: () {
+                      controller.countb.value=0;
                       controller.bottomSheet(controller.sig1.value);
                     },
                     child: Container(
@@ -1934,6 +1959,7 @@ class AddDataScreenState extends State<AddDataScreen> {
                   ),
                   InkWell(
                     onTap: () {
+                      controller.countb.value=0;
                       controller.bottomSheet1(controller.sig2.value);
                     },
                     child: Container(

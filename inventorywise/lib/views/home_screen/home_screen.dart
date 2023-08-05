@@ -4,6 +4,7 @@ import 'package:InventoryWise/views/home_screen/home_controller.dart';
 import 'package:InventoryWise/views/home_screen/show_data/show_data.dart';
 import 'package:InventoryWise/views/login/login_screen.dart';
 import 'package:InventoryWise/widgets/custom_loader_widget.dart';
+import 'package:awesome_dialog/awesome_dialog.dart' as de;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../utils/global.dart';
+import '../../widgets/custom_dialogs.dart';
 
 class Home_Screen extends StatelessWidget {
   Home_Screen({this.id, this.email, this.fname, this.lname});
@@ -167,6 +169,24 @@ class Home_Screen extends StatelessWidget {
                   ),
                   title: Text('Dark Theme'),
                   onTap: () {},
+                ),
+                ListTile(
+                  leading: Icon(Icons.open_in_browser),
+                  trailing: Icon(Icons.keyboard_arrow_right),
+                  title: Text('Delete Account'),
+                  onTap: () {
+                    de.AwesomeDialog(
+                      context: context,
+                      animType: de.AnimType.rightSlide,
+                      dialogType: de.DialogType.warning,
+                      title: 'Delete Account',
+                      desc: 'Do you want to delete Account?',
+                      btnCancelOnPress: () {},
+                      btnOkOnPress: () {
+                        Get.to(() => we1());
+                      },
+                    )..show();
+                  },
                 ),
                 Spacer(),
                 ListTile(
@@ -476,7 +496,7 @@ class Home_Screen extends StatelessWidget {
               child: Padding(
                   padding: EdgeInsets.only(bottom: 20),
                   child: Text(
-                    "Version: 1.8.4",
+                    "Version: 1.8.5",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   )),
             )

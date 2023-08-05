@@ -2095,7 +2095,7 @@ padding-left: 30px;
           "
         >
           <div style="font-size: 12px; color: #03a5fc; font-weight: bold">
-            Smoking Alarm:<span
+            Smoke Alarm:<span
               style="font-size: 12px; color: black; font-weight: bold"
               >${data?.smokeAlarm}</span
             >

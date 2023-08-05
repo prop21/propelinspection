@@ -25,7 +25,7 @@ class Landing_Screen extends StatelessWidget {
             ),
             Spacer(),
             Text(
-              "Version:1.8.4",
+              "Version:1.8.5",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             SizedBox(

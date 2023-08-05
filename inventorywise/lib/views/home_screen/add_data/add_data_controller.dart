@@ -37,6 +37,7 @@ class AddDataController extends GetxController {
     pp.PropertyDetails(name: 'Bathroom 1'),
     pp.PropertyDetails(name: 'Bathroom 2'),
   ].obs;
+  var countb = 0.obs;
   var items = [
     0,
     1,
@@ -79,6 +80,7 @@ class AddDataController extends GetxController {
   var t6 = "Yes".obs;
   var sig1 = File("").obs;
   var sig2 = File("").obs;
+  var bloc = false.obs;
 
   List<TextEditingController> f = [];
 
@@ -146,9 +148,9 @@ class AddDataController extends GetxController {
   Future pickImages() async {
     try {
       final imagedata = await ImagePicker().pickImage(
-          source: ImageSource.camera,
-          imageQuality: 10,
-          );
+        source: ImageSource.camera,
+        imageQuality: 10,
+      );
       if (imagedata == null) return;
       final imageTemp = File(imagedata.path);
       return imageTemp;
@@ -270,7 +272,10 @@ class AddDataController extends GetxController {
                       MaterialButton(
                         onPressed: () async {
                           inspector = await upload(sig1.value);
-                          Get.back();
+                          if (await countb.value == 0) {
+                            countb.value = 1;
+                            Get.back();
+                          }
                         },
                         child: Text("Save"),
                         color: Colors.blue,
@@ -336,7 +341,10 @@ class AddDataController extends GetxController {
                   MaterialButton(
                     onPressed: () async {
                       tenant = await upload(sig2.value);
-                      Get.back();
+                      if (await countb.value == 0) {
+                        countb.value = 1;
+                        Get.back();
+                      }
                     },
                     child: Text("Save"),
                     color: Colors.blue,
