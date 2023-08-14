@@ -78,7 +78,7 @@ class CustomPropertyState extends State<CustomProperty> {
     // widget.data?.add(pd!);
     // widget.data?[widget.index] = pd!;
     widget.data?[widget.index].name = widget.name;
-    widget.data?[widget.index].images = imagess;
+
     // widget.data = widget.data?.toSet().toList();
     et2.text = "Fair";
     et3.text = "Fair";
@@ -126,7 +126,7 @@ class CustomPropertyState extends State<CustomProperty> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-
+    widget.data?[widget.index].images = imagess;
     return Container(
       padding: EdgeInsets.all(5),
       margin: EdgeInsets.only(bottom: 15),
@@ -1206,7 +1206,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
     // widget.data?.add(pd!);
     // widget.data?[widget.index] = pd!;
     widget.data?[widget.index].name = widget.name;
-    widget.data?[widget.index].images = imagess;
+
     // widget.data = widget.data?.toSet().toList();
     et2.text = "Fair";
     et3.text = "Fair";
@@ -1274,7 +1274,7 @@ class CustomPropertyState1 extends State<CustomProperty1> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-
+    widget.data?[widget.index].images = imagess;
     return Container(
       padding: EdgeInsets.all(5),
       margin: EdgeInsets.only(bottom: 15),
@@ -1506,11 +1506,10 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
-                              cacheHeight: 150,
-                              cacheWidth: 200,
+                                    cacheHeight: 150,
+                                    cacheWidth: 200,
                                   )
-                                :
-                            Image.network(
+                                : Image.network(
                                     Paths.baseUrl +
                                         "/" +
                                         widget.imgurl[0].toString(),
@@ -1605,16 +1604,16 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
-                              cacheHeight: 150,
-                              cacheWidth: 200,
+                                    cacheHeight: 150,
+                                    cacheWidth: 200,
                                   )
                                 : Image.network(
                                     Paths.baseUrl +
                                         "/" +
                                         widget.imgurl[1].toString(),
                                     fit: BoxFit.contain,
-                              cacheHeight: 150,
-                              cacheWidth: 200,
+                                    cacheHeight: 150,
+                                    cacheWidth: 200,
                                     height: 120,
                                     width: Get.width,
                                   ),
@@ -1704,16 +1703,16 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
-                              cacheHeight: 150,
-                              cacheWidth: 200,
+                                    cacheHeight: 150,
+                                    cacheWidth: 200,
                                   )
                                 : Image.network(
                                     Paths.baseUrl +
                                         "/" +
                                         widget.imgurl[2].toString(),
                                     fit: BoxFit.contain,
-                              cacheHeight: 150,
-                              cacheWidth: 200,
+                                    cacheHeight: 150,
+                                    cacheWidth: 200,
                                     height: 120,
                                     width: Get.width,
                                   ),
@@ -1813,16 +1812,16 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                       fit: BoxFit.contain,
                                       height: 120,
                                       width: Get.width,
-                                cacheHeight: 150,
-                                cacheWidth: 200,
+                                      cacheHeight: 150,
+                                      cacheWidth: 200,
                                     )
                                   : Image.network(
                                       Paths.baseUrl +
                                           "/" +
                                           widget.imgurl[3].toString(),
                                       fit: BoxFit.contain,
-                                cacheHeight: 150,
-                                cacheWidth: 200,
+                                      cacheHeight: 150,
+                                      cacheWidth: 200,
                                       height: 120,
                                       width: Get.width,
                                     ),
@@ -1914,16 +1913,16 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
-                              cacheHeight: 150,
-                              cacheWidth: 200,
+                                    cacheHeight: 150,
+                                    cacheWidth: 200,
                                   )
                                 : Image.network(
                                     Paths.baseUrl +
                                         "/" +
                                         widget.imgurl[4].toString(),
                                     fit: BoxFit.contain,
-                              cacheHeight: 150,
-                              cacheWidth: 200,
+                                    cacheHeight: 150,
+                                    cacheWidth: 200,
                                     height: 120,
                                     width: Get.width,
                                   ),
@@ -2012,16 +2011,16 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     fit: BoxFit.contain,
                                     height: 120,
                                     width: Get.width,
-                              cacheHeight: 150,
-                              cacheWidth: 200,
+                                    cacheHeight: 150,
+                                    cacheWidth: 200,
                                   )
                                 : Image.network(
                                     Paths.baseUrl +
                                         "/" +
                                         widget.imgurl[5].toString(),
                                     fit: BoxFit.contain,
-                              cacheHeight: 150,
-                              cacheWidth: 200,
+                                    cacheHeight: 150,
+                                    cacheWidth: 200,
                                     height: 120,
                                     width: Get.width,
                                   ),
@@ -2117,8 +2116,8 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     File(image6.path.toString()),
                                     fit: BoxFit.contain,
                                     height: 120,
-                              cacheHeight: 150,
-                              cacheWidth: 200,
+                                    cacheHeight: 150,
+                                    cacheWidth: 200,
                                     width: Get.width,
                                   )
                                 : Image.network(
@@ -2126,8 +2125,8 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                         "/" +
                                         widget.imgurl[6].toString(),
                                     fit: BoxFit.contain,
-                              cacheHeight: 150,
-                              cacheWidth: 200,
+                                    cacheHeight: 150,
+                                    cacheWidth: 200,
                                     height: 120,
                                     width: Get.width,
                                   ),
@@ -2215,8 +2214,8 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     File(image7.path.toString()),
                                     fit: BoxFit.contain,
                                     height: 120,
-                              cacheHeight: 150,
-                              cacheWidth: 200,
+                                    cacheHeight: 150,
+                                    cacheWidth: 200,
                                     width: Get.width,
                                   )
                                 : Image.network(
@@ -2225,8 +2224,8 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                         widget.imgurl[7].toString(),
                                     fit: BoxFit.contain,
                                     height: 120,
-                              cacheHeight: 150,
-                              cacheWidth: 200,
+                                    cacheHeight: 150,
+                                    cacheWidth: 200,
                                     width: Get.width,
                                   ),
                             Align(
@@ -2313,8 +2312,8 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                     File(image8.path.toString()),
                                     fit: BoxFit.contain,
                                     height: 120,
-                              cacheHeight: 150,
-                              cacheWidth: 200,
+                                    cacheHeight: 150,
+                                    cacheWidth: 200,
                                     width: Get.width,
                                   )
                                 : Image.network(
@@ -2322,8 +2321,8 @@ class CustomPropertyState1 extends State<CustomProperty1> {
                                         "/" +
                                         widget.imgurl[8].toString(),
                                     fit: BoxFit.contain,
-                              cacheHeight: 150,
-                              cacheWidth: 200,
+                                    cacheHeight: 150,
+                                    cacheWidth: 200,
                                     height: 120,
                                     width: Get.width,
                                   ),

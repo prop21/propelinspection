@@ -661,13 +661,27 @@ class Show_Data_Screen extends StatelessWidget {
                           Divider(
                             thickness: 1.5,
                           ),
-                          Image.network(
-                            Paths.baseUrl +
-                                "/" +
-                                data!.smokeAlarmFrontImg.toString(),
-                            height: 120,
-                            width: Get.width,
-                            fit: BoxFit.contain,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.network(
+                                Paths.baseUrl +
+                                    "/" +
+                                    data!.smokeAlarmFrontImg.toString(),
+                                height: 120,
+                                width: 150,
+                                fit: BoxFit.contain,
+                              ),
+                              Spacer(),
+                              Image.network(
+                                Paths.baseUrl +
+                                    "/" +
+                                    data!.smokeAlarmBackImg.toString(),
+                                height: 120,
+                                width: 150,
+                                fit: BoxFit.contain,
+                              )
+                            ],
                           )
                         ],
                       ),
@@ -719,13 +733,27 @@ class Show_Data_Screen extends StatelessWidget {
                           Divider(
                             thickness: 1.5,
                           ),
-                          Image.network(
-                            Paths.baseUrl +
-                                "/" +
-                                data!.coAlarmFrontImg.toString(),
-                            height: 120,
-                            width: Get.width,
-                            fit: BoxFit.contain,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.network(
+                                Paths.baseUrl +
+                                    "/" +
+                                    data!.coAlarmFrontImg.toString(),
+                                height: 120,
+                                width: 150,
+                                fit: BoxFit.contain,
+                              ),
+                              Spacer(),
+                              Image.network(
+                                Paths.baseUrl +
+                                    "/" +
+                                    data!.coAlarmBackImg.toString(),
+                                height: 120,
+                                width: 150,
+                                fit: BoxFit.contain,
+                              )
+                            ],
                           )
                         ],
                       ),
@@ -2107,9 +2135,11 @@ padding-left: 30px;
         <hr
           style="border: 1px solid #03a5fc; margin-left: 24px; margin-right: 24px"
         />
-        
+        <div style="
+            display: flex;
+            justify-content: space-between;">
         <img
-            style="border-radius: 12px; width: 250px; height: 180px;display: block; text-align: center;object-fit: cover;
+            style="border-radius: 12px; width: 120px; height: 180px;display: block; text-align: center;object-fit: cover;
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
@@ -2118,6 +2148,18 @@ padding-left: 30px;
             src="${Paths.baseUrl + "/" + data!.smokeAlarmFrontImg.toString()}"
             alt="s1"
           />
+           <img
+            style="border-radius: 12px; width: 120px; height: 180px;display: block; text-align: center;object-fit: cover;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  "
+            src="${Paths.baseUrl + "/" + data!.smokeAlarmBackImg.toString()}"
+            alt="s1"
+          />
+          </div>
+          
       </div>
       <div
         style="
@@ -2152,9 +2194,11 @@ padding-left: 30px;
         <hr
           style="border: 1px solid #03a5fc; margin-left: 24px; margin-right: 24px"
         />
-        
+         <div style="
+            display: flex;
+            justify-content: space-between;">
         <img
-            style="border-radius: 12px; width: 250px; height: 180px;display: block; text-align: center;object-fit: cover;
+            style="border-radius: 12px; width: 120px; height: 180px;display: block; text-align: center;object-fit: cover;
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
@@ -2163,6 +2207,17 @@ padding-left: 30px;
             src="${Paths.baseUrl + "/" + data!.coAlarmFrontImg.toString()}"
             alt="s1"
           />
+          <img
+            style="border-radius: 12px; width: 120px; height: 180px;display: block; text-align: center;object-fit: cover;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  "
+            src="${Paths.baseUrl + "/" + data!.coAlarmBackImg.toString()}"
+            alt="s1"
+          />
+          </div>
       </div>
     </div>
     <br>
